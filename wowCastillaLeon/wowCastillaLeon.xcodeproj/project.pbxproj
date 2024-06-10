@@ -17,6 +17,12 @@
 		D3F532AD2C17028A004DEF36 /* wowCastillaLeonUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F532AC2C17028A004DEF36 /* wowCastillaLeonUITests.swift */; };
 		D3F532AF2C17028A004DEF36 /* wowCastillaLeonUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F532AE2C17028A004DEF36 /* wowCastillaLeonUITestsLaunchTests.swift */; };
 		D3F532BD2C170852004DEF36 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D3F532BC2C170852004DEF36 /* GoogleService-Info.plist */; };
+		D3F532C02C170AF6004DEF36 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = D3F532BF2C170AF6004DEF36 /* FirebaseAnalytics */; };
+		D3F532C22C170AF6004DEF36 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = D3F532C12C170AF6004DEF36 /* FirebaseAuth */; };
+		D3F532C42C170AF6004DEF36 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = D3F532C32C170AF6004DEF36 /* FirebaseCrashlytics */; };
+		D3F532C62C170AF6004DEF36 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = D3F532C52C170AF6004DEF36 /* FirebaseFirestore */; };
+		D3F532C82C170AF6004DEF36 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = D3F532C72C170AF6004DEF36 /* FirebaseMessaging */; };
+		D3F532CA2C170AF6004DEF36 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = D3F532C92C170AF6004DEF36 /* FirebaseStorage */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +63,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3F532C42C170AF6004DEF36 /* FirebaseCrashlytics in Frameworks */,
+				D3F532C62C170AF6004DEF36 /* FirebaseFirestore in Frameworks */,
+				D3F532C82C170AF6004DEF36 /* FirebaseMessaging in Frameworks */,
+				D3F532C02C170AF6004DEF36 /* FirebaseAnalytics in Frameworks */,
+				D3F532C22C170AF6004DEF36 /* FirebaseAuth in Frameworks */,
+				D3F532CA2C170AF6004DEF36 /* FirebaseStorage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -160,6 +172,14 @@
 			dependencies = (
 			);
 			name = wowCastillaLeon;
+			packageProductDependencies = (
+				D3F532BF2C170AF6004DEF36 /* FirebaseAnalytics */,
+				D3F532C12C170AF6004DEF36 /* FirebaseAuth */,
+				D3F532C32C170AF6004DEF36 /* FirebaseCrashlytics */,
+				D3F532C52C170AF6004DEF36 /* FirebaseFirestore */,
+				D3F532C72C170AF6004DEF36 /* FirebaseMessaging */,
+				D3F532C92C170AF6004DEF36 /* FirebaseStorage */,
+			);
 			productName = wowCastillaLeon;
 			productReference = D3F532892C170288004DEF36 /* wowCastillaLeon.app */;
 			productType = "com.apple.product-type.application";
@@ -232,6 +252,9 @@
 				Base,
 			);
 			mainGroup = D3F532802C170288004DEF36;
+			packageReferences = (
+				D3F532BE2C170AF6004DEF36 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = D3F5328A2C170288004DEF36 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -608,6 +631,50 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		D3F532BE2C170AF6004DEF36 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.27.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D3F532BF2C170AF6004DEF36 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D3F532BE2C170AF6004DEF36 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		D3F532C12C170AF6004DEF36 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D3F532BE2C170AF6004DEF36 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		D3F532C32C170AF6004DEF36 /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D3F532BE2C170AF6004DEF36 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
+		};
+		D3F532C52C170AF6004DEF36 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D3F532BE2C170AF6004DEF36 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		D3F532C72C170AF6004DEF36 /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D3F532BE2C170AF6004DEF36 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
+		};
+		D3F532C92C170AF6004DEF36 /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D3F532BE2C170AF6004DEF36 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		D3F532972C17028A004DEF36 /* wowCastillaLeon.xcdatamodeld */ = {
