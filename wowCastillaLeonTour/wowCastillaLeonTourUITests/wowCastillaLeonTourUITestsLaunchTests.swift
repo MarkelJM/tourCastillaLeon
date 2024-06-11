@@ -1,13 +1,13 @@
 //
-//  wowCastillaLeonUITestsLaunchTests.swift
-//  wowCastillaLeonUITests
+//  wowCastillaLeonTourUITestsLaunchTests.swift
+//  wowCastillaLeonTourUITests
 //
 //  Created by Markel Juaristi on 10/6/24.
 //
 
 import XCTest
 
-final class wowCastillaLeonUITestsLaunchTests: XCTestCase {
+final class wowCastillaLeonTourUITestsLaunchTests: XCTestCase {
 
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true

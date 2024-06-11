@@ -1,14 +1,14 @@
 //
-//  wowCastillaLeonTests.swift
-//  wowCastillaLeonTests
+//  wowCastillaLeonTourTests.swift
+//  wowCastillaLeonTourTests
 //
 //  Created by Markel Juaristi on 10/6/24.
 //
 
 import XCTest
-@testable import wowCastillaLeon
+@testable import wowCastillaLeonTour
 
-final class wowCastillaLeonTests: XCTestCase {
+final class wowCastillaLeonTourTests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.

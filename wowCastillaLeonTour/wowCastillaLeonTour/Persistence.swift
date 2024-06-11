@@ -1,6 +1,6 @@
 //
 //  Persistence.swift
-//  wowCastillaLeon
+//  wowCastillaLeonTour
 //
 //  Created by Markel Juaristi on 10/6/24.
 //
@@ -31,7 +31,7 @@ struct PersistenceController {
     let container: NSPersistentContainer
 
     init(inMemory: Bool = false) {
-        container = NSPersistentContainer(name: "wowCastillaLeon")
+        container = NSPersistentContainer(name: "wowCastillaLeonTour")
         if inMemory {
             container.persistentStoreDescriptions.first!.url = URL(fileURLWithPath: "/dev/null")
         }

@@ -1,6 +1,6 @@
 //
 //  ContentView.swift
-//  wowCastillaLeon
+//  wowCastillaLeonTour
 //
 //  Created by Markel Juaristi on 10/6/24.
 //
