@@ -13,80 +13,30 @@
 		D35F00562C173FA100780464 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D35F00552C173FA100780464 /* Preview Assets.xcassets */; };
 		D35F00582C173FA100780464 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35F00572C173FA100780464 /* Persistence.swift */; };
 		D35F005B2C173FA100780464 /* wowCastillaLeonTour.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D35F00592C173FA100780464 /* wowCastillaLeonTour.xcdatamodeld */; };
-		D35F00652C173FA100780464 /* wowCastillaLeonTourTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35F00642C173FA100780464 /* wowCastillaLeonTourTests.swift */; };
-		D35F006F2C173FA100780464 /* wowCastillaLeonTourUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35F006E2C173FA100780464 /* wowCastillaLeonTourUITests.swift */; };
-		D35F00712C173FA100780464 /* wowCastillaLeonTourUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35F00702C173FA100780464 /* wowCastillaLeonTourUITestsLaunchTests.swift */; };
 		D35F00812C1740BE00780464 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D35F00802C1740BE00780464 /* GoogleService-Info.plist */; };
-		D35F00842C17410D00780464 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = D35F00832C17410D00780464 /* FirebaseAnalytics */; };
-		D35F00862C17410D00780464 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = D35F00852C17410D00780464 /* FirebaseAuth */; };
-		D35F00882C17410D00780464 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = D35F00872C17410D00780464 /* FirebaseCrashlytics */; };
-		D35F008A2C17410D00780464 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = D35F00892C17410D00780464 /* FirebaseFirestore */; };
-		D35F008C2C17410D00780464 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = D35F008B2C17410D00780464 /* FirebaseMessaging */; };
-		D35F008E2C17410D00780464 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = D35F008D2C17410D00780464 /* FirebaseStorage */; };
 		D3DDA8782C18548D00C43CBA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDA8772C18548D00C43CBA /* User.swift */; };
 		D3DDA8822C18625200C43CBA /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDA8812C18625200C43CBA /* RegisterViewModel.swift */; };
-		D3DDA8832C18625200C43CBA /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDA8812C18625200C43CBA /* RegisterViewModel.swift */; };
-		D3DDA8842C18625200C43CBA /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDA8812C18625200C43CBA /* RegisterViewModel.swift */; };
 		D3DDA8862C18626A00C43CBA /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDA8852C18626A00C43CBA /* RegisterView.swift */; };
-		D3DDA8872C18626A00C43CBA /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDA8852C18626A00C43CBA /* RegisterView.swift */; };
-		D3DDA8882C18626A00C43CBA /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDA8852C18626A00C43CBA /* RegisterView.swift */; };
 		D3DDA88A2C18629300C43CBA /* VerificationEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDA8892C18629300C43CBA /* VerificationEmailView.swift */; };
-		D3DDA88B2C18629300C43CBA /* VerificationEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDA8892C18629300C43CBA /* VerificationEmailView.swift */; };
-		D3DDA88C2C18629300C43CBA /* VerificationEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDA8892C18629300C43CBA /* VerificationEmailView.swift */; };
 		D3DDA88E2C1862BB00C43CBA /* NavigationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDA88D2C1862BB00C43CBA /* NavigationState.swift */; };
-		D3DDA88F2C1862BB00C43CBA /* NavigationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDA88D2C1862BB00C43CBA /* NavigationState.swift */; };
-		D3DDA8902C1862BB00C43CBA /* NavigationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDA88D2C1862BB00C43CBA /* NavigationState.swift */; };
 		D3DDA8922C18630900C43CBA /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDA8912C18630900C43CBA /* AppState.swift */; };
-		D3DDA8932C18630900C43CBA /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDA8912C18630900C43CBA /* AppState.swift */; };
-		D3DDA8942C18630900C43CBA /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDA8912C18630900C43CBA /* AppState.swift */; };
 		D3DDA8972C18709500C43CBA /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDA8962C18709500C43CBA /* LoginViewModel.swift */; };
-		D3DDA8982C18709500C43CBA /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDA8962C18709500C43CBA /* LoginViewModel.swift */; };
-		D3DDA8992C18709500C43CBA /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDA8962C18709500C43CBA /* LoginViewModel.swift */; };
 		D3DDA89B2C1870AC00C43CBA /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDA89A2C1870AC00C43CBA /* LoginView.swift */; };
-		D3DDA89C2C1870AC00C43CBA /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDA89A2C1870AC00C43CBA /* LoginView.swift */; };
-		D3DDA89D2C1870AC00C43CBA /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDA89A2C1870AC00C43CBA /* LoginView.swift */; };
 		D3DDA8A12C19AC3200C43CBA /* FirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDA8A02C19AC3200C43CBA /* FirestoreManager.swift */; };
-		D3DDA8A22C19AC3200C43CBA /* FirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDA8A02C19AC3200C43CBA /* FirestoreManager.swift */; };
-		D3DDA8A32C19AC3200C43CBA /* FirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDA8A02C19AC3200C43CBA /* FirestoreManager.swift */; };
 		D3DDA8A52C19AD1D00C43CBA /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDA8A42C19AD1D00C43CBA /* ProfileViewModel.swift */; };
-		D3DDA8A62C19AD1D00C43CBA /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDA8A42C19AD1D00C43CBA /* ProfileViewModel.swift */; };
-		D3DDA8A72C19AD1D00C43CBA /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDA8A42C19AD1D00C43CBA /* ProfileViewModel.swift */; };
 		D3DDA8A92C19AD6800C43CBA /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDA8A82C19AD6800C43CBA /* ProfileView.swift */; };
-		D3DDA8AA2C19AD6800C43CBA /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDA8A82C19AD6800C43CBA /* ProfileView.swift */; };
-		D3DDA8AB2C19AD6800C43CBA /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDA8A82C19AD6800C43CBA /* ProfileView.swift */; };
 		D3DDA8AE2C19B10F00C43CBA /* User+Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDA8AD2C19B10F00C43CBA /* User+Firebase.swift */; };
-		D3DDA8AF2C19B10F00C43CBA /* User+Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDA8AD2C19B10F00C43CBA /* User+Firebase.swift */; };
-		D3DDA8B02C19B10F00C43CBA /* User+Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDA8AD2C19B10F00C43CBA /* User+Firebase.swift */; };
 		D3E4B7482C19BAB7000BEE9F /* RegisterDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B7472C19BAB7000BEE9F /* RegisterDataManager.swift */; };
-		D3E4B7492C19BAB7000BEE9F /* RegisterDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B7472C19BAB7000BEE9F /* RegisterDataManager.swift */; };
-		D3E4B74A2C19BAB7000BEE9F /* RegisterDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B7472C19BAB7000BEE9F /* RegisterDataManager.swift */; };
 		D3E4B74C2C19BAE4000BEE9F /* ProfileDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B74B2C19BAE4000BEE9F /* ProfileDataManager.swift */; };
-		D3E4B74D2C19BAE4000BEE9F /* ProfileDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B74B2C19BAE4000BEE9F /* ProfileDataManager.swift */; };
-		D3E4B74E2C19BAE4000BEE9F /* ProfileDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B74B2C19BAE4000BEE9F /* ProfileDataManager.swift */; };
 		D3E4B7502C19BAF7000BEE9F /* LoginDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B74F2C19BAF7000BEE9F /* LoginDataManager.swift */; };
-		D3E4B7512C19BAF7000BEE9F /* LoginDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B74F2C19BAF7000BEE9F /* LoginDataManager.swift */; };
-		D3E4B7522C19BAF7000BEE9F /* LoginDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B74F2C19BAF7000BEE9F /* LoginDataManager.swift */; };
 		D3E4B7552C19BC0C000BEE9F /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B7542C19BC0C000BEE9F /* HomeView.swift */; };
-		D3E4B7562C19BC0C000BEE9F /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B7542C19BC0C000BEE9F /* HomeView.swift */; };
-		D3E4B7572C19BC0C000BEE9F /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B7542C19BC0C000BEE9F /* HomeView.swift */; };
+		D3E4B75A2C19BF2C000BEE9F /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = D3E4B7592C19BF2C000BEE9F /* FirebaseAnalytics */; };
+		D3E4B75C2C19BF2C000BEE9F /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = D3E4B75B2C19BF2C000BEE9F /* FirebaseAuth */; };
+		D3E4B75E2C19BF2C000BEE9F /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = D3E4B75D2C19BF2C000BEE9F /* FirebaseCrashlytics */; };
+		D3E4B7602C19BF2C000BEE9F /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = D3E4B75F2C19BF2C000BEE9F /* FirebaseFirestore */; };
+		D3E4B7622C19BF2C000BEE9F /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = D3E4B7612C19BF2C000BEE9F /* FirebaseMessaging */; };
+		D3E4B7642C19BF2C000BEE9F /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = D3E4B7632C19BF2C000BEE9F /* FirebaseStorage */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		D35F00612C173FA100780464 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D35F00432C173FA000780464 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = D35F004A2C173FA000780464;
-			remoteInfo = wowCastillaLeonTour;
-		};
-		D35F006B2C173FA100780464 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D35F00432C173FA000780464 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = D35F004A2C173FA000780464;
-			remoteInfo = wowCastillaLeonTour;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		D35F004B2C173FA000780464 /* wowCastillaLeonTour.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = wowCastillaLeonTour.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -96,11 +46,6 @@
 		D35F00552C173FA100780464 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D35F00572C173FA100780464 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		D35F005A2C173FA100780464 /* wowCastillaLeonTour.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = wowCastillaLeonTour.xcdatamodel; sourceTree = "<group>"; };
-		D35F00602C173FA100780464 /* wowCastillaLeonTourTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = wowCastillaLeonTourTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		D35F00642C173FA100780464 /* wowCastillaLeonTourTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = wowCastillaLeonTourTests.swift; sourceTree = "<group>"; };
-		D35F006A2C173FA100780464 /* wowCastillaLeonTourUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = wowCastillaLeonTourUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		D35F006E2C173FA100780464 /* wowCastillaLeonTourUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = wowCastillaLeonTourUITests.swift; sourceTree = "<group>"; };
-		D35F00702C173FA100780464 /* wowCastillaLeonTourUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = wowCastillaLeonTourUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		D35F00802C1740BE00780464 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D3DDA8772C18548D00C43CBA /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		D3DDA8812C18625200C43CBA /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
@@ -125,26 +70,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D35F00882C17410D00780464 /* FirebaseCrashlytics in Frameworks */,
-				D35F008A2C17410D00780464 /* FirebaseFirestore in Frameworks */,
-				D35F008C2C17410D00780464 /* FirebaseMessaging in Frameworks */,
-				D35F00842C17410D00780464 /* FirebaseAnalytics in Frameworks */,
-				D35F00862C17410D00780464 /* FirebaseAuth in Frameworks */,
-				D35F008E2C17410D00780464 /* FirebaseStorage in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D35F005D2C173FA100780464 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D35F00672C173FA100780464 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				D3E4B75E2C19BF2C000BEE9F /* FirebaseCrashlytics in Frameworks */,
+				D3E4B7602C19BF2C000BEE9F /* FirebaseFirestore in Frameworks */,
+				D3E4B7622C19BF2C000BEE9F /* FirebaseMessaging in Frameworks */,
+				D3E4B75A2C19BF2C000BEE9F /* FirebaseAnalytics in Frameworks */,
+				D3E4B75C2C19BF2C000BEE9F /* FirebaseAuth in Frameworks */,
+				D3E4B7642C19BF2C000BEE9F /* FirebaseStorage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -155,8 +86,6 @@
 			isa = PBXGroup;
 			children = (
 				D35F004D2C173FA000780464 /* wowCastillaLeonTour */,
-				D35F00632C173FA100780464 /* wowCastillaLeonTourTests */,
-				D35F006D2C173FA100780464 /* wowCastillaLeonTourUITests */,
 				D35F004C2C173FA000780464 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -165,8 +94,6 @@
 			isa = PBXGroup;
 			children = (
 				D35F004B2C173FA000780464 /* wowCastillaLeonTour.app */,
-				D35F00602C173FA100780464 /* wowCastillaLeonTourTests.xctest */,
-				D35F006A2C173FA100780464 /* wowCastillaLeonTourUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -192,23 +119,6 @@
 				D35F00552C173FA100780464 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		D35F00632C173FA100780464 /* wowCastillaLeonTourTests */ = {
-			isa = PBXGroup;
-			children = (
-				D35F00642C173FA100780464 /* wowCastillaLeonTourTests.swift */,
-			);
-			path = wowCastillaLeonTourTests;
-			sourceTree = "<group>";
-		};
-		D35F006D2C173FA100780464 /* wowCastillaLeonTourUITests */ = {
-			isa = PBXGroup;
-			children = (
-				D35F006E2C173FA100780464 /* wowCastillaLeonTourUITests.swift */,
-				D35F00702C173FA100780464 /* wowCastillaLeonTourUITestsLaunchTests.swift */,
-			);
-			path = wowCastillaLeonTourUITests;
 			sourceTree = "<group>";
 		};
 		D35F007D2C173FBB00780464 /* Modules */ = {
@@ -388,52 +298,16 @@
 			);
 			name = wowCastillaLeonTour;
 			packageProductDependencies = (
-				D35F00832C17410D00780464 /* FirebaseAnalytics */,
-				D35F00852C17410D00780464 /* FirebaseAuth */,
-				D35F00872C17410D00780464 /* FirebaseCrashlytics */,
-				D35F00892C17410D00780464 /* FirebaseFirestore */,
-				D35F008B2C17410D00780464 /* FirebaseMessaging */,
-				D35F008D2C17410D00780464 /* FirebaseStorage */,
+				D3E4B7592C19BF2C000BEE9F /* FirebaseAnalytics */,
+				D3E4B75B2C19BF2C000BEE9F /* FirebaseAuth */,
+				D3E4B75D2C19BF2C000BEE9F /* FirebaseCrashlytics */,
+				D3E4B75F2C19BF2C000BEE9F /* FirebaseFirestore */,
+				D3E4B7612C19BF2C000BEE9F /* FirebaseMessaging */,
+				D3E4B7632C19BF2C000BEE9F /* FirebaseStorage */,
 			);
 			productName = wowCastillaLeonTour;
 			productReference = D35F004B2C173FA000780464 /* wowCastillaLeonTour.app */;
 			productType = "com.apple.product-type.application";
-		};
-		D35F005F2C173FA100780464 /* wowCastillaLeonTourTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = D35F00772C173FA100780464 /* Build configuration list for PBXNativeTarget "wowCastillaLeonTourTests" */;
-			buildPhases = (
-				D35F005C2C173FA100780464 /* Sources */,
-				D35F005D2C173FA100780464 /* Frameworks */,
-				D35F005E2C173FA100780464 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				D35F00622C173FA100780464 /* PBXTargetDependency */,
-			);
-			name = wowCastillaLeonTourTests;
-			productName = wowCastillaLeonTourTests;
-			productReference = D35F00602C173FA100780464 /* wowCastillaLeonTourTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		D35F00692C173FA100780464 /* wowCastillaLeonTourUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = D35F007A2C173FA100780464 /* Build configuration list for PBXNativeTarget "wowCastillaLeonTourUITests" */;
-			buildPhases = (
-				D35F00662C173FA100780464 /* Sources */,
-				D35F00672C173FA100780464 /* Frameworks */,
-				D35F00682C173FA100780464 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				D35F006C2C173FA100780464 /* PBXTargetDependency */,
-			);
-			name = wowCastillaLeonTourUITests;
-			productName = wowCastillaLeonTourUITests;
-			productReference = D35F006A2C173FA100780464 /* wowCastillaLeonTourUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
@@ -448,14 +322,6 @@
 					D35F004A2C173FA000780464 = {
 						CreatedOnToolsVersion = 15.4;
 					};
-					D35F005F2C173FA100780464 = {
-						CreatedOnToolsVersion = 15.4;
-						TestTargetID = D35F004A2C173FA000780464;
-					};
-					D35F00692C173FA100780464 = {
-						CreatedOnToolsVersion = 15.4;
-						TestTargetID = D35F004A2C173FA000780464;
-					};
 				};
 			};
 			buildConfigurationList = D35F00462C173FA000780464 /* Build configuration list for PBXProject "wowCastillaLeonTour" */;
@@ -468,15 +334,13 @@
 			);
 			mainGroup = D35F00422C173FA000780464;
 			packageReferences = (
-				D35F00822C17410D00780464 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				D3E4B7582C19BF2C000BEE9F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = D35F004C2C173FA000780464 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				D35F004A2C173FA000780464 /* wowCastillaLeonTour */,
-				D35F005F2C173FA100780464 /* wowCastillaLeonTourTests */,
-				D35F00692C173FA100780464 /* wowCastillaLeonTourUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -489,20 +353,6 @@
 				D35F00562C173FA100780464 /* Preview Assets.xcassets in Resources */,
 				D35F00532C173FA100780464 /* Assets.xcassets in Resources */,
 				D35F00812C1740BE00780464 /* GoogleService-Info.plist in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D35F005E2C173FA100780464 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D35F00682C173FA100780464 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -561,67 +411,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D35F005C2C173FA100780464 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D3DDA88B2C18629300C43CBA /* VerificationEmailView.swift in Sources */,
-				D3DDA8872C18626A00C43CBA /* RegisterView.swift in Sources */,
-				D35F00652C173FA100780464 /* wowCastillaLeonTourTests.swift in Sources */,
-				D3E4B7492C19BAB7000BEE9F /* RegisterDataManager.swift in Sources */,
-				D3DDA8932C18630900C43CBA /* AppState.swift in Sources */,
-				D3DDA8A62C19AD1D00C43CBA /* ProfileViewModel.swift in Sources */,
-				D3DDA8832C18625200C43CBA /* RegisterViewModel.swift in Sources */,
-				D3E4B74D2C19BAE4000BEE9F /* ProfileDataManager.swift in Sources */,
-				D3DDA88F2C1862BB00C43CBA /* NavigationState.swift in Sources */,
-				D3DDA89C2C1870AC00C43CBA /* LoginView.swift in Sources */,
-				D3DDA8A22C19AC3200C43CBA /* FirestoreManager.swift in Sources */,
-				D3DDA8AF2C19B10F00C43CBA /* User+Firebase.swift in Sources */,
-				D3DDA8AA2C19AD6800C43CBA /* ProfileView.swift in Sources */,
-				D3E4B7562C19BC0C000BEE9F /* HomeView.swift in Sources */,
-				D3E4B7512C19BAF7000BEE9F /* LoginDataManager.swift in Sources */,
-				D3DDA8982C18709500C43CBA /* LoginViewModel.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D35F00662C173FA100780464 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D35F006F2C173FA100780464 /* wowCastillaLeonTourUITests.swift in Sources */,
-				D3DDA8A32C19AC3200C43CBA /* FirestoreManager.swift in Sources */,
-				D3E4B74E2C19BAE4000BEE9F /* ProfileDataManager.swift in Sources */,
-				D3DDA8902C1862BB00C43CBA /* NavigationState.swift in Sources */,
-				D3DDA8942C18630900C43CBA /* AppState.swift in Sources */,
-				D3E4B7572C19BC0C000BEE9F /* HomeView.swift in Sources */,
-				D3E4B74A2C19BAB7000BEE9F /* RegisterDataManager.swift in Sources */,
-				D3DDA8AB2C19AD6800C43CBA /* ProfileView.swift in Sources */,
-				D3DDA89D2C1870AC00C43CBA /* LoginView.swift in Sources */,
-				D3DDA8B02C19B10F00C43CBA /* User+Firebase.swift in Sources */,
-				D3DDA8882C18626A00C43CBA /* RegisterView.swift in Sources */,
-				D3DDA8992C18709500C43CBA /* LoginViewModel.swift in Sources */,
-				D3DDA8A72C19AD1D00C43CBA /* ProfileViewModel.swift in Sources */,
-				D3DDA8842C18625200C43CBA /* RegisterViewModel.swift in Sources */,
-				D3DDA88C2C18629300C43CBA /* VerificationEmailView.swift in Sources */,
-				D35F00712C173FA100780464 /* wowCastillaLeonTourUITestsLaunchTests.swift in Sources */,
-				D3E4B7522C19BAF7000BEE9F /* LoginDataManager.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		D35F00622C173FA100780464 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = D35F004A2C173FA000780464 /* wowCastillaLeonTour */;
-			targetProxy = D35F00612C173FA100780464 /* PBXContainerItemProxy */;
-		};
-		D35F006C2C173FA100780464 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = D35F004A2C173FA000780464 /* wowCastillaLeonTour */;
-			targetProxy = D35F006B2C173FA100780464 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		D35F00722C173FA100780464 /* Debug */ = {
@@ -801,82 +591,6 @@
 			};
 			name = Release;
 		};
-		D35F00782C173FA100780464 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = BHC56Q6KCK;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = MarkelJM.wowCastillaLeonTourTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/wowCastillaLeonTour.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/wowCastillaLeonTour";
-			};
-			name = Debug;
-		};
-		D35F00792C173FA100780464 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = BHC56Q6KCK;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = MarkelJM.wowCastillaLeonTourTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/wowCastillaLeonTour.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/wowCastillaLeonTour";
-			};
-			name = Release;
-		};
-		D35F007B2C173FA100780464 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = BHC56Q6KCK;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = MarkelJM.wowCastillaLeonTourUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = wowCastillaLeonTour;
-			};
-			name = Debug;
-		};
-		D35F007C2C173FA100780464 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = BHC56Q6KCK;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = MarkelJM.wowCastillaLeonTourUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = wowCastillaLeonTour;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -898,28 +612,10 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D35F00772C173FA100780464 /* Build configuration list for PBXNativeTarget "wowCastillaLeonTourTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D35F00782C173FA100780464 /* Debug */,
-				D35F00792C173FA100780464 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		D35F007A2C173FA100780464 /* Build configuration list for PBXNativeTarget "wowCastillaLeonTourUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D35F007B2C173FA100780464 /* Debug */,
-				D35F007C2C173FA100780464 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		D35F00822C17410D00780464 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+		D3E4B7582C19BF2C000BEE9F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
 			requirement = {
@@ -930,34 +626,34 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		D35F00832C17410D00780464 /* FirebaseAnalytics */ = {
+		D3E4B7592C19BF2C000BEE9F /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = D35F00822C17410D00780464 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = D3E4B7582C19BF2C000BEE9F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAnalytics;
 		};
-		D35F00852C17410D00780464 /* FirebaseAuth */ = {
+		D3E4B75B2C19BF2C000BEE9F /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = D35F00822C17410D00780464 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = D3E4B7582C19BF2C000BEE9F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAuth;
 		};
-		D35F00872C17410D00780464 /* FirebaseCrashlytics */ = {
+		D3E4B75D2C19BF2C000BEE9F /* FirebaseCrashlytics */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = D35F00822C17410D00780464 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = D3E4B7582C19BF2C000BEE9F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseCrashlytics;
 		};
-		D35F00892C17410D00780464 /* FirebaseFirestore */ = {
+		D3E4B75F2C19BF2C000BEE9F /* FirebaseFirestore */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = D35F00822C17410D00780464 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = D3E4B7582C19BF2C000BEE9F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestore;
 		};
-		D35F008B2C17410D00780464 /* FirebaseMessaging */ = {
+		D3E4B7612C19BF2C000BEE9F /* FirebaseMessaging */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = D35F00822C17410D00780464 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = D3E4B7582C19BF2C000BEE9F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseMessaging;
 		};
-		D35F008D2C17410D00780464 /* FirebaseStorage */ = {
+		D3E4B7632C19BF2C000BEE9F /* FirebaseStorage */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = D35F00822C17410D00780464 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = D3E4B7582C19BF2C000BEE9F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseStorage;
 		};
 /* End XCSwiftPackageProductDependency section */
