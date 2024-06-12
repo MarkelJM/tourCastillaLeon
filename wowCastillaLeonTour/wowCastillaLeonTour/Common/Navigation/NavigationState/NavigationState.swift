@@ -13,14 +13,15 @@ struct NavigationState: View {
     var body: some View {
         Group {
             switch appState.currentView {
-      
-
             case .registerEmail:
                 RegisterView()
             case .emailVerification:
                 VerificationEmailView(viewModel: RegisterViewModel())
+            case .login:
+                LoginView()
+            case .profile:
+                ProfileView()
             }
         }
     }
 }
-

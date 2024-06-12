@@ -30,11 +30,17 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 struct wowCastillaLeonTourApp: App {
     let persistenceController = PersistenceController.shared
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+    @StateObject private var appState = AppState()
+
 
     var body: some Scene {
         WindowGroup {
+            NavigationState()
+                        .environmentObject(appState)
+            /*
             ContentView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
+             */
         }
     }
 }

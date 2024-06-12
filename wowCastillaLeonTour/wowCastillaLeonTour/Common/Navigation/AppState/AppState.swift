@@ -16,9 +16,9 @@ class AppState: ObservableObject {
     }
 
     enum AppView {
-
         case registerEmail
         case emailVerification
-      
+        case login
+        case profile
     }
 }

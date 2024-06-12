@@ -7,14 +7,14 @@
 
 import Foundation
 
-enum Avatar: String, CaseIterable, Identifiable {
+enum Avatar: String, Codable, CaseIterable, Identifiable {
     case boy = "Boy"
     case girl = "Girl"
     
     var id: String { self.rawValue }
 }
 
-enum Province: String, CaseIterable, Identifiable {
+enum Province: String, Codable, CaseIterable, Identifiable {
     case avila = "Ávila"
     case burgos = "Burgos"
     case leon = "León"
@@ -29,7 +29,7 @@ enum Province: String, CaseIterable, Identifiable {
     var id: String { self.rawValue }
 }
 
-struct User: Identifiable {
+struct User: Identifiable, Codable {
     var id: String
     var email: String
     var firstName: String

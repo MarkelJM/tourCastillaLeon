@@ -39,6 +39,24 @@
 		D3DDA8922C18630900C43CBA /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDA8912C18630900C43CBA /* AppState.swift */; };
 		D3DDA8932C18630900C43CBA /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDA8912C18630900C43CBA /* AppState.swift */; };
 		D3DDA8942C18630900C43CBA /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDA8912C18630900C43CBA /* AppState.swift */; };
+		D3DDA8972C18709500C43CBA /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDA8962C18709500C43CBA /* LoginViewModel.swift */; };
+		D3DDA8982C18709500C43CBA /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDA8962C18709500C43CBA /* LoginViewModel.swift */; };
+		D3DDA8992C18709500C43CBA /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDA8962C18709500C43CBA /* LoginViewModel.swift */; };
+		D3DDA89B2C1870AC00C43CBA /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDA89A2C1870AC00C43CBA /* LoginView.swift */; };
+		D3DDA89C2C1870AC00C43CBA /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDA89A2C1870AC00C43CBA /* LoginView.swift */; };
+		D3DDA89D2C1870AC00C43CBA /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDA89A2C1870AC00C43CBA /* LoginView.swift */; };
+		D3DDA8A12C19AC3200C43CBA /* FirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDA8A02C19AC3200C43CBA /* FirestoreManager.swift */; };
+		D3DDA8A22C19AC3200C43CBA /* FirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDA8A02C19AC3200C43CBA /* FirestoreManager.swift */; };
+		D3DDA8A32C19AC3200C43CBA /* FirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDA8A02C19AC3200C43CBA /* FirestoreManager.swift */; };
+		D3DDA8A52C19AD1D00C43CBA /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDA8A42C19AD1D00C43CBA /* ProfileViewModel.swift */; };
+		D3DDA8A62C19AD1D00C43CBA /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDA8A42C19AD1D00C43CBA /* ProfileViewModel.swift */; };
+		D3DDA8A72C19AD1D00C43CBA /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDA8A42C19AD1D00C43CBA /* ProfileViewModel.swift */; };
+		D3DDA8A92C19AD6800C43CBA /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDA8A82C19AD6800C43CBA /* ProfileView.swift */; };
+		D3DDA8AA2C19AD6800C43CBA /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDA8A82C19AD6800C43CBA /* ProfileView.swift */; };
+		D3DDA8AB2C19AD6800C43CBA /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDA8A82C19AD6800C43CBA /* ProfileView.swift */; };
+		D3DDA8AE2C19B10F00C43CBA /* User+Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDA8AD2C19B10F00C43CBA /* User+Firebase.swift */; };
+		D3DDA8AF2C19B10F00C43CBA /* User+Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDA8AD2C19B10F00C43CBA /* User+Firebase.swift */; };
+		D3DDA8B02C19B10F00C43CBA /* User+Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDA8AD2C19B10F00C43CBA /* User+Firebase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +96,12 @@
 		D3DDA8892C18629300C43CBA /* VerificationEmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationEmailView.swift; sourceTree = "<group>"; };
 		D3DDA88D2C1862BB00C43CBA /* NavigationState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationState.swift; sourceTree = "<group>"; };
 		D3DDA8912C18630900C43CBA /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		D3DDA8962C18709500C43CBA /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		D3DDA89A2C1870AC00C43CBA /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		D3DDA8A02C19AC3200C43CBA /* FirestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreManager.swift; sourceTree = "<group>"; };
+		D3DDA8A42C19AD1D00C43CBA /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		D3DDA8A82C19AD6800C43CBA /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		D3DDA8AD2C19B10F00C43CBA /* User+Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+Firebase.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +198,7 @@
 		D35F007D2C173FBB00780464 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				D3DDA8952C18708400C43CBA /* Login */,
 				D3DDA8792C18612D00C43CBA /* Register */,
 				D3DDA8762C18548000C43CBA /* Model */,
 			);
@@ -200,6 +225,7 @@
 		D3DDA8752C18547700C43CBA /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				D3DDA89E2C19AC1800C43CBA /* Firebase */,
 				D3DDA87E2C18618600C43CBA /* Navigation */,
 			);
 			path = Common;
@@ -208,7 +234,7 @@
 		D3DDA8762C18548000C43CBA /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				D3DDA8772C18548D00C43CBA /* User.swift */,
+				D3DDA8AC2C19B0FD00C43CBA /* User */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -244,6 +270,8 @@
 		D3DDA87C2C18616E00C43CBA /* ProfileData */ = {
 			isa = PBXGroup;
 			children = (
+				D3DDA8A42C19AD1D00C43CBA /* ProfileViewModel.swift */,
+				D3DDA8A82C19AD6800C43CBA /* ProfileView.swift */,
 			);
 			path = ProfileData;
 			sourceTree = "<group>";
@@ -278,6 +306,40 @@
 				D3DDA88D2C1862BB00C43CBA /* NavigationState.swift */,
 			);
 			path = NavigationState;
+			sourceTree = "<group>";
+		};
+		D3DDA8952C18708400C43CBA /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				D3DDA8962C18709500C43CBA /* LoginViewModel.swift */,
+				D3DDA89A2C1870AC00C43CBA /* LoginView.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		D3DDA89E2C19AC1800C43CBA /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				D3DDA89F2C19AC2000C43CBA /* FirestoreManager */,
+			);
+			path = Firebase;
+			sourceTree = "<group>";
+		};
+		D3DDA89F2C19AC2000C43CBA /* FirestoreManager */ = {
+			isa = PBXGroup;
+			children = (
+				D3DDA8A02C19AC3200C43CBA /* FirestoreManager.swift */,
+			);
+			path = FirestoreManager;
+			sourceTree = "<group>";
+		};
+		D3DDA8AC2C19B0FD00C43CBA /* User */ = {
+			isa = PBXGroup;
+			children = (
+				D3DDA8772C18548D00C43CBA /* User.swift */,
+				D3DDA8AD2C19B10F00C43CBA /* User+Firebase.swift */,
+			);
+			path = User;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -448,11 +510,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3DDA8A12C19AC3200C43CBA /* FirestoreManager.swift in Sources */,
 				D35F005B2C173FA100780464 /* wowCastillaLeonTour.xcdatamodeld in Sources */,
 				D3DDA8922C18630900C43CBA /* AppState.swift in Sources */,
+				D3DDA8972C18709500C43CBA /* LoginViewModel.swift in Sources */,
 				D3DDA88E2C1862BB00C43CBA /* NavigationState.swift in Sources */,
 				D3DDA8822C18625200C43CBA /* RegisterViewModel.swift in Sources */,
+				D3DDA8A52C19AD1D00C43CBA /* ProfileViewModel.swift in Sources */,
+				D3DDA8A92C19AD6800C43CBA /* ProfileView.swift in Sources */,
 				D35F00582C173FA100780464 /* Persistence.swift in Sources */,
+				D3DDA8AE2C19B10F00C43CBA /* User+Firebase.swift in Sources */,
+				D3DDA89B2C1870AC00C43CBA /* LoginView.swift in Sources */,
 				D3DDA8862C18626A00C43CBA /* RegisterView.swift in Sources */,
 				D3DDA88A2C18629300C43CBA /* VerificationEmailView.swift in Sources */,
 				D35F00512C173FA000780464 /* ContentView.swift in Sources */,
@@ -469,8 +537,14 @@
 				D3DDA8872C18626A00C43CBA /* RegisterView.swift in Sources */,
 				D35F00652C173FA100780464 /* wowCastillaLeonTourTests.swift in Sources */,
 				D3DDA8932C18630900C43CBA /* AppState.swift in Sources */,
+				D3DDA8A62C19AD1D00C43CBA /* ProfileViewModel.swift in Sources */,
 				D3DDA8832C18625200C43CBA /* RegisterViewModel.swift in Sources */,
 				D3DDA88F2C1862BB00C43CBA /* NavigationState.swift in Sources */,
+				D3DDA89C2C1870AC00C43CBA /* LoginView.swift in Sources */,
+				D3DDA8A22C19AC3200C43CBA /* FirestoreManager.swift in Sources */,
+				D3DDA8AF2C19B10F00C43CBA /* User+Firebase.swift in Sources */,
+				D3DDA8AA2C19AD6800C43CBA /* ProfileView.swift in Sources */,
+				D3DDA8982C18709500C43CBA /* LoginViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -479,9 +553,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				D35F006F2C173FA100780464 /* wowCastillaLeonTourUITests.swift in Sources */,
+				D3DDA8A32C19AC3200C43CBA /* FirestoreManager.swift in Sources */,
 				D3DDA8902C1862BB00C43CBA /* NavigationState.swift in Sources */,
 				D3DDA8942C18630900C43CBA /* AppState.swift in Sources */,
+				D3DDA8AB2C19AD6800C43CBA /* ProfileView.swift in Sources */,
+				D3DDA89D2C1870AC00C43CBA /* LoginView.swift in Sources */,
+				D3DDA8B02C19B10F00C43CBA /* User+Firebase.swift in Sources */,
 				D3DDA8882C18626A00C43CBA /* RegisterView.swift in Sources */,
+				D3DDA8992C18709500C43CBA /* LoginViewModel.swift in Sources */,
+				D3DDA8A72C19AD1D00C43CBA /* ProfileViewModel.swift in Sources */,
 				D3DDA8842C18625200C43CBA /* RegisterViewModel.swift in Sources */,
 				D3DDA88C2C18629300C43CBA /* VerificationEmailView.swift in Sources */,
 				D35F00712C173FA100780464 /* wowCastillaLeonTourUITestsLaunchTests.swift in Sources */,

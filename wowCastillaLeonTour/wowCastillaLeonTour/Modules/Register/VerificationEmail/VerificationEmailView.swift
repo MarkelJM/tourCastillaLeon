@@ -26,5 +26,5 @@ struct VerificationEmailView: View {
     }
 }
 #Preview {
-    VerificationEmailView()
+    VerificationEmailView(viewModel: RegisterViewModel())
 }
