@@ -6,8 +6,6 @@
 //
 
 import Foundation
-import SwiftUI
-import FirebaseAuth
 
 class RegisterViewModel: ObservableObject {
     @Published var email: String = ""
@@ -17,8 +15,8 @@ class RegisterViewModel: ObservableObject {
     @Published var errorMessage: String = ""
     @Published var showVerificationModal: Bool = false
     @Published var isVerified: Bool = false
-
-    private let auth = Auth.auth()
+    
+    private let dataManager = RegisterDataManager()
 
     func register() {
         guard password == repeatPassword else {
@@ -27,38 +25,43 @@ class RegisterViewModel: ObservableObject {
             return
         }
 
-        auth.createUser(withEmail: email, password: password) { [weak self] authResult, error in
-            if let error = error {
+        dataManager.registerUser(email: email, password: password) { [weak self] result in
+            switch result {
+            case .success:
+                self?.sendEmailVerification()
+            case .failure(let error):
                 self?.showError = true
                 self?.errorMessage = error.localizedDescription
-            } else {
-                self?.sendEmailVerification()
             }
         }
     }
 
     private func sendEmailVerification() {
-        auth.currentUser?.sendEmailVerification { [weak self] error in
-            if let error = error {
+        dataManager.sendEmailVerification { [weak self] result in
+            switch result {
+            case .success:
+                self?.showVerificationModal = true
+            case .failure(let error):
                 self?.showError = true
                 self?.errorMessage = error.localizedDescription
-            } else {
-                self?.showVerificationModal = true
             }
         }
     }
 
     func checkEmailVerification() {
-        auth.currentUser?.reload(completion: { [weak self] error in
-            if let error = error {
+        dataManager.checkEmailVerification { [weak self] result in
+            switch result {
+            case .success(let isVerified):
+                if isVerified {
+                    self?.isVerified = true
+                } else {
+                    self?.showError = true
+                    self?.errorMessage = "Por favor, verifica tu correo electrónico"
+                }
+            case .failure(let error):
                 self?.showError = true
                 self?.errorMessage = error.localizedDescription
-            } else if self?.auth.currentUser?.isEmailVerified == true {
-                self?.isVerified = true
-            } else {
-                self?.showError = true
-                self?.errorMessage = "Por favor, verifica tu correo electrónico"
             }
-        })
+        }
     }
 }

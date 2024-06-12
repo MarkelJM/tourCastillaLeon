@@ -5,9 +5,8 @@
 //  Created by Markel Juaristi on 12/6/24.
 //
 
+import Foundation
 import SwiftUI
-import FirebaseAuth
-import FirebaseFirestore
 
 class ProfileViewModel: ObservableObject {
     @Published var email: String = ""
@@ -21,16 +20,36 @@ class ProfileViewModel: ObservableObject {
     @Published var showError: Bool = false
     @Published var errorMessage: String = ""
 
-    private let firestoreManager = FirestoreManager()
+    private let dataManager = ProfileDataManager()
     
     func saveUserProfile() {
         let user = User(id: UUID().uuidString, email: email, firstName: firstName, lastName: lastName, birthDate: birthDate, postalCode: postalCode, city: city, province: province, avatar: avatar)
-        firestoreManager.createUserProfile(user: user) { [weak self] result in
+        dataManager.createUserProfile(user: user) { [weak self] result in
             switch result {
-            case .success():
+            case .success:
+                // Navegar a la vista deseada
                 DispatchQueue.main.async {
-                    // Navegar a avatar
+                    // Implementar navegación a la vista deseada
                 }
+            case .failure(let error):
+                self?.showError = true
+                self?.errorMessage = error.localizedDescription
+            }
+        }
+    }
+    
+    func fetchUserProfile() {
+        dataManager.fetchUserProfile { [weak self] result in
+            switch result {
+            case .success(let user):
+                self?.email = user.email
+                self?.firstName = user.firstName
+                self?.lastName = user.lastName
+                self?.birthDate = user.birthDate
+                self?.postalCode = user.postalCode
+                self?.city = user.city
+                self?.province = user.province
+                self?.avatar = user.avatar
             case .failure(let error):
                 self?.showError = true
                 self?.errorMessage = error.localizedDescription

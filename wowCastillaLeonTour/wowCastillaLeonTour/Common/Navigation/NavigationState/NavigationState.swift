@@ -21,7 +21,11 @@ struct NavigationState: View {
                 LoginView()
             case .profile:
                 ProfileView()
+            case .home:
+                HomeView()
             }
         }
     }
 }
+
+

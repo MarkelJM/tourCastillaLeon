@@ -5,8 +5,7 @@
 //  Created by Markel Juaristi on 11/6/24.
 //
 
-import SwiftUI
-import FirebaseAuth
+import Foundation
 
 class LoginViewModel: ObservableObject {
     @Published var email: String = ""
@@ -15,14 +14,20 @@ class LoginViewModel: ObservableObject {
     @Published var errorMessage: String = ""
     @Published var currentView: AppState.AppView?
 
+    private let dataManager = LoginDataManager()
+
     func login() {
-        Auth.auth().signIn(withEmail: email, password: password) { [weak self] authResult, error in
-            if let error = error {
+        
+        dataManager.loginUser(email: email, password: password) { [weak self] result in
+            switch result {
+                
+            case .success:
+                ///NAVEGAR A HOME
+                self?.currentView = .home
+            case .failure(let error):
                 self?.showError = true
                 self?.errorMessage = error.localizedDescription
-            } else {
-                ///NAVEGAR HOME
-                //self?.currentView = .home
+                 
             }
         }
     }
