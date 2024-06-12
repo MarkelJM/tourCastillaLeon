@@ -1,6 +1,6 @@
 //
-//  wowCastillaLeonApp.swift
-//  wowCastillaLeon
+//  wowCastillaLeonTourApp.swift
+//  wowCastillaLeonTour
 //
 //  Created by Markel Juaristi on 10/6/24.
 //
@@ -27,14 +27,20 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 
 
 @main
-struct wowCastillaLeonApp: App {
+struct wowCastillaLeonTourApp: App {
     let persistenceController = PersistenceController.shared
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+    @StateObject private var appState = AppState()
+
 
     var body: some Scene {
         WindowGroup {
+            NavigationState()
+                        .environmentObject(appState)
+            /*
             ContentView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
+             */
         }
     }
 }
