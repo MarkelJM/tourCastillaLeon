@@ -36,6 +36,10 @@
 		D3E4B7602C19BF2C000BEE9F /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = D3E4B75F2C19BF2C000BEE9F /* FirebaseFirestore */; };
 		D3E4B7622C19BF2C000BEE9F /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = D3E4B7612C19BF2C000BEE9F /* FirebaseMessaging */; };
 		D3E4B7642C19BF2C000BEE9F /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = D3E4B7632C19BF2C000BEE9F /* FirebaseStorage */; };
+		D3E4B76A2C32C5B0000BEE9F /* LocationActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B7692C32C5AF000BEE9F /* LocationActivity.swift */; };
+		D3E4B76C2C32C5BC000BEE9F /* ActivityType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B76B2C32C5BC000BEE9F /* ActivityType.swift */; };
+		D3E4B76E2C32C5C9000BEE9F /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B76D2C32C5C9000BEE9F /* Activity.swift */; };
+		D3E4B7702C32C5D9000BEE9F /* PuzzlePiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B76F2C32C5D9000BEE9F /* PuzzlePiece.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,6 +67,10 @@
 		D3E4B74B2C19BAE4000BEE9F /* ProfileDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDataManager.swift; sourceTree = "<group>"; };
 		D3E4B74F2C19BAF7000BEE9F /* LoginDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginDataManager.swift; sourceTree = "<group>"; };
 		D3E4B7542C19BC0C000BEE9F /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		D3E4B7692C32C5AF000BEE9F /* LocationActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationActivity.swift; sourceTree = "<group>"; };
+		D3E4B76B2C32C5BC000BEE9F /* ActivityType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityType.swift; sourceTree = "<group>"; };
+		D3E4B76D2C32C5C9000BEE9F /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
+		D3E4B76F2C32C5D9000BEE9F /* PuzzlePiece.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzlePiece.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +169,7 @@
 		D3DDA8762C18548000C43CBA /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D3E4B7682C32C539000BEE9F /* Activity */,
 				D3DDA8AC2C19B0FD00C43CBA /* User */,
 			);
 			path = Model;
@@ -280,6 +289,17 @@
 			path = Home;
 			sourceTree = "<group>";
 		};
+		D3E4B7682C32C539000BEE9F /* Activity */ = {
+			isa = PBXGroup;
+			children = (
+				D3E4B7692C32C5AF000BEE9F /* LocationActivity.swift */,
+				D3E4B76B2C32C5BC000BEE9F /* ActivityType.swift */,
+				D3E4B76D2C32C5C9000BEE9F /* Activity.swift */,
+				D3E4B76F2C32C5D9000BEE9F /* PuzzlePiece.swift */,
+			);
+			path = Activity;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -393,8 +413,10 @@
 				D3DDA8922C18630900C43CBA /* AppState.swift in Sources */,
 				D3DDA8972C18709500C43CBA /* LoginViewModel.swift in Sources */,
 				D3DDA88E2C1862BB00C43CBA /* NavigationState.swift in Sources */,
+				D3E4B76A2C32C5B0000BEE9F /* LocationActivity.swift in Sources */,
 				D3E4B7482C19BAB7000BEE9F /* RegisterDataManager.swift in Sources */,
 				D3DDA8822C18625200C43CBA /* RegisterViewModel.swift in Sources */,
+				D3E4B76C2C32C5BC000BEE9F /* ActivityType.swift in Sources */,
 				D3DDA8A52C19AD1D00C43CBA /* ProfileViewModel.swift in Sources */,
 				D3DDA8A92C19AD6800C43CBA /* ProfileView.swift in Sources */,
 				D35F00582C173FA100780464 /* Persistence.swift in Sources */,
@@ -406,8 +428,10 @@
 				D3DDA88A2C18629300C43CBA /* VerificationEmailView.swift in Sources */,
 				D3E4B7502C19BAF7000BEE9F /* LoginDataManager.swift in Sources */,
 				D35F00512C173FA000780464 /* ContentView.swift in Sources */,
+				D3E4B7702C32C5D9000BEE9F /* PuzzlePiece.swift in Sources */,
 				D3DDA8782C18548D00C43CBA /* User.swift in Sources */,
 				D35F004F2C173FA000780464 /* wowCastillaLeonTourApp.swift in Sources */,
+				D3E4B76E2C32C5C9000BEE9F /* Activity.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
