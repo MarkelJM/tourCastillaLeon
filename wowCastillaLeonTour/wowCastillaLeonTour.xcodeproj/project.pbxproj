@@ -1,0 +1,699 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D35F004F2C173FA000780464 /* wowCastillaLeonTourApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35F004E2C173FA000780464 /* wowCastillaLeonTourApp.swift */; };
+		D35F00512C173FA000780464 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35F00502C173FA000780464 /* ContentView.swift */; };
+		D35F00532C173FA100780464 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D35F00522C173FA100780464 /* Assets.xcassets */; };
+		D35F00562C173FA100780464 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D35F00552C173FA100780464 /* Preview Assets.xcassets */; };
+		D35F00582C173FA100780464 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35F00572C173FA100780464 /* Persistence.swift */; };
+		D35F005B2C173FA100780464 /* wowCastillaLeonTour.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D35F00592C173FA100780464 /* wowCastillaLeonTour.xcdatamodeld */; };
+		D35F00812C1740BE00780464 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D35F00802C1740BE00780464 /* GoogleService-Info.plist */; };
+		D3DDA8782C18548D00C43CBA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDA8772C18548D00C43CBA /* User.swift */; };
+		D3DDA8822C18625200C43CBA /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDA8812C18625200C43CBA /* RegisterViewModel.swift */; };
+		D3DDA8862C18626A00C43CBA /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDA8852C18626A00C43CBA /* RegisterView.swift */; };
+		D3DDA88A2C18629300C43CBA /* VerificationEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDA8892C18629300C43CBA /* VerificationEmailView.swift */; };
+		D3DDA88E2C1862BB00C43CBA /* NavigationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDA88D2C1862BB00C43CBA /* NavigationState.swift */; };
+		D3DDA8922C18630900C43CBA /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDA8912C18630900C43CBA /* AppState.swift */; };
+		D3DDA8972C18709500C43CBA /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDA8962C18709500C43CBA /* LoginViewModel.swift */; };
+		D3DDA89B2C1870AC00C43CBA /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDA89A2C1870AC00C43CBA /* LoginView.swift */; };
+		D3DDA8A12C19AC3200C43CBA /* FirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDA8A02C19AC3200C43CBA /* FirestoreManager.swift */; };
+		D3DDA8A52C19AD1D00C43CBA /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDA8A42C19AD1D00C43CBA /* ProfileViewModel.swift */; };
+		D3DDA8A92C19AD6800C43CBA /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDA8A82C19AD6800C43CBA /* ProfileView.swift */; };
+		D3DDA8AE2C19B10F00C43CBA /* User+Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDA8AD2C19B10F00C43CBA /* User+Firebase.swift */; };
+		D3E4B7482C19BAB7000BEE9F /* RegisterDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B7472C19BAB7000BEE9F /* RegisterDataManager.swift */; };
+		D3E4B74C2C19BAE4000BEE9F /* ProfileDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B74B2C19BAE4000BEE9F /* ProfileDataManager.swift */; };
+		D3E4B7502C19BAF7000BEE9F /* LoginDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B74F2C19BAF7000BEE9F /* LoginDataManager.swift */; };
+		D3E4B7552C19BC0C000BEE9F /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B7542C19BC0C000BEE9F /* HomeView.swift */; };
+		D3E4B75A2C19BF2C000BEE9F /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = D3E4B7592C19BF2C000BEE9F /* FirebaseAnalytics */; };
+		D3E4B75C2C19BF2C000BEE9F /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = D3E4B75B2C19BF2C000BEE9F /* FirebaseAuth */; };
+		D3E4B75E2C19BF2C000BEE9F /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = D3E4B75D2C19BF2C000BEE9F /* FirebaseCrashlytics */; };
+		D3E4B7602C19BF2C000BEE9F /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = D3E4B75F2C19BF2C000BEE9F /* FirebaseFirestore */; };
+		D3E4B7622C19BF2C000BEE9F /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = D3E4B7612C19BF2C000BEE9F /* FirebaseMessaging */; };
+		D3E4B7642C19BF2C000BEE9F /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = D3E4B7632C19BF2C000BEE9F /* FirebaseStorage */; };
+		D3E4B76A2C32C5B0000BEE9F /* LocationActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B7692C32C5AF000BEE9F /* LocationActivity.swift */; };
+		D3E4B76C2C32C5BC000BEE9F /* ActivityType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B76B2C32C5BC000BEE9F /* ActivityType.swift */; };
+		D3E4B76E2C32C5C9000BEE9F /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B76D2C32C5C9000BEE9F /* Activity.swift */; };
+		D3E4B7702C32C5D9000BEE9F /* PuzzlePiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B76F2C32C5D9000BEE9F /* PuzzlePiece.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		D35F004B2C173FA000780464 /* wowCastillaLeonTour.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = wowCastillaLeonTour.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D35F004E2C173FA000780464 /* wowCastillaLeonTourApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = wowCastillaLeonTourApp.swift; sourceTree = "<group>"; };
+		D35F00502C173FA000780464 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		D35F00522C173FA100780464 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D35F00552C173FA100780464 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		D35F00572C173FA100780464 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		D35F005A2C173FA100780464 /* wowCastillaLeonTour.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = wowCastillaLeonTour.xcdatamodel; sourceTree = "<group>"; };
+		D35F00802C1740BE00780464 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D3DDA8772C18548D00C43CBA /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		D3DDA8812C18625200C43CBA /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
+		D3DDA8852C18626A00C43CBA /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
+		D3DDA8892C18629300C43CBA /* VerificationEmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationEmailView.swift; sourceTree = "<group>"; };
+		D3DDA88D2C1862BB00C43CBA /* NavigationState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationState.swift; sourceTree = "<group>"; };
+		D3DDA8912C18630900C43CBA /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		D3DDA8962C18709500C43CBA /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		D3DDA89A2C1870AC00C43CBA /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		D3DDA8A02C19AC3200C43CBA /* FirestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreManager.swift; sourceTree = "<group>"; };
+		D3DDA8A42C19AD1D00C43CBA /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		D3DDA8A82C19AD6800C43CBA /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		D3DDA8AD2C19B10F00C43CBA /* User+Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+Firebase.swift"; sourceTree = "<group>"; };
+		D3E4B7472C19BAB7000BEE9F /* RegisterDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterDataManager.swift; sourceTree = "<group>"; };
+		D3E4B74B2C19BAE4000BEE9F /* ProfileDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDataManager.swift; sourceTree = "<group>"; };
+		D3E4B74F2C19BAF7000BEE9F /* LoginDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginDataManager.swift; sourceTree = "<group>"; };
+		D3E4B7542C19BC0C000BEE9F /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		D3E4B7692C32C5AF000BEE9F /* LocationActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationActivity.swift; sourceTree = "<group>"; };
+		D3E4B76B2C32C5BC000BEE9F /* ActivityType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityType.swift; sourceTree = "<group>"; };
+		D3E4B76D2C32C5C9000BEE9F /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
+		D3E4B76F2C32C5D9000BEE9F /* PuzzlePiece.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzlePiece.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D35F00482C173FA000780464 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D3E4B75E2C19BF2C000BEE9F /* FirebaseCrashlytics in Frameworks */,
+				D3E4B7602C19BF2C000BEE9F /* FirebaseFirestore in Frameworks */,
+				D3E4B7622C19BF2C000BEE9F /* FirebaseMessaging in Frameworks */,
+				D3E4B75A2C19BF2C000BEE9F /* FirebaseAnalytics in Frameworks */,
+				D3E4B75C2C19BF2C000BEE9F /* FirebaseAuth in Frameworks */,
+				D3E4B7642C19BF2C000BEE9F /* FirebaseStorage in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D35F00422C173FA000780464 = {
+			isa = PBXGroup;
+			children = (
+				D35F004D2C173FA000780464 /* wowCastillaLeonTour */,
+				D35F004C2C173FA000780464 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D35F004C2C173FA000780464 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D35F004B2C173FA000780464 /* wowCastillaLeonTour.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D35F004D2C173FA000780464 /* wowCastillaLeonTour */ = {
+			isa = PBXGroup;
+			children = (
+				D3DDA8752C18547700C43CBA /* Common */,
+				D35F007D2C173FBB00780464 /* Modules */,
+				D35F00502C173FA000780464 /* ContentView.swift */,
+				D35F007E2C173FCF00780464 /* App */,
+				D35F007F2C173FDF00780464 /* SupportitngFiles */,
+				D35F00572C173FA100780464 /* Persistence.swift */,
+				D35F00592C173FA100780464 /* wowCastillaLeonTour.xcdatamodeld */,
+				D35F00542C173FA100780464 /* Preview Content */,
+			);
+			path = wowCastillaLeonTour;
+			sourceTree = "<group>";
+		};
+		D35F00542C173FA100780464 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				D35F00552C173FA100780464 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		D35F007D2C173FBB00780464 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				D3E4B7532C19BBFE000BEE9F /* Home */,
+				D3DDA8952C18708400C43CBA /* Login */,
+				D3DDA8792C18612D00C43CBA /* Register */,
+				D3DDA8762C18548000C43CBA /* Model */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		D35F007E2C173FCF00780464 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				D35F004E2C173FA000780464 /* wowCastillaLeonTourApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		D35F007F2C173FDF00780464 /* SupportitngFiles */ = {
+			isa = PBXGroup;
+			children = (
+				D35F00802C1740BE00780464 /* GoogleService-Info.plist */,
+				D35F00522C173FA100780464 /* Assets.xcassets */,
+			);
+			path = SupportitngFiles;
+			sourceTree = "<group>";
+		};
+		D3DDA8752C18547700C43CBA /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				D3DDA89E2C19AC1800C43CBA /* Firebase */,
+				D3DDA87E2C18618600C43CBA /* Navigation */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		D3DDA8762C18548000C43CBA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D3E4B7682C32C539000BEE9F /* Activity */,
+				D3DDA8AC2C19B0FD00C43CBA /* User */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D3DDA8792C18612D00C43CBA /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				D3DDA87D2C18617700C43CBA /* Avatar */,
+				D3DDA87C2C18616E00C43CBA /* ProfileData */,
+				D3DDA87B2C18615400C43CBA /* VerificationEmail */,
+				D3DDA87A2C18613C00C43CBA /* Registration */,
+			);
+			path = Register;
+			sourceTree = "<group>";
+		};
+		D3DDA87A2C18613C00C43CBA /* Registration */ = {
+			isa = PBXGroup;
+			children = (
+				D3DDA8812C18625200C43CBA /* RegisterViewModel.swift */,
+				D3DDA8852C18626A00C43CBA /* RegisterView.swift */,
+				D3E4B7472C19BAB7000BEE9F /* RegisterDataManager.swift */,
+			);
+			path = Registration;
+			sourceTree = "<group>";
+		};
+		D3DDA87B2C18615400C43CBA /* VerificationEmail */ = {
+			isa = PBXGroup;
+			children = (
+				D3DDA8892C18629300C43CBA /* VerificationEmailView.swift */,
+			);
+			path = VerificationEmail;
+			sourceTree = "<group>";
+		};
+		D3DDA87C2C18616E00C43CBA /* ProfileData */ = {
+			isa = PBXGroup;
+			children = (
+				D3DDA8A42C19AD1D00C43CBA /* ProfileViewModel.swift */,
+				D3DDA8A82C19AD6800C43CBA /* ProfileView.swift */,
+				D3E4B74B2C19BAE4000BEE9F /* ProfileDataManager.swift */,
+			);
+			path = ProfileData;
+			sourceTree = "<group>";
+		};
+		D3DDA87D2C18617700C43CBA /* Avatar */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Avatar;
+			sourceTree = "<group>";
+		};
+		D3DDA87E2C18618600C43CBA /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				D3DDA8802C18619B00C43CBA /* NavigationState */,
+				D3DDA87F2C18619400C43CBA /* AppState */,
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
+		D3DDA87F2C18619400C43CBA /* AppState */ = {
+			isa = PBXGroup;
+			children = (
+				D3DDA8912C18630900C43CBA /* AppState.swift */,
+			);
+			path = AppState;
+			sourceTree = "<group>";
+		};
+		D3DDA8802C18619B00C43CBA /* NavigationState */ = {
+			isa = PBXGroup;
+			children = (
+				D3DDA88D2C1862BB00C43CBA /* NavigationState.swift */,
+			);
+			path = NavigationState;
+			sourceTree = "<group>";
+		};
+		D3DDA8952C18708400C43CBA /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				D3DDA8962C18709500C43CBA /* LoginViewModel.swift */,
+				D3DDA89A2C1870AC00C43CBA /* LoginView.swift */,
+				D3E4B74F2C19BAF7000BEE9F /* LoginDataManager.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		D3DDA89E2C19AC1800C43CBA /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				D3DDA89F2C19AC2000C43CBA /* FirestoreManager */,
+			);
+			path = Firebase;
+			sourceTree = "<group>";
+		};
+		D3DDA89F2C19AC2000C43CBA /* FirestoreManager */ = {
+			isa = PBXGroup;
+			children = (
+				D3DDA8A02C19AC3200C43CBA /* FirestoreManager.swift */,
+			);
+			path = FirestoreManager;
+			sourceTree = "<group>";
+		};
+		D3DDA8AC2C19B0FD00C43CBA /* User */ = {
+			isa = PBXGroup;
+			children = (
+				D3DDA8772C18548D00C43CBA /* User.swift */,
+				D3DDA8AD2C19B10F00C43CBA /* User+Firebase.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		D3E4B7532C19BBFE000BEE9F /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				D3E4B7542C19BC0C000BEE9F /* HomeView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		D3E4B7682C32C539000BEE9F /* Activity */ = {
+			isa = PBXGroup;
+			children = (
+				D3E4B7692C32C5AF000BEE9F /* LocationActivity.swift */,
+				D3E4B76B2C32C5BC000BEE9F /* ActivityType.swift */,
+				D3E4B76D2C32C5C9000BEE9F /* Activity.swift */,
+				D3E4B76F2C32C5D9000BEE9F /* PuzzlePiece.swift */,
+			);
+			path = Activity;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D35F004A2C173FA000780464 /* wowCastillaLeonTour */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D35F00742C173FA100780464 /* Build configuration list for PBXNativeTarget "wowCastillaLeonTour" */;
+			buildPhases = (
+				D35F00472C173FA000780464 /* Sources */,
+				D35F00482C173FA000780464 /* Frameworks */,
+				D35F00492C173FA000780464 /* Resources */,
+				D35F008F2C17422C00780464 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = wowCastillaLeonTour;
+			packageProductDependencies = (
+				D3E4B7592C19BF2C000BEE9F /* FirebaseAnalytics */,
+				D3E4B75B2C19BF2C000BEE9F /* FirebaseAuth */,
+				D3E4B75D2C19BF2C000BEE9F /* FirebaseCrashlytics */,
+				D3E4B75F2C19BF2C000BEE9F /* FirebaseFirestore */,
+				D3E4B7612C19BF2C000BEE9F /* FirebaseMessaging */,
+				D3E4B7632C19BF2C000BEE9F /* FirebaseStorage */,
+			);
+			productName = wowCastillaLeonTour;
+			productReference = D35F004B2C173FA000780464 /* wowCastillaLeonTour.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D35F00432C173FA000780464 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1540;
+				LastUpgradeCheck = 1540;
+				TargetAttributes = {
+					D35F004A2C173FA000780464 = {
+						CreatedOnToolsVersion = 15.4;
+					};
+				};
+			};
+			buildConfigurationList = D35F00462C173FA000780464 /* Build configuration list for PBXProject "wowCastillaLeonTour" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D35F00422C173FA000780464;
+			packageReferences = (
+				D3E4B7582C19BF2C000BEE9F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
+			productRefGroup = D35F004C2C173FA000780464 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D35F004A2C173FA000780464 /* wowCastillaLeonTour */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D35F00492C173FA000780464 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D35F00562C173FA100780464 /* Preview Assets.xcassets in Resources */,
+				D35F00532C173FA100780464 /* Assets.xcassets in Resources */,
+				D35F00812C1740BE00780464 /* GoogleService-Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		D35F008F2C17422C00780464 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${PRODUCT_NAME}",
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}",
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Info.plist",
+				"$(TARGET_BUILD_DIR)/$(UNLOCALIZED_RESOURCES_FOLDER_PATH)/GoogleService-Info.plist",
+				"$(TARGET_BUILD_DIR)/$(EXECUTABLE_PATH)",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${BUILD_DIR%/Build/*}/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D35F00472C173FA000780464 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D3DDA8A12C19AC3200C43CBA /* FirestoreManager.swift in Sources */,
+				D35F005B2C173FA100780464 /* wowCastillaLeonTour.xcdatamodeld in Sources */,
+				D3DDA8922C18630900C43CBA /* AppState.swift in Sources */,
+				D3DDA8972C18709500C43CBA /* LoginViewModel.swift in Sources */,
+				D3DDA88E2C1862BB00C43CBA /* NavigationState.swift in Sources */,
+				D3E4B76A2C32C5B0000BEE9F /* LocationActivity.swift in Sources */,
+				D3E4B7482C19BAB7000BEE9F /* RegisterDataManager.swift in Sources */,
+				D3DDA8822C18625200C43CBA /* RegisterViewModel.swift in Sources */,
+				D3E4B76C2C32C5BC000BEE9F /* ActivityType.swift in Sources */,
+				D3DDA8A52C19AD1D00C43CBA /* ProfileViewModel.swift in Sources */,
+				D3DDA8A92C19AD6800C43CBA /* ProfileView.swift in Sources */,
+				D35F00582C173FA100780464 /* Persistence.swift in Sources */,
+				D3DDA8AE2C19B10F00C43CBA /* User+Firebase.swift in Sources */,
+				D3E4B74C2C19BAE4000BEE9F /* ProfileDataManager.swift in Sources */,
+				D3DDA89B2C1870AC00C43CBA /* LoginView.swift in Sources */,
+				D3E4B7552C19BC0C000BEE9F /* HomeView.swift in Sources */,
+				D3DDA8862C18626A00C43CBA /* RegisterView.swift in Sources */,
+				D3DDA88A2C18629300C43CBA /* VerificationEmailView.swift in Sources */,
+				D3E4B7502C19BAF7000BEE9F /* LoginDataManager.swift in Sources */,
+				D35F00512C173FA000780464 /* ContentView.swift in Sources */,
+				D3E4B7702C32C5D9000BEE9F /* PuzzlePiece.swift in Sources */,
+				D3DDA8782C18548D00C43CBA /* User.swift in Sources */,
+				D35F004F2C173FA000780464 /* wowCastillaLeonTourApp.swift in Sources */,
+				D3E4B76E2C32C5C9000BEE9F /* Activity.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		D35F00722C173FA100780464 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		D35F00732C173FA100780464 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D35F00752C173FA100780464 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"wowCastillaLeonTour/Preview Content\"";
+				DEVELOPMENT_TEAM = BHC56Q6KCK;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = MarkelJM.wowCastillaLeonTour;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D35F00762C173FA100780464 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"wowCastillaLeonTour/Preview Content\"";
+				DEVELOPMENT_TEAM = BHC56Q6KCK;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = MarkelJM.wowCastillaLeonTour;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D35F00462C173FA000780464 /* Build configuration list for PBXProject "wowCastillaLeonTour" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D35F00722C173FA100780464 /* Debug */,
+				D35F00732C173FA100780464 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D35F00742C173FA100780464 /* Build configuration list for PBXNativeTarget "wowCastillaLeonTour" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D35F00752C173FA100780464 /* Debug */,
+				D35F00762C173FA100780464 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		D3E4B7582C19BF2C000BEE9F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.27.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D3E4B7592C19BF2C000BEE9F /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D3E4B7582C19BF2C000BEE9F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		D3E4B75B2C19BF2C000BEE9F /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D3E4B7582C19BF2C000BEE9F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		D3E4B75D2C19BF2C000BEE9F /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D3E4B7582C19BF2C000BEE9F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
+		};
+		D3E4B75F2C19BF2C000BEE9F /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D3E4B7582C19BF2C000BEE9F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		D3E4B7612C19BF2C000BEE9F /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D3E4B7582C19BF2C000BEE9F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
+		};
+		D3E4B7632C19BF2C000BEE9F /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D3E4B7582C19BF2C000BEE9F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+/* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		D35F00592C173FA100780464 /* wowCastillaLeonTour.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				D35F005A2C173FA100780464 /* wowCastillaLeonTour.xcdatamodel */,
+			);
+			currentVersion = D35F005A2C173FA100780464 /* wowCastillaLeonTour.xcdatamodel */;
+			path = wowCastillaLeonTour.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = D35F00432C173FA000780464 /* Project object */;
+}
