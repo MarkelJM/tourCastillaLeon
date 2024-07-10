@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import FirebaseFirestore
 
 extension DateEvent {
     init?(from firestoreData: [String: Any]) {
