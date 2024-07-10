@@ -8,8 +8,7 @@
 import Foundation
 
 struct Coin: Identifiable {
-    var id: String { coinId }
-    var coinId: String
+    var id: String
     var province: String
     var description: String
     var customMessage: String

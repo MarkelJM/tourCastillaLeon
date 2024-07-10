@@ -8,8 +8,7 @@
 import Foundation
 
 struct Puzzle: Identifiable {
-    var id: String { puzzleId }
-    var puzzleId: String
+    var id: String 
     var province: String
     var question: String
     var questionImage: String

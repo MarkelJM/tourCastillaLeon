@@ -8,8 +8,7 @@
 import Foundation
 
 struct FillGap: Identifiable {
-    var id: String { fillGapId }
-    var fillGapId: String
+    var id: String
     var province: String
     var question: String
     var images: String

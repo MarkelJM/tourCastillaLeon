@@ -9,8 +9,7 @@ import Foundation
 import CoreLocation
 
 struct Point: Identifiable {
-    var id: String { pointId }
-    var pointId: String
+    var id: String 
     var province: String
     var name: String
     var title: String

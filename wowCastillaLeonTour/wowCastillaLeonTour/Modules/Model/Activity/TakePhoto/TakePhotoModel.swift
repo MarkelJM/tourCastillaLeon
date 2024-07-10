@@ -8,8 +8,7 @@
 import Foundation
 
 struct TakePhoto: Identifiable {
-    var id: String { takePhotoId }
-    var takePhotoId: String
+    var id: String 
     var province: String
     var question: String
     var customMessage: String

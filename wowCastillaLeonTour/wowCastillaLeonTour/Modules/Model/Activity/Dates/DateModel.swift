@@ -8,8 +8,7 @@
 import Foundation
 
 struct DateEvent: Identifiable {
-    var id: String { eventId }
-    var eventId: String
+    var id: String
     var province: String
     var question: String
     var options: [String]
