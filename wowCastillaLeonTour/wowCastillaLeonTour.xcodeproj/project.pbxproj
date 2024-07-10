@@ -36,10 +36,12 @@
 		D3E4B7602C19BF2C000BEE9F /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = D3E4B75F2C19BF2C000BEE9F /* FirebaseFirestore */; };
 		D3E4B7622C19BF2C000BEE9F /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = D3E4B7612C19BF2C000BEE9F /* FirebaseMessaging */; };
 		D3E4B7642C19BF2C000BEE9F /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = D3E4B7632C19BF2C000BEE9F /* FirebaseStorage */; };
-		D3E4B76A2C32C5B0000BEE9F /* LocationActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B7692C32C5AF000BEE9F /* LocationActivity.swift */; };
-		D3E4B76C2C32C5BC000BEE9F /* ActivityType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B76B2C32C5BC000BEE9F /* ActivityType.swift */; };
-		D3E4B76E2C32C5C9000BEE9F /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B76D2C32C5C9000BEE9F /* Activity.swift */; };
-		D3E4B7702C32C5D9000BEE9F /* PuzzlePiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B76F2C32C5D9000BEE9F /* PuzzlePiece.swift */; };
+		D3E4B7782C3E885B000BEE9F /* CoinModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B7772C3E885B000BEE9F /* CoinModel.swift */; };
+		D3E4B77A2C3E8879000BEE9F /* DateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B7792C3E8879000BEE9F /* DateModel.swift */; };
+		D3E4B77C2C3E888F000BEE9F /* FillGapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B77B2C3E888F000BEE9F /* FillGapModel.swift */; };
+		D3E4B77E2C3E88A3000BEE9F /* PointModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B77D2C3E88A3000BEE9F /* PointModel.swift */; };
+		D3E4B7802C3E88B6000BEE9F /* PuzzleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B77F2C3E88B6000BEE9F /* PuzzleModel.swift */; };
+		D3E4B7822C3E88D0000BEE9F /* QuestionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B7812C3E88D0000BEE9F /* QuestionModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,10 +69,12 @@
 		D3E4B74B2C19BAE4000BEE9F /* ProfileDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDataManager.swift; sourceTree = "<group>"; };
 		D3E4B74F2C19BAF7000BEE9F /* LoginDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginDataManager.swift; sourceTree = "<group>"; };
 		D3E4B7542C19BC0C000BEE9F /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-		D3E4B7692C32C5AF000BEE9F /* LocationActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationActivity.swift; sourceTree = "<group>"; };
-		D3E4B76B2C32C5BC000BEE9F /* ActivityType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityType.swift; sourceTree = "<group>"; };
-		D3E4B76D2C32C5C9000BEE9F /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
-		D3E4B76F2C32C5D9000BEE9F /* PuzzlePiece.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzlePiece.swift; sourceTree = "<group>"; };
+		D3E4B7772C3E885B000BEE9F /* CoinModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinModel.swift; sourceTree = "<group>"; };
+		D3E4B7792C3E8879000BEE9F /* DateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateModel.swift; sourceTree = "<group>"; };
+		D3E4B77B2C3E888F000BEE9F /* FillGapModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FillGapModel.swift; sourceTree = "<group>"; };
+		D3E4B77D2C3E88A3000BEE9F /* PointModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointModel.swift; sourceTree = "<group>"; };
+		D3E4B77F2C3E88B6000BEE9F /* PuzzleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzleModel.swift; sourceTree = "<group>"; };
+		D3E4B7812C3E88D0000BEE9F /* QuestionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -292,12 +296,62 @@
 		D3E4B7682C32C539000BEE9F /* Activity */ = {
 			isa = PBXGroup;
 			children = (
-				D3E4B7692C32C5AF000BEE9F /* LocationActivity.swift */,
-				D3E4B76B2C32C5BC000BEE9F /* ActivityType.swift */,
-				D3E4B76D2C32C5C9000BEE9F /* Activity.swift */,
-				D3E4B76F2C32C5D9000BEE9F /* PuzzlePiece.swift */,
+				D3E4B7762C3E883F000BEE9F /* QuestionAnswer */,
+				D3E4B7752C3E8838000BEE9F /* Puzzle */,
+				D3E4B7742C3E882B000BEE9F /* Spot */,
+				D3E4B7732C3E881A000BEE9F /* FillGap */,
+				D3E4B7722C3E8813000BEE9F /* Dates */,
+				D3E4B7712C3E8805000BEE9F /* Coin */,
 			);
 			path = Activity;
+			sourceTree = "<group>";
+		};
+		D3E4B7712C3E8805000BEE9F /* Coin */ = {
+			isa = PBXGroup;
+			children = (
+				D3E4B7772C3E885B000BEE9F /* CoinModel.swift */,
+			);
+			path = Coin;
+			sourceTree = "<group>";
+		};
+		D3E4B7722C3E8813000BEE9F /* Dates */ = {
+			isa = PBXGroup;
+			children = (
+				D3E4B7792C3E8879000BEE9F /* DateModel.swift */,
+			);
+			path = Dates;
+			sourceTree = "<group>";
+		};
+		D3E4B7732C3E881A000BEE9F /* FillGap */ = {
+			isa = PBXGroup;
+			children = (
+				D3E4B77B2C3E888F000BEE9F /* FillGapModel.swift */,
+			);
+			path = FillGap;
+			sourceTree = "<group>";
+		};
+		D3E4B7742C3E882B000BEE9F /* Spot */ = {
+			isa = PBXGroup;
+			children = (
+				D3E4B77D2C3E88A3000BEE9F /* PointModel.swift */,
+			);
+			path = Spot;
+			sourceTree = "<group>";
+		};
+		D3E4B7752C3E8838000BEE9F /* Puzzle */ = {
+			isa = PBXGroup;
+			children = (
+				D3E4B77F2C3E88B6000BEE9F /* PuzzleModel.swift */,
+			);
+			path = Puzzle;
+			sourceTree = "<group>";
+		};
+		D3E4B7762C3E883F000BEE9F /* QuestionAnswer */ = {
+			isa = PBXGroup;
+			children = (
+				D3E4B7812C3E88D0000BEE9F /* QuestionModel.swift */,
+			);
+			path = QuestionAnswer;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -410,28 +464,30 @@
 			files = (
 				D3DDA8A12C19AC3200C43CBA /* FirestoreManager.swift in Sources */,
 				D35F005B2C173FA100780464 /* wowCastillaLeonTour.xcdatamodeld in Sources */,
+				D3E4B7802C3E88B6000BEE9F /* PuzzleModel.swift in Sources */,
 				D3DDA8922C18630900C43CBA /* AppState.swift in Sources */,
 				D3DDA8972C18709500C43CBA /* LoginViewModel.swift in Sources */,
 				D3DDA88E2C1862BB00C43CBA /* NavigationState.swift in Sources */,
-				D3E4B76A2C32C5B0000BEE9F /* LocationActivity.swift in Sources */,
 				D3E4B7482C19BAB7000BEE9F /* RegisterDataManager.swift in Sources */,
 				D3DDA8822C18625200C43CBA /* RegisterViewModel.swift in Sources */,
-				D3E4B76C2C32C5BC000BEE9F /* ActivityType.swift in Sources */,
+				D3E4B77A2C3E8879000BEE9F /* DateModel.swift in Sources */,
 				D3DDA8A52C19AD1D00C43CBA /* ProfileViewModel.swift in Sources */,
 				D3DDA8A92C19AD6800C43CBA /* ProfileView.swift in Sources */,
 				D35F00582C173FA100780464 /* Persistence.swift in Sources */,
 				D3DDA8AE2C19B10F00C43CBA /* User+Firebase.swift in Sources */,
+				D3E4B7822C3E88D0000BEE9F /* QuestionModel.swift in Sources */,
 				D3E4B74C2C19BAE4000BEE9F /* ProfileDataManager.swift in Sources */,
 				D3DDA89B2C1870AC00C43CBA /* LoginView.swift in Sources */,
+				D3E4B7782C3E885B000BEE9F /* CoinModel.swift in Sources */,
 				D3E4B7552C19BC0C000BEE9F /* HomeView.swift in Sources */,
 				D3DDA8862C18626A00C43CBA /* RegisterView.swift in Sources */,
 				D3DDA88A2C18629300C43CBA /* VerificationEmailView.swift in Sources */,
 				D3E4B7502C19BAF7000BEE9F /* LoginDataManager.swift in Sources */,
 				D35F00512C173FA000780464 /* ContentView.swift in Sources */,
-				D3E4B7702C32C5D9000BEE9F /* PuzzlePiece.swift in Sources */,
 				D3DDA8782C18548D00C43CBA /* User.swift in Sources */,
+				D3E4B77C2C3E888F000BEE9F /* FillGapModel.swift in Sources */,
+				D3E4B77E2C3E88A3000BEE9F /* PointModel.swift in Sources */,
 				D35F004F2C173FA000780464 /* wowCastillaLeonTourApp.swift in Sources */,
-				D3E4B76E2C32C5C9000BEE9F /* Activity.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
