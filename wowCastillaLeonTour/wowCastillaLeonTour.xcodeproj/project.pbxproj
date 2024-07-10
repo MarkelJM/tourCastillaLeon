@@ -42,6 +42,7 @@
 		D3E4B77E2C3E88A3000BEE9F /* PointModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B77D2C3E88A3000BEE9F /* PointModel.swift */; };
 		D3E4B7802C3E88B6000BEE9F /* PuzzleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B77F2C3E88B6000BEE9F /* PuzzleModel.swift */; };
 		D3E4B7822C3E88D0000BEE9F /* QuestionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B7812C3E88D0000BEE9F /* QuestionModel.swift */; };
+		D3E4B7852C3E890A000BEE9F /* TakePhotoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B7842C3E890A000BEE9F /* TakePhotoModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -75,6 +76,7 @@
 		D3E4B77D2C3E88A3000BEE9F /* PointModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointModel.swift; sourceTree = "<group>"; };
 		D3E4B77F2C3E88B6000BEE9F /* PuzzleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzleModel.swift; sourceTree = "<group>"; };
 		D3E4B7812C3E88D0000BEE9F /* QuestionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionModel.swift; sourceTree = "<group>"; };
+		D3E4B7842C3E890A000BEE9F /* TakePhotoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakePhotoModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -296,6 +298,7 @@
 		D3E4B7682C32C539000BEE9F /* Activity */ = {
 			isa = PBXGroup;
 			children = (
+				D3E4B7832C3E88F7000BEE9F /* TakePhoto */,
 				D3E4B7762C3E883F000BEE9F /* QuestionAnswer */,
 				D3E4B7752C3E8838000BEE9F /* Puzzle */,
 				D3E4B7742C3E882B000BEE9F /* Spot */,
@@ -352,6 +355,14 @@
 				D3E4B7812C3E88D0000BEE9F /* QuestionModel.swift */,
 			);
 			path = QuestionAnswer;
+			sourceTree = "<group>";
+		};
+		D3E4B7832C3E88F7000BEE9F /* TakePhoto */ = {
+			isa = PBXGroup;
+			children = (
+				D3E4B7842C3E890A000BEE9F /* TakePhotoModel.swift */,
+			);
+			path = TakePhoto;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -477,6 +488,7 @@
 				D3DDA8AE2C19B10F00C43CBA /* User+Firebase.swift in Sources */,
 				D3E4B7822C3E88D0000BEE9F /* QuestionModel.swift in Sources */,
 				D3E4B74C2C19BAE4000BEE9F /* ProfileDataManager.swift in Sources */,
+				D3E4B7852C3E890A000BEE9F /* TakePhotoModel.swift in Sources */,
 				D3DDA89B2C1870AC00C43CBA /* LoginView.swift in Sources */,
 				D3E4B7782C3E885B000BEE9F /* CoinModel.swift in Sources */,
 				D3E4B7552C19BC0C000BEE9F /* HomeView.swift in Sources */,
