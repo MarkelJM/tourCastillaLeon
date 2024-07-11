@@ -23,14 +23,16 @@ struct MapView: View {
             } else {
                 Map(coordinateRegion: $viewModel.region, showsUserLocation: true, annotationItems: viewModel.points) { point in
                     MapAnnotation(coordinate: CLLocationCoordinate2D(latitude: point.coordinates.latitude, longitude: point.coordinates.longitude)) {
-                        AsyncImage(url: URL(string: point.image)) { image in
-                            image
-                                .resizable()
-                                .aspectRatio(contentMode: .fill)
-                                .frame(width: 30, height: 30)
-                                .clipShape(Circle())
-                        } placeholder: {
-                            ProgressView()
+                        VStack {
+                            AsyncImage(url: URL(string: point.image)) { image in
+                                image
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: 30, height: 30)
+                                    .clipShape(Circle())
+                            } placeholder: {
+                                ProgressView()
+                            }
                         }
                     }
                 }
