@@ -16,7 +16,7 @@ struct Point: Identifiable {
     var activityId: String
     var activityType: String
     var image: String
-    var coordinates: Coordinate
+    var coordinates: CLLocationCoordinate2D
 }
 
 struct Coordinate: Identifiable {

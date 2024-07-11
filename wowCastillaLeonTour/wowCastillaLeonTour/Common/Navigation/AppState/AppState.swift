@@ -9,7 +9,7 @@ import Foundation
 
 class AppState: ObservableObject {
     @Published var isLoggedIn: Bool = false
-    @Published var currentView: AppView = .registerEmail {
+    @Published var currentView: AppView = .login {
         didSet {
             print("Current view is now \(currentView)")
         }

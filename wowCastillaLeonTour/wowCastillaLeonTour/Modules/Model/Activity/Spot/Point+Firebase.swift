@@ -7,7 +7,51 @@
 
 import Foundation
 import FirebaseFirestore
+import CoreLocation
 
+extension Point {
+    init?(from firestoreData: [String: Any]) {
+        guard let id = firestoreData["id"] as? String,
+              let province = firestoreData["province"] as? String,
+              let name = firestoreData["name"] as? String,
+              let title = firestoreData["title"] as? String,
+              let activityId = firestoreData["activity_id"] as? String, 
+              let activityType = firestoreData["activity_type"] as? String,
+              let image = firestoreData["image"] as? String,
+              let coordinatesData = firestoreData["coordinates"] as? [String: Any],
+              let latitude = coordinatesData["latitude"] as? Double,
+              let longitude = coordinatesData["longitude"] as? Double else {
+            return nil
+        }
+
+        self.id = id
+        self.province = province
+        self.name = name
+        self.title = title
+        self.activityId = activityId
+        self.activityType = activityType
+        self.image = image
+        self.coordinates = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+    }
+    
+    func toFirestoreData() -> [String: Any] {
+        return [
+            "id": id,
+            "province": province,
+            "name": name,
+            "title": title,
+            "activity_id": activityId, // Verificar el campo
+            "activity_type": activityType, // Verificar el campo
+            "image": image,
+            "coordinates": [
+                "latitude": coordinates.latitude,
+                "longitude": coordinates.longitude
+            ]
+        ]
+    }
+}
+
+/*
 extension Point {
     init?(from firestoreData: [String: Any]) {
         guard let id = firestoreData["id"] as? String,
@@ -49,3 +93,4 @@ extension Point {
         ]
     }
 }
+*/

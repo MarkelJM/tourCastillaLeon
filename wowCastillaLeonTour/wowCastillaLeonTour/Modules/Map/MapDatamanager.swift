@@ -6,18 +6,22 @@
 //
 
 import Foundation
+import Combine
 
 class MapDataManager {
     private let firestoreManager = MapFirestoreManager()
     
-    func fetchPoints(completion: @escaping ([Point]) -> Void, failure: @escaping (Error) -> Void) {
-        firestoreManager.fetchPoints { result in
-            switch result {
-            case .success(let points):
-                completion(points)
-            case .failure(let error):
-                failure(error)
+    func fetchPoints() -> AnyPublisher<[Point], Error> {
+        Future { promise in
+            self.firestoreManager.fetchPoints { result in
+                switch result {
+                case .success(let points):
+                    promise(.success(points))
+                case .failure(let error):
+                    promise(.failure(error))
+                }
             }
         }
+        .eraseToAnyPublisher()
     }
 }

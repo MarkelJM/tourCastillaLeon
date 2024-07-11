@@ -54,6 +54,7 @@
 		D3E4B79A2C3E9558000BEE9F /* MapDatamanager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B7992C3E9558000BEE9F /* MapDatamanager.swift */; };
 		D3E4B79C2C3E9562000BEE9F /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B79B2C3E9562000BEE9F /* MapViewModel.swift */; };
 		D3E4B79E2C3E9575000BEE9F /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B79D2C3E9575000BEE9F /* MapView.swift */; };
+		D3E4B7A12C3FE14C000BEE9F /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B7A02C3FE14C000BEE9F /* LocationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -99,6 +100,7 @@
 		D3E4B7992C3E9558000BEE9F /* MapDatamanager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapDatamanager.swift; sourceTree = "<group>"; };
 		D3E4B79B2C3E9562000BEE9F /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		D3E4B79D2C3E9575000BEE9F /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		D3E4B7A02C3FE14C000BEE9F /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,6 +191,7 @@
 		D3DDA8752C18547700C43CBA /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				D3E4B79F2C3FE13A000BEE9F /* Location */,
 				D3DDA89E2C19AC1800C43CBA /* Firebase */,
 				D3DDA87E2C18618600C43CBA /* Navigation */,
 			);
@@ -406,6 +409,14 @@
 			path = Map;
 			sourceTree = "<group>";
 		};
+		D3E4B79F2C3FE13A000BEE9F /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				D3E4B7A02C3FE14C000BEE9F /* LocationManager.swift */,
+			);
+			path = Location;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -552,6 +563,7 @@
 				D3E4B77C2C3E888F000BEE9F /* FillGapModel.swift in Sources */,
 				D3E4B77E2C3E88A3000BEE9F /* PointModel.swift in Sources */,
 				D35F004F2C173FA000780464 /* wowCastillaLeonTourApp.swift in Sources */,
+				D3E4B7A12C3FE14C000BEE9F /* LocationManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
