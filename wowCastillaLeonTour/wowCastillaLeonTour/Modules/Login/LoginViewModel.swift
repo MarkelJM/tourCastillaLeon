@@ -23,7 +23,7 @@ class LoginViewModel: ObservableObject {
                 
             case .success:
                 ///NAVEGAR A HOME
-                self?.currentView = .home
+                self?.currentView = .map
             case .failure(let error):
                 self?.showError = true
                 self?.errorMessage = error.localizedDescription
