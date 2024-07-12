@@ -55,6 +55,7 @@
 		D3E4B79C2C3E9562000BEE9F /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B79B2C3E9562000BEE9F /* MapViewModel.swift */; };
 		D3E4B79E2C3E9575000BEE9F /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B79D2C3E9575000BEE9F /* MapView.swift */; };
 		D3E4B7A12C3FE14C000BEE9F /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B7A02C3FE14C000BEE9F /* LocationManager.swift */; };
+		D3E4B7A62C4117CF000BEE9F /* MapCallOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B7A52C4117CF000BEE9F /* MapCallOut.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -101,6 +102,7 @@
 		D3E4B79B2C3E9562000BEE9F /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		D3E4B79D2C3E9575000BEE9F /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		D3E4B7A02C3FE14C000BEE9F /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		D3E4B7A52C4117CF000BEE9F /* MapCallOut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCallOut.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -401,6 +403,7 @@
 		D3E4B7962C3E9339000BEE9F /* Map */ = {
 			isa = PBXGroup;
 			children = (
+				D3E4B7A42C41179A000BEE9F /* CallOut */,
 				D3E4B7972C3E9547000BEE9F /* MapFirestoreManager.swift */,
 				D3E4B7992C3E9558000BEE9F /* MapDatamanager.swift */,
 				D3E4B79B2C3E9562000BEE9F /* MapViewModel.swift */,
@@ -415,6 +418,14 @@
 				D3E4B7A02C3FE14C000BEE9F /* LocationManager.swift */,
 			);
 			path = Location;
+			sourceTree = "<group>";
+		};
+		D3E4B7A42C41179A000BEE9F /* CallOut */ = {
+			isa = PBXGroup;
+			children = (
+				D3E4B7A52C4117CF000BEE9F /* MapCallOut.swift */,
+			);
+			path = CallOut;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -554,6 +565,7 @@
 				D3E4B7552C19BC0C000BEE9F /* HomeView.swift in Sources */,
 				D3E4B7982C3E9547000BEE9F /* MapFirestoreManager.swift in Sources */,
 				D3E4B79A2C3E9558000BEE9F /* MapDatamanager.swift in Sources */,
+				D3E4B7A62C4117CF000BEE9F /* MapCallOut.swift in Sources */,
 				D3DDA8862C18626A00C43CBA /* RegisterView.swift in Sources */,
 				D3DDA88A2C18629300C43CBA /* VerificationEmailView.swift in Sources */,
 				D3E4B7502C19BAF7000BEE9F /* LoginDataManager.swift in Sources */,
