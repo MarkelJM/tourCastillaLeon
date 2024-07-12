@@ -9,7 +9,8 @@ import MapKit
 
 struct MapView: View {
     @StateObject private var viewModel = MapViewModel()
-    
+    @State private var selectedPoint: Point?
+
     var body: some View {
         VStack {
             if let errorMessage = viewModel.errorMessage {
@@ -34,10 +35,16 @@ struct MapView: View {
                                 ProgressView()
                             }
                         }
+                        .onTapGesture {
+                            selectedPoint = point
+                        }
                     }
                 }
                 .onAppear {
                     viewModel.fetchPoints()
+                }
+                .sheet(item: $selectedPoint) { point in
+                    MapCallOutView(point: point)
                 }
             }
         }
