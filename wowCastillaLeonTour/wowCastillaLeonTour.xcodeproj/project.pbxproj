@@ -56,6 +56,7 @@
 		D3E4B79E2C3E9575000BEE9F /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B79D2C3E9575000BEE9F /* MapView.swift */; };
 		D3E4B7A12C3FE14C000BEE9F /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B7A02C3FE14C000BEE9F /* LocationManager.swift */; };
 		D3E4B7A62C4117CF000BEE9F /* MapCallOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B7A52C4117CF000BEE9F /* MapCallOut.swift */; };
+		D3E4B7A92C4121F2000BEE9F /* SceneKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3E4B7A82C4121F2000BEE9F /* SceneKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -103,6 +104,7 @@
 		D3E4B79D2C3E9575000BEE9F /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		D3E4B7A02C3FE14C000BEE9F /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		D3E4B7A52C4117CF000BEE9F /* MapCallOut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCallOut.swift; sourceTree = "<group>"; };
+		D3E4B7A82C4121F2000BEE9F /* SceneKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SceneKit.framework; path = System/Library/Frameworks/SceneKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +115,7 @@
 				D3E4B75E2C19BF2C000BEE9F /* FirebaseCrashlytics in Frameworks */,
 				D3E4B7622C19BF2C000BEE9F /* FirebaseMessaging in Frameworks */,
 				D3E4B75A2C19BF2C000BEE9F /* FirebaseAnalytics in Frameworks */,
+				D3E4B7A92C4121F2000BEE9F /* SceneKit.framework in Frameworks */,
 				D3E4B75C2C19BF2C000BEE9F /* FirebaseAuth in Frameworks */,
 				D3E4B7642C19BF2C000BEE9F /* FirebaseStorage in Frameworks */,
 				D3E4B7952C3E9151000BEE9F /* FirebaseFirestore in Frameworks */,
@@ -127,6 +130,7 @@
 			children = (
 				D35F004D2C173FA000780464 /* wowCastillaLeonTour */,
 				D35F004C2C173FA000780464 /* Products */,
+				D3E4B7A72C4121F1000BEE9F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -403,6 +407,7 @@
 		D3E4B7962C3E9339000BEE9F /* Map */ = {
 			isa = PBXGroup;
 			children = (
+				D3E4B7AA2C4514EF000BEE9F /* 3DMap */,
 				D3E4B7A42C41179A000BEE9F /* CallOut */,
 				D3E4B7972C3E9547000BEE9F /* MapFirestoreManager.swift */,
 				D3E4B7992C3E9558000BEE9F /* MapDatamanager.swift */,
@@ -426,6 +431,21 @@
 				D3E4B7A52C4117CF000BEE9F /* MapCallOut.swift */,
 			);
 			path = CallOut;
+			sourceTree = "<group>";
+		};
+		D3E4B7A72C4121F1000BEE9F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D3E4B7A82C4121F2000BEE9F /* SceneKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D3E4B7AA2C4514EF000BEE9F /* 3DMap */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = 3DMap;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
