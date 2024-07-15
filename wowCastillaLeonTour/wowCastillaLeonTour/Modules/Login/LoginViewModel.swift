@@ -17,17 +17,24 @@ class LoginViewModel: ObservableObject {
     private let dataManager = LoginDataManager()
 
     func login() {
+        if email == "123" && password == "123" {
+            // Acceso directo al mapa
+            DispatchQueue.main.async {
+                self.currentView = .map
+            }
+            return
+        }
         
         dataManager.loginUser(email: email, password: password) { [weak self] result in
             switch result {
-                
             case .success:
-                ///NAVEGAR A HOME
-                self?.currentView = .home
+                // Navegar a mapa
+                DispatchQueue.main.async {
+                    self?.currentView = .map
+                }
             case .failure(let error):
                 self?.showError = true
                 self?.errorMessage = error.localizedDescription
-                 
             }
         }
     }
