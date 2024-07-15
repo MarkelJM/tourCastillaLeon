@@ -9,7 +9,6 @@ import SwiftUI
 
 struct AvatarSelectionView: View {
     @Binding var selectedAvatar: Avatar
-    @EnvironmentObject var appState: AppState
 
     var body: some View {
         VStack {
@@ -24,8 +23,12 @@ struct AvatarSelectionView: View {
                     Image("normalMutila")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .frame(width: 150, height: 150)
-                        .border(selectedAvatar == .boy ? Color.blue : Color.clear, width: 3)
+                        .frame(width: 100, height: 100) // Ajustar tamaño
+                        .clipShape(Circle())
+                        .overlay(
+                            Circle().stroke(selectedAvatar == .boy ? Color.blue : Color.clear, lineWidth: 4)
+                        )
+                        .shadow(radius: selectedAvatar == .boy ? 10 : 0)
                 }
 
                 Button(action: {
@@ -34,20 +37,19 @@ struct AvatarSelectionView: View {
                     Image("normalChica")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .frame(width: 150, height: 150)
-                        .border(selectedAvatar == .girl ? Color.blue : Color.clear, width: 3)
+                        .frame(width: 100, height: 100) // Ajustar tamaño
+                        .clipShape(Circle())
+                        .overlay(
+                            Circle().stroke(selectedAvatar == .girl ? Color.blue : Color.clear, lineWidth: 4)
+                        )
+                        .shadow(radius: selectedAvatar == .girl ? 10 : 0)
                 }
             }
             .padding()
-
-            Button("Guardar y Continuar") {
-                appState.currentView = .profile
-            }
-            .padding()
-            .background(Color.blue)
-            .foregroundColor(.white)
-            .cornerRadius(10)
         }
+        .padding()
+        .background(Color.gray.opacity(0.2))
+        .cornerRadius(10) // Bordes redondeados para la vista
     }
 }
 

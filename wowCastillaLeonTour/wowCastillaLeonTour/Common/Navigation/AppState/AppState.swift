@@ -21,6 +21,8 @@ class AppState: ObservableObject {
         case login
         case profile
         case map
+        case avatarSelection
+
         
     }
 }

@@ -23,6 +23,9 @@ struct NavigationState: View {
                 ProfileView()
             case .map:
                 MapView()
+            case .avatarSelection:
+                AvatarSelectionView(selectedAvatar: .constant(.boy))
+                    
             }
         }
     }
