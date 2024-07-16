@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ProfileView: View {
     @StateObject private var viewModel = ProfileViewModel()
+    @EnvironmentObject var appState: AppState
 
     var body: some View {
         VStack {
@@ -39,18 +40,16 @@ struct ProfileView: View {
             .pickerStyle(MenuPickerStyle())
             .padding()
 
-            Picker("Avatar", selection: $viewModel.avatar) {
-                ForEach(Avatar.allCases) { avatar in
-                    Text(avatar.rawValue).tag(avatar)
-                }
-            }
-            .pickerStyle(SegmentedPickerStyle())
-            .padding()
+            AvatarSelectionView(selectedAvatar: $viewModel.avatar)
+                .padding()
 
             Button("Guardar Perfil") {
                 viewModel.saveUserProfile()
             }
             .padding()
+            .background(Color.blue)
+            .foregroundColor(.white)
+            .cornerRadius(10)
 
             if viewModel.showError {
                 Text(viewModel.errorMessage)
@@ -59,8 +58,13 @@ struct ProfileView: View {
             }
         }
         .padding()
+        .onAppear {
+            viewModel.fetchUserProfile()
+        }
     }
 }
+
 #Preview {
     ProfileView()
+        .environmentObject(AppState())
 }

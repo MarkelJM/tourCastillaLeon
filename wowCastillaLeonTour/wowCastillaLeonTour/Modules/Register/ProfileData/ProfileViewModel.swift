@@ -19,6 +19,7 @@ class ProfileViewModel: ObservableObject {
     @Published var avatar: Avatar = .boy
     @Published var showError: Bool = false
     @Published var errorMessage: String = ""
+    @Published var navigateToAvatarSelection: Bool = false // Nueva propiedad
 
     private let dataManager = ProfileDataManager()
     
@@ -27,9 +28,8 @@ class ProfileViewModel: ObservableObject {
         dataManager.createUserProfile(user: user) { [weak self] result in
             switch result {
             case .success:
-                // Navegar a la vista deseada
                 DispatchQueue.main.async {
-                    // Implementar navegación a la vista deseada
+                    // Navegar a la vista deseada
                 }
             case .failure(let error):
                 self?.showError = true
@@ -55,5 +55,9 @@ class ProfileViewModel: ObservableObject {
                 self?.errorMessage = error.localizedDescription
             }
         }
+    }
+    
+    func navigateToAvatarSelectionView() {
+        navigateToAvatarSelection = true
     }
 }
