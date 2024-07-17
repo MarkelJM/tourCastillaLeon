@@ -62,6 +62,7 @@
 		D3E4B7D42C4682B2000BEE9F /* ColorButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B7D32C4682B2000BEE9F /* ColorButtonView.swift */; };
 		D3E4B7D62C4682C3000BEE9F /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B7D52C4682C3000BEE9F /* BackgroundView.swift */; };
 		D3E4B7DA2C4683C7000BEE9F /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B7D92C4683C7000BEE9F /* Color.swift */; };
+		D3E4B7DD2C47D902000BEE9F /* PuzzleFirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B7DC2C47D902000BEE9F /* PuzzleFirestoreManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -114,6 +115,7 @@
 		D3E4B7D32C4682B2000BEE9F /* ColorButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorButtonView.swift; sourceTree = "<group>"; };
 		D3E4B7D52C4682C3000BEE9F /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
 		D3E4B7D92C4683C7000BEE9F /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		D3E4B7DC2C47D902000BEE9F /* PuzzleFirestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzleFirestoreManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,6 +180,7 @@
 		D35F007D2C173FBB00780464 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				D3E4B7DB2C47D8D3000BEE9F /* PuzzleTask */,
 				D3E4B7962C3E9339000BEE9F /* Map */,
 				D3E4B7532C19BBFE000BEE9F /* Home */,
 				D3DDA8952C18708400C43CBA /* Login */,
@@ -470,6 +473,14 @@
 			path = Design;
 			sourceTree = "<group>";
 		};
+		D3E4B7DB2C47D8D3000BEE9F /* PuzzleTask */ = {
+			isa = PBXGroup;
+			children = (
+				D3E4B7DC2C47D902000BEE9F /* PuzzleFirestoreManager.swift */,
+			);
+			path = PuzzleTask;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -610,6 +621,7 @@
 				D3E4B78B2C3E8FA2000BEE9F /* FillGap+Firebase.swift in Sources */,
 				D3E4B7912C3E9066000BEE9F /* Question+Firebase.swift in Sources */,
 				D3E4B7552C19BC0C000BEE9F /* HomeView.swift in Sources */,
+				D3E4B7DD2C47D902000BEE9F /* PuzzleFirestoreManager.swift in Sources */,
 				D3E4B7982C3E9547000BEE9F /* MapFirestoreManager.swift in Sources */,
 				D3E4B79A2C3E9558000BEE9F /* MapDatamanager.swift in Sources */,
 				D3E4B7A62C4117CF000BEE9F /* MapCallOut.swift in Sources */,
