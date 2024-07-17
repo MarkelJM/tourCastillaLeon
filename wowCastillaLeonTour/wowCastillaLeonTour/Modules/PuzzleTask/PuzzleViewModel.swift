@@ -7,10 +7,12 @@
 
 import Foundation
 import Combine
+import CoreGraphics
 
 class PuzzleViewModel: ObservableObject {
     @Published var puzzles: [Puzzle] = []
     @Published var errorMessage: String?
+    @Published var piecePositions: [String: CGPoint] = [:] 
     private var dataManager = PuzzleDataManager()
     private var cancellables = Set<AnyCancellable>()
     
@@ -25,5 +27,17 @@ class PuzzleViewModel: ObservableObject {
                 self?.puzzles = puzzles
             }
             .store(in: &cancellables)
+    }
+    
+    func checkPuzzleSolution(for puzzle: Puzzle, tolerance: CGFloat) -> Bool {
+        for (key, correctPosition) in puzzle.correctPositions {
+            guard let currentPosition = piecePositions[key] else { return false }
+            let dx = abs(currentPosition.x - CGFloat(correctPosition["x"] ?? 0))
+            let dy = abs(currentPosition.y - CGFloat(correctPosition["y"] ?? 0))
+            if dx > tolerance || dy > tolerance {
+                return false
+            }
+        }
+        return true
     }
 }
