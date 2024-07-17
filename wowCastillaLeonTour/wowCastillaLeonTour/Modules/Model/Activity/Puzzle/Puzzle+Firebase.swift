@@ -15,7 +15,7 @@ extension Puzzle {
               let question = firestoreData["question"] as? String,
               let questionImage = firestoreData["questionImage"] as? String,
               let images = firestoreData["images"] as? [String: String],
-              let correctPositions = firestoreData["correctPositions"] as? [String: String],
+              let correctPositions = firestoreData["correctPositions"] as? [String: [String: Double]],
               let customMessage = firestoreData["customMessage"] as? String,
               let correctAnswerMessage = firestoreData["correctAnswerMessage"] as? String,
               let incorrectAnswerMessage = firestoreData["incorrectAnswerMessage"] as? String else {
