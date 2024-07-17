@@ -63,6 +63,7 @@
 		D3E4B7D62C4682C3000BEE9F /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B7D52C4682C3000BEE9F /* BackgroundView.swift */; };
 		D3E4B7DA2C4683C7000BEE9F /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B7D92C4683C7000BEE9F /* Color.swift */; };
 		D3E4B7DD2C47D902000BEE9F /* PuzzleFirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B7DC2C47D902000BEE9F /* PuzzleFirestoreManager.swift */; };
+		D3E4B7DF2C47D930000BEE9F /* PuzzleDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B7DE2C47D930000BEE9F /* PuzzleDataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -116,6 +117,7 @@
 		D3E4B7D52C4682C3000BEE9F /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
 		D3E4B7D92C4683C7000BEE9F /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		D3E4B7DC2C47D902000BEE9F /* PuzzleFirestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzleFirestoreManager.swift; sourceTree = "<group>"; };
+		D3E4B7DE2C47D930000BEE9F /* PuzzleDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzleDataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -477,6 +479,7 @@
 			isa = PBXGroup;
 			children = (
 				D3E4B7DC2C47D902000BEE9F /* PuzzleFirestoreManager.swift */,
+				D3E4B7DE2C47D930000BEE9F /* PuzzleDataManager.swift */,
 			);
 			path = PuzzleTask;
 			sourceTree = "<group>";
@@ -623,6 +626,7 @@
 				D3E4B7552C19BC0C000BEE9F /* HomeView.swift in Sources */,
 				D3E4B7DD2C47D902000BEE9F /* PuzzleFirestoreManager.swift in Sources */,
 				D3E4B7982C3E9547000BEE9F /* MapFirestoreManager.swift in Sources */,
+				D3E4B7DF2C47D930000BEE9F /* PuzzleDataManager.swift in Sources */,
 				D3E4B79A2C3E9558000BEE9F /* MapDatamanager.swift in Sources */,
 				D3E4B7A62C4117CF000BEE9F /* MapCallOut.swift in Sources */,
 				D3DDA8862C18626A00C43CBA /* RegisterView.swift in Sources */,
