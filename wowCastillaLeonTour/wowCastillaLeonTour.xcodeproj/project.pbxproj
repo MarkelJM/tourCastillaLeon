@@ -64,6 +64,7 @@
 		D3E4B7DA2C4683C7000BEE9F /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B7D92C4683C7000BEE9F /* Color.swift */; };
 		D3E4B7DD2C47D902000BEE9F /* PuzzleFirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B7DC2C47D902000BEE9F /* PuzzleFirestoreManager.swift */; };
 		D3E4B7DF2C47D930000BEE9F /* PuzzleDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B7DE2C47D930000BEE9F /* PuzzleDataManager.swift */; };
+		D3E4B7E12C47D961000BEE9F /* PuzzleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B7E02C47D961000BEE9F /* PuzzleViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -118,6 +119,7 @@
 		D3E4B7D92C4683C7000BEE9F /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		D3E4B7DC2C47D902000BEE9F /* PuzzleFirestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzleFirestoreManager.swift; sourceTree = "<group>"; };
 		D3E4B7DE2C47D930000BEE9F /* PuzzleDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzleDataManager.swift; sourceTree = "<group>"; };
+		D3E4B7E02C47D961000BEE9F /* PuzzleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzleViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -480,6 +482,7 @@
 			children = (
 				D3E4B7DC2C47D902000BEE9F /* PuzzleFirestoreManager.swift */,
 				D3E4B7DE2C47D930000BEE9F /* PuzzleDataManager.swift */,
+				D3E4B7E02C47D961000BEE9F /* PuzzleViewModel.swift */,
 			);
 			path = PuzzleTask;
 			sourceTree = "<group>";
@@ -605,6 +608,7 @@
 				D3DDA88E2C1862BB00C43CBA /* NavigationState.swift in Sources */,
 				D3E4B7C02C458BEF000BEE9F /* AvatarSelectionView.swift in Sources */,
 				D3E4B7482C19BAB7000BEE9F /* RegisterDataManager.swift in Sources */,
+				D3E4B7E12C47D961000BEE9F /* PuzzleViewModel.swift in Sources */,
 				D3DDA8822C18625200C43CBA /* RegisterViewModel.swift in Sources */,
 				D3E4B77A2C3E8879000BEE9F /* DateModel.swift in Sources */,
 				D3DDA8A52C19AD1D00C43CBA /* ProfileViewModel.swift in Sources */,
