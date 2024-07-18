@@ -5,7 +5,6 @@
 //  Created by Markel Juaristi on 10/7/24.
 //
 import Foundation
-import FirebaseFirestore
 
 struct Puzzle: Identifiable {
     var id: String
@@ -13,8 +12,9 @@ struct Puzzle: Identifiable {
     var question: String
     var questionImage: String
     var images: [String: String]
-    var correctPositions: [String: [String: Double]] 
+    var correctPositions: [String: (x: Double, y: Double)]
     var customMessage: String
     var correctAnswerMessage: String
     var incorrectAnswerMessage: String
 }
+

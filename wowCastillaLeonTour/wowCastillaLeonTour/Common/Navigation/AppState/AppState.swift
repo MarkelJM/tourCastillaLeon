@@ -22,6 +22,7 @@ class AppState: ObservableObject {
         case profile
         case map
         case avatarSelection
+        case puzzle
 
         
     }

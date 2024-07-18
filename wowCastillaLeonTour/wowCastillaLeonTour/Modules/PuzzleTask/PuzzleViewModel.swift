@@ -5,39 +5,148 @@
 //  Created by Markel Juaristi on 17/7/24.
 //
 
-import Foundation
+import SwiftUI
 import Combine
-import CoreGraphics
 
 class PuzzleViewModel: ObservableObject {
     @Published var puzzles: [Puzzle] = []
     @Published var errorMessage: String?
-    @Published var piecePositions: [String: CGPoint] = [:] 
-    private var dataManager = PuzzleDataManager()
+    @Published var isLoading: Bool = true
+    @Published var droppedPieces: [String: CGPoint] = [:]
+    @Published var draggingPiece: String?
+    @Published var showAlert: Bool = false
+    @Published var alertMessage: String = ""
+
     private var cancellables = Set<AnyCancellable>()
+    private let dataManager = PuzzleDataManager()
     
     func fetchPuzzles() {
+        isLoading = true
         dataManager.fetchPuzzles()
             .receive(on: DispatchQueue.main)
-            .sink { [weak self] completion in
-                if case let .failure(error) = completion {
-                    self?.errorMessage = error.localizedDescription
+            .sink { completion in
+                switch completion {
+                case .failure(let error):
+                    self.errorMessage = error.localizedDescription
+                    self.isLoading = false
+                case .finished:
+                    break
                 }
-            } receiveValue: { [weak self] puzzles in
-                self?.puzzles = puzzles
+            } receiveValue: { puzzles in
+                self.puzzles = puzzles
+                self.isLoading = false
             }
             .store(in: &cancellables)
     }
+
+    func loadMockPuzzles() {
+        self.puzzles = dataManager.loadMockPuzzles()
+        self.isLoading = false
+    }
     
-    func checkPuzzleSolution(for puzzle: Puzzle, tolerance: CGFloat) -> Bool {
+    func updateDraggedPiecePosition(to location: CGPoint, key: String) {
+        droppedPieces[key] = location
+    }
+
+    func dropPiece() {
+        draggingPiece = nil
+    }
+
+    func selectPiece(key: String) {
+        droppedPieces[key] = CGPoint(x: 150, y: 150) // Cambia estas coordenadas según sea necesario
+    }
+    
+    func checkPuzzle() {
+        guard let puzzle = puzzles.first else { return }
+        var isCorrect = true
+        
         for (key, correctPosition) in puzzle.correctPositions {
-            guard let currentPosition = piecePositions[key] else { return false }
-            let dx = abs(currentPosition.x - CGFloat(correctPosition["x"] ?? 0))
-            let dy = abs(currentPosition.y - CGFloat(correctPosition["y"] ?? 0))
-            if dx > tolerance || dy > tolerance {
-                return false
+            if let currentPosition = droppedPieces[key] {
+                let tolerance: CGFloat = 10.0 // Tolerancia en puntos
+                let correctX = correctPosition.x * 500 // La imagen principal tiene un height de 500
+                let correctY = correctPosition.y * 500
+
+                if abs(currentPosition.x - correctX) > tolerance || abs(currentPosition.y - correctY) > tolerance {
+                    isCorrect = false
+                    break
+                }
+            } else {
+                isCorrect = false
+                break
             }
         }
-        return true
+        
+        if isCorrect {
+            alertMessage = puzzle.correctAnswerMessage
+        } else {
+            alertMessage = puzzle.incorrectAnswerMessage
+        }
+        
+        showAlert = true
     }
 }
+/*
+import Foundation
+import SwiftUI
+import Combine
+
+class PuzzleViewModel: ObservableObject {
+    @Published var puzzles: [Puzzle] = []
+    @Published var errorMessage: String?
+    @Published var isLoading: Bool = true
+    @Published var droppedPieces: [String: CGPoint] = [:]
+    @Published var draggingPiece: String?
+
+    private var cancellables = Set<AnyCancellable>()
+
+    func loadMockPuzzles() {
+        // Datos simulados para la previsualización
+        let mockPuzzle = Puzzle(
+            id: "BU-puzzle-17",
+            province: "burgos",
+            question: "Te encuentras en el Arco de Santa María. ¿Sabrías colocar adecuadamente cada personaje histórico?",
+            questionImage: "https://firebasestorage.googleapis.com/v0/b/wowcastillaleon-2ff66.appspot.com/o/tareaArco.png?alt=media&token=79a9b05d-d4b8-4c55-a1f9-8b035439218f",
+            images: [
+                "a": "https://firebasestorage.googleapis.com/v0/b/wowcastillaleon-2ff66.appspot.com/o/a.png?alt=media&token=d708dcd2-9db9-4596-af12-0ba74529df29",
+                "b": "https://firebasestorage.googleapis.com/v0/b/wowcastillaleon-2ff66.appspot.com/o/b.png?alt=media&token=5b76fdec-3aa5-47c5-9afe-5b3202183872",
+                "c": "https://firebasestorage.googleapis.com/v0/b/wowcastillaleon-2ff66.appspot.com/o/c.png?alt=media&token=d3b400c2-612a-496e-b0ca-9b2abe29699d",
+                "d": "https://firebasestorage.googleapis.com/v0/b/wowcastillaleon-2ff66.appspot.com/o/d.png?alt=media&token=6a6892bc-9fbe-4056-9519-d80fce4d1bd6",
+                "e": "https://firebasestorage.googleapis.com/v0/b/wowcastillaleon-2ff66.appspot.com/o/e.png?alt=media&token=4248cac6-bb07-4669-919f-8207e1731083",
+                "f": "https://firebasestorage.googleapis.com/v0/b/wowcastillaleon-2ff66.appspot.com/o/f.png?alt=media&token=57e0d214-36ce-45c7-99fc-43419864de8f",
+                "g": "https://firebasestorage.googleapis.com/v0/b/wowcastillaleon-2ff66.appspot.com/o/g.png?alt=media&token=5ce29f5f-1495-4690-a977-40d86afa4795",
+                "h": "https://firebasestorage.googleapis.com/v0/b/wowcastillaleon-2ff66.appspot.com/o/h.png?alt=media&token=b1fb2fe5-45db-4a6c-8997-0fc882658131"
+            ],
+            correctPositions: [
+                "a": (x: 0.00367, y: 0.00233),
+                "b": (x: 0.00363, y: 0.00560),
+                "c": (x: 0.00239, y: 0.00847),
+                "d": (x: 0.00358, y: 0.00827),
+                "e": (x: 0.00345, y: 0.01287),
+                "f": (x: 0.00235, y: 0.01035),
+                "g": (x: 0.00354, y: 0.01044),
+                "h": (x: 0.004785, y: 0.0104)
+            ],
+            customMessage: "Bienvenid@ al Arco de Santa María",
+            correctAnswerMessage: "Si, es correcta tu respuesta.",
+            incorrectAnswerMessage: "No, esa no es la respuesta correcta. ¡Vuelvelo a intenar!"
+        )
+
+        self.puzzles = [mockPuzzle]
+        self.isLoading = false
+    }
+
+    func updateDraggedPiecePosition(to location: CGPoint, key: String) {
+        if let draggingPiece = draggingPiece, draggingPiece == key {
+            droppedPieces[key] = location
+        }
+    }
+
+    func dropPiece() {
+        draggingPiece = nil
+    }
+
+    func checkPuzzle() {
+        // Aquí iría la lógica para verificar si las piezas están en la posición correcta
+    }
+}
+*/

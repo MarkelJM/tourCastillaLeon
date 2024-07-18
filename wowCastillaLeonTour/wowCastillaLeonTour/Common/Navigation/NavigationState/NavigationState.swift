@@ -15,6 +15,7 @@ struct NavigationState: View {
             switch appState.currentView {
             case .registerEmail:
                 RegisterView()
+
             case .emailVerification:
                 VerificationEmailView(viewModel: RegisterViewModel())
             case .login:
@@ -25,6 +26,8 @@ struct NavigationState: View {
                 MapView()
             case .avatarSelection:
                 AvatarSelectionView(selectedAvatar: .constant(.boy))
+            case .puzzle:
+                PuzzleView()
                     
             }
         }
