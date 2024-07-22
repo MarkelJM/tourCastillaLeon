@@ -73,6 +73,7 @@
 		D3E4B8032C4E4741000BEE9F /* CoinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B8022C4E4741000BEE9F /* CoinView.swift */; };
 		D3E4B8052C4E4B6F000BEE9F /* CoinViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B8042C4E4B6F000BEE9F /* CoinViewModel.swift */; };
 		D3E4B8072C4E4BB6000BEE9F /* DatesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B8062C4E4BB6000BEE9F /* DatesViewModel.swift */; };
+		D3E4B8092C4E4BE8000BEE9F /* FillGapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B8082C4E4BE8000BEE9F /* FillGapViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -136,6 +137,7 @@
 		D3E4B8022C4E4741000BEE9F /* CoinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinView.swift; sourceTree = "<group>"; };
 		D3E4B8042C4E4B6F000BEE9F /* CoinViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinViewModel.swift; sourceTree = "<group>"; };
 		D3E4B8062C4E4BB6000BEE9F /* DatesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatesViewModel.swift; sourceTree = "<group>"; };
+		D3E4B8082C4E4BE8000BEE9F /* FillGapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FillGapViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -531,6 +533,7 @@
 			isa = PBXGroup;
 			children = (
 				D3E4B7FE2C4E471D000BEE9F /* FillGapView.swift */,
+				D3E4B8082C4E4BE8000BEE9F /* FillGapViewModel.swift */,
 			);
 			path = FillGapTask;
 			sourceTree = "<group>";
@@ -704,6 +707,7 @@
 				D3E4B7A62C4117CF000BEE9F /* MapCallOut.swift in Sources */,
 				D3DDA8862C18626A00C43CBA /* RegisterView.swift in Sources */,
 				D3DDA88A2C18629300C43CBA /* VerificationEmailView.swift in Sources */,
+				D3E4B8092C4E4BE8000BEE9F /* FillGapViewModel.swift in Sources */,
 				D3E4B7502C19BAF7000BEE9F /* LoginDataManager.swift in Sources */,
 				D3E4B7932C3E9084000BEE9F /* TakePhoto+Firebase.swift in Sources */,
 				D35F00512C173FA000780464 /* ContentView.swift in Sources */,
