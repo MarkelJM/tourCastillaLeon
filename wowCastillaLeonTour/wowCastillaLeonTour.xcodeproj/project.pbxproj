@@ -81,6 +81,11 @@
 		D3E4B8132C4E4FC2000BEE9F /* FillGapDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B8122C4E4FC2000BEE9F /* FillGapDataManager.swift */; };
 		D3E4B8152C4E4FD8000BEE9F /* QuestionAnswerDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B8142C4E4FD8000BEE9F /* QuestionAnswerDataManager.swift */; };
 		D3E4B8172C4E4FEF000BEE9F /* TakePhotoDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B8162C4E4FEF000BEE9F /* TakePhotoDataManager.swift */; };
+		D3E4B8192C4E50D6000BEE9F /* CoinFirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B8182C4E50D6000BEE9F /* CoinFirestoreManager.swift */; };
+		D3E4B81B2C4E50F7000BEE9F /* DatesFirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B81A2C4E50F7000BEE9F /* DatesFirestoreManager.swift */; };
+		D3E4B81D2C4E5111000BEE9F /* FillGapFirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B81C2C4E5111000BEE9F /* FillGapFirestoreManager.swift */; };
+		D3E4B81F2C4E512B000BEE9F /* QuestionAnswerFirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B81E2C4E512B000BEE9F /* QuestionAnswerFirestoreManager.swift */; };
+		D3E4B8212C4E514F000BEE9F /* TakePhotoFirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B8202C4E514F000BEE9F /* TakePhotoFirestoreManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -152,6 +157,11 @@
 		D3E4B8122C4E4FC2000BEE9F /* FillGapDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FillGapDataManager.swift; sourceTree = "<group>"; };
 		D3E4B8142C4E4FD8000BEE9F /* QuestionAnswerDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionAnswerDataManager.swift; sourceTree = "<group>"; };
 		D3E4B8162C4E4FEF000BEE9F /* TakePhotoDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakePhotoDataManager.swift; sourceTree = "<group>"; };
+		D3E4B8182C4E50D6000BEE9F /* CoinFirestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinFirestoreManager.swift; sourceTree = "<group>"; };
+		D3E4B81A2C4E50F7000BEE9F /* DatesFirestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatesFirestoreManager.swift; sourceTree = "<group>"; };
+		D3E4B81C2C4E5111000BEE9F /* FillGapFirestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FillGapFirestoreManager.swift; sourceTree = "<group>"; };
+		D3E4B81E2C4E512B000BEE9F /* QuestionAnswerFirestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionAnswerFirestoreManager.swift; sourceTree = "<group>"; };
+		D3E4B8202C4E514F000BEE9F /* TakePhotoFirestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakePhotoFirestoreManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -531,6 +541,7 @@
 				D3E4B8022C4E4741000BEE9F /* CoinView.swift */,
 				D3E4B8042C4E4B6F000BEE9F /* CoinViewModel.swift */,
 				D3E4B80E2C4E4F72000BEE9F /* CoinDataManager.swift */,
+				D3E4B8182C4E50D6000BEE9F /* CoinFirestoreManager.swift */,
 			);
 			path = CoinTask;
 			sourceTree = "<group>";
@@ -541,6 +552,7 @@
 				D3E4B8002C4E4730000BEE9F /* DatesView.swift */,
 				D3E4B8062C4E4BB6000BEE9F /* DatesViewModel.swift */,
 				D3E4B8102C4E4FA6000BEE9F /* DatesDataManager.swift */,
+				D3E4B81A2C4E50F7000BEE9F /* DatesFirestoreManager.swift */,
 			);
 			path = DatesTask;
 			sourceTree = "<group>";
@@ -551,6 +563,7 @@
 				D3E4B7FE2C4E471D000BEE9F /* FillGapView.swift */,
 				D3E4B8082C4E4BE8000BEE9F /* FillGapViewModel.swift */,
 				D3E4B8122C4E4FC2000BEE9F /* FillGapDataManager.swift */,
+				D3E4B81C2C4E5111000BEE9F /* FillGapFirestoreManager.swift */,
 			);
 			path = FillGapTask;
 			sourceTree = "<group>";
@@ -561,6 +574,7 @@
 				D3E4B7FC2C4E470E000BEE9F /* QuestionAnswerView.swift */,
 				D3E4B80A2C4E4C15000BEE9F /* QuestionAnswerViewModel.swift */,
 				D3E4B8142C4E4FD8000BEE9F /* QuestionAnswerDataManager.swift */,
+				D3E4B81E2C4E512B000BEE9F /* QuestionAnswerFirestoreManager.swift */,
 			);
 			path = QuestionAnswerTask;
 			sourceTree = "<group>";
@@ -571,6 +585,7 @@
 				D3E4B7FA2C4E46FA000BEE9F /* TakePhotoView.swift */,
 				D3E4B80C2C4E4C42000BEE9F /* TakePhotoViewModel.swift */,
 				D3E4B8162C4E4FEF000BEE9F /* TakePhotoDataManager.swift */,
+				D3E4B8202C4E514F000BEE9F /* TakePhotoFirestoreManager.swift */,
 			);
 			path = TakePhotoTask;
 			sourceTree = "<group>";
@@ -708,8 +723,10 @@
 				D3DDA8A52C19AD1D00C43CBA /* ProfileViewModel.swift in Sources */,
 				D3DDA8A92C19AD6800C43CBA /* ProfileView.swift in Sources */,
 				D3E4B80D2C4E4C42000BEE9F /* TakePhotoViewModel.swift in Sources */,
+				D3E4B81B2C4E50F7000BEE9F /* DatesFirestoreManager.swift in Sources */,
 				D3E4B7872C3E8C1D000BEE9F /* Coin+Firebase.swift in Sources */,
 				D3E4B80F2C4E4F72000BEE9F /* CoinDataManager.swift in Sources */,
+				D3E4B81D2C4E5111000BEE9F /* FillGapFirestoreManager.swift in Sources */,
 				D35F00582C173FA100780464 /* Persistence.swift in Sources */,
 				D3E4B79E2C3E9575000BEE9F /* MapView.swift in Sources */,
 				D3DDA8AE2C19B10F00C43CBA /* User+Firebase.swift in Sources */,
@@ -725,9 +742,11 @@
 				D3E4B7782C3E885B000BEE9F /* CoinModel.swift in Sources */,
 				D3E4B78B2C3E8FA2000BEE9F /* FillGap+Firebase.swift in Sources */,
 				D3E4B7912C3E9066000BEE9F /* Question+Firebase.swift in Sources */,
+				D3E4B8212C4E514F000BEE9F /* TakePhotoFirestoreManager.swift in Sources */,
 				D3E4B7552C19BC0C000BEE9F /* HomeView.swift in Sources */,
 				D3E4B7E32C47D992000BEE9F /* PuzzleView.swift in Sources */,
 				D3E4B7DD2C47D902000BEE9F /* PuzzleFirestoreManager.swift in Sources */,
+				D3E4B8192C4E50D6000BEE9F /* CoinFirestoreManager.swift in Sources */,
 				D3E4B7982C3E9547000BEE9F /* MapFirestoreManager.swift in Sources */,
 				D3E4B7DF2C47D930000BEE9F /* PuzzleDataManager.swift in Sources */,
 				D3E4B79A2C3E9558000BEE9F /* MapDatamanager.swift in Sources */,
@@ -737,6 +756,7 @@
 				D3E4B8092C4E4BE8000BEE9F /* FillGapViewModel.swift in Sources */,
 				D3E4B7502C19BAF7000BEE9F /* LoginDataManager.swift in Sources */,
 				D3E4B8152C4E4FD8000BEE9F /* QuestionAnswerDataManager.swift in Sources */,
+				D3E4B81F2C4E512B000BEE9F /* QuestionAnswerFirestoreManager.swift in Sources */,
 				D3E4B7932C3E9084000BEE9F /* TakePhoto+Firebase.swift in Sources */,
 				D35F00512C173FA000780464 /* ContentView.swift in Sources */,
 				D3DDA8782C18548D00C43CBA /* User.swift in Sources */,
