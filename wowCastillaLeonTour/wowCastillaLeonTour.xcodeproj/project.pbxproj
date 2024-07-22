@@ -76,6 +76,11 @@
 		D3E4B8092C4E4BE8000BEE9F /* FillGapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B8082C4E4BE8000BEE9F /* FillGapViewModel.swift */; };
 		D3E4B80B2C4E4C15000BEE9F /* QuestionAnswerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B80A2C4E4C15000BEE9F /* QuestionAnswerViewModel.swift */; };
 		D3E4B80D2C4E4C42000BEE9F /* TakePhotoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B80C2C4E4C42000BEE9F /* TakePhotoViewModel.swift */; };
+		D3E4B80F2C4E4F72000BEE9F /* CoinDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B80E2C4E4F72000BEE9F /* CoinDataManager.swift */; };
+		D3E4B8112C4E4FA6000BEE9F /* DatesDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B8102C4E4FA6000BEE9F /* DatesDataManager.swift */; };
+		D3E4B8132C4E4FC2000BEE9F /* FillGapDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B8122C4E4FC2000BEE9F /* FillGapDataManager.swift */; };
+		D3E4B8152C4E4FD8000BEE9F /* QuestionAnswerDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B8142C4E4FD8000BEE9F /* QuestionAnswerDataManager.swift */; };
+		D3E4B8172C4E4FEF000BEE9F /* TakePhotoDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B8162C4E4FEF000BEE9F /* TakePhotoDataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -142,6 +147,11 @@
 		D3E4B8082C4E4BE8000BEE9F /* FillGapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FillGapViewModel.swift; sourceTree = "<group>"; };
 		D3E4B80A2C4E4C15000BEE9F /* QuestionAnswerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionAnswerViewModel.swift; sourceTree = "<group>"; };
 		D3E4B80C2C4E4C42000BEE9F /* TakePhotoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakePhotoViewModel.swift; sourceTree = "<group>"; };
+		D3E4B80E2C4E4F72000BEE9F /* CoinDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinDataManager.swift; sourceTree = "<group>"; };
+		D3E4B8102C4E4FA6000BEE9F /* DatesDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatesDataManager.swift; sourceTree = "<group>"; };
+		D3E4B8122C4E4FC2000BEE9F /* FillGapDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FillGapDataManager.swift; sourceTree = "<group>"; };
+		D3E4B8142C4E4FD8000BEE9F /* QuestionAnswerDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionAnswerDataManager.swift; sourceTree = "<group>"; };
+		D3E4B8162C4E4FEF000BEE9F /* TakePhotoDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakePhotoDataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -520,6 +530,7 @@
 			children = (
 				D3E4B8022C4E4741000BEE9F /* CoinView.swift */,
 				D3E4B8042C4E4B6F000BEE9F /* CoinViewModel.swift */,
+				D3E4B80E2C4E4F72000BEE9F /* CoinDataManager.swift */,
 			);
 			path = CoinTask;
 			sourceTree = "<group>";
@@ -529,6 +540,7 @@
 			children = (
 				D3E4B8002C4E4730000BEE9F /* DatesView.swift */,
 				D3E4B8062C4E4BB6000BEE9F /* DatesViewModel.swift */,
+				D3E4B8102C4E4FA6000BEE9F /* DatesDataManager.swift */,
 			);
 			path = DatesTask;
 			sourceTree = "<group>";
@@ -538,6 +550,7 @@
 			children = (
 				D3E4B7FE2C4E471D000BEE9F /* FillGapView.swift */,
 				D3E4B8082C4E4BE8000BEE9F /* FillGapViewModel.swift */,
+				D3E4B8122C4E4FC2000BEE9F /* FillGapDataManager.swift */,
 			);
 			path = FillGapTask;
 			sourceTree = "<group>";
@@ -547,6 +560,7 @@
 			children = (
 				D3E4B7FC2C4E470E000BEE9F /* QuestionAnswerView.swift */,
 				D3E4B80A2C4E4C15000BEE9F /* QuestionAnswerViewModel.swift */,
+				D3E4B8142C4E4FD8000BEE9F /* QuestionAnswerDataManager.swift */,
 			);
 			path = QuestionAnswerTask;
 			sourceTree = "<group>";
@@ -556,6 +570,7 @@
 			children = (
 				D3E4B7FA2C4E46FA000BEE9F /* TakePhotoView.swift */,
 				D3E4B80C2C4E4C42000BEE9F /* TakePhotoViewModel.swift */,
+				D3E4B8162C4E4FEF000BEE9F /* TakePhotoDataManager.swift */,
 			);
 			path = TakePhotoTask;
 			sourceTree = "<group>";
@@ -676,9 +691,12 @@
 				D35F005B2C173FA100780464 /* wowCastillaLeonTour.xcdatamodeld in Sources */,
 				D3E4B7802C3E88B6000BEE9F /* PuzzleModel.swift in Sources */,
 				D3DDA8922C18630900C43CBA /* AppState.swift in Sources */,
+				D3E4B8112C4E4FA6000BEE9F /* DatesDataManager.swift in Sources */,
 				D3E4B80B2C4E4C15000BEE9F /* QuestionAnswerViewModel.swift in Sources */,
+				D3E4B8172C4E4FEF000BEE9F /* TakePhotoDataManager.swift in Sources */,
 				D3DDA8972C18709500C43CBA /* LoginViewModel.swift in Sources */,
 				D3E4B7D42C4682B2000BEE9F /* ColorButtonView.swift in Sources */,
+				D3E4B8132C4E4FC2000BEE9F /* FillGapDataManager.swift in Sources */,
 				D3E4B78F2C3E8FEE000BEE9F /* Puzzle+Firebase.swift in Sources */,
 				D3E4B8032C4E4741000BEE9F /* CoinView.swift in Sources */,
 				D3DDA88E2C1862BB00C43CBA /* NavigationState.swift in Sources */,
@@ -691,6 +709,7 @@
 				D3DDA8A92C19AD6800C43CBA /* ProfileView.swift in Sources */,
 				D3E4B80D2C4E4C42000BEE9F /* TakePhotoViewModel.swift in Sources */,
 				D3E4B7872C3E8C1D000BEE9F /* Coin+Firebase.swift in Sources */,
+				D3E4B80F2C4E4F72000BEE9F /* CoinDataManager.swift in Sources */,
 				D35F00582C173FA100780464 /* Persistence.swift in Sources */,
 				D3E4B79E2C3E9575000BEE9F /* MapView.swift in Sources */,
 				D3DDA8AE2C19B10F00C43CBA /* User+Firebase.swift in Sources */,
@@ -717,6 +736,7 @@
 				D3DDA88A2C18629300C43CBA /* VerificationEmailView.swift in Sources */,
 				D3E4B8092C4E4BE8000BEE9F /* FillGapViewModel.swift in Sources */,
 				D3E4B7502C19BAF7000BEE9F /* LoginDataManager.swift in Sources */,
+				D3E4B8152C4E4FD8000BEE9F /* QuestionAnswerDataManager.swift in Sources */,
 				D3E4B7932C3E9084000BEE9F /* TakePhoto+Firebase.swift in Sources */,
 				D35F00512C173FA000780464 /* ContentView.swift in Sources */,
 				D3DDA8782C18548D00C43CBA /* User.swift in Sources */,

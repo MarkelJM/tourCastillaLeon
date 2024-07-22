@@ -11,7 +11,14 @@ import FirebaseFirestore
 
 class PuzzleDataManager {
     private let db = Firestore.firestore()
+    private let firestoreManager = PuzzleFirestoreManager()
+        
+    func fetchPuzzleById(_ id: String) -> AnyPublisher<Puzzle, Error> {
+        return firestoreManager.fetchPuzzleById(id)
+    }
     
+    
+    //No needed anymore this mock
     func fetchPuzzles() -> AnyPublisher<[Puzzle], Error> {
         Future { promise in
             self.db.collection("puzzles").getDocuments { (querySnapshot, error) in
