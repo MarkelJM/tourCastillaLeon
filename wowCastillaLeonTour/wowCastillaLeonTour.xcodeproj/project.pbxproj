@@ -14,6 +14,7 @@
 		D35F00582C173FA100780464 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35F00572C173FA100780464 /* Persistence.swift */; };
 		D35F005B2C173FA100780464 /* wowCastillaLeonTour.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D35F00592C173FA100780464 /* wowCastillaLeonTour.xcdatamodeld */; };
 		D35F00812C1740BE00780464 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D35F00802C1740BE00780464 /* GoogleService-Info.plist */; };
+		D38F8F612C4E761100315904 /* PuzzlePiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38F8F602C4E761100315904 /* PuzzlePiece.swift */; };
 		D3DDA8782C18548D00C43CBA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDA8772C18548D00C43CBA /* User.swift */; };
 		D3DDA8822C18625200C43CBA /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDA8812C18625200C43CBA /* RegisterViewModel.swift */; };
 		D3DDA8862C18626A00C43CBA /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDA8852C18626A00C43CBA /* RegisterView.swift */; };
@@ -97,6 +98,7 @@
 		D35F00572C173FA100780464 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		D35F005A2C173FA100780464 /* wowCastillaLeonTour.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = wowCastillaLeonTour.xcdatamodel; sourceTree = "<group>"; };
 		D35F00802C1740BE00780464 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D38F8F602C4E761100315904 /* PuzzlePiece.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzlePiece.swift; sourceTree = "<group>"; };
 		D3DDA8772C18548D00C43CBA /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		D3DDA8812C18625200C43CBA /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
 		D3DDA8852C18626A00C43CBA /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
@@ -256,6 +258,14 @@
 				D35F00522C173FA100780464 /* Assets.xcassets */,
 			);
 			path = SupportitngFiles;
+			sourceTree = "<group>";
+		};
+		D38F8F5F2C4E760200315904 /* PuzzlePiece */ = {
+			isa = PBXGroup;
+			children = (
+				D38F8F602C4E761100315904 /* PuzzlePiece.swift */,
+			);
+			path = PuzzlePiece;
 			sourceTree = "<group>";
 		};
 		D3DDA8752C18547700C43CBA /* Common */ = {
@@ -446,6 +456,7 @@
 		D3E4B7752C3E8838000BEE9F /* Puzzle */ = {
 			isa = PBXGroup;
 			children = (
+				D38F8F5F2C4E760200315904 /* PuzzlePiece */,
 				D3E4B77F2C3E88B6000BEE9F /* PuzzleModel.swift */,
 				D3E4B78E2C3E8FEE000BEE9F /* Puzzle+Firebase.swift */,
 			);
@@ -740,6 +751,7 @@
 				D3E4B78D2C3E8FC4000BEE9F /* Point+Firebase.swift in Sources */,
 				D3DDA89B2C1870AC00C43CBA /* LoginView.swift in Sources */,
 				D3E4B7782C3E885B000BEE9F /* CoinModel.swift in Sources */,
+				D38F8F612C4E761100315904 /* PuzzlePiece.swift in Sources */,
 				D3E4B78B2C3E8FA2000BEE9F /* FillGap+Firebase.swift in Sources */,
 				D3E4B7912C3E9066000BEE9F /* Question+Firebase.swift in Sources */,
 				D3E4B8212C4E514F000BEE9F /* TakePhotoFirestoreManager.swift in Sources */,

@@ -65,7 +65,7 @@ class PuzzleViewModel: ObservableObject {
         
         for (key, correctPosition) in puzzle.correctPositions {
             if let currentPosition = droppedPieces[key] {
-                let tolerance: CGFloat = 10.0 // Tolerancia en puntos
+                let tolerance: CGFloat = 500.0 // Tolerancia en puntos
                 let correctX = correctPosition.x * 500 // Ajusta según el tamaño de la imagen principal
                 let correctY = correctPosition.y * 500
                 let differenceX = abs(currentPosition.x - correctX)

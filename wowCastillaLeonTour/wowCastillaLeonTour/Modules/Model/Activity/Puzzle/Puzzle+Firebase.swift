@@ -8,8 +8,6 @@
 import Foundation
 import FirebaseFirestore
 
-
-
 extension Puzzle {
     init?(from firestoreData: [String: Any]) {
         guard let id = firestoreData["id"] as? String,
@@ -17,17 +15,21 @@ extension Puzzle {
               let question = firestoreData["question"] as? String,
               let questionImage = firestoreData["questionImage"] as? String,
               let images = firestoreData["images"] as? [String: String],
-              let correctPositionsData = firestoreData["correctPositions"] as? [String: [String: NSNumber]],
-              let customMessage = firestoreData["customMessage"] as? String,
-              let correctAnswerMessage = firestoreData["correctAnswerMessage"] as? String,
-              let incorrectAnswerMessage = firestoreData["incorrectAnswerMessage"] as? String,
-              let abstract = firestoreData["abstract"] as? String else { // Añadido abstract
+              let correctPositionsData = firestoreData["correctPositions"] as? [String: [String: Any]],
+              let customMessage = firestoreData["custom_message"] as? String,
+              let correctAnswerMessage = firestoreData["correct_answer_message"] as? String,
+              let incorrectAnswerMessage = firestoreData["incorrect_answer_message"] as? String else {
             return nil
         }
 
-        let correctPositions = correctPositionsData.compactMapValues { data -> (x: Double, y: Double)? in
-            guard let x = data["x"]?.doubleValue, let y = data["y"]?.doubleValue else { return nil }
-            return (x: x, y: y)
+        var correctPositions: [String: PuzzleCoordinate] = [:]
+        for (key, value) in correctPositionsData {
+            if let coordinate = PuzzleCoordinate(from: value) {
+                correctPositions[key] = coordinate
+            } else {
+                print("Failed to decode correctPositions for key: \(key)")
+                return nil
+            }
         }
 
         self.id = id
@@ -39,11 +41,10 @@ extension Puzzle {
         self.customMessage = customMessage
         self.correctAnswerMessage = correctAnswerMessage
         self.incorrectAnswerMessage = incorrectAnswerMessage
-        self.abstract = abstract // Asignado el valor a abstract
     }
 
     func toFirestoreData() -> [String: Any] {
-        let correctPositionsData = correctPositions.mapValues { ["x": $0.x, "y": $0.y] }
+        let correctPositionsData = correctPositions.mapValues { $0.toFirestoreData() }
 
         return [
             "id": id,
@@ -52,10 +53,9 @@ extension Puzzle {
             "questionImage": questionImage,
             "images": images,
             "correctPositions": correctPositionsData,
-            "customMessage": customMessage,
-            "correctAnswerMessage": correctAnswerMessage,
-            "incorrectAnswerMessage": incorrectAnswerMessage,
-            "abstract": abstract // Añadido abstract en la conversión a Firestore data
+            "custom_message": customMessage,
+            "correct_answer_message": correctAnswerMessage,
+            "incorrect_answer_message": incorrectAnswerMessage
         ]
     }
 }

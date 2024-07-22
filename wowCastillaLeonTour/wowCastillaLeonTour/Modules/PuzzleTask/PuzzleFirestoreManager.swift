@@ -15,9 +15,11 @@ class PuzzleFirestoreManager {
         Future { promise in
             self.db.collection("puzzles").document(id).getDocument { document, error in
                 if let document = document, document.exists, let data = document.data() {
+                    print("Fetched data: \(data)") // Agregar este print para depuración
                     if let puzzle = Puzzle(from: data) {
                         promise(.success(puzzle))
                     } else {
+                        print("Failed to decode puzzle with data: \(data)") // Agregar este print para depuración
                         promise(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Failed to decode puzzle"])))
                     }
                 } else {

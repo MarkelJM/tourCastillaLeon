@@ -4,6 +4,7 @@
 //
 //  Created by Markel Juaristi on 10/7/24.
 //
+
 import Foundation
 
 struct Puzzle: Identifiable {
@@ -12,10 +13,8 @@ struct Puzzle: Identifiable {
     var question: String
     var questionImage: String
     var images: [String: String]
-    var correctPositions: [String: (x: Double, y: Double)]
+    var correctPositions: [String: PuzzleCoordinate]
     var customMessage: String
     var correctAnswerMessage: String
     var incorrectAnswerMessage: String
-    var abstract: String 
 }
-
