@@ -14,7 +14,7 @@ class PuzzleViewModel: ObservableObject {
     @Published var isLoading: Bool = true
     @Published var droppedPieces: [String: CGPoint] = [:]
     @Published var draggingPiece: String?
-    @Published var showAlert: Bool = false
+    @Published var showSheet: Bool = false
     @Published var alertMessage: String = ""
 
     private var cancellables = Set<AnyCancellable>()
@@ -42,18 +42,22 @@ class PuzzleViewModel: ObservableObject {
     func loadMockPuzzles() {
         self.puzzles = dataManager.loadMockPuzzles()
         self.isLoading = false
+        print("Mock puzzles loaded: \(self.puzzles)")
     }
     
     func updateDraggedPiecePosition(to location: CGPoint, key: String) {
         droppedPieces[key] = location
+        print("Updated position for piece \(key): \(location)")
     }
 
     func dropPiece() {
         draggingPiece = nil
+        print("Piece dropped")
     }
 
     func selectPiece(key: String) {
         droppedPieces[key] = CGPoint(x: 150, y: 150) // Cambia estas coordenadas según sea necesario
+        print("Piece \(key) selected and moved to (150, 150)")
     }
     
     func checkPuzzle() {
@@ -63,10 +67,18 @@ class PuzzleViewModel: ObservableObject {
         for (key, correctPosition) in puzzle.correctPositions {
             if let currentPosition = droppedPieces[key] {
                 let tolerance: CGFloat = 10.0 // Tolerancia en puntos
-                let correctX = correctPosition.x * 500 // La imagen principal tiene un height de 500
+                let correctX = correctPosition.x * 500 // Ajusta según el tamaño de la imagen principal
                 let correctY = correctPosition.y * 500
+                let differenceX = abs(currentPosition.x - correctX)
+                let differenceY = abs(currentPosition.y - correctY)
 
-                if abs(currentPosition.x - correctX) > tolerance || abs(currentPosition.y - correctY) > tolerance {
+                print("Checking position for piece \(key):")
+                print(" - Correct position from Firestore: (\(correctPosition.x), \(correctPosition.y))")
+                print(" - Correct position (scaled): (\(correctX), \(correctY))")
+                print(" - Current position: (\(currentPosition.x), \(currentPosition.y))")
+                print(" - Difference: (x: \(differenceX), y: \(differenceY))")
+
+                if differenceX > tolerance || differenceY > tolerance {
                     isCorrect = false
                     break
                 }
@@ -82,9 +94,11 @@ class PuzzleViewModel: ObservableObject {
             alertMessage = puzzle.incorrectAnswerMessage
         }
         
-        showAlert = true
+        print("Puzzle check result: \(alertMessage)")
+        showSheet = true
     }
 }
+
 /*
 import Foundation
 import SwiftUI

@@ -7,11 +7,10 @@
 
 import SwiftUI
 
-
 struct PuzzleView: View {
     @StateObject private var viewModel = PuzzleViewModel()
     @EnvironmentObject var appState: AppState
-    @State private var showAlert = true // Variable para controlar la alerta
+    @State private var showInstructionsAlert = true // Variable para controlar la alerta de instrucciones
     
     var body: some View {
         VStack {
@@ -38,6 +37,7 @@ struct PuzzleView: View {
 
                     GeometryReader { geometry in
                         ZStack {
+                            // Main Puzzle Image
                             AsyncImage(url: URL(string: puzzle.questionImage)) { image in
                                 image
                                     .resizable()
@@ -49,6 +49,7 @@ struct PuzzleView: View {
                             }
                             .padding()
 
+                            // Dropped Pieces
                             ForEach(viewModel.droppedPieces.keys.sorted(), id: \.self) { key in
                                 if let imageUrl = puzzle.images[key], let position = viewModel.droppedPieces[key] {
                                     AsyncImage(url: URL(string: imageUrl)) { image in
@@ -103,14 +104,10 @@ struct PuzzleView: View {
                 }
                 .padding()
                 .background(GradientBackgroundView())
-                .alert(isPresented: $viewModel.showAlert) {
-                    Alert(
-                        title: Text("Resultado"),
-                        message: Text(viewModel.alertMessage),
-                        dismissButton: .default(Text("OK"))
-                    )
+                .sheet(isPresented: $viewModel.showSheet) {
+                    ResultSheet(viewModel: viewModel)
                 }
-                .alert(isPresented: $showAlert) {
+                .alert(isPresented: $showInstructionsAlert) {
                     Alert(
                         title: Text("Instrucciones"),
                         message: Text("Primero debe seleccionar la imagen en la parte inferior y una vez que se muestre en el puzzle situarlo en su lugar."),
@@ -126,6 +123,28 @@ struct PuzzleView: View {
         }
     }
 }
+
+struct ResultSheet: View {
+    @ObservedObject var viewModel: PuzzleViewModel
+    
+    var body: some View {
+        VStack {
+            Text(viewModel.alertMessage)
+                .font(.title)
+                .padding()
+
+            Button("Continuar") {
+                viewModel.showSheet = false
+            }
+            .padding()
+            .background(Color.blue)
+            .foregroundColor(.white)
+            .cornerRadius(10)
+        }
+        .padding()
+    }
+}
+
 
 struct PuzzleView_Previews: PreviewProvider {
     static var previews: some View {
