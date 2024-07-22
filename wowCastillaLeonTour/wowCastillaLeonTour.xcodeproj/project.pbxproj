@@ -75,6 +75,7 @@
 		D3E4B8072C4E4BB6000BEE9F /* DatesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B8062C4E4BB6000BEE9F /* DatesViewModel.swift */; };
 		D3E4B8092C4E4BE8000BEE9F /* FillGapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B8082C4E4BE8000BEE9F /* FillGapViewModel.swift */; };
 		D3E4B80B2C4E4C15000BEE9F /* QuestionAnswerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B80A2C4E4C15000BEE9F /* QuestionAnswerViewModel.swift */; };
+		D3E4B80D2C4E4C42000BEE9F /* TakePhotoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B80C2C4E4C42000BEE9F /* TakePhotoViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -140,6 +141,7 @@
 		D3E4B8062C4E4BB6000BEE9F /* DatesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatesViewModel.swift; sourceTree = "<group>"; };
 		D3E4B8082C4E4BE8000BEE9F /* FillGapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FillGapViewModel.swift; sourceTree = "<group>"; };
 		D3E4B80A2C4E4C15000BEE9F /* QuestionAnswerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionAnswerViewModel.swift; sourceTree = "<group>"; };
+		D3E4B80C2C4E4C42000BEE9F /* TakePhotoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakePhotoViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -553,6 +555,7 @@
 			isa = PBXGroup;
 			children = (
 				D3E4B7FA2C4E46FA000BEE9F /* TakePhotoView.swift */,
+				D3E4B80C2C4E4C42000BEE9F /* TakePhotoViewModel.swift */,
 			);
 			path = TakePhotoTask;
 			sourceTree = "<group>";
@@ -686,6 +689,7 @@
 				D3E4B77A2C3E8879000BEE9F /* DateModel.swift in Sources */,
 				D3DDA8A52C19AD1D00C43CBA /* ProfileViewModel.swift in Sources */,
 				D3DDA8A92C19AD6800C43CBA /* ProfileView.swift in Sources */,
+				D3E4B80D2C4E4C42000BEE9F /* TakePhotoViewModel.swift in Sources */,
 				D3E4B7872C3E8C1D000BEE9F /* Coin+Firebase.swift in Sources */,
 				D35F00582C173FA100780464 /* Persistence.swift in Sources */,
 				D3E4B79E2C3E9575000BEE9F /* MapView.swift in Sources */,
