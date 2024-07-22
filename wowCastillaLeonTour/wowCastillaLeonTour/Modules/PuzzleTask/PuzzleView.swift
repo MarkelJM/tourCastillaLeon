@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct PuzzleView: View {
-    @StateObject private var viewModel = PuzzleViewModel()
+    @StateObject var viewModel: PuzzleViewModel
     @EnvironmentObject var appState: AppState
     @State private var showInstructionsAlert = true // Variable para controlar la alerta de instrucciones
     
@@ -119,7 +119,7 @@ struct PuzzleView: View {
             }
         }
         .onAppear {
-            viewModel.loadMockPuzzles() // Carga datos simulados para la previsualización
+            viewModel.fetchPuzzle()
         }
     }
 }
@@ -144,8 +144,7 @@ struct ResultSheet: View {
         .padding()
     }
 }
-
-
+/*
 struct PuzzleView_Previews: PreviewProvider {
     static var previews: some View {
         let mockPuzzle = Puzzle(
@@ -178,14 +177,15 @@ struct PuzzleView_Previews: PreviewProvider {
             incorrectAnswerMessage: "No, esa no es la respuesta correcta. ¡Vuelvelo a intenar!"
         )
 
-        let viewModel = PuzzleViewModel()
+        let viewModel = PuzzleViewModel(activityId: mockPuzzle.id)
         viewModel.puzzles = [mockPuzzle]
 
-        return PuzzleView()
+        return PuzzleView(viewModel: viewModel)
             .environmentObject(AppState())
-            .environmentObject(viewModel)
     }
 }
+
+*/
 
 /*
 struct PuzzleView: View {

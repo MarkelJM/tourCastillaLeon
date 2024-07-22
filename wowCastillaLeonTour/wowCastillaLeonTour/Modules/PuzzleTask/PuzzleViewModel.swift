@@ -16,19 +16,18 @@ class PuzzleViewModel: ObservableObject {
     @Published var draggingPiece: String?
     @Published var showSheet: Bool = false
     @Published var alertMessage: String = ""
-
-    private var cancellables = Set<AnyCancellable>()
+    
     private let dataManager = PuzzleDataManager()
-    private let activityId: String
-
+    private var cancellables = Set<AnyCancellable>()
+    private var activityId: String
+    
     init(activityId: String) {
         self.activityId = activityId
-        fetchPuzzleById(activityId)
     }
-
-    func fetchPuzzleById(_ id: String) {
+    
+    func fetchPuzzle() {
         isLoading = true
-        dataManager.fetchPuzzleById(id)
+        dataManager.fetchPuzzleById(activityId)
             .receive(on: DispatchQueue.main)
             .sink { completion in
                 switch completion {
@@ -43,12 +42,6 @@ class PuzzleViewModel: ObservableObject {
                 self.isLoading = false
             }
             .store(in: &cancellables)
-    }
-
-    func loadMockPuzzles() {
-        self.puzzles = dataManager.loadMockPuzzles()
-        self.isLoading = false
-        print("Mock puzzles loaded: \(self.puzzles)")
     }
     
     func updateDraggedPiecePosition(to location: CGPoint, key: String) {

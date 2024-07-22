@@ -8,11 +8,23 @@
 import SwiftUI
 
 struct TakePhotoView: View {
+    @ObservedObject var viewModel: TakePhotoViewModel
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            if viewModel.isLoading {
+                Text("Cargando datos...")
+            } else if let errorMessage = viewModel.errorMessage {
+                Text("Error: \(errorMessage)")
+            } else {
+                Text("Datos cargados correctamente")
+                // Añade aquí la lógica de tu vista
+            }
+        }
+        .padding()
     }
 }
 
 #Preview {
-    TakePhotoView()
+    TakePhotoView(viewModel: TakePhotoViewModel(activityId: "mockId"))
 }

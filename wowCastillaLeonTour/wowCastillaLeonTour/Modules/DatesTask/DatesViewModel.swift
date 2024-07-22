@@ -9,7 +9,7 @@ import SwiftUI
 import Combine
 
 class DatesViewModel: ObservableObject {
-    @Published var dates: [DateActivity] = []
+    @Published var dates: [DateEvent] = []
     @Published var errorMessage: String?
     @Published var isLoading: Bool = true
 
@@ -24,7 +24,7 @@ class DatesViewModel: ObservableObject {
 
     func fetchDateActivityById(_ id: String) {
         isLoading = true
-        dataManager.fetchDateActivityById(id)
+        dataManager.fetchDateEventById(id)
             .receive(on: DispatchQueue.main)
             .sink { completion in
                 switch completion {

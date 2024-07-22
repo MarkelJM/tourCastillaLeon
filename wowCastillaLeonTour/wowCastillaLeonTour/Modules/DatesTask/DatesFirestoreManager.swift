@@ -11,19 +11,25 @@ import FirebaseFirestore
 
 class DatesFirestoreManager {
     private let db = Firestore.firestore()
+    private let collectionName = "dates" 
 
     func fetchDateEventById(_ id: String) -> AnyPublisher<DateEvent, Error> {
-        Future { promise in
-            self.db.collection("dates").document(id).getDocument { snapshot, error in
-                if let error = error {
-                    promise(.failure(error))
-                } else if let data = snapshot?.data(), let dateEvent = DateEvent(from: data) {
-                    promise(.success(dateEvent))
+        let subject = PassthroughSubject<DateEvent, Error>()
+        
+        db.collection(collectionName).document(id).getDocument { document, error in
+            if let error = error {
+                subject.send(completion: .failure(error))
+            } else if let document = document, document.exists, let data = document.data() {
+                if let dateEvent = DateEvent(from: data) {
+                    subject.send(dateEvent)
                 } else {
-                    promise(.failure(NSError(domain: "Document not found", code: 404, userInfo: nil)))
+                    subject.send(completion: .failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Failed to parse DateEvent"])))
                 }
+            } else {
+                subject.send(completion: .failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Document does not exist"])))
             }
         }
-        .eraseToAnyPublisher()
+        
+        return subject.eraseToAnyPublisher()
     }
 }

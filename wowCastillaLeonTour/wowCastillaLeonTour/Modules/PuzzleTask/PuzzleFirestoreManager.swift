@@ -5,43 +5,26 @@
 //  Created by Markel Juaristi on 17/7/24.
 //
 
-import Foundation
-import FirebaseFirestore
 import Combine
-
+import FirebaseFirestore
 
 class PuzzleFirestoreManager {
     private let db = Firestore.firestore()
     
     func fetchPuzzleById(_ id: String) -> AnyPublisher<Puzzle, Error> {
-       Future { promise in
-           self.db.collection("puzzles").document(id).getDocument { snapshot, error in
-               if let error = error {
-                   promise(.failure(error))
-               } else if let data = snapshot?.data(), let puzzle = Puzzle(from: data) {
-                   promise(.success(puzzle))
-               } else {
-                   promise(.failure(NSError(domain: "Document not found", code: 404, userInfo: nil)))
-               }
-           }
-       }
-       .eraseToAnyPublisher()
-   }
-    
-    func fetchPuzzles(completion: @escaping (Result<[Puzzle], Error>) -> Void) {
-        db.collection("puzzles").getDocuments { (querySnapshot, error) in
-            if let error = error {
-                completion(.failure(error))
-            } else {
-                let puzzles = querySnapshot?.documents.compactMap { document in
-                    Puzzle(from: document.data())
-                } ?? []
-                completion(.success(puzzles))
+        Future { promise in
+            self.db.collection("puzzles").document(id).getDocument { document, error in
+                if let document = document, document.exists {
+                    if let data = document.data(), let puzzle = Puzzle(from: data) {
+                        promise(.success(puzzle))
+                    } else {
+                        promise(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "No puzzle found"])))
+                    }
+                } else {
+                    promise(.failure(error ?? NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Document does not exist"])))
+                }
             }
         }
+        .eraseToAnyPublisher()
     }
-    
-    
-    
-    
 }

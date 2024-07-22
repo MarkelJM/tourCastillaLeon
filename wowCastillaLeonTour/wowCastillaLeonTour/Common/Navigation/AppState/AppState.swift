@@ -15,7 +15,7 @@ class AppState: ObservableObject {
         }
     }
 
-    enum AppView {
+    enum AppView: Equatable {
         case registerEmail
         case emailVerification
         case login
@@ -28,7 +28,5 @@ class AppState: ObservableObject {
         case fillGap(id: String)
         case questionAnswer(id: String)
         case takePhoto(id: String)
-
-        
     }
 }

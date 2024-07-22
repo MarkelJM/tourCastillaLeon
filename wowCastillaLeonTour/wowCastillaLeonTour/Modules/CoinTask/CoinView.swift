@@ -8,11 +8,36 @@
 import SwiftUI
 
 struct CoinView: View {
+    @ObservedObject var viewModel: CoinViewModel
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            if viewModel.isLoading {
+                Text("Cargando datos...")
+            } else if let errorMessage = viewModel.errorMessage {
+                Text("Error: \(errorMessage)")
+            } else if let coin = viewModel.coins.first {
+                VStack {
+                    Text(coin.description)
+                        .font(.title)
+                        .padding()
+                    
+                    Text(coin.customMessage)
+                        .font(.subheadline)
+                        .padding()
+                    
+                    Text("Premio: \(coin.prize)")
+                        .font(.headline)
+                        .padding()
+                }
+            } else {
+                Text("No hay datos disponibles")
+            }
+        }
+        .padding()
     }
 }
 
 #Preview {
-    CoinView()
+    CoinView(viewModel: CoinViewModel(activityId: "mockId"))
 }
