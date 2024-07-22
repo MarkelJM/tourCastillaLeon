@@ -26,8 +26,20 @@ struct NavigationState: View {
                 MapView()
             case .avatarSelection:
                 AvatarSelectionView(selectedAvatar: .constant(.boy))
-            case .puzzle:
-                PuzzleView()
+            case .puzzle(let id):
+                PuzzleView(viewModel: PuzzleViewModel(activityId: id))
+            case .coin(let id):
+                CoinView(viewModel: CoinViewModel(activityId: id))
+            case .dates(let id):
+                DatesView(viewModel: DatesViewModel(activityId: id))
+            case .fillGap(let id):
+                FillGapView(viewModel: FillGapViewModel(activityId: id))
+            case .questionAnswer(let id):
+                QuestionAnswerView(viewModel: QuestionAnswerViewModel(activityId: id))
+            case .takePhoto(let id):
+                TakePhotoView(viewModel: TakePhotoViewModel(activityId: id))
+            default:
+                EmptyView()
                     
             }
         }
