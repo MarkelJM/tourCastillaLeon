@@ -19,10 +19,16 @@ class PuzzleViewModel: ObservableObject {
 
     private var cancellables = Set<AnyCancellable>()
     private let dataManager = PuzzleDataManager()
-    
-    func fetchPuzzles() {
+    private let activityId: String
+
+    init(activityId: String) {
+        self.activityId = activityId
+        fetchPuzzleById(activityId)
+    }
+
+    func fetchPuzzleById(_ id: String) {
         isLoading = true
-        dataManager.fetchPuzzles()
+        dataManager.fetchPuzzleById(id)
             .receive(on: DispatchQueue.main)
             .sink { completion in
                 switch completion {
@@ -32,8 +38,8 @@ class PuzzleViewModel: ObservableObject {
                 case .finished:
                     break
                 }
-            } receiveValue: { puzzles in
-                self.puzzles = puzzles
+            } receiveValue: { puzzle in
+                self.puzzles = [puzzle]
                 self.isLoading = false
             }
             .store(in: &cancellables)
