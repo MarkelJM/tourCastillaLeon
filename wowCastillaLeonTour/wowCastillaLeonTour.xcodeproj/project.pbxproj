@@ -71,6 +71,8 @@
 		D3E4B7FF2C4E471D000BEE9F /* FillGapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B7FE2C4E471D000BEE9F /* FillGapView.swift */; };
 		D3E4B8012C4E4730000BEE9F /* DatesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B8002C4E4730000BEE9F /* DatesView.swift */; };
 		D3E4B8032C4E4741000BEE9F /* CoinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B8022C4E4741000BEE9F /* CoinView.swift */; };
+		D3E4B8052C4E4B6F000BEE9F /* CoinViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B8042C4E4B6F000BEE9F /* CoinViewModel.swift */; };
+		D3E4B8072C4E4BB6000BEE9F /* DatesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B8062C4E4BB6000BEE9F /* DatesViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -132,6 +134,8 @@
 		D3E4B7FE2C4E471D000BEE9F /* FillGapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FillGapView.swift; sourceTree = "<group>"; };
 		D3E4B8002C4E4730000BEE9F /* DatesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatesView.swift; sourceTree = "<group>"; };
 		D3E4B8022C4E4741000BEE9F /* CoinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinView.swift; sourceTree = "<group>"; };
+		D3E4B8042C4E4B6F000BEE9F /* CoinViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinViewModel.swift; sourceTree = "<group>"; };
+		D3E4B8062C4E4BB6000BEE9F /* DatesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatesViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -509,6 +513,7 @@
 			isa = PBXGroup;
 			children = (
 				D3E4B8022C4E4741000BEE9F /* CoinView.swift */,
+				D3E4B8042C4E4B6F000BEE9F /* CoinViewModel.swift */,
 			);
 			path = CoinTask;
 			sourceTree = "<group>";
@@ -517,6 +522,7 @@
 			isa = PBXGroup;
 			children = (
 				D3E4B8002C4E4730000BEE9F /* DatesView.swift */,
+				D3E4B8062C4E4BB6000BEE9F /* DatesViewModel.swift */,
 			);
 			path = DatesTask;
 			sourceTree = "<group>";
@@ -657,6 +663,7 @@
 				D3E4B7892C3E8C4B000BEE9F /* Dates+Firebase.swift in Sources */,
 				D3DDA8A12C19AC3200C43CBA /* FirestoreManager.swift in Sources */,
 				D3E4B7D62C4682C3000BEE9F /* BackgroundView.swift in Sources */,
+				D3E4B8052C4E4B6F000BEE9F /* CoinViewModel.swift in Sources */,
 				D35F005B2C173FA100780464 /* wowCastillaLeonTour.xcdatamodeld in Sources */,
 				D3E4B7802C3E88B6000BEE9F /* PuzzleModel.swift in Sources */,
 				D3DDA8922C18630900C43CBA /* AppState.swift in Sources */,
@@ -703,6 +710,7 @@
 				D3DDA8782C18548D00C43CBA /* User.swift in Sources */,
 				D3E4B8012C4E4730000BEE9F /* DatesView.swift in Sources */,
 				D3E4B77C2C3E888F000BEE9F /* FillGapModel.swift in Sources */,
+				D3E4B8072C4E4BB6000BEE9F /* DatesViewModel.swift in Sources */,
 				D3E4B77E2C3E88A3000BEE9F /* PointModel.swift in Sources */,
 				D35F004F2C173FA000780464 /* wowCastillaLeonTourApp.swift in Sources */,
 				D3E4B7FD2C4E470E000BEE9F /* QuestionAnswerView.swift in Sources */,
