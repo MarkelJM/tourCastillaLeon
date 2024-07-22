@@ -13,13 +13,14 @@ struct GradientBackgroundView: View {
             .edgesIgnoringSafeArea(.all)
     }
 }
-
+/*
 struct MultiColorGradientBackgroundView: View {
     var body: some View {
         LinearGradient(gradient: Gradient(colors: [Color.mateRed, Color.mateWhite, Color.gray]), startPoint: .topLeading, endPoint: .bottomTrailing)
             .edgesIgnoringSafeArea(.all)
     }
 }
+ */
 /*
 struct BackgroundExamplesView: View {
     var body: some View {
