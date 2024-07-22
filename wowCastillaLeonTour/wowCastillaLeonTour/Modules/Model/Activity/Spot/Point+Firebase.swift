@@ -15,9 +15,10 @@ extension Point {
               let province = firestoreData["province"] as? String,
               let name = firestoreData["name"] as? String,
               let title = firestoreData["title"] as? String,
-              let activityId = firestoreData["activity_id"] as? String, 
+              let activityId = firestoreData["activity_id"] as? String,
               let activityType = firestoreData["activity_type"] as? String,
               let image = firestoreData["image"] as? String,
+              let abstract = firestoreData["abstract"] as? String, 
               let coordinatesData = firestoreData["coordinates"] as? [String: Any],
               let latitude = coordinatesData["latitude"] as? Double,
               let longitude = coordinatesData["longitude"] as? Double else {
@@ -31,6 +32,7 @@ extension Point {
         self.activityId = activityId
         self.activityType = activityType
         self.image = image
+        self.abstract = abstract
         self.coordinates = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
     }
     
@@ -40,9 +42,10 @@ extension Point {
             "province": province,
             "name": name,
             "title": title,
-            "activity_id": activityId, // Verificar el campo
-            "activity_type": activityType, // Verificar el campo
+            "activity_id": activityId,
+            "activity_type": activityType,
             "image": image,
+            "abstract": abstract,
             "coordinates": [
                 "latitude": coordinates.latitude,
                 "longitude": coordinates.longitude
