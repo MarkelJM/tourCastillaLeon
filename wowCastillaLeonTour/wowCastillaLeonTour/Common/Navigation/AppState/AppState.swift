@@ -22,7 +22,12 @@ class AppState: ObservableObject {
         case profile
         case map
         case avatarSelection
-        case puzzle
+        case puzzle(id: String)
+        case coin(id: String)
+        case dates(id: String)
+        case fillGap(id: String)
+        case questionAnswer(id: String)
+        case takePhoto(id: String)
 
         
     }
