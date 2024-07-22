@@ -8,6 +8,8 @@
 import Foundation
 import FirebaseFirestore
 
+
+
 extension Puzzle {
     init?(from firestoreData: [String: Any]) {
         guard let id = firestoreData["id"] as? String,
@@ -18,7 +20,8 @@ extension Puzzle {
               let correctPositionsData = firestoreData["correctPositions"] as? [String: [String: NSNumber]],
               let customMessage = firestoreData["customMessage"] as? String,
               let correctAnswerMessage = firestoreData["correctAnswerMessage"] as? String,
-              let incorrectAnswerMessage = firestoreData["incorrectAnswerMessage"] as? String else {
+              let incorrectAnswerMessage = firestoreData["incorrectAnswerMessage"] as? String,
+              let abstract = firestoreData["abstract"] as? String else { // Añadido abstract
             return nil
         }
 
@@ -36,6 +39,7 @@ extension Puzzle {
         self.customMessage = customMessage
         self.correctAnswerMessage = correctAnswerMessage
         self.incorrectAnswerMessage = incorrectAnswerMessage
+        self.abstract = abstract // Asignado el valor a abstract
     }
 
     func toFirestoreData() -> [String: Any] {
@@ -50,7 +54,8 @@ extension Puzzle {
             "correctPositions": correctPositionsData,
             "customMessage": customMessage,
             "correctAnswerMessage": correctAnswerMessage,
-            "incorrectAnswerMessage": incorrectAnswerMessage
+            "incorrectAnswerMessage": incorrectAnswerMessage,
+            "abstract": abstract // Añadido abstract en la conversión a Firestore data
         ]
     }
 }
