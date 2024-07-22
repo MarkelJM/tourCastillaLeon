@@ -9,7 +9,7 @@ import Foundation
 import CoreLocation
 
 struct Point: Identifiable {
-    var id: String 
+    var id: String
     var province: String
     var name: String
     var title: String
@@ -17,6 +17,7 @@ struct Point: Identifiable {
     var activityType: String
     var image: String
     var coordinates: CLLocationCoordinate2D
+    var abstract: String 
 }
 
 struct Coordinate: Identifiable {
