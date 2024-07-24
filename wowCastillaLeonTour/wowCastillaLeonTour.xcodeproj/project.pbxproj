@@ -22,6 +22,7 @@
 		D38F8F6C2C50F98100315904 /* FirebaseFunctions in Frameworks */ = {isa = PBXBuildFile; productRef = D38F8F6B2C50F98100315904 /* FirebaseFunctions */; };
 		D38F8F6E2C50F98100315904 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = D38F8F6D2C50F98100315904 /* FirebaseMessaging */; };
 		D38F8F702C50F98100315904 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = D38F8F6F2C50F98100315904 /* FirebaseStorage */; };
+		D38F8F732C51032600315904 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38F8F722C51032600315904 /* BaseViewModel.swift */; };
 		D3DDA8782C18548D00C43CBA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDA8772C18548D00C43CBA /* User.swift */; };
 		D3DDA8822C18625200C43CBA /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDA8812C18625200C43CBA /* RegisterViewModel.swift */; };
 		D3DDA8862C18626A00C43CBA /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDA8852C18626A00C43CBA /* RegisterView.swift */; };
@@ -99,6 +100,7 @@
 		D35F005A2C173FA100780464 /* wowCastillaLeonTour.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = wowCastillaLeonTour.xcdatamodel; sourceTree = "<group>"; };
 		D35F00802C1740BE00780464 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D38F8F602C4E761100315904 /* PuzzlePiece.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzlePiece.swift; sourceTree = "<group>"; };
+		D38F8F722C51032600315904 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		D3DDA8772C18548D00C43CBA /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		D3DDA8812C18625200C43CBA /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
 		D3DDA8852C18626A00C43CBA /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
@@ -268,9 +270,18 @@
 			path = PuzzlePiece;
 			sourceTree = "<group>";
 		};
+		D38F8F712C51031400315904 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				D38F8F722C51032600315904 /* BaseViewModel.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
 		D3DDA8752C18547700C43CBA /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				D38F8F712C51031400315904 /* Base */,
 				D3E4B7C12C4681F3000BEE9F /* Design */,
 				D3E4B79F2C3FE13A000BEE9F /* Location */,
 				D3DDA89E2C19AC1800C43CBA /* Firebase */,
@@ -741,6 +752,7 @@
 				D35F00582C173FA100780464 /* Persistence.swift in Sources */,
 				D3E4B79E2C3E9575000BEE9F /* MapView.swift in Sources */,
 				D3DDA8AE2C19B10F00C43CBA /* User+Firebase.swift in Sources */,
+				D38F8F732C51032600315904 /* BaseViewModel.swift in Sources */,
 				D3E4B7822C3E88D0000BEE9F /* QuestionModel.swift in Sources */,
 				D3E4B74C2C19BAE4000BEE9F /* ProfileDataManager.swift in Sources */,
 				D3E4B7852C3E890A000BEE9F /* TakePhotoModel.swift in Sources */,
