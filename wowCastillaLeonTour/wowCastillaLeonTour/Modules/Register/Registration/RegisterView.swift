@@ -9,7 +9,9 @@ import SwiftUI
 
 struct RegisterView: View {
     @EnvironmentObject var appState: AppState
-    @StateObject private var viewModel = RegisterViewModel()
+    @ObservedObject var viewModel: RegisterViewModel
+
+    
 
     var body: some View {
         VStack {
@@ -48,8 +50,7 @@ struct RegisterView: View {
     }
 }
 
-
-
 #Preview {
-    RegisterView()
+    RegisterView(viewModel: RegisterViewModel())
+        .environmentObject(AppState())
 }

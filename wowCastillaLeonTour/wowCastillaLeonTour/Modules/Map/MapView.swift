@@ -46,7 +46,8 @@ struct MapView: View {
                     viewModel.fetchPoints()
                 }
                 .sheet(item: $selectedPoint) { point in
-                    MapCallOutView(point: point)
+                    MapCallOutView(point: point, viewModel: viewModel) // Pasar el viewModel al MapCallOutView
+                        .environmentObject(appState) // Pasar appState si es necesario
                 }
             }
         }

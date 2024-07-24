@@ -10,24 +10,24 @@ import Combine
 import CoreLocation
 import MapKit
 
-class MapViewModel: ObservableObject {
+class MapViewModel: BaseViewModel {
     @Published var points: [Point] = []
-    @Published var errorMessage: String?
     @Published var authorizationStatus: CLAuthorizationStatus?
     @Published var region: MKCoordinateRegion
 
     private var locationManager = LocationManager()
-    private var cancellables = Set<AnyCancellable>()
     private var dataManager = MapDataManager()
     private var hasCenteredOnUser = false
 
-    init() {
+    override init() {
         // Inicializar la región para Castilla y León
         self.region = MKCoordinateRegion(
             center: CLLocationCoordinate2D(latitude: 41.6528, longitude: -2.7286), // Centro aproximado de Castilla y León
             span: MKCoordinateSpan(latitudeDelta: 2.0, longitudeDelta: 2.0)
         )
+        super.init()
         setupBindings()
+        fetchUserProfile()
     }
 
     private func setupBindings() {

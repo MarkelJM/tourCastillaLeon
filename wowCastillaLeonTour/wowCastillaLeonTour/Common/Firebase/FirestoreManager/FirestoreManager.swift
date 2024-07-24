@@ -4,6 +4,7 @@
 //
 //  Created by Markel Juaristi on 12/6/24.
 //
+
 import Foundation
 import FirebaseFirestore
 import FirebaseAuth
@@ -14,10 +15,11 @@ class FirestoreManager {
     private let auth = Auth.auth()
     
     // Create user profile in Firestore
-    func createUserProfile(user: User) -> Future<Void, Error> {
-        return Future { promise in
+    func createUserProfile(user: User) -> AnyPublisher<Void, Error> {
+        Future { promise in
             guard let uid = self.auth.currentUser?.uid else {
-                return promise(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "User ID not found"])))
+                promise(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "User ID not found"])))
+                return
             }
             
             let userData = user.toFirestoreData()
@@ -30,13 +32,15 @@ class FirestoreManager {
                 }
             }
         }
+        .eraseToAnyPublisher()
     }
     
     // Fetch user profile from Firestore
-    func fetchUserProfile() -> Future<User, Error> {
-        return Future { promise in
+    func fetchUserProfile() -> AnyPublisher<User, Error> {
+        Future { promise in
             guard let uid = self.auth.currentUser?.uid else {
-                return promise(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "User ID not found"])))
+                promise(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "User ID not found"])))
+                return
             }
             
             self.db.collection("users").document(uid).getDocument { document, error in
@@ -54,40 +58,63 @@ class FirestoreManager {
                 }
             }
         }
+        .eraseToAnyPublisher()
     }
     
-    // Update task IDs in Firestore
-    func updateUserTaskIDs(taskID: String, activityType: String) -> Future<Void, Error> {
-        return Future { promise in
+    // Update user task IDs
+    func updateUserTaskIDs(taskID: String, activityType: String) -> AnyPublisher<Void, Error> {
+        Future { promise in
             guard let uid = self.auth.currentUser?.uid else {
-                return promise(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "User ID not found"])))
-            }
-            
-            var field: String
-            
-            switch activityType {
-            case "coin":
-                field = "coinTaskIDs"
-            case "gadget":
-                field = "gadgetTaskIDs"
-            default:
-                field = "taskIDs"
+                promise(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "User ID not found"])))
+                return
             }
             
             let userRef = self.db.collection("users").document(uid)
-            userRef.updateData([field: FieldValue.arrayUnion([taskID])]) { error in
+            userRef.getDocument { document, error in
                 if let error = error {
                     promise(.failure(error))
+                } else if let document = document, document.exists {
+                    var data = document.data() ?? [:]
+                    var taskIDs = data["taskIDs"] as? [String] ?? []
+                    
+                    switch activityType {
+                    case "coin":
+                        var coinTaskIDs = data["coinTaskIDs"] as? [String] ?? []
+                        if !coinTaskIDs.contains(taskID) {
+                            coinTaskIDs.append(taskID)
+                        }
+                        data["coinTaskIDs"] = coinTaskIDs
+                    case "gadget":
+                        var gadgetTaskIDs = data["gadgetTaskIDs"] as? [String] ?? []
+                        if !gadgetTaskIDs.contains(taskID) {
+                            gadgetTaskIDs.append(taskID)
+                        }
+                        data["gadgetTaskIDs"] = gadgetTaskIDs
+                    default:
+                        if !taskIDs.contains(taskID) {
+                            taskIDs.append(taskID)
+                        }
+                        data["taskIDs"] = taskIDs
+                    }
+                    
+                    userRef.setData(data) { error in
+                        if let error = error {
+                            promise(.failure(error))
+                        } else {
+                            promise(.success(()))
+                        }
+                    }
                 } else {
-                    promise(.success(()))
+                    promise(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Document does not exist"])))
                 }
             }
         }
+        .eraseToAnyPublisher()
     }
     
     // Register new user with FirebaseAuth
-    func registerUser(email: String, password: String) -> Future<Void, Error> {
-        return Future { promise in
+    func registerUser(email: String, password: String) -> AnyPublisher<Void, Error> {
+        Future { promise in
             self.auth.createUser(withEmail: email, password: password) { authResult, error in
                 if let error = error {
                     promise(.failure(error))
@@ -96,24 +123,12 @@ class FirestoreManager {
                 }
             }
         }
-    }
-    
-    // Login user with FirebaseAuth
-    func loginUser(email: String, password: String) -> Future<Void, Error> {
-        return Future { promise in
-            self.auth.signIn(withEmail: email, password: password) { authResult, error in
-                if let error = error {
-                    promise(.failure(error))
-                } else {
-                    promise(.success(()))
-                }
-            }
-        }
+        .eraseToAnyPublisher()
     }
     
     // Send email verification
-    func sendEmailVerification() -> Future<Void, Error> {
-        return Future { promise in
+    func sendEmailVerification() -> AnyPublisher<Void, Error> {
+        Future { promise in
             self.auth.currentUser?.sendEmailVerification { error in
                 if let error = error {
                     promise(.failure(error))
@@ -122,11 +137,12 @@ class FirestoreManager {
                 }
             }
         }
+        .eraseToAnyPublisher()
     }
     
     // Check email verification status
-    func checkEmailVerification() -> Future<Bool, Error> {
-        return Future { promise in
+    func checkEmailVerification() -> AnyPublisher<Bool, Error> {
+        Future { promise in
             self.auth.currentUser?.reload { error in
                 if let error = error {
                     promise(.failure(error))
@@ -137,5 +153,20 @@ class FirestoreManager {
                 }
             }
         }
+        .eraseToAnyPublisher()
+    }
+    
+    // Login user with FirebaseAuth
+    func loginUser(email: String, password: String) -> AnyPublisher<Void, Error> {
+        Future { promise in
+            self.auth.signIn(withEmail: email, password: password) { authResult, error in
+                if let error = error {
+                    promise(.failure(error))
+                } else {
+                    promise(.success(()))
+                }
+            }
+        }
+        .eraseToAnyPublisher()
     }
 }
