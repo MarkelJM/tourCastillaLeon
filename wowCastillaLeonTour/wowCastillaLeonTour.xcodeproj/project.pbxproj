@@ -14,6 +14,7 @@
 		D35F00582C173FA100780464 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35F00572C173FA100780464 /* Persistence.swift */; };
 		D35F005B2C173FA100780464 /* wowCastillaLeonTour.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D35F00592C173FA100780464 /* wowCastillaLeonTour.xcdatamodeld */; };
 		D35F00812C1740BE00780464 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D35F00802C1740BE00780464 /* GoogleService-Info.plist */; };
+		D38F8F612C4E761100315904 /* PuzzlePiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38F8F602C4E761100315904 /* PuzzlePiece.swift */; };
 		D3DDA8782C18548D00C43CBA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDA8772C18548D00C43CBA /* User.swift */; };
 		D3DDA8822C18625200C43CBA /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDA8812C18625200C43CBA /* RegisterViewModel.swift */; };
 		D3DDA8862C18626A00C43CBA /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDA8852C18626A00C43CBA /* RegisterView.swift */; };
@@ -66,6 +67,26 @@
 		D3E4B7EE2C47D9D7000BEE9F /* FirebaseFunctions in Frameworks */ = {isa = PBXBuildFile; productRef = D3E4B7ED2C47D9D7000BEE9F /* FirebaseFunctions */; };
 		D3E4B7F02C47D9D7000BEE9F /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = D3E4B7EF2C47D9D7000BEE9F /* FirebaseMessaging */; };
 		D3E4B7F22C47D9D7000BEE9F /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = D3E4B7F12C47D9D7000BEE9F /* FirebaseStorage */; };
+		D3E4B7FB2C4E46FA000BEE9F /* TakePhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B7FA2C4E46FA000BEE9F /* TakePhotoView.swift */; };
+		D3E4B7FD2C4E470E000BEE9F /* QuestionAnswerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B7FC2C4E470E000BEE9F /* QuestionAnswerView.swift */; };
+		D3E4B7FF2C4E471D000BEE9F /* FillGapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B7FE2C4E471D000BEE9F /* FillGapView.swift */; };
+		D3E4B8012C4E4730000BEE9F /* DatesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B8002C4E4730000BEE9F /* DatesView.swift */; };
+		D3E4B8032C4E4741000BEE9F /* CoinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B8022C4E4741000BEE9F /* CoinView.swift */; };
+		D3E4B8052C4E4B6F000BEE9F /* CoinViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B8042C4E4B6F000BEE9F /* CoinViewModel.swift */; };
+		D3E4B8072C4E4BB6000BEE9F /* DatesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B8062C4E4BB6000BEE9F /* DatesViewModel.swift */; };
+		D3E4B8092C4E4BE8000BEE9F /* FillGapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B8082C4E4BE8000BEE9F /* FillGapViewModel.swift */; };
+		D3E4B80B2C4E4C15000BEE9F /* QuestionAnswerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B80A2C4E4C15000BEE9F /* QuestionAnswerViewModel.swift */; };
+		D3E4B80D2C4E4C42000BEE9F /* TakePhotoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B80C2C4E4C42000BEE9F /* TakePhotoViewModel.swift */; };
+		D3E4B80F2C4E4F72000BEE9F /* CoinDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B80E2C4E4F72000BEE9F /* CoinDataManager.swift */; };
+		D3E4B8112C4E4FA6000BEE9F /* DatesDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B8102C4E4FA6000BEE9F /* DatesDataManager.swift */; };
+		D3E4B8132C4E4FC2000BEE9F /* FillGapDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B8122C4E4FC2000BEE9F /* FillGapDataManager.swift */; };
+		D3E4B8152C4E4FD8000BEE9F /* QuestionAnswerDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B8142C4E4FD8000BEE9F /* QuestionAnswerDataManager.swift */; };
+		D3E4B8172C4E4FEF000BEE9F /* TakePhotoDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B8162C4E4FEF000BEE9F /* TakePhotoDataManager.swift */; };
+		D3E4B8192C4E50D6000BEE9F /* CoinFirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B8182C4E50D6000BEE9F /* CoinFirestoreManager.swift */; };
+		D3E4B81B2C4E50F7000BEE9F /* DatesFirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B81A2C4E50F7000BEE9F /* DatesFirestoreManager.swift */; };
+		D3E4B81D2C4E5111000BEE9F /* FillGapFirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B81C2C4E5111000BEE9F /* FillGapFirestoreManager.swift */; };
+		D3E4B81F2C4E512B000BEE9F /* QuestionAnswerFirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B81E2C4E512B000BEE9F /* QuestionAnswerFirestoreManager.swift */; };
+		D3E4B8212C4E514F000BEE9F /* TakePhotoFirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B8202C4E514F000BEE9F /* TakePhotoFirestoreManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -77,6 +98,7 @@
 		D35F00572C173FA100780464 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		D35F005A2C173FA100780464 /* wowCastillaLeonTour.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = wowCastillaLeonTour.xcdatamodel; sourceTree = "<group>"; };
 		D35F00802C1740BE00780464 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D38F8F602C4E761100315904 /* PuzzlePiece.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzlePiece.swift; sourceTree = "<group>"; };
 		D3DDA8772C18548D00C43CBA /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		D3DDA8812C18625200C43CBA /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
 		D3DDA8852C18626A00C43CBA /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
@@ -122,6 +144,26 @@
 		D3E4B7DE2C47D930000BEE9F /* PuzzleDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzleDataManager.swift; sourceTree = "<group>"; };
 		D3E4B7E02C47D961000BEE9F /* PuzzleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzleViewModel.swift; sourceTree = "<group>"; };
 		D3E4B7E22C47D992000BEE9F /* PuzzleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzleView.swift; sourceTree = "<group>"; };
+		D3E4B7FA2C4E46FA000BEE9F /* TakePhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakePhotoView.swift; sourceTree = "<group>"; };
+		D3E4B7FC2C4E470E000BEE9F /* QuestionAnswerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionAnswerView.swift; sourceTree = "<group>"; };
+		D3E4B7FE2C4E471D000BEE9F /* FillGapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FillGapView.swift; sourceTree = "<group>"; };
+		D3E4B8002C4E4730000BEE9F /* DatesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatesView.swift; sourceTree = "<group>"; };
+		D3E4B8022C4E4741000BEE9F /* CoinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinView.swift; sourceTree = "<group>"; };
+		D3E4B8042C4E4B6F000BEE9F /* CoinViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinViewModel.swift; sourceTree = "<group>"; };
+		D3E4B8062C4E4BB6000BEE9F /* DatesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatesViewModel.swift; sourceTree = "<group>"; };
+		D3E4B8082C4E4BE8000BEE9F /* FillGapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FillGapViewModel.swift; sourceTree = "<group>"; };
+		D3E4B80A2C4E4C15000BEE9F /* QuestionAnswerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionAnswerViewModel.swift; sourceTree = "<group>"; };
+		D3E4B80C2C4E4C42000BEE9F /* TakePhotoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakePhotoViewModel.swift; sourceTree = "<group>"; };
+		D3E4B80E2C4E4F72000BEE9F /* CoinDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinDataManager.swift; sourceTree = "<group>"; };
+		D3E4B8102C4E4FA6000BEE9F /* DatesDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatesDataManager.swift; sourceTree = "<group>"; };
+		D3E4B8122C4E4FC2000BEE9F /* FillGapDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FillGapDataManager.swift; sourceTree = "<group>"; };
+		D3E4B8142C4E4FD8000BEE9F /* QuestionAnswerDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionAnswerDataManager.swift; sourceTree = "<group>"; };
+		D3E4B8162C4E4FEF000BEE9F /* TakePhotoDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakePhotoDataManager.swift; sourceTree = "<group>"; };
+		D3E4B8182C4E50D6000BEE9F /* CoinFirestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinFirestoreManager.swift; sourceTree = "<group>"; };
+		D3E4B81A2C4E50F7000BEE9F /* DatesFirestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatesFirestoreManager.swift; sourceTree = "<group>"; };
+		D3E4B81C2C4E5111000BEE9F /* FillGapFirestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FillGapFirestoreManager.swift; sourceTree = "<group>"; };
+		D3E4B81E2C4E512B000BEE9F /* QuestionAnswerFirestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionAnswerFirestoreManager.swift; sourceTree = "<group>"; };
+		D3E4B8202C4E514F000BEE9F /* TakePhotoFirestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakePhotoFirestoreManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,6 +228,11 @@
 		D35F007D2C173FBB00780464 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				D3E4B7F92C4E46C9000BEE9F /* TakePhotoTask */,
+				D3E4B7F82C4E46B6000BEE9F /* QuestionAnswerTask */,
+				D3E4B7F72C4E46AE000BEE9F /* FillGapTask */,
+				D3E4B7F62C4E46A7000BEE9F /* DatesTask */,
+				D3E4B7F52C4E469A000BEE9F /* CoinTask */,
 				D3E4B7DB2C47D8D3000BEE9F /* PuzzleTask */,
 				D3E4B7962C3E9339000BEE9F /* Map */,
 				D3E4B7532C19BBFE000BEE9F /* Home */,
@@ -211,6 +258,14 @@
 				D35F00522C173FA100780464 /* Assets.xcassets */,
 			);
 			path = SupportitngFiles;
+			sourceTree = "<group>";
+		};
+		D38F8F5F2C4E760200315904 /* PuzzlePiece */ = {
+			isa = PBXGroup;
+			children = (
+				D38F8F602C4E761100315904 /* PuzzlePiece.swift */,
+			);
+			path = PuzzlePiece;
 			sourceTree = "<group>";
 		};
 		D3DDA8752C18547700C43CBA /* Common */ = {
@@ -401,6 +456,7 @@
 		D3E4B7752C3E8838000BEE9F /* Puzzle */ = {
 			isa = PBXGroup;
 			children = (
+				D38F8F5F2C4E760200315904 /* PuzzlePiece */,
 				D3E4B77F2C3E88B6000BEE9F /* PuzzleModel.swift */,
 				D3E4B78E2C3E8FEE000BEE9F /* Puzzle+Firebase.swift */,
 			);
@@ -488,6 +544,61 @@
 				D3E4B7E22C47D992000BEE9F /* PuzzleView.swift */,
 			);
 			path = PuzzleTask;
+			sourceTree = "<group>";
+		};
+		D3E4B7F52C4E469A000BEE9F /* CoinTask */ = {
+			isa = PBXGroup;
+			children = (
+				D3E4B8022C4E4741000BEE9F /* CoinView.swift */,
+				D3E4B8042C4E4B6F000BEE9F /* CoinViewModel.swift */,
+				D3E4B80E2C4E4F72000BEE9F /* CoinDataManager.swift */,
+				D3E4B8182C4E50D6000BEE9F /* CoinFirestoreManager.swift */,
+			);
+			path = CoinTask;
+			sourceTree = "<group>";
+		};
+		D3E4B7F62C4E46A7000BEE9F /* DatesTask */ = {
+			isa = PBXGroup;
+			children = (
+				D3E4B8002C4E4730000BEE9F /* DatesView.swift */,
+				D3E4B8062C4E4BB6000BEE9F /* DatesViewModel.swift */,
+				D3E4B8102C4E4FA6000BEE9F /* DatesDataManager.swift */,
+				D3E4B81A2C4E50F7000BEE9F /* DatesFirestoreManager.swift */,
+			);
+			path = DatesTask;
+			sourceTree = "<group>";
+		};
+		D3E4B7F72C4E46AE000BEE9F /* FillGapTask */ = {
+			isa = PBXGroup;
+			children = (
+				D3E4B7FE2C4E471D000BEE9F /* FillGapView.swift */,
+				D3E4B8082C4E4BE8000BEE9F /* FillGapViewModel.swift */,
+				D3E4B8122C4E4FC2000BEE9F /* FillGapDataManager.swift */,
+				D3E4B81C2C4E5111000BEE9F /* FillGapFirestoreManager.swift */,
+			);
+			path = FillGapTask;
+			sourceTree = "<group>";
+		};
+		D3E4B7F82C4E46B6000BEE9F /* QuestionAnswerTask */ = {
+			isa = PBXGroup;
+			children = (
+				D3E4B7FC2C4E470E000BEE9F /* QuestionAnswerView.swift */,
+				D3E4B80A2C4E4C15000BEE9F /* QuestionAnswerViewModel.swift */,
+				D3E4B8142C4E4FD8000BEE9F /* QuestionAnswerDataManager.swift */,
+				D3E4B81E2C4E512B000BEE9F /* QuestionAnswerFirestoreManager.swift */,
+			);
+			path = QuestionAnswerTask;
+			sourceTree = "<group>";
+		};
+		D3E4B7F92C4E46C9000BEE9F /* TakePhotoTask */ = {
+			isa = PBXGroup;
+			children = (
+				D3E4B7FA2C4E46FA000BEE9F /* TakePhotoView.swift */,
+				D3E4B80C2C4E4C42000BEE9F /* TakePhotoViewModel.swift */,
+				D3E4B8162C4E4FEF000BEE9F /* TakePhotoDataManager.swift */,
+				D3E4B8202C4E514F000BEE9F /* TakePhotoFirestoreManager.swift */,
+			);
+			path = TakePhotoTask;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -602,12 +713,18 @@
 				D3E4B7892C3E8C4B000BEE9F /* Dates+Firebase.swift in Sources */,
 				D3DDA8A12C19AC3200C43CBA /* FirestoreManager.swift in Sources */,
 				D3E4B7D62C4682C3000BEE9F /* BackgroundView.swift in Sources */,
+				D3E4B8052C4E4B6F000BEE9F /* CoinViewModel.swift in Sources */,
 				D35F005B2C173FA100780464 /* wowCastillaLeonTour.xcdatamodeld in Sources */,
 				D3E4B7802C3E88B6000BEE9F /* PuzzleModel.swift in Sources */,
 				D3DDA8922C18630900C43CBA /* AppState.swift in Sources */,
+				D3E4B8112C4E4FA6000BEE9F /* DatesDataManager.swift in Sources */,
+				D3E4B80B2C4E4C15000BEE9F /* QuestionAnswerViewModel.swift in Sources */,
+				D3E4B8172C4E4FEF000BEE9F /* TakePhotoDataManager.swift in Sources */,
 				D3DDA8972C18709500C43CBA /* LoginViewModel.swift in Sources */,
 				D3E4B7D42C4682B2000BEE9F /* ColorButtonView.swift in Sources */,
+				D3E4B8132C4E4FC2000BEE9F /* FillGapDataManager.swift in Sources */,
 				D3E4B78F2C3E8FEE000BEE9F /* Puzzle+Firebase.swift in Sources */,
+				D3E4B8032C4E4741000BEE9F /* CoinView.swift in Sources */,
 				D3DDA88E2C1862BB00C43CBA /* NavigationState.swift in Sources */,
 				D3E4B7C02C458BEF000BEE9F /* AvatarSelectionView.swift in Sources */,
 				D3E4B7482C19BAB7000BEE9F /* RegisterDataManager.swift in Sources */,
@@ -616,7 +733,11 @@
 				D3E4B77A2C3E8879000BEE9F /* DateModel.swift in Sources */,
 				D3DDA8A52C19AD1D00C43CBA /* ProfileViewModel.swift in Sources */,
 				D3DDA8A92C19AD6800C43CBA /* ProfileView.swift in Sources */,
+				D3E4B80D2C4E4C42000BEE9F /* TakePhotoViewModel.swift in Sources */,
+				D3E4B81B2C4E50F7000BEE9F /* DatesFirestoreManager.swift in Sources */,
 				D3E4B7872C3E8C1D000BEE9F /* Coin+Firebase.swift in Sources */,
+				D3E4B80F2C4E4F72000BEE9F /* CoinDataManager.swift in Sources */,
+				D3E4B81D2C4E5111000BEE9F /* FillGapFirestoreManager.swift in Sources */,
 				D35F00582C173FA100780464 /* Persistence.swift in Sources */,
 				D3E4B79E2C3E9575000BEE9F /* MapView.swift in Sources */,
 				D3DDA8AE2C19B10F00C43CBA /* User+Firebase.swift in Sources */,
@@ -625,27 +746,38 @@
 				D3E4B7852C3E890A000BEE9F /* TakePhotoModel.swift in Sources */,
 				D3E4B79C2C3E9562000BEE9F /* MapViewModel.swift in Sources */,
 				D3E4B7DA2C4683C7000BEE9F /* Color.swift in Sources */,
+				D3E4B7FB2C4E46FA000BEE9F /* TakePhotoView.swift in Sources */,
+				D3E4B7FF2C4E471D000BEE9F /* FillGapView.swift in Sources */,
 				D3E4B78D2C3E8FC4000BEE9F /* Point+Firebase.swift in Sources */,
 				D3DDA89B2C1870AC00C43CBA /* LoginView.swift in Sources */,
 				D3E4B7782C3E885B000BEE9F /* CoinModel.swift in Sources */,
+				D38F8F612C4E761100315904 /* PuzzlePiece.swift in Sources */,
 				D3E4B78B2C3E8FA2000BEE9F /* FillGap+Firebase.swift in Sources */,
 				D3E4B7912C3E9066000BEE9F /* Question+Firebase.swift in Sources */,
+				D3E4B8212C4E514F000BEE9F /* TakePhotoFirestoreManager.swift in Sources */,
 				D3E4B7552C19BC0C000BEE9F /* HomeView.swift in Sources */,
 				D3E4B7E32C47D992000BEE9F /* PuzzleView.swift in Sources */,
 				D3E4B7DD2C47D902000BEE9F /* PuzzleFirestoreManager.swift in Sources */,
+				D3E4B8192C4E50D6000BEE9F /* CoinFirestoreManager.swift in Sources */,
 				D3E4B7982C3E9547000BEE9F /* MapFirestoreManager.swift in Sources */,
 				D3E4B7DF2C47D930000BEE9F /* PuzzleDataManager.swift in Sources */,
 				D3E4B79A2C3E9558000BEE9F /* MapDatamanager.swift in Sources */,
 				D3E4B7A62C4117CF000BEE9F /* MapCallOut.swift in Sources */,
 				D3DDA8862C18626A00C43CBA /* RegisterView.swift in Sources */,
 				D3DDA88A2C18629300C43CBA /* VerificationEmailView.swift in Sources */,
+				D3E4B8092C4E4BE8000BEE9F /* FillGapViewModel.swift in Sources */,
 				D3E4B7502C19BAF7000BEE9F /* LoginDataManager.swift in Sources */,
+				D3E4B8152C4E4FD8000BEE9F /* QuestionAnswerDataManager.swift in Sources */,
+				D3E4B81F2C4E512B000BEE9F /* QuestionAnswerFirestoreManager.swift in Sources */,
 				D3E4B7932C3E9084000BEE9F /* TakePhoto+Firebase.swift in Sources */,
 				D35F00512C173FA000780464 /* ContentView.swift in Sources */,
 				D3DDA8782C18548D00C43CBA /* User.swift in Sources */,
+				D3E4B8012C4E4730000BEE9F /* DatesView.swift in Sources */,
 				D3E4B77C2C3E888F000BEE9F /* FillGapModel.swift in Sources */,
+				D3E4B8072C4E4BB6000BEE9F /* DatesViewModel.swift in Sources */,
 				D3E4B77E2C3E88A3000BEE9F /* PointModel.swift in Sources */,
 				D35F004F2C173FA000780464 /* wowCastillaLeonTourApp.swift in Sources */,
+				D3E4B7FD2C4E470E000BEE9F /* QuestionAnswerView.swift in Sources */,
 				D3E4B7A12C3FE14C000BEE9F /* LocationManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -15,15 +15,18 @@ class AppState: ObservableObject {
         }
     }
 
-    enum AppView {
+    enum AppView: Equatable {
         case registerEmail
         case emailVerification
         case login
         case profile
         case map
         case avatarSelection
-        case puzzle
-
-        
+        case puzzle(id: String)
+        case coin(id: String)
+        case dates(id: String)
+        case fillGap(id: String)
+        case questionAnswer(id: String)
+        case takePhoto(id: String)
     }
 }

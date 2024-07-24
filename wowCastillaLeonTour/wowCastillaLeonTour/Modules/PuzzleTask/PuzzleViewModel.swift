@@ -16,13 +16,18 @@ class PuzzleViewModel: ObservableObject {
     @Published var draggingPiece: String?
     @Published var showSheet: Bool = false
     @Published var alertMessage: String = ""
-
-    private var cancellables = Set<AnyCancellable>()
-    private let dataManager = PuzzleDataManager()
     
-    func fetchPuzzles() {
+    private let dataManager = PuzzleDataManager()
+    private var cancellables = Set<AnyCancellable>()
+    private var activityId: String
+    
+    init(activityId: String) {
+        self.activityId = activityId
+    }
+    
+    func fetchPuzzle() {
         isLoading = true
-        dataManager.fetchPuzzles()
+        dataManager.fetchPuzzleById(activityId)
             .receive(on: DispatchQueue.main)
             .sink { completion in
                 switch completion {
@@ -32,17 +37,11 @@ class PuzzleViewModel: ObservableObject {
                 case .finished:
                     break
                 }
-            } receiveValue: { puzzles in
-                self.puzzles = puzzles
+            } receiveValue: { puzzle in
+                self.puzzles = [puzzle]
                 self.isLoading = false
             }
             .store(in: &cancellables)
-    }
-
-    func loadMockPuzzles() {
-        self.puzzles = dataManager.loadMockPuzzles()
-        self.isLoading = false
-        print("Mock puzzles loaded: \(self.puzzles)")
     }
     
     func updateDraggedPiecePosition(to location: CGPoint, key: String) {
@@ -66,7 +65,7 @@ class PuzzleViewModel: ObservableObject {
         
         for (key, correctPosition) in puzzle.correctPositions {
             if let currentPosition = droppedPieces[key] {
-                let tolerance: CGFloat = 10.0 // Tolerancia en puntos
+                let tolerance: CGFloat = 500.0 // Tolerancia en puntos
                 let correctX = correctPosition.x * 500 // Ajusta según el tamaño de la imagen principal
                 let correctY = correctPosition.y * 500
                 let differenceX = abs(currentPosition.x - correctX)
