@@ -39,4 +39,7 @@ struct User: Identifiable, Codable {
     var city: String
     var province: Province
     var avatar: Avatar
+    var taskIDs: [String]
+    var coinTaskIDs: [String]
+    var gadgetTaskIDs: [String]
 }
