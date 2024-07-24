@@ -53,6 +53,34 @@ class FirestoreManager {
         }
     }
     
+    // Update task IDs in Firestore
+    func updateUserTaskIDs(taskID: String, activityType: String, completion: @escaping (Result<Void, Error>) -> Void) {
+        guard let uid = auth.currentUser?.uid else {
+            completion(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "User ID not found"])))
+            return
+        }
+        
+        var field: String
+        
+        switch activityType {
+        case "coin":
+            field = "coinTaskIDs"
+        case "gadget":
+            field = "gadgetTaskIDs"
+        default:
+            field = "taskIDs"
+        }
+        
+        let userRef = db.collection("users").document(uid)
+        userRef.updateData([field: FieldValue.arrayUnion([taskID])]) { error in
+            if let error = error {
+                completion(.failure(error))
+            } else {
+                completion(.success(()))
+            }
+        }
+    }
+    
     // Register new user with FirebaseAuth
     func registerUser(email: String, password: String, completion: @escaping (Result<Void, Error>) -> Void) {
         auth.createUser(withEmail: email, password: password) { authResult, error in
