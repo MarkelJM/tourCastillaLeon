@@ -17,4 +17,6 @@ struct Puzzle: Identifiable {
     var customMessage: String
     var correctAnswerMessage: String
     var incorrectAnswerMessage: String
+    var isCapital: Bool 
+
 }

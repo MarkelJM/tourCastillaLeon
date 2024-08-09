@@ -21,6 +21,17 @@ class ProfileViewModel: ObservableObject {
     @Published var taskIDs: [String] = []
     @Published var coinTaskIDs: [String] = []
     @Published var gadgetTaskIDs: [String] = []
+    @Published var usedCoinTaskIDs: [String] = []
+    @Published var specialRewards: [String] = []
+    @Published var avilaCityTaskIDs: [String] = []
+    @Published var burgosCityTaskIDs: [String] = []
+    @Published var leonCityTaskIDs: [String] = []
+    @Published var palenciaCityTaskIDs: [String] = []
+    @Published var salamancaCityTaskIDs: [String] = []
+    @Published var segoviaCityTaskIDs: [String] = []
+    @Published var soriaCityTaskIDs: [String] = []
+    @Published var valladolidCityTaskIDs: [String] = []
+    @Published var zamoraCityTaskIDs: [String] = []
     @Published var showError: Bool = false
     @Published var errorMessage: String = ""
     @Published var navigateToAvatarSelection: Bool = false
@@ -43,7 +54,18 @@ class ProfileViewModel: ObservableObject {
             avatar: avatar,
             taskIDs: taskIDs,
             coinTaskIDs: coinTaskIDs,
-            gadgetTaskIDs: gadgetTaskIDs
+            gadgetTaskIDs: gadgetTaskIDs,
+            usedCoinTaskIDs: usedCoinTaskIDs,
+            specialRewards: specialRewards,
+            avilaCityTaskIDs: avilaCityTaskIDs,
+            burgosCityTaskIDs: burgosCityTaskIDs,
+            leonCityTaskIDs: leonCityTaskIDs,
+            palenciaCityTaskIDs: palenciaCityTaskIDs,
+            salamancaCityTaskIDs: salamancaCityTaskIDs,
+            segoviaCityTaskIDs: segoviaCityTaskIDs,
+            soriaCityTaskIDs: soriaCityTaskIDs,
+            valladolidCityTaskIDs: valladolidCityTaskIDs,
+            zamoraCityTaskIDs: zamoraCityTaskIDs
         )
         
         dataManager.createUserProfile(user: user)
@@ -85,6 +107,17 @@ class ProfileViewModel: ObservableObject {
                 self.taskIDs = user.taskIDs
                 self.coinTaskIDs = user.coinTaskIDs
                 self.gadgetTaskIDs = user.gadgetTaskIDs
+                self.usedCoinTaskIDs = user.usedCoinTaskIDs
+                self.specialRewards = user.specialRewards
+                self.avilaCityTaskIDs = user.avilaCityTaskIDs
+                self.burgosCityTaskIDs = user.burgosCityTaskIDs
+                self.leonCityTaskIDs = user.leonCityTaskIDs
+                self.palenciaCityTaskIDs = user.palenciaCityTaskIDs
+                self.salamancaCityTaskIDs = user.salamancaCityTaskIDs
+                self.segoviaCityTaskIDs = user.segoviaCityTaskIDs
+                self.soriaCityTaskIDs = user.soriaCityTaskIDs
+                self.valladolidCityTaskIDs = user.valladolidCityTaskIDs
+                self.zamoraCityTaskIDs = user.zamoraCityTaskIDs
             }
             .store(in: &cancellables)
     }

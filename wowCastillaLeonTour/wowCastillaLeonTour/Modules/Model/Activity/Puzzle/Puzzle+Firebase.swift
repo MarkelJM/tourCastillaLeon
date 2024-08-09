@@ -18,7 +18,8 @@ extension Puzzle {
               let correctPositionsData = firestoreData["correctPositions"] as? [String: [String: Any]],
               let customMessage = firestoreData["custom_message"] as? String,
               let correctAnswerMessage = firestoreData["correct_answer_message"] as? String,
-              let incorrectAnswerMessage = firestoreData["incorrect_answer_message"] as? String else {
+              let incorrectAnswerMessage = firestoreData["incorrect_answer_message"] as? String,
+              let isCapital = firestoreData["isCapital"] as? Bool else {
             return nil
         }
 
@@ -41,6 +42,7 @@ extension Puzzle {
         self.customMessage = customMessage
         self.correctAnswerMessage = correctAnswerMessage
         self.incorrectAnswerMessage = incorrectAnswerMessage
+        self.isCapital = isCapital
     }
 
     func toFirestoreData() -> [String: Any] {
@@ -55,7 +57,8 @@ extension Puzzle {
             "correctPositions": correctPositionsData,
             "custom_message": customMessage,
             "correct_answer_message": correctAnswerMessage,
-            "incorrect_answer_message": incorrectAnswerMessage
+            "incorrect_answer_message": incorrectAnswerMessage,
+            "isCapital": isCapital
         ]
     }
 }

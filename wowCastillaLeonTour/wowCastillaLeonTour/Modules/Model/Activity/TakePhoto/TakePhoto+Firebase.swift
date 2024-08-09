@@ -15,7 +15,8 @@ extension TakePhoto {
               let question = firestoreData["question"] as? String,
               let customMessage = firestoreData["customMessage"] as? String,
               let correctAnswerMessage = firestoreData["correctAnswerMessage"] as? String,
-              let incorrectAnswerMessage = firestoreData["incorrectAnswerMessage"] as? String else {
+              let incorrectAnswerMessage = firestoreData["incorrectAnswerMessage"] as? String,
+              let isCapital = firestoreData["isCapital"] as? Bool else {
             return nil
         }
 
@@ -25,6 +26,7 @@ extension TakePhoto {
         self.customMessage = customMessage
         self.correctAnswerMessage = correctAnswerMessage
         self.incorrectAnswerMessage = incorrectAnswerMessage
+        self.isCapital = isCapital
     }
     
     func toFirestoreData() -> [String: Any] {
@@ -34,7 +36,8 @@ extension TakePhoto {
             "question": question,
             "customMessage": customMessage,
             "correctAnswerMessage": correctAnswerMessage,
-            "incorrectAnswerMessage": incorrectAnswerMessage
+            "incorrectAnswerMessage": incorrectAnswerMessage,
+            "isCapital": isCapital
         ]
     }
 }
