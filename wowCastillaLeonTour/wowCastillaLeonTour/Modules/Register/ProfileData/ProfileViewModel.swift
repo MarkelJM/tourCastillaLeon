@@ -84,6 +84,8 @@ class ProfileViewModel: ObservableObject {
             .store(in: &cancellables)
     }
     
+    
+    
     func fetchUserProfile() {
         dataManager.fetchUserProfile()
             .receive(on: DispatchQueue.main)

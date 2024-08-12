@@ -9,18 +9,22 @@ import Foundation
 import Combine
 import FirebaseFirestore
 
+
+
 class QuestionAnswerFirestoreManager {
     private let db = Firestore.firestore()
-
+    
     func fetchQuestionAnswerById(_ id: String) -> AnyPublisher<QuestionAnswer, Error> {
         Future { promise in
-            self.db.collection("questionAnswers").document(id).getDocument { snapshot, error in
-                if let error = error {
-                    promise(.failure(error))
-                } else if let data = snapshot?.data(), let questionAnswer = QuestionAnswer(from: data) {
-                    promise(.success(questionAnswer))
+            self.db.collection("questionAnswers").document(id).getDocument { document, error in
+                if let document = document, document.exists, let data = document.data() {
+                    if let questionAnswer = QuestionAnswer(from: data) {
+                        promise(.success(questionAnswer))
+                    } else {
+                        promise(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Failed to decode questionAnswer"])))
+                    }
                 } else {
-                    promise(.failure(NSError(domain: "Document not found", code: 404, userInfo: nil)))
+                    promise(.failure(error ?? NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Document does not exist"])))
                 }
             }
         }

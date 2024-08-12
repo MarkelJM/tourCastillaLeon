@@ -33,8 +33,8 @@ class BaseViewModel: ObservableObject {
             .store(in: &cancellables)
     }
     
-    func updateUserTaskIDs(taskID: String, activityType: String) {
-        firestoreManager.updateUserTaskIDs(taskID: taskID, activityType: activityType)
+    func updateUserTaskIDs(taskID: String, activityType: String, city: String? = nil) {
+        firestoreManager.updateUserTaskIDs(taskID: taskID, activityType: activityType, city: city)
             .receive(on: DispatchQueue.main)
             .sink { completion in
                 switch completion {
@@ -48,14 +48,41 @@ class BaseViewModel: ObservableObject {
             .store(in: &cancellables)
     }
     
-    func isTaskCompleted(taskID: String, activityType: String) -> Bool {
+    func isTaskCompleted(taskID: String, activityType: String, city: String? = nil) -> Bool {
+        guard let user = user else { return false }
+        
+        if let city = city {
+            switch city {
+            case "Ávila":
+                return user.avilaCityTaskIDs.contains(taskID)
+            case "Burgos":
+                return user.burgosCityTaskIDs.contains(taskID)
+            case "León":
+                return user.leonCityTaskIDs.contains(taskID)
+            case "Palencia":
+                return user.palenciaCityTaskIDs.contains(taskID)
+            case "Salamanca":
+                return user.salamancaCityTaskIDs.contains(taskID)
+            case "Segovia":
+                return user.segoviaCityTaskIDs.contains(taskID)
+            case "Soria":
+                return user.soriaCityTaskIDs.contains(taskID)
+            case "Valladolid":
+                return user.valladolidCityTaskIDs.contains(taskID)
+            case "Zamora":
+                return user.zamoraCityTaskIDs.contains(taskID)
+            default:
+                return false
+            }
+        }
+        
         switch activityType {
         case "coin":
-            return user?.coinTaskIDs.contains(taskID) ?? false
+            return user.coinTaskIDs.contains(taskID)
         case "gadget":
-            return user?.gadgetTaskIDs.contains(taskID) ?? false
+            return user.gadgetTaskIDs.contains(taskID)
         default:
-            return user?.taskIDs.contains(taskID) ?? false
+            return user.taskIDs.contains(taskID)
         }
     }
 }

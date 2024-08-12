@@ -61,8 +61,7 @@ class FirestoreManager {
         .eraseToAnyPublisher()
     }
     
-    // Update user task IDs
-    func updateUserTaskIDs(taskID: String, activityType: String) -> AnyPublisher<Void, Error> {
+    func updateUserTaskIDs(taskID: String, activityType: String, city: String?) -> AnyPublisher<Void, Error> {
         Future { promise in
             guard let uid = self.auth.currentUser?.uid else {
                 promise(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "User ID not found"])))
@@ -77,24 +76,33 @@ class FirestoreManager {
                     var data = document.data() ?? [:]
                     var taskIDs = data["taskIDs"] as? [String] ?? []
                     
-                    switch activityType {
-                    case "coin":
-                        var coinTaskIDs = data["coinTaskIDs"] as? [String] ?? []
-                        if !coinTaskIDs.contains(taskID) {
-                            coinTaskIDs.append(taskID)
+                    // Update based on city or activity type
+                    if let city = city {
+                        var cityTaskIDs = data["\(city)CityTaskIDs"] as? [String] ?? []
+                        if !cityTaskIDs.contains(taskID) {
+                            cityTaskIDs.append(taskID)
                         }
-                        data["coinTaskIDs"] = coinTaskIDs
-                    case "gadget":
-                        var gadgetTaskIDs = data["gadgetTaskIDs"] as? [String] ?? []
-                        if !gadgetTaskIDs.contains(taskID) {
-                            gadgetTaskIDs.append(taskID)
+                        data["\(city)CityTaskIDs"] = cityTaskIDs
+                    } else {
+                        switch activityType {
+                        case "coin":
+                            var coinTaskIDs = data["coinTaskIDs"] as? [String] ?? []
+                            if !coinTaskIDs.contains(taskID) {
+                                coinTaskIDs.append(taskID)
+                            }
+                            data["coinTaskIDs"] = coinTaskIDs
+                        case "gadget":
+                            var gadgetTaskIDs = data["gadgetTaskIDs"] as? [String] ?? []
+                            if !gadgetTaskIDs.contains(taskID) {
+                                gadgetTaskIDs.append(taskID)
+                            }
+                            data["gadgetTaskIDs"] = gadgetTaskIDs
+                        default:
+                            if !taskIDs.contains(taskID) {
+                                taskIDs.append(taskID)
+                            }
+                            data["taskIDs"] = taskIDs
                         }
-                        data["gadgetTaskIDs"] = gadgetTaskIDs
-                    default:
-                        if !taskIDs.contains(taskID) {
-                            taskIDs.append(taskID)
-                        }
-                        data["taskIDs"] = taskIDs
                     }
                     
                     userRef.setData(data) { error in

@@ -8,21 +8,20 @@
 import SwiftUI
 import Combine
 
-class PuzzleViewModel: ObservableObject {
+class PuzzleViewModel: BaseViewModel {
     @Published var puzzles: [Puzzle] = []
-    @Published var errorMessage: String?
     @Published var isLoading: Bool = true
     @Published var droppedPieces: [String: CGPoint] = [:]
     @Published var draggingPiece: String?
     @Published var showSheet: Bool = false
-    @Published var alertMessage: String = ""
     
     private let dataManager = PuzzleDataManager()
-    private var cancellables = Set<AnyCancellable>()
     private var activityId: String
     
     init(activityId: String) {
         self.activityId = activityId
+        super.init()
+        fetchUserProfile() // Cargar el perfil del usuario cuando se inicia el viewModel
     }
     
     func fetchPuzzle() {
@@ -89,6 +88,7 @@ class PuzzleViewModel: ObservableObject {
         
         if isCorrect {
             alertMessage = puzzle.correctAnswerMessage
+            updateUserTask(puzzle: puzzle) // Actualiza el perfil del usuario al completar el puzzle
         } else {
             alertMessage = puzzle.incorrectAnswerMessage
         }
@@ -96,7 +96,22 @@ class PuzzleViewModel: ObservableObject {
         print("Puzzle check result: \(alertMessage)")
         showSheet = true
     }
+    
+    private func updateUserTask(puzzle: Puzzle) {
+        let activityType = "puzzle"
+        var city: String? = nil
+        
+        if puzzle.isCapital {
+            city = puzzle.province 
+        }
+
+        updateUserTaskIDs(taskID: puzzle.id, activityType: activityType, city: city)
+    }
 }
+
+
+
+
 
 /*
 import Foundation

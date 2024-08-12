@@ -6,21 +6,23 @@
 //
 
 import Foundation
-import Combine
 import FirebaseFirestore
+import Combine
 
 class TakePhotoFirestoreManager {
     private let db = Firestore.firestore()
-
+    
     func fetchTakePhotoById(_ id: String) -> AnyPublisher<TakePhoto, Error> {
         Future { promise in
-            self.db.collection("takePhotos").document(id).getDocument { snapshot, error in
-                if let error = error {
-                    promise(.failure(error))
-                } else if let data = snapshot?.data(), let takePhoto = TakePhoto(from: data) {
-                    promise(.success(takePhoto))
+            self.db.collection("takePhotos").document(id).getDocument { document, error in
+                if let document = document, document.exists, let data = document.data() {
+                    if let takePhoto = TakePhoto(from: data) {
+                        promise(.success(takePhoto))
+                    } else {
+                        promise(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Failed to decode TakePhoto"])))
+                    }
                 } else {
-                    promise(.failure(NSError(domain: "Document not found", code: 404, userInfo: nil)))
+                    promise(.failure(error ?? NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Document does not exist"])))
                 }
             }
         }

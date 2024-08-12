@@ -23,6 +23,7 @@
 		D38F8F6E2C50F98100315904 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = D38F8F6D2C50F98100315904 /* FirebaseMessaging */; };
 		D38F8F702C50F98100315904 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = D38F8F6F2C50F98100315904 /* FirebaseStorage */; };
 		D38F8F732C51032600315904 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38F8F722C51032600315904 /* BaseViewModel.swift */; };
+		D38F8F762C6A57E300315904 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38F8F752C6A57E300315904 /* CameraView.swift */; };
 		D3DDA8782C18548D00C43CBA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDA8772C18548D00C43CBA /* User.swift */; };
 		D3DDA8822C18625200C43CBA /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDA8812C18625200C43CBA /* RegisterViewModel.swift */; };
 		D3DDA8862C18626A00C43CBA /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDA8852C18626A00C43CBA /* RegisterView.swift */; };
@@ -101,6 +102,7 @@
 		D35F00802C1740BE00780464 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D38F8F602C4E761100315904 /* PuzzlePiece.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzlePiece.swift; sourceTree = "<group>"; };
 		D38F8F722C51032600315904 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
+		D38F8F752C6A57E300315904 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		D3DDA8772C18548D00C43CBA /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		D3DDA8812C18625200C43CBA /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
 		D3DDA8852C18626A00C43CBA /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
@@ -276,6 +278,14 @@
 				D38F8F722C51032600315904 /* BaseViewModel.swift */,
 			);
 			path = Base;
+			sourceTree = "<group>";
+		};
+		D38F8F742C6A57D300315904 /* Camera */ = {
+			isa = PBXGroup;
+			children = (
+				D38F8F752C6A57E300315904 /* CameraView.swift */,
+			);
+			path = Camera;
 			sourceTree = "<group>";
 		};
 		D3DDA8752C18547700C43CBA /* Common */ = {
@@ -604,6 +614,7 @@
 		D3E4B7F92C4E46C9000BEE9F /* TakePhotoTask */ = {
 			isa = PBXGroup;
 			children = (
+				D38F8F742C6A57D300315904 /* Camera */,
 				D3E4B7FA2C4E46FA000BEE9F /* TakePhotoView.swift */,
 				D3E4B80C2C4E4C42000BEE9F /* TakePhotoViewModel.swift */,
 				D3E4B8162C4E4FEF000BEE9F /* TakePhotoDataManager.swift */,
@@ -775,6 +786,7 @@
 				D3E4B7DF2C47D930000BEE9F /* PuzzleDataManager.swift in Sources */,
 				D3E4B79A2C3E9558000BEE9F /* MapDatamanager.swift in Sources */,
 				D3E4B7A62C4117CF000BEE9F /* MapCallOut.swift in Sources */,
+				D38F8F762C6A57E300315904 /* CameraView.swift in Sources */,
 				D3DDA8862C18626A00C43CBA /* RegisterView.swift in Sources */,
 				D3DDA88A2C18629300C43CBA /* VerificationEmailView.swift in Sources */,
 				D3E4B8092C4E4BE8000BEE9F /* FillGapViewModel.swift in Sources */,
@@ -927,6 +939,8 @@
 				DEVELOPMENT_TEAM = BHC56Q6KCK;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSCameraUsageDescription = "";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Necesitamos tu ubicación para mostrar puntos de interés cercanos.";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Necesitamos tu ubicación para mostrar puntos de interés cercanos.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Necesitamos tu ubicación para mostrar puntos de interés cercanos.";
@@ -959,6 +973,8 @@
 				DEVELOPMENT_TEAM = BHC56Q6KCK;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSCameraUsageDescription = "";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Necesitamos tu ubicación para mostrar puntos de interés cercanos.";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Necesitamos tu ubicación para mostrar puntos de interés cercanos.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Necesitamos tu ubicación para mostrar puntos de interés cercanos.";
