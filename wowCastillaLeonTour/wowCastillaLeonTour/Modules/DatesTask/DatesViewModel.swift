@@ -8,23 +8,26 @@
 import SwiftUI
 import Combine
 
-class DatesViewModel: ObservableObject {
-    @Published var dates: [DateEvent] = []
-    @Published var errorMessage: String?
+class DatesOrderViewModel: BaseViewModel {
+    @Published var dateEvent: DateEvent?
     @Published var isLoading: Bool = true
-
-    private var cancellables = Set<AnyCancellable>()
-    private let dataManager = DatesDataManager()
-    private let activityId: String
-
+    @Published var shuffledOptions: [String] = []
+    @Published var selectedEvents: [String] = []
+    @Published var showResultAlert: Bool = false
+    
+    private let dataManager = DatesOrderDataManager()
+    private var activityId: String
+    var isCorrectOrder: Bool = false
+    
     init(activityId: String) {
         self.activityId = activityId
-        fetchDateActivityById(activityId)
+        super.init()
+        fetchUserProfile() // Cargar el perfil del usuario cuando se inicia el viewModel
     }
-
-    func fetchDateActivityById(_ id: String) {
+    
+    func fetchDateEvent() {
         isLoading = true
-        dataManager.fetchDateEventById(id)
+        dataManager.fetchDateEventById(activityId)
             .receive(on: DispatchQueue.main)
             .sink { completion in
                 switch completion {
@@ -34,10 +37,41 @@ class DatesViewModel: ObservableObject {
                 case .finished:
                     break
                 }
-            } receiveValue: { dateActivity in
-                self.dates = [dateActivity]
+            } receiveValue: { dateEvent in
+                self.dateEvent = dateEvent
+                self.shuffledOptions = dateEvent.options.shuffled()
                 self.isLoading = false
             }
             .store(in: &cancellables)
+    }
+    
+    func selectEvent(_ event: String) {
+        selectedEvents.append(event)
+    }
+    
+    func checkAnswer() {
+        guard let dateEvent = dateEvent else { return }
+        
+        if selectedEvents == dateEvent.correctAnswer {
+            alertMessage = dateEvent.correctAnswerMessage
+            isCorrectOrder = true
+            updateUserTask(dateEvent: dateEvent)
+        } else {
+            alertMessage = dateEvent.incorrectAnswerMessage
+            isCorrectOrder = false
+        }
+        
+        showResultAlert = true
+    }
+    
+    private func updateUserTask(dateEvent: DateEvent) {
+        let activityType = "dateEvent"
+        var city: String? = nil
+        
+        if dateEvent.isCapital {
+            city = dateEvent.province
+        }
+
+        updateUserTaskIDs(taskID: dateEvent.id, activityType: activityType, city: city)
     }
 }

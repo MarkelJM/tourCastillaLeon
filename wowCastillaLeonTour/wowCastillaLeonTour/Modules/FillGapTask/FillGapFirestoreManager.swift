@@ -11,16 +11,18 @@ import FirebaseFirestore
 
 class FillGapFirestoreManager {
     private let db = Firestore.firestore()
-
+    
     func fetchFillGapById(_ id: String) -> AnyPublisher<FillGap, Error> {
         Future { promise in
-            self.db.collection("fillGap").document(id).getDocument { snapshot, error in
-                if let error = error {
-                    promise(.failure(error))
-                } else if let data = snapshot?.data(), let fillGap = FillGap(from: data) {
-                    promise(.success(fillGap))
+            self.db.collection("fillGap").document(id).getDocument { document, error in
+                if let document = document, document.exists, let data = document.data() {
+                    if let fillGap = FillGap(from: data) {
+                        promise(.success(fillGap))
+                    } else {
+                        promise(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Failed to decode fillGap"])))
+                    }
                 } else {
-                    promise(.failure(NSError(domain: "Document not found", code: 404, userInfo: nil)))
+                    promise(.failure(error ?? NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Document does not exist"])))
                 }
             }
         }

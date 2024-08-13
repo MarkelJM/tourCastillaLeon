@@ -35,7 +35,7 @@ struct NavigationState: View {
         case .coin(let id):
             CoinView(viewModel: CoinViewModel(activityId: id))
         case .dates(let id):
-            DatesView(viewModel: DatesViewModel(activityId: id))
+            DatesOrderView(viewModel: DatesOrderViewModel(activityId: id))
         case .fillGap(let id):
             FillGapView(viewModel: FillGapViewModel(activityId: id))
         case .questionAnswer(let id):

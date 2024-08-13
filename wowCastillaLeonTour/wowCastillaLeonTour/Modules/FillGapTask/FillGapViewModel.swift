@@ -8,23 +8,24 @@
 import SwiftUI
 import Combine
 
-class FillGapViewModel: ObservableObject {
-    @Published var fillGaps: [FillGap] = []
-    @Published var errorMessage: String?
+class FillGapViewModel: BaseViewModel {
+    @Published var fillGap: FillGap?
     @Published var isLoading: Bool = true
-
-    private var cancellables = Set<AnyCancellable>()
+    @Published var userAnswers: [String] = []
+    @Published var showResultAlert: Bool = false
+    
     private let dataManager = FillGapDataManager()
-    private let activityId: String
-
+    private var activityId: String
+    
     init(activityId: String) {
         self.activityId = activityId
-        fetchFillGapById(activityId)
+        super.init()
+        fetchUserProfile()
     }
-
-    func fetchFillGapById(_ id: String) {
+    
+    func fetchFillGap() {
         isLoading = true
-        dataManager.fetchFillGapById(id)
+        dataManager.fetchFillGapById(activityId)
             .receive(on: DispatchQueue.main)
             .sink { completion in
                 switch completion {
@@ -35,9 +36,34 @@ class FillGapViewModel: ObservableObject {
                     break
                 }
             } receiveValue: { fillGap in
-                self.fillGaps = [fillGap]
+                self.fillGap = fillGap
+                self.userAnswers = Array(repeating: "", count: fillGap.correctPositions.count)
                 self.isLoading = false
             }
             .store(in: &cancellables)
+    }
+    
+    func submitAnswers() {
+        guard let fillGap = fillGap else { return }
+        
+        if userAnswers == fillGap.correctPositions {
+            alertMessage = fillGap.correctAnswerMessage
+            updateUserTask(fillGap: fillGap)
+        } else {
+            alertMessage = fillGap.incorrectAnswerMessage
+        }
+        
+        showResultAlert = true
+    }
+    
+    private func updateUserTask(fillGap: FillGap) {
+        let activityType = "fillGap"
+        var city: String? = nil
+        
+        if fillGap.isCapital {
+            city = fillGap.province
+        }
+
+        updateUserTaskIDs(taskID: fillGap.id, activityType: activityType, city: city)
     }
 }
