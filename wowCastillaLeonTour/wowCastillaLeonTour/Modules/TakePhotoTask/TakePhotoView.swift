@@ -52,7 +52,7 @@ struct TakePhotoView: View {
                     .background(viewModel.capturedImage != nil ? Color.green : Color.gray)
                     .foregroundColor(.white)
                     .cornerRadius(10)
-                    .disabled(viewModel.capturedImage == nil) // Desactiva el botón si no hay imagen
+                    .disabled(viewModel.capturedImage == nil) // disable button if there is not image
                 }
                 .padding()
                 .sheet(isPresented: $viewModel.showResultModal) {

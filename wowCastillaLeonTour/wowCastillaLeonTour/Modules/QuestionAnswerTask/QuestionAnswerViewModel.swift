@@ -20,7 +20,7 @@ class QuestionAnswerViewModel: BaseViewModel {
     init(activityId: String) {
         self.activityId = activityId
         super.init()
-        fetchUserProfile() // Cargar el perfil del usuario cuando se inicia el viewModel
+        fetchUserProfile() // brings user data when the viewmodel is created
     }
     
     func fetchQuestionAnswer() {

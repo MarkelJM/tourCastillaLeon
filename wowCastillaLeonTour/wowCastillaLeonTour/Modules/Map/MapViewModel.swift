@@ -20,9 +20,9 @@ class MapViewModel: BaseViewModel {
     private var hasCenteredOnUser = false
 
     override init() {
-        // Inicializar la región para Castilla y León
+        // init in CyL
         self.region = MKCoordinateRegion(
-            center: CLLocationCoordinate2D(latitude: 41.6528, longitude: -2.7286), // Centro aproximado de Castilla y León
+            center: CLLocationCoordinate2D(latitude: 41.6528, longitude: -2.7286), 
             span: MKCoordinateSpan(latitudeDelta: 2.0, longitudeDelta: 2.0)
         )
         super.init()

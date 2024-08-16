@@ -18,7 +18,7 @@ struct MapCallOutView: View {
                 .font(.title2)
                 .fontWeight(.bold)
             
-            Text(point.abstract) // Mostrar el abstract
+            Text(point.abstract) // show el abstract
 
             AsyncImage(url: URL(string: point.image)) { image in
                 image

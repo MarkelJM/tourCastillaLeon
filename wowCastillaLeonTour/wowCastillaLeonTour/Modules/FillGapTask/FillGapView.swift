@@ -65,7 +65,7 @@ struct FillGapView: View {
     }
     
     private func alertUserToFillAllFields() {
-        // Muestra una alerta para que el usuario complete todos los campos
+        // show alert
     }
 }
 
@@ -80,7 +80,7 @@ struct ResultFillGapView: View {
 
             Button("Continuar") {
                 viewModel.showResultAlert = false
-                // Aquí puedes añadir cualquier acción adicional, como navegar a otra vista
+               
             }
             .padding()
             .background(Color.blue)
