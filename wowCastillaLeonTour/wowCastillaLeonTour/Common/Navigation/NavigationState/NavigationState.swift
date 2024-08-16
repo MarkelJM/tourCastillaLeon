@@ -11,8 +11,13 @@ struct NavigationState: View {
     @EnvironmentObject var appState: AppState
     
     var body: some View {
-        currentView()
-            .environmentObject(appState)
+        if shouldShowTabBar {
+            MainTabView()
+                .environmentObject(appState)
+        } else {
+            currentView()
+                .environmentObject(appState)
+        }
     }
     
     @ViewBuilder
@@ -27,7 +32,7 @@ struct NavigationState: View {
         case .profile:
             ProfileView(viewModel: ProfileViewModel())
         case .map:
-            MapView()
+            MapView() // Esta vista se mostrará dentro del TabBar
         case .avatarSelection:
             AvatarSelectionView(selectedAvatar: .constant(.boy))
         case .puzzle(let id):
@@ -43,5 +48,21 @@ struct NavigationState: View {
         case .takePhoto(let id):
             TakePhotoView(viewModel: TakePhotoViewModel(activityId: id))
         }
+    }
+    
+    private var shouldShowTabBar: Bool {
+        switch appState.currentView {
+        case .map: // Aquí puedes agregar más casos para otras vistas que quieras dentro del TabBar
+            return true
+        default:
+            return false
+        }
+    }
+}
+
+struct NavigationState_Previews: PreviewProvider {
+    static var previews: some View {
+        NavigationState()
+            .environmentObject(AppState())
     }
 }
