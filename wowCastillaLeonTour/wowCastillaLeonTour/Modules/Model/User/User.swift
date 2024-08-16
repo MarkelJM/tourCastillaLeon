@@ -39,4 +39,18 @@ struct User: Identifiable, Codable {
     var city: String
     var province: Province
     var avatar: Avatar
+    var taskIDs: [String]
+    var coinTaskIDs: [String]
+    var gadgetTaskIDs: [String]
+    var usedCoinTaskIDs: [String]
+    var specialRewards: [String]
+    var avilaCityTaskIDs: [String]
+    var burgosCityTaskIDs: [String]
+    var leonCityTaskIDs: [String]
+    var palenciaCityTaskIDs: [String]
+    var salamancaCityTaskIDs: [String]
+    var segoviaCityTaskIDs: [String]
+    var soriaCityTaskIDs: [String]
+    var valladolidCityTaskIDs: [String]
+    var zamoraCityTaskIDs: [String]
 }

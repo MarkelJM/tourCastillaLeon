@@ -8,23 +8,24 @@
 import SwiftUI
 import Combine
 
-class TakePhotoViewModel: ObservableObject {
-    @Published var takePhotos: [TakePhoto] = []
-    @Published var errorMessage: String?
+class TakePhotoViewModel: BaseViewModel {
+    @Published var takePhoto: TakePhoto?
     @Published var isLoading: Bool = true
-
-    private var cancellables = Set<AnyCancellable>()
+    @Published var capturedImage: UIImage? // Imagen capturada
+    @Published var showResultModal: Bool = false
+    
     private let dataManager = TakePhotoDataManager()
-    private let activityId: String
-
+    private var activityId: String
+    
     init(activityId: String) {
         self.activityId = activityId
-        fetchTakePhotoById(activityId)
+        super.init()
+        fetchUserProfile() // Cargar el perfil del usuario cuando se inicia el viewModel
     }
-
-    func fetchTakePhotoById(_ id: String) {
+    
+    func fetchTakePhoto() {
         isLoading = true
-        dataManager.fetchTakePhotoById(id)
+        dataManager.fetchTakePhotoById(activityId)
             .receive(on: DispatchQueue.main)
             .sink { completion in
                 switch completion {
@@ -35,9 +36,33 @@ class TakePhotoViewModel: ObservableObject {
                     break
                 }
             } receiveValue: { takePhoto in
-                self.takePhotos = [takePhoto]
+                self.takePhoto = takePhoto
                 self.isLoading = false
             }
             .store(in: &cancellables)
+    }
+    
+    func checkTakePhoto(isCorrect: Bool) {
+        guard let takePhoto = takePhoto else { return }
+        
+        if isCorrect && capturedImage != nil { // Si hay una foto capturada
+            alertMessage = takePhoto.correctAnswerMessage
+            updateUserTask(takePhoto: takePhoto)
+        } else {
+            alertMessage = takePhoto.incorrectAnswerMessage
+        }
+        
+        showResultModal = true
+    }
+    
+    private func updateUserTask(takePhoto: TakePhoto) {
+        let activityType = "takePhoto"
+        var city: String? = nil
+        
+        if takePhoto.isCapital {
+            city = takePhoto.province
+        }
+
+        updateUserTaskIDs(taskID: takePhoto.id, activityType: activityType, city: city)
     }
 }

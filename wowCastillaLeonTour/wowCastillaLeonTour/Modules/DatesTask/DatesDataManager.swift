@@ -8,8 +8,8 @@
 import Foundation
 import Combine
 
-class DatesDataManager {
-    private let firestoreManager = DatesFirestoreManager()
+class DatesOrderDataManager {
+    private let firestoreManager = DatesOrderFirestoreManager()
     
     func fetchDateEventById(_ id: String) -> AnyPublisher<DateEvent, Error> {
         return firestoreManager.fetchDateEventById(id)

@@ -17,7 +17,8 @@ extension FillGap {
               let correctPositions = firestoreData["correctPositions"] as? [String],
               let customMessage = firestoreData["customMessage"] as? String,
               let correctAnswerMessage = firestoreData["correctAnswerMessage"] as? String,
-              let incorrectAnswerMessage = firestoreData["incorrectAnswerMessage"] as? String else {
+              let incorrectAnswerMessage = firestoreData["incorrectAnswerMessage"] as? String, 
+              let isCapital = firestoreData["isCapital"] as? Bool else {
             return nil
         }
 
@@ -29,6 +30,7 @@ extension FillGap {
         self.customMessage = customMessage
         self.correctAnswerMessage = correctAnswerMessage
         self.incorrectAnswerMessage = incorrectAnswerMessage
+        self.isCapital = isCapital
     }
     
     func toFirestoreData() -> [String: Any] {
@@ -40,7 +42,8 @@ extension FillGap {
             "correctPositions": correctPositions,
             "customMessage": customMessage,
             "correctAnswerMessage": correctAnswerMessage,
-            "incorrectAnswerMessage": incorrectAnswerMessage
+            "incorrectAnswerMessage": incorrectAnswerMessage,
+            "isCapital": isCapital
         ]
     }
 }

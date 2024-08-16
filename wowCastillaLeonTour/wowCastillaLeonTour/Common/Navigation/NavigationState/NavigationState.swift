@@ -19,13 +19,13 @@ struct NavigationState: View {
     private func currentView() -> some View {
         switch appState.currentView {
         case .registerEmail:
-            RegisterView()
+            RegisterView(viewModel: RegisterViewModel())
         case .emailVerification:
             VerificationEmailView(viewModel: RegisterViewModel())
         case .login:
-            LoginView()
+            LoginView(viewModel: LoginViewModel())
         case .profile:
-            ProfileView()
+            ProfileView(viewModel: ProfileViewModel())
         case .map:
             MapView()
         case .avatarSelection:
@@ -35,7 +35,7 @@ struct NavigationState: View {
         case .coin(let id):
             CoinView(viewModel: CoinViewModel(activityId: id))
         case .dates(let id):
-            DatesView(viewModel: DatesViewModel(activityId: id))
+            DatesOrderView(viewModel: DatesOrderViewModel(activityId: id))
         case .fillGap(let id):
             FillGapView(viewModel: FillGapViewModel(activityId: id))
         case .questionAnswer(let id):

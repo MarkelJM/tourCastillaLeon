@@ -8,23 +8,24 @@
 import SwiftUI
 import Combine
 
-class QuestionAnswerViewModel: ObservableObject {
-    @Published var questionAnswers: [QuestionAnswer] = []
-    @Published var errorMessage: String?
+class QuestionAnswerViewModel: BaseViewModel {
+    @Published var questionAnswer: QuestionAnswer?
     @Published var isLoading: Bool = true
-
-    private var cancellables = Set<AnyCancellable>()
+    @Published var selectedOption: String?
+    @Published var showResultModal: Bool = false
+    
     private let dataManager = QuestionAnswerDataManager()
-    private let activityId: String
-
+    private var activityId: String
+    
     init(activityId: String) {
         self.activityId = activityId
-        fetchQuestionAnswerById(activityId)
+        super.init()
+        fetchUserProfile() // brings user data when the viewmodel is created
     }
-
-    func fetchQuestionAnswerById(_ id: String) {
+    
+    func fetchQuestionAnswer() {
         isLoading = true
-        dataManager.fetchQuestionAnswerById(id)
+        dataManager.fetchQuestionAnswerById(activityId)
             .receive(on: DispatchQueue.main)
             .sink { completion in
                 switch completion {
@@ -35,9 +36,33 @@ class QuestionAnswerViewModel: ObservableObject {
                     break
                 }
             } receiveValue: { questionAnswer in
-                self.questionAnswers = [questionAnswer]
+                self.questionAnswer = questionAnswer
                 self.isLoading = false
             }
             .store(in: &cancellables)
+    }
+    
+    func checkAnswer() {
+        guard let questionAnswer = questionAnswer else { return }
+        
+        if selectedOption == questionAnswer.correctAnswer {
+            alertMessage = questionAnswer.correctAnswerMessage
+            updateUserTask(questionAnswer: questionAnswer)
+        } else {
+            alertMessage = questionAnswer.incorrectAnswerMessage
+        }
+        
+        showResultModal = true
+    }
+    
+    private func updateUserTask(questionAnswer: QuestionAnswer) {
+        let activityType = "questionAnswer"
+        var city: String? = nil
+        
+        if questionAnswer.isCapital {
+            city = questionAnswer.province
+        }
+
+        updateUserTaskIDs(taskID: questionAnswer.id, activityType: activityType, city: city)
     }
 }

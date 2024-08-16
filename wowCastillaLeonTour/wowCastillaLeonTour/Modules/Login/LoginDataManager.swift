@@ -6,11 +6,12 @@
 //
 
 import Foundation
+import Combine
 
 class LoginDataManager {
     private let firestoreManager = FirestoreManager()
     
-    func loginUser(email: String, password: String, completion: @escaping (Result<Void, Error>) -> Void) {
-        firestoreManager.loginUser(email: email, password: password, completion: completion)
+    func loginUser(email: String, password: String) -> AnyPublisher<Void, Error> {
+        firestoreManager.loginUser(email: email, password: password)
     }
 }

@@ -50,6 +50,7 @@ extension Point {
                 "latitude": coordinates.latitude,
                 "longitude": coordinates.longitude
             ]
+            
         ]
     }
 }

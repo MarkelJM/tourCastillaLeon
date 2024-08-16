@@ -6,15 +6,16 @@
 //
 
 import Foundation
+import Combine
 
 class ProfileDataManager {
     private let firestoreManager = FirestoreManager()
     
-    func createUserProfile(user: User, completion: @escaping (Result<Void, Error>) -> Void) {
-        firestoreManager.createUserProfile(user: user, completion: completion)
+    func createUserProfile(user: User) -> AnyPublisher<Void, Error> {
+        firestoreManager.createUserProfile(user: user)
     }
     
-    func fetchUserProfile(completion: @escaping (Result<User, Error>) -> Void) {
-        firestoreManager.fetchUserProfile(completion: completion)
+    func fetchUserProfile() -> AnyPublisher<User, Error> {
+        firestoreManager.fetchUserProfile()
     }
 }

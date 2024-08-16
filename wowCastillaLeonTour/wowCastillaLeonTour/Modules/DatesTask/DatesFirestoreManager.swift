@@ -9,27 +9,23 @@ import Foundation
 import Combine
 import FirebaseFirestore
 
-class DatesFirestoreManager {
+class DatesOrderFirestoreManager {
     private let db = Firestore.firestore()
-    private let collectionName = "dates" 
-
+    
     func fetchDateEventById(_ id: String) -> AnyPublisher<DateEvent, Error> {
-        let subject = PassthroughSubject<DateEvent, Error>()
-        
-        db.collection(collectionName).document(id).getDocument { document, error in
-            if let error = error {
-                subject.send(completion: .failure(error))
-            } else if let document = document, document.exists, let data = document.data() {
-                if let dateEvent = DateEvent(from: data) {
-                    subject.send(dateEvent)
+        Future { promise in
+            self.db.collection("dates").document(id).getDocument { document, error in
+                if let document = document, document.exists, let data = document.data() {
+                    if let dateEvent = DateEvent(from: data) {
+                        promise(.success(dateEvent))
+                    } else {
+                        promise(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Failed to decode dateEvent"])))
+                    }
                 } else {
-                    subject.send(completion: .failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Failed to parse DateEvent"])))
+                    promise(.failure(error ?? NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Document does not exist"])))
                 }
-            } else {
-                subject.send(completion: .failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Document does not exist"])))
             }
         }
-        
-        return subject.eraseToAnyPublisher()
+        .eraseToAnyPublisher()
     }
 }

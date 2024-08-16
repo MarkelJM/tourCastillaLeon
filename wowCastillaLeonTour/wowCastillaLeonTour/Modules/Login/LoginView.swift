@@ -8,20 +8,19 @@
 import SwiftUI
 
 struct LoginView: View {
-    @EnvironmentObject var appState: AppState
-    @StateObject private var viewModel = LoginViewModel()
+    @ObservedObject var viewModel: LoginViewModel
 
     var body: some View {
         VStack {
             TextField("Email", text: $viewModel.email)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .padding()
-            
+
             SecureField("Contraseña", text: $viewModel.password)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .padding()
 
-            Button("Login") {
+            Button("Iniciar Sesión") {
                 viewModel.login()
             }
             .padding()
@@ -32,16 +31,12 @@ struct LoginView: View {
                     .padding()
             }
         }
-        .onChange(of: viewModel.currentView) { newView in
-            if let newView = newView {
-                appState.currentView = newView
-            }
-        }
         .padding()
     }
 }
 
+
 #Preview {
-    LoginView()
+    LoginView(viewModel: LoginViewModel())
         .environmentObject(AppState())
 }

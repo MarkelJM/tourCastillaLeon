@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct ProfileView: View {
-    @StateObject private var viewModel = ProfileViewModel()
+    @ObservedObject var viewModel: ProfileViewModel
+
     @EnvironmentObject var appState: AppState
 
     var body: some View {
@@ -61,10 +62,12 @@ struct ProfileView: View {
         .onAppear {
             viewModel.fetchUserProfile()
         }
+        .environmentObject(appState) 
+
     }
 }
 
 #Preview {
-    ProfileView()
+    ProfileView(viewModel: ProfileViewModel())
         .environmentObject(AppState())
 }

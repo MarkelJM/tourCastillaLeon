@@ -105,7 +105,7 @@ struct PuzzleView: View {
                 .padding()
                 .background(GradientBackgroundView())
                 .sheet(isPresented: $viewModel.showSheet) {
-                    ResultSheet(viewModel: viewModel)
+                    ResulPuzzleSheetView(viewModel: viewModel)
                 }
                 .alert(isPresented: $showInstructionsAlert) {
                     Alert(
@@ -124,7 +124,7 @@ struct PuzzleView: View {
     }
 }
 
-struct ResultSheet: View {
+struct ResulPuzzleSheetView: View {
     @ObservedObject var viewModel: PuzzleViewModel
     
     var body: some View {

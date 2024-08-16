@@ -17,7 +17,8 @@ extension QuestionAnswer {
               let correctAnswer = firestoreData["correctAnswer"] as? String,
               let customMessage = firestoreData["customMessage"] as? String,
               let correctAnswerMessage = firestoreData["correctAnswerMessage"] as? String,
-              let incorrectAnswerMessage = firestoreData["incorrectAnswerMessage"] as? String else {
+              let incorrectAnswerMessage = firestoreData["incorrectAnswerMessage"] as? String,
+              let isCapital = firestoreData["isCapital"] as? Bool else {
             return nil
         }
 
@@ -29,6 +30,7 @@ extension QuestionAnswer {
         self.customMessage = customMessage
         self.correctAnswerMessage = correctAnswerMessage
         self.incorrectAnswerMessage = incorrectAnswerMessage
+        self.isCapital = isCapital
     }
     
     func toFirestoreData() -> [String: Any] {
@@ -40,7 +42,8 @@ extension QuestionAnswer {
             "correctAnswer": correctAnswer,
             "customMessage": customMessage,
             "correctAnswerMessage": correctAnswerMessage,
-            "incorrectAnswerMessage": incorrectAnswerMessage
+            "incorrectAnswerMessage": incorrectAnswerMessage,
+            "isCapital": isCapital
         ]
     }
 }
