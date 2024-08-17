@@ -29,6 +29,7 @@ enum Province: String, Codable, CaseIterable, Identifiable {
     var id: String { self.rawValue }
 }
 
+
 struct User: Identifiable, Codable {
     var id: String
     var email: String
@@ -53,4 +54,5 @@ struct User: Identifiable, Codable {
     var soriaCityTaskIDs: [String]
     var valladolidCityTaskIDs: [String]
     var zamoraCityTaskIDs: [String]
+
 }

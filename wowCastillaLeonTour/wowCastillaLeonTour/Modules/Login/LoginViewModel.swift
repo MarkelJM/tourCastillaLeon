@@ -20,6 +20,12 @@ class LoginViewModel: ObservableObject {
     private var cancellables = Set<AnyCancellable>()
 
     func login() {
+        // Acceso directo con credenciales 123
+        if email == "123" && password == "123" {
+            loginSuccess.send(())
+            return
+        }
+        
         dataManager.loginUser(email: email, password: password)
             .receive(on: DispatchQueue.main)
             .sink { completion in
