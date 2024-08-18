@@ -9,14 +9,19 @@ import SwiftUI
 
 struct NavigationState: View {
     @EnvironmentObject var appState: AppState
-    
+
     var body: some View {
-        if shouldShowTabBar {
-            MainTabView()
-                .environmentObject(appState)
-        } else {
-            currentView()
-                .environmentObject(appState)
+        Group {
+            if shouldShowTabBar {
+                MainTabView()
+                    .environmentObject(appState)
+            } else {
+                currentView()
+                    .environmentObject(appState)
+            }
+        }
+        .onAppear {
+            print("Current AppState in NavigationState: \(appState)")
         }
     }
     
@@ -30,9 +35,9 @@ struct NavigationState: View {
         case .login:
             LoginView(viewModel: LoginViewModel())
         case .profile:
-            ProfileView(viewModel: ProfileViewModel())
+            ProfileView(viewModel: ProfileViewModel()) 
         case .map:
-            MapView() // Esta vista se mostrará dentro del TabBar
+            MapView()
         case .avatarSelection:
             AvatarSelectionView(selectedAvatar: .constant(.boy))
         case .puzzle(let id):
@@ -52,7 +57,7 @@ struct NavigationState: View {
     
     private var shouldShowTabBar: Bool {
         switch appState.currentView {
-        case .map: // Aquí puedes agregar más casos para otras vistas que quieras dentro del TabBar
+        case .map:
             return true
         default:
             return false

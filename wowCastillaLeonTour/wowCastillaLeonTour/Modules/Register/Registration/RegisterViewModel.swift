@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import FirebaseAuth
 
 class RegisterViewModel: ObservableObject {
     @Published var email: String = ""
@@ -35,12 +36,25 @@ class RegisterViewModel: ObservableObject {
                 switch completion {
                 case .failure(let error):
                     self.showError = true
-                    self.errorMessage = error.localizedDescription
+                    if let authError = error as NSError?, let errorCode = AuthErrorCode(rawValue: authError.code) {
+                        switch errorCode {
+                        case .invalidEmail:
+                            self.errorMessage = "El correo electrónico no es válido."
+                        case .emailAlreadyInUse:
+                            self.errorMessage = "Este correo electrónico ya está en uso."
+                        case .weakPassword:
+                            self.errorMessage = "La contraseña es demasiado débil."
+                        default:
+                            self.errorMessage = "Error: \(authError.localizedDescription)"
+                        }
+                    } else {
+                        self.errorMessage = "Error desconocido: \(error.localizedDescription)"
+                    }
                 case .finished:
-                    break
+                    self.sendEmailVerification() // Enviar email de verificación después de registrarse
                 }
             } receiveValue: {
-                self.registrationSuccess.send(())
+                // Acciones adicionales después del registro
             }
             .store(in: &cancellables)
     }

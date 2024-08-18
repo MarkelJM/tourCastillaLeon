@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import SwiftUI
 import Combine
 
 class ProfileViewModel: ObservableObject {
@@ -34,14 +33,11 @@ class ProfileViewModel: ObservableObject {
     @Published var zamoraCityTaskIDs: [String] = []
     @Published var showError: Bool = false
     @Published var errorMessage: String = ""
-    @Published var navigateToAvatarSelection: Bool = false
-    
+
     private let dataManager = ProfileDataManager()
     private var cancellables = Set<AnyCancellable>()
-    @EnvironmentObject var appState: AppState
 
-    
-    func saveUserProfile() {
+    func saveUserProfile(completion: @escaping () -> Void) {
         let user = User(
             id: UUID().uuidString,
             email: email,
@@ -79,13 +75,11 @@ class ProfileViewModel: ObservableObject {
                     break
                 }
             } receiveValue: {
-                self.appState.currentView = .map
+                completion()
             }
             .store(in: &cancellables)
     }
-    
-    
-    
+
     func fetchUserProfile() {
         dataManager.fetchUserProfile()
             .receive(on: DispatchQueue.main)
@@ -122,9 +116,5 @@ class ProfileViewModel: ObservableObject {
                 self.zamoraCityTaskIDs = user.zamoraCityTaskIDs
             }
             .store(in: &cancellables)
-    }
-    
-    func navigateToAvatarSelectionView() {
-        navigateToAvatarSelection = true
     }
 }
