@@ -37,7 +37,7 @@ struct MapCallOutView: View {
                 } else {
                     print("Participar button tapped for \(point.name)")
                     switch point.activityType {
-                    case "placePuzzle":
+                    case "puzzles":
                         appState.currentView = .puzzle(id: point.activityId)
                     case "coin":
                         appState.currentView = .coin(id: point.activityId)
@@ -45,9 +45,9 @@ struct MapCallOutView: View {
                         appState.currentView = .dates(id: point.activityId)
                     case "fillGap":
                         appState.currentView = .fillGap(id: point.activityId)
-                    case "questionAnswer":
+                    case "questionAnswers":
                         appState.currentView = .questionAnswer(id: point.activityId)
-                    case "takePhoto":
+                    case "takePhotos":
                         appState.currentView = .takePhoto(id: point.activityId)
                     default:
                         print("Tipo de actividad no soportado: \(point.activityType)")

@@ -53,6 +53,15 @@ struct DatesOrderView: View {
                     .background(Color.blue)
                     .foregroundColor(.white)
                     .cornerRadius(10)
+
+                    // Botón de deshacer selección
+                    Button("Deshacer Selección") {
+                        viewModel.undoSelection()
+                    }
+                    .padding()
+                    .background(Color.red)
+                    .foregroundColor(.white)
+                    .cornerRadius(10)
                 }
                 .padding()
                 .sheet(isPresented: $viewModel.showResultAlert) {
