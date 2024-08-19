@@ -39,7 +39,7 @@ struct MapCallOutView: View {
                     switch point.activityType {
                     case "puzzles":
                         appState.currentView = .puzzle(id: point.activityId)
-                    case "coin":
+                    case "coins":
                         appState.currentView = .coin(id: point.activityId)
                     case "dates":
                         appState.currentView = .dates(id: point.activityId)
