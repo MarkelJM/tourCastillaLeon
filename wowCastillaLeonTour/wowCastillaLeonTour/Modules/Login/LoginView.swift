@@ -9,6 +9,7 @@ import SwiftUI
 
 struct LoginView: View {
     @ObservedObject var viewModel: LoginViewModel
+    @EnvironmentObject var appState: AppState
 
     var body: some View {
         VStack {
@@ -25,6 +26,11 @@ struct LoginView: View {
             }
             .padding()
 
+            Button("Crear Cuenta") {
+                appState.currentView = .registerEmail
+            }
+            .padding()
+
             if viewModel.showError {
                 Text(viewModel.errorMessage)
                     .foregroundColor(.red)
@@ -32,9 +38,11 @@ struct LoginView: View {
             }
         }
         .padding()
+        .onReceive(viewModel.loginSuccess) { _ in
+            appState.currentView = .map // Redirigir a la vista de mapa después del inicio de sesión exitoso
+        }
     }
 }
-
 
 #Preview {
     LoginView(viewModel: LoginViewModel())

@@ -56,7 +56,7 @@ class QuestionAnswerViewModel: BaseViewModel {
     }
     
     private func updateUserTask(questionAnswer: QuestionAnswer) {
-        let activityType = "questionAnswer"
+        let activityType = "questionAnswers"
         var city: String? = nil
         
         if questionAnswer.isCapital {

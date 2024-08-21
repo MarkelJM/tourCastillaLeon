@@ -13,6 +13,14 @@ struct FillGapView: View {
     
     var body: some View {
         VStack {
+            Button("Atrás") {
+                appState.currentView = .map
+            }
+            .padding()
+            .background(Color.blue)
+            .foregroundColor(.white)
+            .cornerRadius(10)
+            
             if viewModel.isLoading {
                 Text("Cargando tarea...")
             } else if let errorMessage = viewModel.errorMessage {

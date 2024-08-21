@@ -11,8 +11,6 @@ struct RegisterView: View {
     @EnvironmentObject var appState: AppState
     @ObservedObject var viewModel: RegisterViewModel
 
-    
-
     var body: some View {
         VStack {
             TextField("Email", text: $viewModel.email)

@@ -9,10 +9,20 @@ import SwiftUI
 
 struct NavigationState: View {
     @EnvironmentObject var appState: AppState
-    
+
     var body: some View {
-        currentView()
-            .environmentObject(appState)
+        Group {
+            if shouldShowTabBar {
+                MainTabView()
+                    .environmentObject(appState)
+            } else {
+                currentView()
+                    .environmentObject(appState)
+            }
+        }
+        .onAppear {
+            print("Current AppState in NavigationState: \(appState)")
+        }
     }
     
     @ViewBuilder
@@ -25,7 +35,7 @@ struct NavigationState: View {
         case .login:
             LoginView(viewModel: LoginViewModel())
         case .profile:
-            ProfileView(viewModel: ProfileViewModel())
+            ProfileView(viewModel: ProfileViewModel()) 
         case .map:
             MapView()
         case .avatarSelection:
@@ -43,5 +53,21 @@ struct NavigationState: View {
         case .takePhoto(let id):
             TakePhotoView(viewModel: TakePhotoViewModel(activityId: id))
         }
+    }
+    
+    private var shouldShowTabBar: Bool {
+        switch appState.currentView {
+        case .map:
+            return true
+        default:
+            return false
+        }
+    }
+}
+
+struct NavigationState_Previews: PreviewProvider {
+    static var previews: some View {
+        NavigationState()
+            .environmentObject(AppState())
     }
 }

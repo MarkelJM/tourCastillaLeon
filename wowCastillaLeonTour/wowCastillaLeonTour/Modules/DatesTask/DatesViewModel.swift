@@ -49,19 +49,30 @@ class DatesOrderViewModel: BaseViewModel {
         selectedEvents.append(event)
     }
     
+    func undoSelection() {
+        // Deshacer la última selección
+        if !selectedEvents.isEmpty {
+            selectedEvents.removeLast()
+        }
+    }
+    
     func checkAnswer() {
         guard let dateEvent = dateEvent else { return }
         
         if selectedEvents == dateEvent.correctAnswer {
             alertMessage = dateEvent.correctAnswerMessage
             isCorrectOrder = true
-            updateUserTask(dateEvent: dateEvent)
         } else {
             alertMessage = dateEvent.incorrectAnswerMessage
             isCorrectOrder = false
         }
         
         showResultAlert = true
+
+        // Después de mostrar el mensaje personalizado, actualizar la tarea
+        if isCorrectOrder {
+            updateUserTask(dateEvent: dateEvent)
+        }
     }
     
     private func updateUserTask(dateEvent: DateEvent) {

@@ -10,120 +10,135 @@ import SwiftUI
 struct PuzzleView: View {
     @StateObject var viewModel: PuzzleViewModel
     @EnvironmentObject var appState: AppState
-    @State private var showInstructionsAlert = true // Variable para controlar la alerta de instrucciones
+    @State private var showInstructionsAlert = true
     
     var body: some View {
-        VStack {
-            if viewModel.isLoading {
-                Text("Cargando puzzles...")
-            } else if let errorMessage = viewModel.errorMessage {
-                Text("Error: \(errorMessage)")
-            } else if let puzzle = viewModel.puzzles.first {
-                VStack {
-                    HStack {
-                        Text(puzzle.question)
-                            .font(.subheadline)
-                            .padding(.trailing, 10)
+        ZStack(alignment: .topLeading) {
+            VStack {
+                if viewModel.isLoading {
+                    Text("Cargando puzzles...")
+                } else if let errorMessage = viewModel.errorMessage {
+                    Text("Error: \(errorMessage)")
+                } else if let puzzle = viewModel.puzzles.first {
+                    VStack {
+                        HStack {
+                            Text(puzzle.question)
+                                .font(.subheadline)
+                                .padding(.trailing, 10)
 
-                        Button("Comprobar Puzzle") {
-                            viewModel.checkPuzzle()
-                        }
-                        .padding()
-                        .background(Color.blue)
-                        .foregroundColor(.white)
-                        .cornerRadius(10)
-                    }
-                    .padding()
-
-                    GeometryReader { geometry in
-                        ZStack {
-                            // Main Puzzle Image
-                            AsyncImage(url: URL(string: puzzle.questionImage)) { image in
-                                image
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(width: geometry.size.width, height: geometry.size.height)
-                            } placeholder: {
-                                ProgressView()
-                                    .frame(width: geometry.size.width, height: geometry.size.height)
+                            Button("Comprobar Puzzle") {
+                                viewModel.checkPuzzle()
                             }
                             .padding()
-
-                            // Dropped Pieces
-                            ForEach(viewModel.droppedPieces.keys.sorted(), id: \.self) { key in
-                                if let imageUrl = puzzle.images[key], let position = viewModel.droppedPieces[key] {
-                                    AsyncImage(url: URL(string: imageUrl)) { image in
-                                        image
-                                            .resizable()
-                                            .frame(width: 50, height: 50)
-                                            .position(x: position.x, y: position.y)
-                                            .gesture(
-                                                DragGesture()
-                                                    .onChanged { value in
-                                                        viewModel.updateDraggedPiecePosition(to: value.location, key: key)
-                                                    }
-                                                    .onEnded { _ in
-                                                        viewModel.dropPiece()
-                                                    }
-                                            )
-                                    } placeholder: {
-                                        ProgressView()
-                                            .frame(width: 50, height: 50)
-                                            .position(x: position.x, y: position.y)
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    .frame(height: 500) // Hacer la imagen principal más grande
-                    .padding()
-
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        HStack {
-                            ForEach(puzzle.images.keys.sorted(), id: \.self) { key in
-                                if let imageUrl = puzzle.images[key] {
-                                    AsyncImage(url: URL(string: imageUrl)) { image in
-                                        image
-                                            .resizable()
-                                            .frame(width: 100, height: 100)
-                                            .padding()
-                                            .onTapGesture {
-                                                viewModel.selectPiece(key: key)
-                                            }
-                                    } placeholder: {
-                                        ProgressView()
-                                            .frame(width: 100, height: 100)
-                                    }
-                                }
-                            }
+                            .background(Color.blue)
+                            .foregroundColor(.white)
+                            .cornerRadius(10)
                         }
                         .padding()
-                        .background(Color.gray.opacity(0.2)) // Fondo para el HStack para mantenerlo visible
+
+                        GeometryReader { geometry in
+                            ZStack {
+                                // Main Puzzle Image
+                                AsyncImage(url: URL(string: puzzle.questionImage)) { image in
+                                    image
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(width: geometry.size.width, height: geometry.size.height)
+                                } placeholder: {
+                                    ProgressView()
+                                        .frame(width: geometry.size.width, height: geometry.size.height)
+                                }
+                                .padding()
+
+                                // Dropped Pieces
+                                ForEach(viewModel.droppedPieces.keys.sorted(), id: \.self) { key in
+                                    if let imageUrl = puzzle.images[key], let position = viewModel.droppedPieces[key] {
+                                        AsyncImage(url: URL(string: imageUrl)) { image in
+                                            image
+                                                .resizable()
+                                                .frame(width: 50, height: 50)
+                                                .position(x: position.x, y: position.y)
+                                                .gesture(
+                                                    DragGesture()
+                                                        .onChanged { value in
+                                                            viewModel.updateDraggedPiecePosition(to: value.location, key: key)
+                                                        }
+                                                        .onEnded { _ in
+                                                            viewModel.dropPiece()
+                                                        }
+                                                )
+                                        } placeholder: {
+                                            ProgressView()
+                                                .frame(width: 50, height: 50)
+                                                .position(x: position.x, y: position.y)
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        .frame(height: 500)
+                        .padding()
+
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            HStack {
+                                ForEach(puzzle.images.keys.sorted(), id: \.self) { key in
+                                    if let imageUrl = puzzle.images[key] {
+                                        AsyncImage(url: URL(string: imageUrl)) { image in
+                                            image
+                                                .resizable()
+                                                .frame(width: 100, height: 100)
+                                                .padding()
+                                                .onTapGesture {
+                                                    viewModel.selectPiece(key: key)
+                                                }
+                                        } placeholder: {
+                                            ProgressView()
+                                                .frame(width: 100, height: 100)
+                                        }
+                                    }
+                                }
+                            }
+                            .padding()
+                            .background(Color.gray.opacity(0.2))
+                        }
+                        .frame(height: 150)
                     }
-                    .frame(height: 150) // Mantener el HStack visible y con espacio
+                    .padding()
+                    .background(GradientBackgroundView())
+                    .sheet(isPresented: $viewModel.showSheet) {
+                        ResulPuzzleSheetView(viewModel: viewModel)
+                    }
+                    .alert(isPresented: $showInstructionsAlert) {
+                        Alert(
+                            title: Text("Instrucciones"),
+                            message: Text("Primero debe seleccionar la imagen en la parte inferior y una vez que se muestre en el puzzle situarlo en su lugar."),
+                            dismissButton: .default(Text("Entendido"))
+                        )
+                    }
+                } else {
+                    Text("No hay puzzles disponibles")
                 }
-                .padding()
-                .background(GradientBackgroundView())
-                .sheet(isPresented: $viewModel.showSheet) {
-                    ResulPuzzleSheetView(viewModel: viewModel)
-                }
-                .alert(isPresented: $showInstructionsAlert) {
-                    Alert(
-                        title: Text("Instrucciones"),
-                        message: Text("Primero debe seleccionar la imagen en la parte inferior y una vez que se muestre en el puzzle situarlo en su lugar."),
-                        dismissButton: .default(Text("Entendido"))
-                    )
-                }
-            } else {
-                Text("No hay puzzles disponibles")
             }
+            
+            // Botón de "Atrás" reposicionado
+            Button(action: {
+                appState.currentView = .map
+            }) {
+                Text("Atrás")
+                    .font(.headline)
+                    .padding()
+                    .background(Color.blue)
+                    .foregroundColor(.white)
+                    .cornerRadius(10)
+            }
+            .padding(.top, 60) // Ajusta este valor según sea necesario
+            .padding(.leading, 20) // Ajusta este valor según sea necesario
         }
         .onAppear {
             viewModel.fetchPuzzle()
         }
     }
 }
-
 struct ResulPuzzleSheetView: View {
     @ObservedObject var viewModel: PuzzleViewModel
     

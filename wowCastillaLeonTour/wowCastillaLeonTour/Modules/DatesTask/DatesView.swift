@@ -13,6 +13,15 @@ struct DatesOrderView: View {
     
     var body: some View {
         VStack {
+            
+            Button("Atrás") {
+                appState.currentView = .map
+            }
+            .padding()
+            .background(Color.blue)
+            .foregroundColor(.white)
+            .cornerRadius(10)
+            
             if viewModel.isLoading {
                 Text("Cargando eventos...")
             } else if let errorMessage = viewModel.errorMessage {
@@ -42,6 +51,15 @@ struct DatesOrderView: View {
                     }
                     .padding()
                     .background(Color.blue)
+                    .foregroundColor(.white)
+                    .cornerRadius(10)
+
+                    // Botón de deshacer selección
+                    Button("Deshacer Selección") {
+                        viewModel.undoSelection()
+                    }
+                    .padding()
+                    .background(Color.red)
                     .foregroundColor(.white)
                     .cornerRadius(10)
                 }

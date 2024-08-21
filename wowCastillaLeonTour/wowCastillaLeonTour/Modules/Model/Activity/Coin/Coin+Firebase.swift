@@ -8,14 +8,15 @@
 import Foundation
 import FirebaseFirestore
 
+
 extension Coin {
     init?(from firestoreData: [String: Any]) {
         guard let id = firestoreData["id"] as? String,
               let province = firestoreData["province"] as? String,
               let description = firestoreData["description"] as? String,
-              let customMessage = firestoreData["customMessage"] as? String,
-              let correctAnswerMessage = firestoreData["correctAnswerMessage"] as? String,
-              let incorrectAnswerMessage = firestoreData["incorrectAnswerMessage"] as? String,
+              let custom_message = firestoreData["custom_message"] as? String,
+              let correct_answer_message = firestoreData["correct_answer_message"] as? String,
+              let incorrect_answer_message = firestoreData["incorrect_answer_message"] as? String,
               let prize = firestoreData["prize"] as? String,
               let isCapital = firestoreData["isCapital"] as? Bool else {
             return nil
@@ -24,9 +25,9 @@ extension Coin {
         self.id = id
         self.province = province
         self.description = description
-        self.customMessage = customMessage
-        self.correctAnswerMessage = correctAnswerMessage
-        self.incorrectAnswerMessage = incorrectAnswerMessage
+        self.customMessage = custom_message
+        self.correctAnswerMessage = correct_answer_message
+        self.incorrectAnswerMessage = incorrect_answer_message
         self.prize = prize
         self.isCapital = isCapital
     }
@@ -36,9 +37,9 @@ extension Coin {
             "id": id,
             "province": province,
             "description": description,
-            "customMessage": customMessage,
-            "correctAnswerMessage": correctAnswerMessage,
-            "incorrectAnswerMessage": incorrectAnswerMessage,
+            "custom_message": customMessage,
+            "correct_answer_message": correctAnswerMessage,
+            "incorrect_answer_message": incorrectAnswerMessage,
             "prize": prize,
             "isCapital": isCapital
         ]

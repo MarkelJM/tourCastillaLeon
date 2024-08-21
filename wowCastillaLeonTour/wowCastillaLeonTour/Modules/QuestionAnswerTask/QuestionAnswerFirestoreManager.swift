@@ -21,7 +21,7 @@ class QuestionAnswerFirestoreManager {
                     if let questionAnswer = QuestionAnswer(from: data) {
                         promise(.success(questionAnswer))
                     } else {
-                        promise(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Failed to decode questionAnswer"])))
+                        promise(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Failed to decode questionAnswers"])))
                     }
                 } else {
                     promise(.failure(error ?? NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Document does not exist"])))
