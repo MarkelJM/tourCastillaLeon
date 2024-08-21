@@ -73,101 +73,73 @@ struct ResultCoinView: View {
         .padding()
     }
 }
+/*
 
-struct ARViewContainer: UIViewRepresentable {
-    var prizeImageName: String
-    var viewModel: CoinViewModel
-    
-    func makeUIView(context: Context) -> ARView {
-        let arView = ARView(frame: .zero)
-        
-        // Configurar la sesión AR
-        let configuration = ARWorldTrackingConfiguration()
-        configuration.planeDetection = [.horizontal]
-        arView.session.run(configuration)
-        
-        // Configurar la escena AR
-        setupARScene(arView: arView, context: context)
-        
-        // Configurar el reconocimiento de gestos
-        let tapGesture = UITapGestureRecognizer(target: context.coordinator, action: #selector(context.coordinator.handleTap(_:)))
-        arView.addGestureRecognizer(tapGesture)
-        
-        return arView
-    }
-    
-    func setupARScene(arView: ARView, context: Context) {
-        // Crear una entidad ancla para el plano horizontal
-        let anchorEntity = AnchorEntity(plane: .horizontal)
-        
-        // Cargar la imagen desde los assets
-        guard let image = UIImage(named: prizeImageName) else {
-            print("Imagen no encontrada: \(prizeImageName)")
-            return
-        }
-        
-        var material = SimpleMaterial()
-        let mesh = MeshResource.generatePlane(width: 0.5, height: 0.5) // Aumentar el tamaño del plano
-        let modelEntity = ModelEntity(mesh: mesh, materials: [material])
-        
-        // Aplicar la imagen como una textura
-        if let texture = try? TextureResource.generate(from: image.cgImage!, options: .init(semantic: nil)) {
-            material.baseColor = MaterialColorParameter.texture(texture)
-            modelEntity.model?.materials = [material]  // Reasignar el material con la textura aplicada
-        } else {
-            print("Error al crear la textura")
-        }
-        
-        // Colocar la moneda a 1 metro de la cámara (ajustar la posición si es necesario)
-        modelEntity.position = [0, 0, -1]
-        
-        // Generar colisiones para la entidad para permitir la interacción con gestos
-        modelEntity.generateCollisionShapes(recursive: true)
-        
-        // Añadir la entidad al ancla
-        anchorEntity.addChild(modelEntity)
-        
-        // Añadir el ancla al ARView
-        arView.scene.addAnchor(anchorEntity)
-        
-        // Almacenar la entidad actual en el coordinador para su manejo
-        context.coordinator.currentEntity = modelEntity
-    }
-    
-    func updateUIView(_ uiView: ARView, context: Context) {}
-    
-    // Crear un Coordinador para manejar los gestos y el botón "Atrás"
-    func makeCoordinator() -> Coordinator {
-        Coordinator(self, viewModel: viewModel)
-    }
-    
-    class Coordinator: NSObject {
-        var parent: ARViewContainer
-        var currentEntity: ModelEntity?
-        var viewModel: CoinViewModel
-        
-        init(_ parent: ARViewContainer, viewModel: CoinViewModel) {
-            self.parent = parent
-            self.viewModel = viewModel
-        }
-        
-        @objc func handleTap(_ sender: UITapGestureRecognizer) {
-            guard let arView = sender.view as? ARView else { return }
-            let tapLocation = sender.location(in: arView)
-            
-            // Buscar la entidad que fue tocada
-            if let tappedEntity = arView.entity(at: tapLocation), tappedEntity == currentEntity {
-                currentEntity?.removeFromParent()
-                
-                // Completar la tarea y mostrar el mensaje del coin
-                if let coin = viewModel.coins.first {
-                    viewModel.completeTask(coin: coin)
-                }
+struct CoinView: View {
+    @ObservedObject var viewModel: CoinViewModel
+    @EnvironmentObject var appState: AppState
+
+    var body: some View {
+        ZStack {
+            if viewModel.isLoading {
+                Text("Cargando datos...")
+            } else if let errorMessage = viewModel.errorMessage {
+                Text("Error: \(errorMessage)")
+            } else if let coin = viewModel.coins.first {
+                ARViewContainer(prizeImageName: coin.prize, viewModel: viewModel)
+                    .edgesIgnoringSafeArea(.all)
+            } else {
+                Text("No hay datos disponibles")
             }
+
+            VStack {
+                HStack {
+                    Button(action: {
+                        appState.currentView = .map
+                    }) {
+                        Text("Atrás")
+                            .padding()
+                            .background(Color.black.opacity(0.7))
+                            .foregroundColor(.white)
+                            .cornerRadius(10)
+                    }
+                    Spacer()
+                }
+                .padding([.top, .leading], 20)
+                
+                Spacer()
+            }
+        }
+        .sheet(isPresented: $viewModel.showResultModal) {
+            ResultCoinView(viewModel: viewModel, appState: _appState)
         }
     }
 }
 
+struct ResultCoinView: View {
+    @ObservedObject var viewModel: CoinViewModel
+    @EnvironmentObject var appState: AppState
+
+    var body: some View {
+        VStack {
+            Text(viewModel.resultMessage)
+                .font(.title)
+                .padding()
+
+            Button("Continuar") {
+                // Navegar de vuelta al mapa
+                viewModel.showResultModal = false
+                appState.currentView = .map
+            }
+            .padding()
+            .background(Color.blue)
+            .foregroundColor(.white)
+            .cornerRadius(10)
+        }
+        .padding()
+    }
+}
+*/
 
 
 /*

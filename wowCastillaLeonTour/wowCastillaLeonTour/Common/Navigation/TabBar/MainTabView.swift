@@ -19,6 +19,18 @@ struct MainTabView: View {
                     Text("Mapa")
                 }
             
+            // SpecialPrize
+            SpecialPrizeListView()
+                .tabItem {
+                    Image(systemName: "star.fill")
+                    Text("Premios Especiales")
+                }
+            // Perfil Tab
+            SettingProfileView()
+                .tabItem {
+                    Image(systemName: "person.crop.circle")
+                    Text("Perfil")
+                }
         }
     }
 }

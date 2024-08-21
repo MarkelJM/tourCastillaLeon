@@ -21,7 +21,7 @@ struct NavigationState: View {
             }
         }
         .onAppear {
-            print("Current AppState in NavigationState: \(appState)")
+            print("Current AppState in NavigationState: \(appState.currentView)")
         }
     }
     
@@ -35,7 +35,7 @@ struct NavigationState: View {
         case .login:
             LoginView(viewModel: LoginViewModel())
         case .profile:
-            ProfileView(viewModel: ProfileViewModel()) 
+            ProfileView(viewModel: ProfileViewModel())
         case .map:
             MapView()
         case .avatarSelection:
@@ -52,6 +52,8 @@ struct NavigationState: View {
             QuestionAnswerView(viewModel: QuestionAnswerViewModel(activityId: id))
         case .takePhoto(let id):
             TakePhotoView(viewModel: TakePhotoViewModel(activityId: id))
+        case .specialPrize(let id):
+            SpecialPrizeTaskView(viewModel: SpecialPrizeTaskViewModel(prizeId: id))
         }
     }
     
