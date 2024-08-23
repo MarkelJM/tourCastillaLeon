@@ -5,100 +5,144 @@
 //  Created by Markel Juaristi on 16/8/24.
 //
 
+
 import SwiftUI
 
 struct SettingProfileView: View {
     @StateObject var viewModel = SettingProfileViewModel()
-    @State private var isEditing = false
-    @State private var editedFirstName = ""
+    @State private var showEditProfileModal = false
 
     var body: some View {
-        NavigationView {
+        ZStack(alignment: .topTrailing) {
+            // Fondo de pantalla
+            Image("fondoSolar")
+                .resizable()
+                .scaledToFill()
+                .edgesIgnoringSafeArea(.all)
+
             VStack(spacing: 20) {
                 // Avatar
                 Image(viewModel.user?.avatar.rawValue ?? "normalMutila")
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 100, height: 100)
+                    .frame(width: 120, height: 120)
                     .clipShape(Circle())
-                    .padding()
-                
+                    .overlay(Circle().stroke(Color.mateRed, lineWidth: 2))
+                    .padding(.top, 40)
+
                 // Profile Information
-                if isEditing {
-                    TextField("Nombre", text: $editedFirstName)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                        .padding()
-                } else {
-                    Text("Nombre: \(viewModel.user?.firstName ?? "")")
-                    Text("Apellido: \(viewModel.user?.lastName ?? "")")
-                    Text("Email: \(viewModel.user?.email ?? "")")
-                    Text("Fecha de Nacimiento: \(viewModel.user?.birthDate.formatted(date: .abbreviated, time: .omitted) ?? "")")
-                    Text("Código Postal: \(viewModel.user?.postalCode ?? "")")
-                    Text("Ciudad: \(viewModel.user?.city ?? "")")
-                    Text("Provincia: \(viewModel.user?.province.rawValue ?? "")")
+                VStack(alignment: .leading, spacing: 10) {
+                    ProfileInfoRow(label: "Nombre:", value: viewModel.user?.firstName ?? "")
+                    ProfileInfoRow(label: "Apellido:", value: viewModel.user?.lastName ?? "")
+                    ProfileInfoRow(label: "Fecha de Nacimiento:", value: viewModel.user?.birthDate.formatted(date: .abbreviated, time: .omitted) ?? "")
+                    ProfileInfoRow(label: "Código Postal:", value: viewModel.user?.postalCode ?? "")
+                    ProfileInfoRow(label: "Ciudad:", value: viewModel.user?.city ?? "")
+                    ProfileInfoRow(label: "Provincia:", value: viewModel.user?.province.rawValue ?? "")
                 }
-                
+                .padding()
+                .background(Color.black.opacity(0.7))
+                .cornerRadius(15)
+
                 // Task Statistics
-                HStack {
-                    VStack {
-                        Text("Ávila")
-                        Text("\(viewModel.user?.avilaCityTaskIDs.count ?? 0)")
+                VStack(spacing: 10) {
+                    Text("Estadísticas por Provincia")
+                        .font(.title3)
+                        .fontWeight(.bold)
+                        .foregroundColor(.mateGold)
+
+                    HStack(spacing: 20) {
+                        ProvinceStatView(province: "Ávila", count: viewModel.user?.avilaCityTaskIDs.count ?? 0)
+                        ProvinceStatView(province: "Burgos", count: viewModel.user?.burgosCityTaskIDs.count ?? 0)
+                        ProvinceStatView(province: "León", count: viewModel.user?.leonCityTaskIDs.count ?? 0)
                     }
-                    VStack {
-                        Text("Burgos")
-                        Text("\(viewModel.user?.burgosCityTaskIDs.count ?? 0)")
+
+                    HStack(spacing: 20) {
+                        ProvinceStatView(province: "Palencia", count: viewModel.user?.palenciaCityTaskIDs.count ?? 0)
+                        ProvinceStatView(province: "Salamanca", count: viewModel.user?.salamancaCityTaskIDs.count ?? 0)
+                        ProvinceStatView(province: "Segovia", count: viewModel.user?.segoviaCityTaskIDs.count ?? 0)
                     }
-                    VStack {
-                        Text("León")
-                        Text("\(viewModel.user?.leonCityTaskIDs.count ?? 0)")
-                    }
-                }
-                HStack {
-                    VStack {
-                        Text("Palencia")
-                        Text("\(viewModel.user?.palenciaCityTaskIDs.count ?? 0)")
-                    }
-                    VStack {
-                        Text("Salamanca")
-                        Text("\(viewModel.user?.salamancaCityTaskIDs.count ?? 0)")
-                    }
-                    VStack {
-                        Text("Segovia")
-                        Text("\(viewModel.user?.segoviaCityTaskIDs.count ?? 0)")
+
+                    HStack(spacing: 20) {
+                        ProvinceStatView(province: "Soria", count: viewModel.user?.soriaCityTaskIDs.count ?? 0)
+                        ProvinceStatView(province: "Valladolid", count: viewModel.user?.valladolidCityTaskIDs.count ?? 0)
+                        ProvinceStatView(province: "Zamora", count: viewModel.user?.zamoraCityTaskIDs.count ?? 0)
                     }
                 }
-                HStack {
-                    VStack {
-                        Text("Soria")
-                        Text("\(viewModel.user?.soriaCityTaskIDs.count ?? 0)")
-                    }
-                    VStack {
-                        Text("Valladolid")
-                        Text("\(viewModel.user?.valladolidCityTaskIDs.count ?? 0)")
-                    }
-                    VStack {
-                        Text("Zamora")
-                        Text("\(viewModel.user?.zamoraCityTaskIDs.count ?? 0)")
-                    }
-                }
-                
-                Spacer()
-            }
-            .navigationTitle("Perfil")
-            .navigationBarItems(leading: Button(action: {
-                if isEditing {
-                    viewModel.updateUserName(editedFirstName)
-                } else {
-                    editedFirstName = viewModel.user?.firstName ?? ""
-                }
-                isEditing.toggle()
-            }) {
-                Image(systemName: "pencil")
-            })
-            .onAppear {
-                viewModel.fetchUserProfile()
             }
             .padding()
+            .background(Color.black.opacity(0.65))  // Fondo con transparencia del VStack principal
+            .cornerRadius(20)
+            .padding()
+            .padding(.top, 40)
+
+            // Botón de edición en la parte superior derecha
+            Button(action: {
+                viewModel.startEditing()  // Cargar datos en el modal
+                showEditProfileModal = true  // Mostrar el modal
+            }) {
+                Image(systemName: "pencil.circle")
+                    .font(.largeTitle)
+                    .foregroundColor(.mateGold)
+                    .padding(.trailing, 20)
+                    .padding(.top, 100)
+            }
+        }
+        .sheet(isPresented: $showEditProfileModal) {
+            EditProfileView(
+                editedFirstName: $viewModel.editedFirstName,
+                editedLastName: $viewModel.editedLastName,
+                editedPostalCode: $viewModel.editedPostalCode,
+                editedCity: $viewModel.editedCity,
+                editedProvince: $viewModel.editedProvince,
+                editedAvatar: $viewModel.editedAvatar,  // Pasamos el avatar editable al modal
+                onSave: {
+                    viewModel.saveProfileChanges()
+                    showEditProfileModal = false
+                },
+                onCancel: {
+                    showEditProfileModal = false
+                }
+            )
+            .background(Color.black.opacity(0.2))  // Fondo semitransparente del modal
+            .cornerRadius(20)
+            .padding()
+        }
+        .onAppear {
+            viewModel.fetchUserProfile()
+        }
+    }
+}
+
+struct ProfileInfoRow: View {
+    var label: String
+    var value: String
+
+    var body: some View {
+        HStack {
+            Text(label)
+                .font(.headline)
+                .foregroundColor(.mateRed)
+            Spacer()
+            Text(value)
+                .foregroundColor(.mateWhite)
+        }
+        .padding(.vertical, 5)
+    }
+}
+
+struct ProvinceStatView: View {
+    var province: String
+    var count: Int
+
+    var body: some View {
+        VStack {
+            Text(province)
+                .font(.headline)
+                .foregroundColor(.mateBlue)
+            Text("\(count)")
+                .font(.title)
+                .fontWeight(.bold)
+                .foregroundColor(.mateRed)
         }
     }
 }
@@ -108,3 +152,137 @@ struct SettingProfileView_Previews: PreviewProvider {
         SettingProfileView(viewModel: SettingProfileViewModel())
     }
 }
+
+/*
+import SwiftUI
+
+struct SettingProfileView: View {
+    @StateObject var viewModel = SettingProfileViewModel()
+    @State private var isEditing = false
+    @State private var editedFirstName = ""
+
+    var body: some View {
+        NavigationView {
+            ScrollView {
+                ZStack {
+                    Color.black.edgesIgnoringSafeArea(.all) // Fondo oscuro, limpio y minimalista
+
+                    VStack(spacing: 20) {
+                        // Avatar
+                        Image(viewModel.user?.avatar.rawValue ?? "normalMutila")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 120, height: 120)
+                            .clipShape(Circle())
+                            .overlay(Circle().stroke(Color.mateRed, lineWidth: 2)) // Borde sutil en rojo mate
+                            .padding()
+
+                        // Profile Information
+                        VStack(alignment: .leading, spacing: 10) {
+                            if isEditing {
+                                TextField("Nombre", text: $editedFirstName)
+                                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                                    .padding()
+                            } else {
+                                ProfileInfoRow(label: "Nombre:", value: viewModel.user?.firstName ?? "")
+                                ProfileInfoRow(label: "Apellido:", value: viewModel.user?.lastName ?? "")
+                                ProfileInfoRow(label: "Fecha de Nacimiento:", value: viewModel.user?.birthDate.formatted(date: .abbreviated, time: .omitted) ?? "")
+                                ProfileInfoRow(label: "Código Postal:", value: viewModel.user?.postalCode ?? "")
+                                ProfileInfoRow(label: "Ciudad:", value: viewModel.user?.city ?? "")
+                                ProfileInfoRow(label: "Provincia:", value: viewModel.user?.province.rawValue ?? "")
+                            }
+                        }
+                        .padding()
+                        .background(Color.black.opacity(0.7)) // Fondo semitransparente
+                        .cornerRadius(15)
+
+                        // Task Statistics
+                        VStack(spacing: 10) {
+                            Text("Estadísticas por Ciudad")
+                                .font(.title3)
+                                .fontWeight(.bold)
+                                .foregroundColor(.mateGold)
+
+                            HStack(spacing: 20) {
+                                ProvinceStatView(province: "Ávila", count: viewModel.user?.avilaCityTaskIDs.count ?? 0)
+                                ProvinceStatView(province: "Burgos", count: viewModel.user?.burgosCityTaskIDs.count ?? 0)
+                                ProvinceStatView(province: "León", count: viewModel.user?.leonCityTaskIDs.count ?? 0)
+                            }
+
+                            HStack(spacing: 20) {
+                                ProvinceStatView(province: "Palencia", count: viewModel.user?.palenciaCityTaskIDs.count ?? 0)
+                                ProvinceStatView(province: "Salamanca", count: viewModel.user?.salamancaCityTaskIDs.count ?? 0)
+                                ProvinceStatView(province: "Segovia", count: viewModel.user?.segoviaCityTaskIDs.count ?? 0)
+                            }
+
+                            HStack(spacing: 20) {
+                                ProvinceStatView(province: "Soria", count: viewModel.user?.soriaCityTaskIDs.count ?? 0)
+                                ProvinceStatView(province: "Valladolid", count: viewModel.user?.valladolidCityTaskIDs.count ?? 0)
+                                ProvinceStatView(province: "Zamora", count: viewModel.user?.zamoraCityTaskIDs.count ?? 0)
+                            }
+                        }
+
+                        Spacer()
+                    }
+                    .navigationTitle(Text("Perfil").foregroundColor(.mateGold)) // Título en mateGold
+                    .navigationBarItems(trailing: Button(action: {
+                        if isEditing {
+                            viewModel.updateUserName(editedFirstName)
+                        } else {
+                            editedFirstName = viewModel.user?.firstName ?? ""
+                        }
+                        isEditing.toggle()
+                    }) {
+                        Image(systemName: isEditing ? "checkmark.circle.fill" : "pencil.circle")
+                            .foregroundColor(.mateGold) // Botón en mateGold
+                    })
+                    .onAppear {
+                        viewModel.fetchUserProfile()
+                    }
+                    .padding()
+                }
+            }
+        }
+    }
+}
+
+struct ProfileInfoRow: View {
+    var label: String
+    var value: String
+
+    var body: some View {
+        HStack {
+            Text(label)
+                .font(.headline)
+                .foregroundColor(.mateRed)
+            Spacer()
+            Text(value)
+                .foregroundColor(.mateWhite)
+        }
+        .padding(.vertical, 5)
+    }
+}
+
+struct ProvinceStatView: View {
+    var province: String
+    var count: Int
+
+    var body: some View {
+        VStack {
+            Text(province)
+                .font(.headline)
+                .foregroundColor(.mateBlue)
+            Text("\(count)")
+                .font(.title)
+                .fontWeight(.bold)
+                .foregroundColor(.mateRed)
+        }
+    }
+}
+
+struct SettingProfileView_Previews: PreviewProvider {
+    static var previews: some View {
+        SettingProfileView(viewModel: SettingProfileViewModel())
+    }
+}
+*/

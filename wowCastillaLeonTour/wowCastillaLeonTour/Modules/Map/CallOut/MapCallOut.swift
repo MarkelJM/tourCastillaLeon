@@ -10,25 +10,32 @@ import SwiftUI
 struct MapCallOutView: View {
     var point: Point
     @EnvironmentObject var appState: AppState
-    @ObservedObject var viewModel: MapViewModel 
+    @ObservedObject var viewModel: MapViewModel
 
     var body: some View {
         VStack(spacing: 20) {
             Text(point.name)
                 .font(.title2)
                 .fontWeight(.bold)
+                .foregroundColor(.mateRed)
             
-            Text(point.abstract) // show el abstract
-
+            Text(point.abstract)
+                .font(.body)
+                .foregroundColor(.black)
+                .multilineTextAlignment(.center)
+                .padding(.horizontal)
+            
             AsyncImage(url: URL(string: point.image)) { image in
                 image
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(height: 200)
                     .cornerRadius(10)
+                    .shadow(radius: 5)
             } placeholder: {
                 ProgressView()
             }
+            .padding(.horizontal)
 
             Button(action: {
                 if viewModel.isTaskCompleted(taskID: point.activityId, activityType: point.activityType) {
@@ -56,15 +63,19 @@ struct MapCallOutView: View {
             }) {
                 Text("Participar")
                     .font(.headline)
-                    .foregroundColor(.white)
+                    .foregroundColor(.mateWhite)
                     .padding()
-                    .background(Color.blue)
+                    .background(Color.mateRed)
                     .cornerRadius(10)
+                    .shadow(radius: 5)
             }
 
             Spacer()
         }
         .padding()
+        .background(Color.mateWhite.opacity(0.9))
+        .cornerRadius(20)
+        .shadow(radius: 10)
         .alert(isPresented: $viewModel.showAlert) {
             Alert(title: Text("Aviso"), message: Text(viewModel.alertMessage), dismissButton: .default(Text("OK")))
         }

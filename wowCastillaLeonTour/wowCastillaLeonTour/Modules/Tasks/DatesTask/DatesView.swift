@@ -12,67 +12,107 @@ struct DatesOrderView: View {
     @EnvironmentObject var appState: AppState
     
     var body: some View {
-        VStack {
-            
-            Button("Atrás") {
-                appState.currentView = .map
-            }
-            .padding()
-            .background(Color.blue)
-            .foregroundColor(.white)
-            .cornerRadius(10)
-            
-            if viewModel.isLoading {
-                Text("Cargando eventos...")
-            } else if let errorMessage = viewModel.errorMessage {
-                Text("Error: \(errorMessage)")
-            } else if let dateEvent = viewModel.dateEvent {
-                VStack(spacing: 20) {
-                    Text(dateEvent.question)
-                        .font(.title2)
-                        .multilineTextAlignment(.center)
+        ScrollView {
+            ZStack {
+                // Fondo de pantalla
+                Image("fondoSolar")
+                    .resizable()
+                    .scaledToFill()
+                    .edgesIgnoringSafeArea(.all)
+                
+                VStack(spacing: 10) {
                     
-                    ForEach(viewModel.shuffledOptions, id: \.self) { option in
+                    HStack {
                         Button(action: {
-                            viewModel.selectEvent(option)
+                            appState.currentView = .map
                         }) {
-                            Text(option)
+                            Image(systemName: "chevron.left")
                                 .font(.headline)
-                                .foregroundColor(.white)
                                 .padding()
-                                .frame(maxWidth: .infinity)
-                                .background(viewModel.selectedEvents.contains(option) ? Color.blue : Color.gray)
+                                .background(Color.mateGold)
+                                .foregroundColor(.black)
+                                .cornerRadius(10)
+                        }
+                        Spacer()
+                        Button(action: {
+                            viewModel.checkAnswer()
+                        }) {
+                            Text("Comprobar")
+                                .padding()
+                                .background(Color.mateRed)
+                                .foregroundColor(.mateWhite)
                                 .cornerRadius(10)
                         }
                     }
-                    
-                    Button("Comprobar") {
-                        viewModel.checkAnswer()
-                    }
-                    .padding()
-                    .background(Color.blue)
-                    .foregroundColor(.white)
-                    .cornerRadius(10)
+                    .padding(.horizontal)
+                    .padding(.top, 5)
 
-                    // Botón de deshacer selección
-                    Button("Deshacer Selección") {
-                        viewModel.undoSelection()
+                    if viewModel.isLoading {
+                        Text("Cargando eventos...")
+                            .font(.title2)
+                            .foregroundColor(.mateWhite)
+                    } else if let errorMessage = viewModel.errorMessage {
+                        Text("Error: \(errorMessage)")
+                            .foregroundColor(.red)
+                    } else if let dateEvent = viewModel.dateEvent {
+                        VStack(spacing: 20) {
+                            Text(dateEvent.question)
+                                .font(.title2)
+                                .foregroundColor(.mateGold)
+                                .multilineTextAlignment(.center)
+                                .padding(.horizontal)
+
+                            ForEach(viewModel.shuffledOptions, id: \.self) { option in
+                                Button(action: {
+                                    viewModel.selectEvent(option)
+                                }) {
+                                    Text(option)
+                                        .font(.headline)
+                                        .foregroundColor(.white)
+                                        .padding()
+                                        .frame(maxWidth: .infinity)
+                                        .background(viewModel.selectedEvents.contains(option) ? Color.mateGreen : Color.mateBlue)
+                                        .cornerRadius(10)
+                                }
+                            }
+                            HStack {
+                                Button(action: {
+                                    viewModel.checkAnswer()
+                                }) {
+                                    Text("Comprobar")
+                                        .padding()
+                                        .background(Color.mateRed)
+                                        .foregroundColor(.mateWhite)
+                                        .cornerRadius(10)
+                                }
+
+                                // Botón de deshacer selección
+                                Button(action: {
+                                    viewModel.undoSelection()
+                                }) {
+                                    Text("Deshacer")
+                                        .padding()
+                                        .background(Color.mateRed)
+                                        .foregroundColor(.mateWhite)
+                                        .cornerRadius(10)
+                                        .opacity(0.5)
+                                }
+                            }
+                        }
                     }
-                    .padding()
-                    .background(Color.red)
-                    .foregroundColor(.white)
-                    .cornerRadius(10)
                 }
+                .padding()
+                .background(Color.black.opacity(0.5))  // Fondo del VStack con transparencia
+                .cornerRadius(20)
                 .padding()
                 .sheet(isPresented: $viewModel.showResultAlert) {
                     ResultDatesOrderView(viewModel: viewModel)
                 }
-            } else {
-                Text("No hay eventos disponibles")
+                
             }
-        }
-        .onAppear {
-            viewModel.fetchDateEvent()
+            .onAppear {
+                viewModel.fetchDateEvent()
+            }
         }
     }
 }
@@ -81,26 +121,37 @@ struct ResultDatesOrderView: View {
     @ObservedObject var viewModel: DatesOrderViewModel
     
     var body: some View {
-        VStack {
-            Text(viewModel.alertMessage)
-                .font(.title)
-                .padding()
+        ZStack {
+            Image("fondoSolar")
+                .resizable()
+                .scaledToFill()
+                .edgesIgnoringSafeArea(.all)
 
-            Button("Continuar") {
-                viewModel.showResultAlert = false
-                // Aquí puedes añadir cualquier acción adicional, como navegar a otra vista
+            VStack {
+                Text(viewModel.alertMessage)
+                    .font(.title)
+                    .foregroundColor(.mateGold)
+                    .padding()
+
+                Button(action: {
+                    viewModel.showResultAlert = false
+                }) {
+                    Text("Continuar")
+                        .padding()
+                        .background(Color.mateRed)
+                        .foregroundColor(.mateWhite)
+                        .cornerRadius(10)
+                }
             }
             .padding()
-            .background(Color.blue)
-            .foregroundColor(.white)
-            .cornerRadius(10)
+            .background(Color.black.opacity(0.5))  // Fondo del VStack con transparencia
+            .cornerRadius(20)
+            .padding()
         }
-        .padding()
     }
 }
 
-struct DatesOrderView_Previews: PreviewProvider {
-    static var previews: some View {
-        DatesOrderView(viewModel: DatesOrderViewModel(activityId: "mockId"))
-    }
+#Preview {
+    DatesOrderView(viewModel: DatesOrderViewModel(activityId: "mockId"))
+        .environmentObject(AppState())
 }

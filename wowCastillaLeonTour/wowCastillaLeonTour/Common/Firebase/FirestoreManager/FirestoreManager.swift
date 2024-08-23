@@ -177,4 +177,38 @@ class FirestoreManager {
         }
         .eraseToAnyPublisher()
     }
+    
+    func updateUserProfile(user: User) -> AnyPublisher<Void, Error> {
+        Future { promise in
+            guard let uid = self.auth.currentUser?.uid else {
+                promise(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "User ID not found"])))
+                return
+            }
+
+            let userData = user.toFirestoreData() // Asegúrate de que el método 'toFirestoreData' esté implementado en tu modelo de usuario
+
+            self.db.collection("users").document(uid).setData(userData) { error in
+                if let error = error {
+                    promise(.failure(error))
+                } else {
+                    promise(.success(()))
+                }
+            }
+        }
+        .eraseToAnyPublisher()
+    }
+    
+    // Método para restablecer la contraseña
+    func resetPassword(email: String) -> AnyPublisher<Void, Error> {
+        Future { promise in
+            self.auth.sendPasswordReset(withEmail: email) { error in
+                if let error = error {
+                    promise(.failure(error))
+                } else {
+                    promise(.success(()))
+                }
+            }
+        }
+        .eraseToAnyPublisher()
+    }
 }

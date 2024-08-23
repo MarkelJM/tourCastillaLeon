@@ -13,6 +13,7 @@ class RegisterViewModel: ObservableObject {
     @Published var email: String = ""
     @Published var password: String = ""
     @Published var repeatPassword: String = ""
+    @Published var agreeToTerms: Bool = false // Propiedad para el Toggle
     @Published var showError: Bool = false
     @Published var errorMessage: String = ""
     @Published var showVerificationModal: Bool = false
@@ -27,6 +28,12 @@ class RegisterViewModel: ObservableObject {
         guard password == repeatPassword else {
             showError = true
             errorMessage = "Las contraseñas no coinciden"
+            return
+        }
+        
+        guard agreeToTerms else {
+            showError = true
+            errorMessage = "Debes aceptar los términos y condiciones para registrarte."
             return
         }
 

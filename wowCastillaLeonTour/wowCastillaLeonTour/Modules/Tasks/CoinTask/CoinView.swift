@@ -15,26 +15,39 @@ struct CoinView: View {
 
     var body: some View {
         ZStack {
-            if viewModel.isLoading {
-                Text("Cargando datos...")
-            } else if let errorMessage = viewModel.errorMessage {
-                Text("Error: \(errorMessage)")
-            } else if let coin = viewModel.coins.first {
-                ARViewContainer(prizeImageName: coin.prize, viewModel: viewModel)
-                    .edgesIgnoringSafeArea(.all)
-            } else {
-                Text("No hay datos disponibles")
+            // Fondo de pantalla
+            Image("fondoSolar")
+                .resizable()
+                .scaledToFill()
+                .edgesIgnoringSafeArea(.all)
+            
+            VStack(spacing: 20) {
+                if viewModel.isLoading {
+                    Text("Cargando datos...")
+                        .font(.title2)
+                        .foregroundColor(.white)
+                } else if let errorMessage = viewModel.errorMessage {
+                    Text("Error: \(errorMessage)")
+                        .foregroundColor(.red)
+                } else if let coin = viewModel.coins.first {
+                    ARViewContainer(prizeImageName: coin.prize, viewModel: viewModel)
+                        .edgesIgnoringSafeArea(.all)
+                } else {
+                    Text("No hay datos disponibles")
+                        .foregroundColor(.white)
+                }
             }
-
+            
             VStack {
                 HStack {
                     Button(action: {
                         appState.currentView = .map
                     }) {
-                        Text("Atrás")
+                        Image(systemName: "chevron.left")
+                            .font(.headline)
                             .padding()
-                            .background(Color.black.opacity(0.7))
-                            .foregroundColor(.white)
+                            .background(Color.mateGold)
+                            .foregroundColor(.black)
                             .cornerRadius(10)
                     }
                     Spacer()
@@ -45,7 +58,8 @@ struct CoinView: View {
             }
         }
         .sheet(isPresented: $viewModel.showResultModal) {
-            ResultCoinView(viewModel: viewModel, appState: _appState)
+            ResultCoinView(viewModel: viewModel)
+                .environmentObject(appState)
         }
     }
 }
@@ -55,24 +69,37 @@ struct ResultCoinView: View {
     @EnvironmentObject var appState: AppState
 
     var body: some View {
-        VStack {
-            Text(viewModel.resultMessage)
-                .font(.title)
-                .padding()
+        ZStack {
+            Image("fondoSolar")
+                .resizable()
+                .scaledToFill()
+                .edgesIgnoringSafeArea(.all)
+            
+            VStack {
+                Text(viewModel.resultMessage)
+                    .font(.title)
+                    .foregroundColor(.mateGold)
+                    .padding()
 
-            Button("Continuar") {
-                // Navegar de vuelta al mapa
-                viewModel.showResultModal = false
-                appState.currentView = .map
+                Button("Continuar") {
+                    // Navegar de vuelta al mapa
+                    viewModel.showResultModal = false
+                    appState.currentView = .map
+                }
+                .padding()
+                .background(Color.mateRed)
+                .foregroundColor(.mateWhite)
+                .cornerRadius(10)
             }
             .padding()
-            .background(Color.blue)
-            .foregroundColor(.white)
-            .cornerRadius(10)
+            .background(Color.black.opacity(0.5))  // Fondo semitransparente del VStack
+            .cornerRadius(20)
+            .padding()
         }
-        .padding()
     }
 }
+
+
 /*
 
 struct CoinView: View {

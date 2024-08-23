@@ -14,7 +14,7 @@ class BaseViewModel: ObservableObject {
     @Published var showAlert: Bool = false
     @Published var alertMessage: String = ""
     
-    private let firestoreManager = FirestoreManager()
+    let firestoreManager = FirestoreManager()
     var cancellables = Set<AnyCancellable>()
     
     func fetchUserProfile() {

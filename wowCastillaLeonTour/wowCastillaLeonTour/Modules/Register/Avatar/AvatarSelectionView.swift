@@ -14,19 +14,21 @@ struct AvatarSelectionView: View {
         VStack {
             Text("Selecciona tu Avatar")
                 .font(.title)
+                .fontWeight(.bold)
+                .foregroundColor(.mateGold)
                 .padding()
 
             HStack {
                 Button(action: {
                     selectedAvatar = .boy
                 }) {
-                    Image("normalMutila")
+                    Image("chico")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .frame(width: 100, height: 100) // Ajustar tamaño
+                        .frame(width: 100, height: 100)
                         .clipShape(Circle())
                         .overlay(
-                            Circle().stroke(selectedAvatar == .boy ? Color.blue : Color.clear, lineWidth: 4)
+                            Circle().stroke(selectedAvatar == .boy ? Color.mateGold : Color.clear, lineWidth: 4)
                         )
                         .shadow(radius: selectedAvatar == .boy ? 10 : 0)
                 }
@@ -34,13 +36,13 @@ struct AvatarSelectionView: View {
                 Button(action: {
                     selectedAvatar = .girl
                 }) {
-                    Image("normalChica")
+                    Image("chica")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .frame(width: 100, height: 100) // Ajustar tamaño
+                        .frame(width: 100, height: 100)
                         .clipShape(Circle())
                         .overlay(
-                            Circle().stroke(selectedAvatar == .girl ? Color.blue : Color.clear, lineWidth: 4)
+                            Circle().stroke(selectedAvatar == .girl ? Color.mateGold : Color.clear, lineWidth: 4)
                         )
                         .shadow(radius: selectedAvatar == .girl ? 10 : 0)
                 }
@@ -48,8 +50,9 @@ struct AvatarSelectionView: View {
             .padding()
         }
         .padding()
-        .background(Color.gray.opacity(0.2))
-        .cornerRadius(10) // Bordes redondeados para la vista
+        .background(Color.black.opacity(0.5))
+        .cornerRadius(20)
+        .padding(.horizontal, 40)
     }
 }
 

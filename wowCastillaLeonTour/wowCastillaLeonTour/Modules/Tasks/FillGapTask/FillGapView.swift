@@ -10,70 +10,113 @@ import SwiftUI
 struct FillGapView: View {
     @StateObject var viewModel: FillGapViewModel
     @EnvironmentObject var appState: AppState
-    
+    @State private var showAlert = false
+    @State private var missingFieldsMessage = ""
+
     var body: some View {
-        VStack {
-            Button("Atrás") {
-                appState.currentView = .map
-            }
-            .padding()
-            .background(Color.blue)
-            .foregroundColor(.white)
-            .cornerRadius(10)
-            
-            if viewModel.isLoading {
-                Text("Cargando tarea...")
-            } else if let errorMessage = viewModel.errorMessage {
-                Text("Error: \(errorMessage)")
-            } else if let fillGap = viewModel.fillGap {
-                VStack(spacing: 20) {
-                    Text(fillGap.question)
-                        .font(.title2)
-                        .multilineTextAlignment(.center)
+        ScrollView {
+            ZStack {
+                // Fondo de pantalla
+                Image("fondoSolar")
+                    .resizable()
+                    .scaledToFill()
+                    .edgesIgnoringSafeArea(.all)
+                
+                VStack(spacing: 10) {
                     
-                    AsyncImage(url: URL(string: fillGap.images)) { image in
-                        image
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(maxWidth: 300)
-                    } placeholder: {
-                        ProgressView()
-                            .frame(maxWidth: 300)
-                    }
-                    
-                    ForEach(0..<fillGap.correctPositions.count, id: \.self) { index in
-                        TextField("Escribe aquí", text: $viewModel.userAnswers[index])
-                            .textFieldStyle(RoundedBorderTextFieldStyle())
-                            .padding()
-                    }
-                    
-                    Button("Comprobar") {
-                        if viewModel.userAnswers.contains(where: { $0.isEmpty }) {
-                            alertUserToFillAllFields()
-                        } else {
-                            viewModel.submitAnswers()
+                    HStack {
+                        Button(action: {
+                            appState.currentView = .map
+                        }) {
+                            Image(systemName: "chevron.left")
+                                .font(.headline)
+                                .padding()
+                                .background(Color.mateGold)
+                                .foregroundColor(.black)
+                                .cornerRadius(10)
+                        }
+                        Spacer()
+                        Button(action: {
+                            if viewModel.userAnswers.contains(where: { $0.isEmpty }) {
+                                alertUserToFillAllFields()
+                            } else {
+                                viewModel.submitAnswers()
+                            }
+                        }) {
+                            Text("Comprobar")
+                                .padding()
+                                .background(Color.mateRed)
+                                .foregroundColor(.mateWhite)
+                                .cornerRadius(10)
                         }
                     }
-                    .padding()
-                    .background(Color.blue)
-                    .foregroundColor(.white)
-                    .cornerRadius(10)
+                    .padding(.horizontal)
+                    .padding(.top, 5)
+
+                    if viewModel.isLoading {
+                        Text("Cargando tarea...")
+                            .font(.title2)
+                            .foregroundColor(.mateWhite)
+                    } else if let errorMessage = viewModel.errorMessage {
+                        Text("Error: \(errorMessage)")
+                            .foregroundColor(.red)
+                    } else if let fillGap = viewModel.fillGap {
+                        VStack(spacing: 20) {
+                            Text(fillGap.question)
+                                .font(.title2)
+                                .foregroundColor(.mateGold)
+                                .multilineTextAlignment(.center)
+                                .padding(.horizontal)
+
+                            AsyncImage(url: URL(string: fillGap.images)) { image in
+                                image
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(maxWidth: 300)
+                            } placeholder: {
+                                ProgressView()
+                                    .frame(maxWidth: 300)
+                            }
+                            
+                            ForEach(0..<fillGap.correctPositions.count, id: \.self) { index in
+                                TextField("Escribe aquí", text: $viewModel.userAnswers[index])
+                                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                                    .padding()
+                                    .background(Color.mateWhite.opacity(0.8))
+                                    .cornerRadius(10)
+                            }
+                        }
+                    }
                 }
+                .padding()
+                .background(Color.black.opacity(0.5))  // Fondo del VStack con transparencia
+                .cornerRadius(20)
                 .padding()
                 .sheet(isPresented: $viewModel.showResultAlert) {
                     ResultFillGapView(viewModel: viewModel)
                 }
-            } else {
-                Text("No hay tarea disponible")
+                .alert(isPresented: $showAlert) {
+                    Alert(
+                        title: Text("Campos Incompletos"),
+                        message: Text(missingFieldsMessage),
+                        dismissButton: .default(Text("OK"))
+                    )
+                }
+                
             }
-        }
-        .onAppear {
-            viewModel.fetchFillGap()
+            .onAppear {
+                viewModel.fetchFillGap()
+            }
         }
     }
     
     private func alertUserToFillAllFields() {
-        // show alert
+        let missingIndices = viewModel.userAnswers.enumerated()
+            .filter { $0.element.isEmpty }
+            .map { "Campo \($0.offset + 1)" }
+
+        missingFieldsMessage = "Debes rellenar los siguientes campos:\n" + missingIndices.joined(separator: ", ")
+        showAlert = true
     }
 }
 
@@ -81,26 +124,37 @@ struct ResultFillGapView: View {
     @ObservedObject var viewModel: FillGapViewModel
     
     var body: some View {
-        VStack {
-            Text(viewModel.alertMessage)
-                .font(.title)
-                .padding()
+        ZStack {
+            Image("fondoSolar")
+                .resizable()
+                .scaledToFill()
+                .edgesIgnoringSafeArea(.all)
 
-            Button("Continuar") {
-                viewModel.showResultAlert = false
-               
+            VStack {
+                Text(viewModel.alertMessage)
+                    .font(.title)
+                    .foregroundColor(.mateGold)
+                    .padding()
+
+                Button(action: {
+                    viewModel.showResultAlert = false
+                }) {
+                    Text("Continuar")
+                        .padding()
+                        .background(Color.mateRed)
+                        .foregroundColor(.mateWhite)
+                        .cornerRadius(10)
+                }
             }
             .padding()
-            .background(Color.blue)
-            .foregroundColor(.white)
-            .cornerRadius(10)
+            .background(Color.black.opacity(0.5))  // Fondo del VStack con transparencia
+            .cornerRadius(20)
+            .padding()
         }
-        .padding()
     }
 }
 
-struct FillGapView_Previews: PreviewProvider {
-    static var previews: some View {
-        FillGapView(viewModel: FillGapViewModel(activityId: "mockId"))
-    }
+#Preview {
+    FillGapView(viewModel: FillGapViewModel(activityId: "mockId"))
+        .environmentObject(AppState())
 }

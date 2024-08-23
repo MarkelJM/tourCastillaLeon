@@ -7,6 +7,8 @@
 
 
 import SwiftUI
+import ARKit
+import RealityKit
 
 struct SpecialPrizeTaskView: View {
     @ObservedObject var viewModel: SpecialPrizeTaskViewModel
@@ -14,36 +16,45 @@ struct SpecialPrizeTaskView: View {
     
     var body: some View {
         ZStack {
-            if let specialPrize = viewModel.specialPrize {
-                ARViewContainer(prizeImageName: specialPrize.image, viewModel: viewModel)
-                    .edgesIgnoringSafeArea(.all)
-                
-                VStack {
-                    HStack {
-                        Button(action: {
-                            appState.currentView = .map
-                        }) {
-                            Text("Atrás")
-                                .padding()
-                                .background(Color.black.opacity(0.7))
-                                .foregroundColor(.white)
-                                .cornerRadius(10)
-                        }
-                        Spacer()
+            // Fondo de pantalla
+            Image("fondoSolar")
+                .resizable()
+                .scaledToFill()
+                .edgesIgnoringSafeArea(.all)
+            
+            VStack(spacing: 20) {
+                if let specialPrize = viewModel.specialPrize {
+                    ARViewContainer(prizeImageName: specialPrize.image, viewModel: viewModel)
+                        .edgesIgnoringSafeArea(.all)
+                } else {
+                    Text("Cargando...")
+                        .font(.largeTitle)
+                        .foregroundColor(.white)
+                }
+            }
+            
+            VStack {
+                HStack {
+                    Button(action: {
+                        appState.currentView = .map
+                    }) {
+                        Image(systemName: "chevron.left")
+                            .font(.headline)
+                            .padding()
+                            .background(Color.mateGold)
+                            .foregroundColor(.black)
+                            .cornerRadius(10)
                     }
-                    .padding([.top, .leading], 20)
-                    
                     Spacer()
                 }
-            } else {
-                Text("Cargando...")
-                    .font(.largeTitle)
-                    .foregroundColor(.gray)
+                .padding([.top, .leading], 20)
+                
+                Spacer()
             }
         }
         .sheet(isPresented: $viewModel.showResultModal) {
-            ResultSpecialPrizeView(viewModel: viewModel) // No pasamos _appState aquí
-                .environmentObject(appState) // Inyectamos appState como EnvironmentObject
+            ResultSpecialPrizeView(viewModel: viewModel)
+                .environmentObject(appState)
         }
     }
 }
@@ -53,21 +64,32 @@ struct ResultSpecialPrizeView: View {
     @EnvironmentObject var appState: AppState
 
     var body: some View {
-        VStack {
-            Text(viewModel.alertMessage) // Mostrar el mensaje de la tarea completada
-                .font(.title)
-                .padding()
+        ZStack {
+            Image("fondoSolar")
+                .resizable()
+                .scaledToFill()
+                .edgesIgnoringSafeArea(.all)
+            
+            VStack {
+                Text(viewModel.alertMessage) // Mostrar el mensaje de la tarea completada
+                    .font(.title)
+                    .foregroundColor(.mateGold)
+                    .padding()
 
-            Button("Continuar") {
-                // Cerrar el modal y volver al mapa
-                viewModel.showResultModal = false
-                appState.currentView = .map
+                Button("Continuar") {
+                    // Cerrar el modal y volver al mapa
+                    viewModel.showResultModal = false
+                    appState.currentView = .map
+                }
+                .padding()
+                .background(Color.mateRed)
+                .foregroundColor(.mateWhite)
+                .cornerRadius(10)
             }
             .padding()
-            .background(Color.blue)
-            .foregroundColor(.white)
-            .cornerRadius(10)
+            .background(Color.black.opacity(0.5))  // Fondo semitransparente del VStack
+            .cornerRadius(20)
+            .padding()
         }
-        .padding()
     }
 }

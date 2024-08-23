@@ -29,6 +29,10 @@ class AppState: ObservableObject {
         case fillGap(id: String)
         case questionAnswer(id: String)
         case takePhoto(id: String)
-        case specialPrize(id: String)  
+        case specialPrize(id: String) 
+        case onboardingOne
+        case onboardingTwo   
+        case forgotPassword
+        case termsAndConditions
     }
 }

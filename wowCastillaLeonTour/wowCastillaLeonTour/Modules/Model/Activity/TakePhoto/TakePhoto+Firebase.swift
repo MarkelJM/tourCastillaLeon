@@ -13,9 +13,9 @@ extension TakePhoto {
         guard let id = firestoreData["id"] as? String,
               let province = firestoreData["province"] as? String,
               let question = firestoreData["question"] as? String,
-              let customMessage = firestoreData["customMessage"] as? String,
-              let correctAnswerMessage = firestoreData["correctAnswerMessage"] as? String,
-              let incorrectAnswerMessage = firestoreData["incorrectAnswerMessage"] as? String,
+              let customMessage = firestoreData["custom_message"] as? String,
+              let correctAnswerMessage = firestoreData["correct_answer_message"] as? String,
+              let incorrectAnswerMessage = firestoreData["incorrect_answer_message"] as? String,  
               let isCapital = firestoreData["isCapital"] as? Bool else {
             return nil
         }
@@ -34,9 +34,9 @@ extension TakePhoto {
             "id": id,
             "province": province,
             "question": question,
-            "customMessage": customMessage,
-            "correctAnswerMessage": correctAnswerMessage,
-            "incorrectAnswerMessage": incorrectAnswerMessage,
+            "custom_message": customMessage,
+            "correct_answer_message": correctAnswerMessage,
+            "incorrect_answer_message": incorrectAnswerMessage,
             "isCapital": isCapital
         ]
     }

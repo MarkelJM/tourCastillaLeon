@@ -12,34 +12,76 @@ struct LoginView: View {
     @EnvironmentObject var appState: AppState
 
     var body: some View {
-        VStack {
-            TextField("Email", text: $viewModel.email)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .padding()
-
-            SecureField("Contraseña", text: $viewModel.password)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .padding()
-
-            Button("Iniciar Sesión") {
-                viewModel.login()
-            }
-            .padding()
-
-            Button("Crear Cuenta") {
-                appState.currentView = .registerEmail
-            }
-            .padding()
-
-            if viewModel.showError {
-                Text(viewModel.errorMessage)
-                    .foregroundColor(.red)
+        ZStack {
+            // Fondo de pantalla
+            Image("fondoSolar")
+                .resizable()
+                .scaledToFill()
+                .edgesIgnoringSafeArea(.all)
+            
+            VStack(spacing: 20) {
+                Text("Iniciar Sesión")
+                    .font(.largeTitle)
+                    .foregroundColor(.mateGold)
+                    .padding(.top, 40)
+                
+                TextField("Email", text: $viewModel.email)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding()
+                    .background(Color.white.opacity(0.8))
+                    .cornerRadius(10)
+
+                SecureField("Contraseña", text: $viewModel.password)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding()
+                    .background(Color.white.opacity(0.8))
+                    .cornerRadius(10)
+                
+                // Botón "¿Olvidaste la contraseña?"
+                Button(action: {
+                    appState.currentView = .forgotPassword
+                }) {
+                    Text("¿Olvidaste la contraseña?")
+                        .foregroundColor(.blue)
+                }
+
+                Button(action: {
+                    viewModel.login()
+                }) {
+                    Text("Iniciar Sesión")
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(Color.mateRed)
+                        .foregroundColor(.mateWhite)
+                        .cornerRadius(10)
+                }
+                .padding(.horizontal)
+                
+                Button(action: {
+                    appState.currentView = .onboardingOne
+                }) {
+                    Text("Crear Cuenta")
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(Color.mateBlue)
+                        .foregroundColor(.mateWhite)
+                        .cornerRadius(10)
+                }
+                .padding(.horizontal)
+                
+                if viewModel.showError {
+                    Text(viewModel.errorMessage)
+                        .foregroundColor(.red)
+                        .padding()
+                }
             }
+            .padding()
+            .background(Color.black.opacity(0.7))
+            .cornerRadius(20)
+            .padding()
         }
-        .padding()
         .onReceive(viewModel.loginSuccess) { _ in
-            appState.currentView = .map // Redirigir a la vista de mapa después del inicio de sesión exitoso
+            appState.currentView = .map
         }
     }
 }

@@ -12,58 +12,84 @@ struct QuestionAnswerView: View {
     @EnvironmentObject var appState: AppState
     
     var body: some View {
-        VStack {
-            
-            Button("Atrás") {
-                appState.currentView = .map
-            }
-            .padding()
-            .background(Color.blue)
-            .foregroundColor(.white)
-            .cornerRadius(10)
-            
-            if viewModel.isLoading {
-                Text("Cargando pregunta...")
-            } else if let errorMessage = viewModel.errorMessage {
-                Text("Error: \(errorMessage)")
-            } else if let questionAnswer = viewModel.questionAnswer {
-                VStack(spacing: 20) {
-                    Text(questionAnswer.question)
-                        .font(.title2)
-                        .multilineTextAlignment(.center)
+        ScrollView {
+            ZStack {
+                // Fondo de pantalla
+                Image("fondoSolar")
+                    .resizable()
+                    .scaledToFill()
+                    .edgesIgnoringSafeArea(.all)
+                
+                VStack(spacing: 10) {
                     
-                    ForEach(questionAnswer.options, id: \.self) { option in
-                        Button(action: {
-                            viewModel.selectedOption = option
-                        }) {
-                            Text(option)
-                                .font(.headline)
-                                .foregroundColor(.white)
-                                .padding()
-                                .frame(maxWidth: .infinity)
-                                .background(viewModel.selectedOption == option ? Color.blue : Color.gray)
-                                .cornerRadius(10)
+                        HStack {
+                            Button(action: {
+                                appState.currentView = .map
+                            }) {
+                                Image(systemName: "chevron.left")
+                                    .font(.headline)
+                                    .padding()
+                                    .background(Color.mateGold)
+                                    .foregroundColor(.black)
+                                    .cornerRadius(10)
+                            }
+                            Spacer()
+                            Button(action: {
+                                viewModel.checkAnswer()
+                            }) {
+                                Text("Comprobar")
+                                    .padding()
+                                    .background(Color.mateRed)
+                                    .foregroundColor(.mateWhite)
+                                    .cornerRadius(10)
+                            }
+                        }
+                        .padding(.horizontal)
+                        .padding(.top, 5)
+
+                        if viewModel.isLoading {
+                            Text("Cargando pregunta...")
+                                .font(.title2)
+                                .foregroundColor(.mateWhite)
+                        } else if let errorMessage = viewModel.errorMessage {
+                            Text("Error: \(errorMessage)")
+                                .foregroundColor(.red)
+                        } else if let questionAnswer = viewModel.questionAnswer {
+                            VStack(spacing: 20) {
+                                Text(questionAnswer.question)
+                                    .font(.title2)
+                                    .foregroundColor(.mateGold)
+                                    .multilineTextAlignment(.center)
+                                    .padding(.horizontal)
+
+                                ForEach(questionAnswer.options, id: \.self) { option in
+                                    Button(action: {
+                                        viewModel.selectedOption = option
+                                    }) {
+                                        Text(option)
+                                            .font(.headline)
+                                            .foregroundColor(.white)
+                                            .padding()
+                                            .frame(maxWidth: .infinity)
+                                            .background(viewModel.selectedOption == option ? Color.mateGreen : Color.mateBlue)
+                                            .cornerRadius(10)
+                                    }
+                                }
+                            }
                         }
                     }
-                    
-                    Button("Comprobar") {
-                        viewModel.checkAnswer()
-                    }
                     .padding()
-                    .background(Color.blue)
-                    .foregroundColor(.white)
-                    .cornerRadius(10)
-                }
-                .padding()
-                .sheet(isPresented: $viewModel.showResultModal) {
-                    ResultQuestionView(viewModel: viewModel)
-                }
-            } else {
-                Text("No hay pregunta disponible")
+                    .background(Color.black.opacity(0.5))  // Fondo del VStack con transparencia
+                    .cornerRadius(20)
+                    .padding()
+                    .sheet(isPresented: $viewModel.showResultModal) {
+                        ResultQuestionView(viewModel: viewModel)
+                    }
+                
             }
-        }
-        .onAppear {
-            viewModel.fetchQuestionAnswer()
+            .onAppear {
+                viewModel.fetchQuestionAnswer()
+            }
         }
     }
 }
@@ -72,23 +98,37 @@ struct ResultQuestionView: View {
     @ObservedObject var viewModel: QuestionAnswerViewModel
     
     var body: some View {
-        VStack {
-            Text(viewModel.alertMessage)
-                .font(.title)
-                .padding()
+        ZStack {
+            Image("fondoSolar")
+                .resizable()
+                .scaledToFill()
+                .edgesIgnoringSafeArea(.all)
 
-            Button("Continuar") {
-                viewModel.showResultModal = false
+            VStack {
+                Text(viewModel.alertMessage)
+                    .font(.title)
+                    .foregroundColor(.mateGold)
+                    .padding()
+
+                Button(action: {
+                    viewModel.showResultModal = false
+                }) {
+                    Text("Continuar")
+                        .padding()
+                        .background(Color.mateRed)
+                        .foregroundColor(.mateWhite)
+                        .cornerRadius(10)
+                }
             }
             .padding()
-            .background(Color.blue)
-            .foregroundColor(.white)
-            .cornerRadius(10)
+            .background(Color.black.opacity(0.5))  // Fondo del VStack con transparencia
+            .cornerRadius(20)
+            .padding()
         }
-        .padding()
     }
 }
 
 #Preview {
     QuestionAnswerView(viewModel: QuestionAnswerViewModel(activityId: "mockId"))
+        .environmentObject(AppState())
 }
