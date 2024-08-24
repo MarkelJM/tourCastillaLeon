@@ -22,6 +22,10 @@
 		D38F8F8D2C6FD58300315904 /* SettingProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38F8F8C2C6FD58300315904 /* SettingProfileView.swift */; };
 		D38F8F8F2C6FD6B000315904 /* SettingProfileDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38F8F8E2C6FD6B000315904 /* SettingProfileDataManager.swift */; };
 		D38F8F912C6FD6C000315904 /* SettingProfileFirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38F8F902C6FD6C000315904 /* SettingProfileFirestoreManager.swift */; };
+		D39648C02C7A3C3000EAAC19 /* Spot.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39648BF2C7A3C3000EAAC19 /* Spot.swift */; };
+		D39648C22C7A3C9D00EAAC19 /* Spot+Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39648C12C7A3C9D00EAAC19 /* Spot+Firebase.swift */; };
+		D39648C52C7A3CC000EAAC19 /* Challenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39648C42C7A3CC000EAAC19 /* Challenge.swift */; };
+		D39648C72C7A3CD800EAAC19 /* Challenge+Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39648C62C7A3CD800EAAC19 /* Challenge+Firebase.swift */; };
 		D3DDA8782C18548D00C43CBA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDA8772C18548D00C43CBA /* User.swift */; };
 		D3DDA8822C18625200C43CBA /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDA8812C18625200C43CBA /* RegisterViewModel.swift */; };
 		D3DDA8862C18626A00C43CBA /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDA8852C18626A00C43CBA /* RegisterView.swift */; };
@@ -131,6 +135,10 @@
 		D38F8F8C2C6FD58300315904 /* SettingProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingProfileView.swift; sourceTree = "<group>"; };
 		D38F8F8E2C6FD6B000315904 /* SettingProfileDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingProfileDataManager.swift; sourceTree = "<group>"; };
 		D38F8F902C6FD6C000315904 /* SettingProfileFirestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingProfileFirestoreManager.swift; sourceTree = "<group>"; };
+		D39648BF2C7A3C3000EAAC19 /* Spot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spot.swift; sourceTree = "<group>"; };
+		D39648C12C7A3C9D00EAAC19 /* Spot+Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Spot+Firebase.swift"; sourceTree = "<group>"; };
+		D39648C42C7A3CC000EAAC19 /* Challenge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenge.swift; sourceTree = "<group>"; };
+		D39648C62C7A3CD800EAAC19 /* Challenge+Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Challenge+Firebase.swift"; sourceTree = "<group>"; };
 		D3DDA8772C18548D00C43CBA /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		D3DDA8812C18625200C43CBA /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
 		D3DDA8852C18626A00C43CBA /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
@@ -351,6 +359,24 @@
 			path = SettingProfile;
 			sourceTree = "<group>";
 		};
+		D39648BE2C7A3C1D00EAAC19 /* Spot */ = {
+			isa = PBXGroup;
+			children = (
+				D39648BF2C7A3C3000EAAC19 /* Spot.swift */,
+				D39648C12C7A3C9D00EAAC19 /* Spot+Firebase.swift */,
+			);
+			path = Spot;
+			sourceTree = "<group>";
+		};
+		D39648C32C7A3CB000EAAC19 /* Challenge */ = {
+			isa = PBXGroup;
+			children = (
+				D39648C42C7A3CC000EAAC19 /* Challenge.swift */,
+				D39648C62C7A3CD800EAAC19 /* Challenge+Firebase.swift */,
+			);
+			path = Challenge;
+			sourceTree = "<group>";
+		};
 		D3DDA8752C18547700C43CBA /* Common */ = {
 			isa = PBXGroup;
 			children = (
@@ -367,6 +393,8 @@
 		D3DDA8762C18548000C43CBA /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D39648C32C7A3CB000EAAC19 /* Challenge */,
+				D39648BE2C7A3C1D00EAAC19 /* Spot */,
 				D3DEAEF22C75F27500AB0325 /* SpecialPrize */,
 				D3E4B7682C32C539000BEE9F /* Activity */,
 				D3DDA8AC2C19B0FD00C43CBA /* User */,
@@ -909,6 +937,7 @@
 				D3DEAF362C78CE0300AB0325 /* ForgotPasswordView.swift in Sources */,
 				D3DDA8922C18630900C43CBA /* AppState.swift in Sources */,
 				D3E4B8112C4E4FA6000BEE9F /* DatesDataManager.swift in Sources */,
+				D39648C72C7A3CD800EAAC19 /* Challenge+Firebase.swift in Sources */,
 				D3DEAF092C7606CB00AB0325 /* SpecialPrizeTaskViewModel.swift in Sources */,
 				D3E4B80B2C4E4C15000BEE9F /* QuestionAnswerViewModel.swift in Sources */,
 				D3E4B8172C4E4FEF000BEE9F /* TakePhotoDataManager.swift in Sources */,
@@ -943,6 +972,7 @@
 				D3E4B74C2C19BAE4000BEE9F /* ProfileDataManager.swift in Sources */,
 				D3E4B7852C3E890A000BEE9F /* TakePhotoModel.swift in Sources */,
 				D3E4B79C2C3E9562000BEE9F /* MapViewModel.swift in Sources */,
+				D39648C52C7A3CC000EAAC19 /* Challenge.swift in Sources */,
 				D3E4B7DA2C4683C7000BEE9F /* Color.swift in Sources */,
 				D3E4B7FB2C4E46FA000BEE9F /* TakePhotoView.swift in Sources */,
 				D38F8F8F2C6FD6B000315904 /* SettingProfileDataManager.swift in Sources */,
@@ -961,9 +991,11 @@
 				D3E4B7552C19BC0C000BEE9F /* HomeView.swift in Sources */,
 				D3DEAF2E2C77AC4A00AB0325 /* EditProfileView.swift in Sources */,
 				D3DEAF072C76069A00AB0325 /* SpecialPrizeListViewModel.swift in Sources */,
+				D39648C22C7A3C9D00EAAC19 /* Spot+Firebase.swift in Sources */,
 				D3E4B7E32C47D992000BEE9F /* PuzzleView.swift in Sources */,
 				D3E4B7DD2C47D902000BEE9F /* PuzzleFirestoreManager.swift in Sources */,
 				D3E4B8192C4E50D6000BEE9F /* CoinFirestoreManager.swift in Sources */,
+				D39648C02C7A3C3000EAAC19 /* Spot.swift in Sources */,
 				D3E4B7982C3E9547000BEE9F /* MapFirestoreManager.swift in Sources */,
 				D3E4B7DF2C47D930000BEE9F /* PuzzleDataManager.swift in Sources */,
 				D3DEAEF62C75F2DF00AB0325 /* SpecialPrizeFirestoreManager.swift in Sources */,
