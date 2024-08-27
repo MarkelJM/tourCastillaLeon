@@ -29,6 +29,8 @@ struct NavigationState: View {
     @ViewBuilder
     private func currentView() -> some View {
         switch appState.currentView {
+        case .icon:
+            IconView()
         case .registerEmail:
             RegisterView(viewModel: registerViewModel)
         case .emailVerification:
@@ -53,8 +55,7 @@ struct NavigationState: View {
             QuestionAnswerView(viewModel: QuestionAnswerViewModel(activityId: id))
         case .takePhoto(let id):
             TakePhotoView(viewModel: TakePhotoViewModel(activityId: id))
-        case .specialPrize(let id):
-            SpecialPrizeTaskView(viewModel: SpecialPrizeTaskViewModel(prizeId: id))
+        
         case .onboardingOne:  
              OnboardingOneView()
          case .onboardingTwo:
@@ -63,6 +64,9 @@ struct NavigationState: View {
             ForgotPasswordView(viewModel: ForgotPasswordViewModel())
         case .termsAndConditions:
               TermsAndConditionsView(agreeToTerms: $registerViewModel.agreeToTerms) //no share de agrrements acepted
+        case .challengePresentation(let challengeName):
+            ChallengePresentationView(viewModel: ChallengePresentationViewModel(challengeName: challengeName))
+        
         }
     }
     

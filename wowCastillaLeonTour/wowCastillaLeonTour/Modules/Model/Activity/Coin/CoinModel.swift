@@ -16,5 +16,5 @@ struct Coin: Identifiable {
     var incorrectAnswerMessage: String
     var prize: String
     var isCapital: Bool
-
+    var challenge: String  // Nuevo campo
 }

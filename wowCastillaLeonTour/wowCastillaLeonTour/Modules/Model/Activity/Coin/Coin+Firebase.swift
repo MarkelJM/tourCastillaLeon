@@ -8,28 +8,29 @@
 import Foundation
 import FirebaseFirestore
 
-
 extension Coin {
     init?(from firestoreData: [String: Any]) {
         guard let id = firestoreData["id"] as? String,
               let province = firestoreData["province"] as? String,
               let description = firestoreData["description"] as? String,
-              let custom_message = firestoreData["custom_message"] as? String,
-              let correct_answer_message = firestoreData["correct_answer_message"] as? String,
-              let incorrect_answer_message = firestoreData["incorrect_answer_message"] as? String,
+              let customMessage = firestoreData["custom_message"] as? String,
+              let correctAnswerMessage = firestoreData["correct_answer_message"] as? String,
+              let incorrectAnswerMessage = firestoreData["incorrect_answer_message"] as? String,
               let prize = firestoreData["prize"] as? String,
-              let isCapital = firestoreData["isCapital"] as? Bool else {
+              let isCapital = firestoreData["isCapital"] as? Bool,
+              let challenge = firestoreData["challenge"] as? String else {  // Nuevo campo
             return nil
         }
 
         self.id = id
         self.province = province
         self.description = description
-        self.customMessage = custom_message
-        self.correctAnswerMessage = correct_answer_message
-        self.incorrectAnswerMessage = incorrect_answer_message
+        self.customMessage = customMessage
+        self.correctAnswerMessage = correctAnswerMessage
+        self.incorrectAnswerMessage = incorrectAnswerMessage
         self.prize = prize
         self.isCapital = isCapital
+        self.challenge = challenge
     }
     
     func toFirestoreData() -> [String: Any] {
@@ -41,7 +42,8 @@ extension Coin {
             "correct_answer_message": correctAnswerMessage,
             "incorrect_answer_message": incorrectAnswerMessage,
             "prize": prize,
-            "isCapital": isCapital
+            "isCapital": isCapital,
+            "challenge": challenge  // Nuevo campo
         ]
     }
 }

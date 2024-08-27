@@ -17,20 +17,9 @@ class ProfileViewModel: ObservableObject {
     @Published var city: String = ""
     @Published var province: Province = .other
     @Published var avatar: Avatar = .boy
-    @Published var taskIDs: [String] = []
-    @Published var coinTaskIDs: [String] = []
-    @Published var gadgetTaskIDs: [String] = []
-    @Published var usedCoinTaskIDs: [String] = []
+    @Published var spotIDs: [String] = []
     @Published var specialRewards: [String] = []
-    @Published var avilaCityTaskIDs: [String] = []
-    @Published var burgosCityTaskIDs: [String] = []
-    @Published var leonCityTaskIDs: [String] = []
-    @Published var palenciaCityTaskIDs: [String] = []
-    @Published var salamancaCityTaskIDs: [String] = []
-    @Published var segoviaCityTaskIDs: [String] = []
-    @Published var soriaCityTaskIDs: [String] = []
-    @Published var valladolidCityTaskIDs: [String] = []
-    @Published var zamoraCityTaskIDs: [String] = []
+    @Published var challenges: [String: [String]] = [:]  // Diccionario para retos y sus tasks
     @Published var showError: Bool = false
     @Published var errorMessage: String = ""
 
@@ -48,20 +37,9 @@ class ProfileViewModel: ObservableObject {
             city: city,
             province: province,
             avatar: avatar,
-            taskIDs: taskIDs,
-            coinTaskIDs: coinTaskIDs,
-            gadgetTaskIDs: gadgetTaskIDs,
-            usedCoinTaskIDs: usedCoinTaskIDs,
+            spotIDs: spotIDs,
             specialRewards: specialRewards,
-            avilaCityTaskIDs: avilaCityTaskIDs,
-            burgosCityTaskIDs: burgosCityTaskIDs,
-            leonCityTaskIDs: leonCityTaskIDs,
-            palenciaCityTaskIDs: palenciaCityTaskIDs,
-            salamancaCityTaskIDs: salamancaCityTaskIDs,
-            segoviaCityTaskIDs: segoviaCityTaskIDs,
-            soriaCityTaskIDs: soriaCityTaskIDs,
-            valladolidCityTaskIDs: valladolidCityTaskIDs,
-            zamoraCityTaskIDs: zamoraCityTaskIDs
+            challenges: challenges
         )
         
         dataManager.createUserProfile(user: user)
@@ -100,20 +78,9 @@ class ProfileViewModel: ObservableObject {
                 self.city = user.city
                 self.province = user.province
                 self.avatar = user.avatar
-                self.taskIDs = user.taskIDs
-                self.coinTaskIDs = user.coinTaskIDs
-                self.gadgetTaskIDs = user.gadgetTaskIDs
-                self.usedCoinTaskIDs = user.usedCoinTaskIDs
+                self.spotIDs = user.spotIDs
                 self.specialRewards = user.specialRewards
-                self.avilaCityTaskIDs = user.avilaCityTaskIDs
-                self.burgosCityTaskIDs = user.burgosCityTaskIDs
-                self.leonCityTaskIDs = user.leonCityTaskIDs
-                self.palenciaCityTaskIDs = user.palenciaCityTaskIDs
-                self.salamancaCityTaskIDs = user.salamancaCityTaskIDs
-                self.segoviaCityTaskIDs = user.segoviaCityTaskIDs
-                self.soriaCityTaskIDs = user.soriaCityTaskIDs
-                self.valladolidCityTaskIDs = user.valladolidCityTaskIDs
-                self.zamoraCityTaskIDs = user.zamoraCityTaskIDs
+                self.challenges = user.challenges
             }
             .store(in: &cancellables)
     }

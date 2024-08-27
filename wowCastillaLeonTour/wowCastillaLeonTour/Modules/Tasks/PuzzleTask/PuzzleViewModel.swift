@@ -98,18 +98,49 @@ class PuzzleViewModel: BaseViewModel {
     }
     
     private func updateUserTask(puzzle: Puzzle) {
-        let activityType = "puzzle"
-        var city: String? = nil
-        
-        if puzzle.isCapital {
-            city = puzzle.province 
-        }
+        updateTaskForUser(taskID: puzzle.id, challenge: puzzle.challenge)
+        updateSpotForUser()
+    }
 
-        updateUserTaskIDs(taskID: puzzle.id, activityType: activityType, city: city)
+    private func updateTaskForUser(taskID: String, challenge: String) {
+        firestoreManager.updateUserTaskIDs(taskID: taskID, challenge: challenge)
+            .sink { completion in
+                switch completion {
+                case .failure(let error):
+                    self.alertMessage = "Error actualizando la tarea: \(error.localizedDescription)"
+                    self.showAlert = true
+                case .finished:
+                    break
+                }
+            } receiveValue: { _ in
+                print("User task updated in Firestore")
+            }
+            .store(in: &cancellables)
+    }
+
+    private func updateSpotForUser() {
+        // Actualizar spotID si existe
+        if let spotID = userDefaultsManager.getSpotID() {
+            firestoreManager.updateUserSpotIDs(spotID: spotID)
+                .sink { completion in
+                    switch completion {
+                    case .failure(let error):
+                        self.alertMessage = "Error actualizando el spot: \(error.localizedDescription)"
+                        self.showAlert = true
+                    case .finished:
+                        break
+                    }
+                } receiveValue: { _ in
+                    print("User spot updated in Firestore")
+                }
+                .store(in: &cancellables)
+
+            userDefaultsManager.clearSpotID() // Limpiar el spotID después de actualizarlo
+        } else {
+            print("No spotID found in UserDefaults")
+        }
     }
 }
-
-
 
 
 

@@ -17,7 +17,8 @@ extension Challenge {
               let image = firestoreData["image"] as? String,
               let isBegan = firestoreData["isBegan"] as? Bool,
               let province = firestoreData["province"] as? String,
-              let taskAmount = firestoreData["taskamount"] as? Int else {
+              let taskAmount = firestoreData["taskamount"] as? Int,
+              let challengeMessage = firestoreData["challenge_message"] as? String else { // Campo agregado
             return nil
         }
 
@@ -31,6 +32,7 @@ extension Challenge {
         self.isBegan = isBegan
         self.province = province
         self.taskAmount = taskAmount
+        self.challengeMessage = challengeMessage // Asignación del nuevo campo
     }
     
     func toFirestoreData() -> [String: Any] {
@@ -43,7 +45,8 @@ extension Challenge {
             "image": image,
             "isBegan": isBegan,
             "province": province,
-            "taskamount": taskAmount
+            "taskamount": taskAmount,
+            "challenge_message": challengeMessage // Incluyendo el nuevo campo en la salida
         ]
     }
 }

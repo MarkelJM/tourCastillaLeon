@@ -61,50 +61,68 @@ class FirestoreManager {
         .eraseToAnyPublisher()
     }
     
-    func updateUserTaskIDs(taskID: String, activityType: String, city: String?) -> AnyPublisher<Void, Error> {
+    func updateUserTaskIDs(taskID: String, challenge: String) -> AnyPublisher<Void, Error> {
         Future { promise in
             guard let uid = self.auth.currentUser?.uid else {
                 promise(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "User ID not found"])))
                 return
             }
-            
+
             let userRef = self.db.collection("users").document(uid)
             userRef.getDocument { document, error in
                 if let error = error {
                     promise(.failure(error))
                 } else if let document = document, document.exists {
                     var data = document.data() ?? [:]
-                    var taskIDs = data["taskIDs"] as? [String] ?? []
                     
-                    // Update based on city or activity type
-                    if let city = city {
-                        var cityTaskIDs = data["\(city)CityTaskIDs"] as? [String] ?? []
-                        if !cityTaskIDs.contains(taskID) {
-                            cityTaskIDs.append(taskID)
-                        }
-                        data["\(city)CityTaskIDs"] = cityTaskIDs
+                    // Actualizar el campo "challenges" en Firestore
+                    var challenges = data["challenges"] as? [String: [String]] ?? [:]
+                    if challenges[challenge] != nil {
+                        challenges[challenge]?.append(taskID)
                     } else {
-                        switch activityType {
-                        case "coin":
-                            var coinTaskIDs = data["coinTaskIDs"] as? [String] ?? []
-                            if !coinTaskIDs.contains(taskID) {
-                                coinTaskIDs.append(taskID)
-                            }
-                            data["coinTaskIDs"] = coinTaskIDs
-                        case "gadget":
-                            var gadgetTaskIDs = data["gadgetTaskIDs"] as? [String] ?? []
-                            if !gadgetTaskIDs.contains(taskID) {
-                                gadgetTaskIDs.append(taskID)
-                            }
-                            data["gadgetTaskIDs"] = gadgetTaskIDs
-                        default:
-                            if !taskIDs.contains(taskID) {
-                                taskIDs.append(taskID)
-                            }
-                            data["taskIDs"] = taskIDs
+                        challenges[challenge] = [taskID]
+                    }
+
+                    data["challenges"] = challenges
+
+                    userRef.setData(data) { error in
+                        if let error = error {
+                            promise(.failure(error))
+                        } else {
+                            promise(.success(()))
                         }
                     }
-                    
+                } else {
+                    promise(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Document does not exist"])))
+                }
+            }
+        }
+        .eraseToAnyPublisher()
+    }
+
+    // Actualizar spotIDs completados por el usuario
+    func updateUserSpotIDs(spotID: String) -> AnyPublisher<Void, Error> {
+        Future { promise in
+            guard let uid = self.auth.currentUser?.uid else {
+                promise(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "User ID not found"])))
+                return
+            }
+
+            let userRef = self.db.collection("users").document(uid)
+            userRef.getDocument { document, error in
+                if let error = error {
+                    promise(.failure(error))
+                } else if let document = document, document.exists {
+                    var data = document.data() ?? [:]
+
+                    // Actualizar el campo "spotIDs" en Firestore
+                    var spotIDs = data["spotIDs"] as? [String] ?? []
+                    if !spotIDs.contains(spotID) {
+                        spotIDs.append(spotID)
+                    }
+
+                    data["spotIDs"] = spotIDs
+
                     userRef.setData(data) { error in
                         if let error = error {
                             promise(.failure(error))
@@ -206,6 +224,38 @@ class FirestoreManager {
                     promise(.failure(error))
                 } else {
                     promise(.success(()))
+                }
+            }
+        }
+        .eraseToAnyPublisher()
+    }
+    
+    func updateUserChallenges(user: User) -> AnyPublisher<Void, Error> {
+        Future { promise in
+            guard let uid = self.auth.currentUser?.uid else {
+                promise(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "User ID not found"])))
+                return
+            }
+            
+            let userRef = self.db.collection("users").document(uid)
+            userRef.getDocument { document, error in
+                if let error = error {
+                    promise(.failure(error))
+                } else if let document = document, document.exists {
+                    var data = document.data() ?? [:]
+                    
+                    // Actualizar el campo "challenges" en Firestore
+                    data["challenges"] = user.challenges
+                    
+                    userRef.setData(data) { error in
+                        if let error = error {
+                            promise(.failure(error))
+                        } else {
+                            promise(.success(()))
+                        }
+                    }
+                } else {
+                    promise(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Document does not exist"])))
                 }
             }
         }

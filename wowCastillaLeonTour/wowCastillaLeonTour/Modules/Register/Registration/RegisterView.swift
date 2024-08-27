@@ -4,7 +4,6 @@
 //
 //  Created by Markel Juaristi on 11/6/24.
 //
-
 import SwiftUI
 
 struct RegisterView: View {
@@ -113,4 +112,3 @@ struct CheckboxToggleStyle: ToggleStyle {
     RegisterView(viewModel: RegisterViewModel())
         .environmentObject(AppState())
 }
-

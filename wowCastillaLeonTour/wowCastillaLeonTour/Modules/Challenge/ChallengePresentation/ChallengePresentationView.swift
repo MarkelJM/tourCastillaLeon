@@ -1,0 +1,79 @@
+//
+//  ChallengePresentationView.swift
+//  wowCastillaLeonTour
+//
+//  Created by Markel Juaristi on 24/8/24.
+//
+
+import SwiftUI
+
+struct ChallengePresentationView: View {
+    @EnvironmentObject var appState: AppState
+    @StateObject var viewModel: ChallengePresentationViewModel
+
+    var body: some View {
+        ZStack {
+            Image("fondoSolar")
+                .resizable()
+                .scaledToFill()
+                .edgesIgnoringSafeArea(.all)
+
+            VStack(spacing: 20) {
+                if let challenge = viewModel.challenge {
+                    Image(viewModel.userAvatar)
+                        .resizable()
+                        .frame(width: 150, height: 150)
+                        .clipShape(Circle())
+                        .padding(.top, 40)
+
+                    VStack(alignment: .leading) {
+                        Text(challenge.challengeMessage)
+                            .font(.title2)
+                            .padding()
+                            .background(Color.white)
+                            .cornerRadius(15)
+                            .shadow(radius: 10)
+                            .foregroundColor(.black)
+                            .padding(.horizontal, 20)
+                    }
+                    .padding(.bottom, 40)
+
+                    Button(action: {
+                        viewModel.beginChallenge()
+                        appState.currentView = .map
+                    }) {
+                        Text("Comenzar")
+                            .font(.headline)
+                            .padding()
+                            .frame(maxWidth: .infinity)
+                            .background(Color.mateRed)
+                            .foregroundColor(.white)
+                            .cornerRadius(10)
+                            .padding(.horizontal, 20)
+                    }
+                } else {
+                    Text("Cargando...")
+                        .font(.title)
+                        .foregroundColor(.white)
+                }
+            }
+            .padding()
+            .background(Color.black.opacity(0.5))
+            .cornerRadius(20)
+            .padding()
+            .alert(isPresented: $viewModel.showAlert) {
+                Alert(title: Text("Mensaje"), message: Text(viewModel.alertMessage), dismissButton: .default(Text("OK")))
+            }
+        }
+        .onAppear {
+            viewModel.fetchUserProfile()
+        }
+    }
+}
+
+struct ChallengePresentationView_Previews: PreviewProvider {
+    static var previews: some View {
+        ChallengePresentationView(viewModel: ChallengePresentationViewModel(challengeName: "Reto de Prueba"))
+            .environmentObject(AppState())
+    }
+}

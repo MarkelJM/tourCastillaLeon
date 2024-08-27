@@ -5,6 +5,7 @@
 //  Created by Markel Juaristi on 21/8/24.
 //
 
+/*
 import SwiftUI
 
 struct SpecialPrizeListView: View {
@@ -110,3 +111,4 @@ struct SpecialPrizeListView: View {
     SpecialPrizeListView()
         .environmentObject(AppState())
 }
+*/

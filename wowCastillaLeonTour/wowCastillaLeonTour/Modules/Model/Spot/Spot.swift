@@ -19,8 +19,3 @@ struct Spot: Identifiable, Codable {
     var province: String
     var title: String
 }
-
-struct Coordinates: Codable {
-    var latitude: Double
-    var longitude: Double
-}

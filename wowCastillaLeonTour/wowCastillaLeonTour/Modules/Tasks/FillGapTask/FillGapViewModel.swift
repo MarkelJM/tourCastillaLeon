@@ -21,6 +21,7 @@ class FillGapViewModel: BaseViewModel {
         self.activityId = activityId
         super.init()
         fetchUserProfile()
+        fetchFillGap()
     }
     
     func fetchFillGap() {
@@ -49,6 +50,7 @@ class FillGapViewModel: BaseViewModel {
         if userAnswers == fillGap.correctPositions {
             alertMessage = fillGap.correctAnswerMessage
             updateUserTask(fillGap: fillGap)
+            updateSpotForUser()
         } else {
             alertMessage = fillGap.incorrectAnswerMessage
         }
@@ -57,13 +59,44 @@ class FillGapViewModel: BaseViewModel {
     }
     
     private func updateUserTask(fillGap: FillGap) {
-        let activityType = "fillGap"
-        var city: String? = nil
-        
-        if fillGap.isCapital {
-            city = fillGap.province
-        }
+        updateTaskForUser(taskID: fillGap.id, challenge: fillGap.challenge)
+    }
 
-        updateUserTaskIDs(taskID: fillGap.id, activityType: activityType, city: city)
+    private func updateTaskForUser(taskID: String, challenge: String) {
+        firestoreManager.updateUserTaskIDs(taskID: taskID, challenge: challenge)
+            .sink { completion in
+                switch completion {
+                case .failure(let error):
+                    self.alertMessage = "Error actualizando la tarea: \(error.localizedDescription)"
+                    self.showAlert = true
+                case .finished:
+                    break
+                }
+            } receiveValue: { _ in
+                print("User task updated in Firestore")
+            }
+            .store(in: &cancellables)
+    }
+
+    private func updateSpotForUser() {
+        if let spotID = userDefaultsManager.getSpotID() {
+            firestoreManager.updateUserSpotIDs(spotID: spotID)
+                .sink { completion in
+                    switch completion {
+                    case .failure(let error):
+                        self.alertMessage = "Error actualizando el spot: \(error.localizedDescription)"
+                        self.showAlert = true
+                    case .finished:
+                        break
+                    }
+                } receiveValue: { _ in
+                    print("User spot updated in Firestore")
+                }
+                .store(in: &cancellables)
+
+            userDefaultsManager.clearSpotID()
+        } else {
+            print("No spotID found in UserDefaults")
+        }
     }
 }

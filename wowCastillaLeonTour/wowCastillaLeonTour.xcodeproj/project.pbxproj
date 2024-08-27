@@ -26,6 +26,21 @@
 		D39648C22C7A3C9D00EAAC19 /* Spot+Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39648C12C7A3C9D00EAAC19 /* Spot+Firebase.swift */; };
 		D39648C52C7A3CC000EAAC19 /* Challenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39648C42C7A3CC000EAAC19 /* Challenge.swift */; };
 		D39648C72C7A3CD800EAAC19 /* Challenge+Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39648C62C7A3CD800EAAC19 /* Challenge+Firebase.swift */; };
+		D39648CA2C7A574000EAAC19 /* ChallengePresentationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39648C92C7A574000EAAC19 /* ChallengePresentationView.swift */; };
+		D39648CC2C7A576700EAAC19 /* ChallengePresentationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39648CB2C7A576700EAAC19 /* ChallengePresentationViewModel.swift */; };
+		D39648D12C7A58B800EAAC19 /* ChallengePresentationFirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39648D02C7A58B800EAAC19 /* ChallengePresentationFirestoreManager.swift */; };
+		D39648D32C7A58CB00EAAC19 /* ChallengePresentationDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39648D22C7A58CB00EAAC19 /* ChallengePresentationDataManager.swift */; };
+		D39648D52C7A59EB00EAAC19 /* ChallengeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39648D42C7A59EB00EAAC19 /* ChallengeListView.swift */; };
+		D39648D72C7A5A5500EAAC19 /* ChallengeListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39648D62C7A5A5500EAAC19 /* ChallengeListViewModel.swift */; };
+		D39648D92C7A5A6B00EAAC19 /* ChallengeListDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39648D82C7A5A6B00EAAC19 /* ChallengeListDataManager.swift */; };
+		D39648DB2C7A5A8200EAAC19 /* ChallengeListFirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39648DA2C7A5A8200EAAC19 /* ChallengeListFirestoreManager.swift */; };
+		D39648DE2C7B955E00EAAC19 /* ChallengeSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39648DD2C7B955E00EAAC19 /* ChallengeSelectionView.swift */; };
+		D39648E12C7B9FEC00EAAC19 /* UserDefaultManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39648E02C7B9FEC00EAAC19 /* UserDefaultManager.swift */; };
+		D39648E42C7CBD7E00EAAC19 /* ChallengeReward.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39648E32C7CBD7E00EAAC19 /* ChallengeReward.swift */; };
+		D39648E62C7CBE4300EAAC19 /* ChallengeReward+Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39648E52C7CBE4300EAAC19 /* ChallengeReward+Firebase.swift */; };
+		D39648E92C7CCFFF00EAAC19 /* Coordinates.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39648E82C7CCFFF00EAAC19 /* Coordinates.swift */; };
+		D39648EC2C7E383600EAAC19 /* PolicyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39648EB2C7E383600EAAC19 /* PolicyView.swift */; };
+		D39648EF2C7E3AB700EAAC19 /* IconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39648EE2C7E3AB700EAAC19 /* IconView.swift */; };
 		D3DDA8782C18548D00C43CBA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDA8772C18548D00C43CBA /* User.swift */; };
 		D3DDA8822C18625200C43CBA /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDA8812C18625200C43CBA /* RegisterViewModel.swift */; };
 		D3DDA8862C18626A00C43CBA /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDA8852C18626A00C43CBA /* RegisterView.swift */; };
@@ -139,6 +154,21 @@
 		D39648C12C7A3C9D00EAAC19 /* Spot+Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Spot+Firebase.swift"; sourceTree = "<group>"; };
 		D39648C42C7A3CC000EAAC19 /* Challenge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenge.swift; sourceTree = "<group>"; };
 		D39648C62C7A3CD800EAAC19 /* Challenge+Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Challenge+Firebase.swift"; sourceTree = "<group>"; };
+		D39648C92C7A574000EAAC19 /* ChallengePresentationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengePresentationView.swift; sourceTree = "<group>"; };
+		D39648CB2C7A576700EAAC19 /* ChallengePresentationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengePresentationViewModel.swift; sourceTree = "<group>"; };
+		D39648D02C7A58B800EAAC19 /* ChallengePresentationFirestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengePresentationFirestoreManager.swift; sourceTree = "<group>"; };
+		D39648D22C7A58CB00EAAC19 /* ChallengePresentationDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengePresentationDataManager.swift; sourceTree = "<group>"; };
+		D39648D42C7A59EB00EAAC19 /* ChallengeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeListView.swift; sourceTree = "<group>"; };
+		D39648D62C7A5A5500EAAC19 /* ChallengeListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeListViewModel.swift; sourceTree = "<group>"; };
+		D39648D82C7A5A6B00EAAC19 /* ChallengeListDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeListDataManager.swift; sourceTree = "<group>"; };
+		D39648DA2C7A5A8200EAAC19 /* ChallengeListFirestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeListFirestoreManager.swift; sourceTree = "<group>"; };
+		D39648DD2C7B955E00EAAC19 /* ChallengeSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeSelectionView.swift; sourceTree = "<group>"; };
+		D39648E02C7B9FEC00EAAC19 /* UserDefaultManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultManager.swift; sourceTree = "<group>"; };
+		D39648E32C7CBD7E00EAAC19 /* ChallengeReward.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeReward.swift; sourceTree = "<group>"; };
+		D39648E52C7CBE4300EAAC19 /* ChallengeReward+Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChallengeReward+Firebase.swift"; sourceTree = "<group>"; };
+		D39648E82C7CCFFF00EAAC19 /* Coordinates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinates.swift; sourceTree = "<group>"; };
+		D39648EB2C7E383600EAAC19 /* PolicyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolicyView.swift; sourceTree = "<group>"; };
+		D39648EE2C7E3AB700EAAC19 /* IconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconView.swift; sourceTree = "<group>"; };
 		D3DDA8772C18548D00C43CBA /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		D3DDA8812C18625200C43CBA /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
 		D3DDA8852C18626A00C43CBA /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
@@ -286,6 +316,8 @@
 		D35F007D2C173FBB00780464 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				D39648ED2C7E3AA900EAAC19 /* IconView */,
+				D39648CE2C7A588500EAAC19 /* Challenge */,
 				D3DEAEF12C75EF0400AB0325 /* SpecialAward */,
 				D3DEAEF02C75EEC700AB0325 /* Tasks */,
 				D38F8F892C6FD51D00315904 /* SettingProfile */,
@@ -350,6 +382,7 @@
 		D38F8F892C6FD51D00315904 /* SettingProfile */ = {
 			isa = PBXGroup;
 			children = (
+				D39648EA2C7E373F00EAAC19 /* PolicyView */,
 				D3DEAF2C2C77AC2D00AB0325 /* EditProfile */,
 				D38F8F8C2C6FD58300315904 /* SettingProfileView.swift */,
 				D38F8F8A2C6FD56000315904 /* SettingProfileViewModel.swift */,
@@ -368,18 +401,99 @@
 			path = Spot;
 			sourceTree = "<group>";
 		};
-		D39648C32C7A3CB000EAAC19 /* Challenge */ = {
+		D39648C32C7A3CB000EAAC19 /* ChallengeModel */ = {
 			isa = PBXGroup;
 			children = (
 				D39648C42C7A3CC000EAAC19 /* Challenge.swift */,
 				D39648C62C7A3CD800EAAC19 /* Challenge+Firebase.swift */,
 			);
+			path = ChallengeModel;
+			sourceTree = "<group>";
+		};
+		D39648C82C7A572700EAAC19 /* ChallengePresentation */ = {
+			isa = PBXGroup;
+			children = (
+				D39648C92C7A574000EAAC19 /* ChallengePresentationView.swift */,
+				D39648CB2C7A576700EAAC19 /* ChallengePresentationViewModel.swift */,
+				D39648D22C7A58CB00EAAC19 /* ChallengePresentationDataManager.swift */,
+				D39648D02C7A58B800EAAC19 /* ChallengePresentationFirestoreManager.swift */,
+			);
+			path = ChallengePresentation;
+			sourceTree = "<group>";
+		};
+		D39648CD2C7A587600EAAC19 /* ChallengeList */ = {
+			isa = PBXGroup;
+			children = (
+				D39648D42C7A59EB00EAAC19 /* ChallengeListView.swift */,
+				D39648D62C7A5A5500EAAC19 /* ChallengeListViewModel.swift */,
+				D39648D82C7A5A6B00EAAC19 /* ChallengeListDataManager.swift */,
+				D39648DA2C7A5A8200EAAC19 /* ChallengeListFirestoreManager.swift */,
+			);
+			path = ChallengeList;
+			sourceTree = "<group>";
+		};
+		D39648CE2C7A588500EAAC19 /* Challenge */ = {
+			isa = PBXGroup;
+			children = (
+				D39648C82C7A572700EAAC19 /* ChallengePresentation */,
+				D39648CD2C7A587600EAAC19 /* ChallengeList */,
+			);
 			path = Challenge;
+			sourceTree = "<group>";
+		};
+		D39648DC2C7B954600EAAC19 /* ChallengeSelection */ = {
+			isa = PBXGroup;
+			children = (
+				D39648DD2C7B955E00EAAC19 /* ChallengeSelectionView.swift */,
+			);
+			path = ChallengeSelection;
+			sourceTree = "<group>";
+		};
+		D39648DF2C7B9FCC00EAAC19 /* UserDefault */ = {
+			isa = PBXGroup;
+			children = (
+				D39648E02C7B9FEC00EAAC19 /* UserDefaultManager.swift */,
+			);
+			path = UserDefault;
+			sourceTree = "<group>";
+		};
+		D39648E22C7CBD6000EAAC19 /* ChallengeReward */ = {
+			isa = PBXGroup;
+			children = (
+				D39648E32C7CBD7E00EAAC19 /* ChallengeReward.swift */,
+				D39648E52C7CBE4300EAAC19 /* ChallengeReward+Firebase.swift */,
+			);
+			path = ChallengeReward;
+			sourceTree = "<group>";
+		};
+		D39648E72C7CCFEE00EAAC19 /* Coordinate */ = {
+			isa = PBXGroup;
+			children = (
+				D39648E82C7CCFFF00EAAC19 /* Coordinates.swift */,
+			);
+			path = Coordinate;
+			sourceTree = "<group>";
+		};
+		D39648EA2C7E373F00EAAC19 /* PolicyView */ = {
+			isa = PBXGroup;
+			children = (
+				D39648EB2C7E383600EAAC19 /* PolicyView.swift */,
+			);
+			path = PolicyView;
+			sourceTree = "<group>";
+		};
+		D39648ED2C7E3AA900EAAC19 /* IconView */ = {
+			isa = PBXGroup;
+			children = (
+				D39648EE2C7E3AB700EAAC19 /* IconView.swift */,
+			);
+			path = IconView;
 			sourceTree = "<group>";
 		};
 		D3DDA8752C18547700C43CBA /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				D39648DF2C7B9FCC00EAAC19 /* UserDefault */,
 				D3DEAF032C75F57800AB0325 /* ARController */,
 				D38F8F712C51031400315904 /* Base */,
 				D3E4B7C12C4681F3000BEE9F /* Design */,
@@ -393,7 +507,9 @@
 		D3DDA8762C18548000C43CBA /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				D39648C32C7A3CB000EAAC19 /* Challenge */,
+				D39648E72C7CCFEE00EAAC19 /* Coordinate */,
+				D39648E22C7CBD6000EAAC19 /* ChallengeReward */,
+				D39648C32C7A3CB000EAAC19 /* ChallengeModel */,
 				D39648BE2C7A3C1D00EAAC19 /* Spot */,
 				D3DEAEF22C75F27500AB0325 /* SpecialPrize */,
 				D3E4B7682C32C539000BEE9F /* Activity */,
@@ -436,8 +552,8 @@
 		D3DDA87C2C18616E00C43CBA /* ProfileData */ = {
 			isa = PBXGroup;
 			children = (
-				D3DDA8A42C19AD1D00C43CBA /* ProfileViewModel.swift */,
 				D3DDA8A82C19AD6800C43CBA /* ProfileView.swift */,
+				D3DDA8A42C19AD1D00C43CBA /* ProfileViewModel.swift */,
 				D3E4B74B2C19BAE4000BEE9F /* ProfileDataManager.swift */,
 			);
 			path = ProfileData;
@@ -698,6 +814,7 @@
 		D3E4B7962C3E9339000BEE9F /* Map */ = {
 			isa = PBXGroup;
 			children = (
+				D39648DC2C7B954600EAAC19 /* ChallengeSelection */,
 				D3E4B7AA2C4514EF000BEE9F /* 3DMap */,
 				D3E4B7A42C41179A000BEE9F /* CallOut */,
 				D3E4B7972C3E9547000BEE9F /* MapFirestoreManager.swift */,
@@ -938,12 +1055,15 @@
 				D3DDA8922C18630900C43CBA /* AppState.swift in Sources */,
 				D3E4B8112C4E4FA6000BEE9F /* DatesDataManager.swift in Sources */,
 				D39648C72C7A3CD800EAAC19 /* Challenge+Firebase.swift in Sources */,
+				D39648E62C7CBE4300EAAC19 /* ChallengeReward+Firebase.swift in Sources */,
+				D39648EF2C7E3AB700EAAC19 /* IconView.swift in Sources */,
 				D3DEAF092C7606CB00AB0325 /* SpecialPrizeTaskViewModel.swift in Sources */,
 				D3E4B80B2C4E4C15000BEE9F /* QuestionAnswerViewModel.swift in Sources */,
 				D3E4B8172C4E4FEF000BEE9F /* TakePhotoDataManager.swift in Sources */,
 				D3DDA8972C18709500C43CBA /* LoginViewModel.swift in Sources */,
 				D38F8F792C6FC26300315904 /* MainTabView.swift in Sources */,
 				D3E4B7D42C4682B2000BEE9F /* ColorButtonView.swift in Sources */,
+				D39648D52C7A59EB00EAAC19 /* ChallengeListView.swift in Sources */,
 				D3E4B8132C4E4FC2000BEE9F /* FillGapDataManager.swift in Sources */,
 				D38F8F8B2C6FD56000315904 /* SettingProfileViewModel.swift in Sources */,
 				D3E4B78F2C3E8FEE000BEE9F /* Puzzle+Firebase.swift in Sources */,
@@ -956,32 +1076,42 @@
 				D3DDA8822C18625200C43CBA /* RegisterViewModel.swift in Sources */,
 				D3DEAF002C75F42200AB0325 /* SpecialPrizeTaskView.swift in Sources */,
 				D3E4B77A2C3E8879000BEE9F /* DateModel.swift in Sources */,
+				D39648E42C7CBD7E00EAAC19 /* ChallengeReward.swift in Sources */,
 				D3DDA8A52C19AD1D00C43CBA /* ProfileViewModel.swift in Sources */,
 				D3DDA8A92C19AD6800C43CBA /* ProfileView.swift in Sources */,
 				D3E4B80D2C4E4C42000BEE9F /* TakePhotoViewModel.swift in Sources */,
+				D39648D12C7A58B800EAAC19 /* ChallengePresentationFirestoreManager.swift in Sources */,
 				D3E4B81B2C4E50F7000BEE9F /* DatesFirestoreManager.swift in Sources */,
 				D3E4B7872C3E8C1D000BEE9F /* Coin+Firebase.swift in Sources */,
 				D3E4B80F2C4E4F72000BEE9F /* CoinDataManager.swift in Sources */,
 				D3E4B81D2C4E5111000BEE9F /* FillGapFirestoreManager.swift in Sources */,
 				D3DEAEF42C75F29A00AB0325 /* SpecialPrizeModel.swift in Sources */,
+				D39648CA2C7A574000EAAC19 /* ChallengePresentationView.swift in Sources */,
+				D39648D72C7A5A5500EAAC19 /* ChallengeListViewModel.swift in Sources */,
+				D39648E92C7CCFFF00EAAC19 /* Coordinates.swift in Sources */,
 				D35F00582C173FA100780464 /* Persistence.swift in Sources */,
 				D3E4B79E2C3E9575000BEE9F /* MapView.swift in Sources */,
 				D3DDA8AE2C19B10F00C43CBA /* User+Firebase.swift in Sources */,
 				D38F8F732C51032600315904 /* BaseViewModel.swift in Sources */,
 				D3E4B7822C3E88D0000BEE9F /* QuestionModel.swift in Sources */,
 				D3E4B74C2C19BAE4000BEE9F /* ProfileDataManager.swift in Sources */,
+				D39648D92C7A5A6B00EAAC19 /* ChallengeListDataManager.swift in Sources */,
 				D3E4B7852C3E890A000BEE9F /* TakePhotoModel.swift in Sources */,
 				D3E4B79C2C3E9562000BEE9F /* MapViewModel.swift in Sources */,
 				D39648C52C7A3CC000EAAC19 /* Challenge.swift in Sources */,
 				D3E4B7DA2C4683C7000BEE9F /* Color.swift in Sources */,
 				D3E4B7FB2C4E46FA000BEE9F /* TakePhotoView.swift in Sources */,
+				D39648DB2C7A5A8200EAAC19 /* ChallengeListFirestoreManager.swift in Sources */,
 				D38F8F8F2C6FD6B000315904 /* SettingProfileDataManager.swift in Sources */,
+				D39648D32C7A58CB00EAAC19 /* ChallengePresentationDataManager.swift in Sources */,
+				D39648DE2C7B955E00EAAC19 /* ChallengeSelectionView.swift in Sources */,
 				D3E4B7FF2C4E471D000BEE9F /* FillGapView.swift in Sources */,
 				D3DEAEF82C75F37D00AB0325 /* SpecialPrizeDataManager.swift in Sources */,
 				D3E4B78D2C3E8FC4000BEE9F /* Point+Firebase.swift in Sources */,
 				D3DDA89B2C1870AC00C43CBA /* LoginView.swift in Sources */,
 				D3E4B7782C3E885B000BEE9F /* CoinModel.swift in Sources */,
 				D3DEAF3A2C78CE7300AB0325 /* ForgotPasswordDataManager.swift in Sources */,
+				D39648CC2C7A576700EAAC19 /* ChallengePresentationViewModel.swift in Sources */,
 				D3DEAF1A2C76107F00AB0325 /* SpecialPrizeTaskFirestoreManager.swift in Sources */,
 				D38F8F612C4E761100315904 /* PuzzlePiece.swift in Sources */,
 				D3E4B78B2C3E8FA2000BEE9F /* FillGap+Firebase.swift in Sources */,
@@ -994,6 +1124,7 @@
 				D39648C22C7A3C9D00EAAC19 /* Spot+Firebase.swift in Sources */,
 				D3E4B7E32C47D992000BEE9F /* PuzzleView.swift in Sources */,
 				D3E4B7DD2C47D902000BEE9F /* PuzzleFirestoreManager.swift in Sources */,
+				D39648E12C7B9FEC00EAAC19 /* UserDefaultManager.swift in Sources */,
 				D3E4B8192C4E50D6000BEE9F /* CoinFirestoreManager.swift in Sources */,
 				D39648C02C7A3C3000EAAC19 /* Spot.swift in Sources */,
 				D3E4B7982C3E9547000BEE9F /* MapFirestoreManager.swift in Sources */,
@@ -1014,6 +1145,7 @@
 				D35F00512C173FA000780464 /* ContentView.swift in Sources */,
 				D3DEAF022C75F46800AB0325 /* SpecialPrize+Firebase.swift in Sources */,
 				D3DDA8782C18548D00C43CBA /* User.swift in Sources */,
+				D39648EC2C7E383600EAAC19 /* PolicyView.swift in Sources */,
 				D3E4B8012C4E4730000BEE9F /* DatesView.swift in Sources */,
 				D3E4B77C2C3E888F000BEE9F /* FillGapModel.swift in Sources */,
 				D3E4B8072C4E4BB6000BEE9F /* DatesViewModel.swift in Sources */,

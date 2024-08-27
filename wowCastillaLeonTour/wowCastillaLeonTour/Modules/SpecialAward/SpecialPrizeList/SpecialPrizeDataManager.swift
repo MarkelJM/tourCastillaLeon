@@ -4,7 +4,7 @@
 //
 //  Created by Markel Juaristi on 21/8/24.
 //
-
+/*
 import Combine
 
 class SpecialPrizeDataManager {
@@ -14,3 +14,4 @@ class SpecialPrizeDataManager {
         return firestoreManager.fetchSpecialPrizes()
     }
 }
+*/

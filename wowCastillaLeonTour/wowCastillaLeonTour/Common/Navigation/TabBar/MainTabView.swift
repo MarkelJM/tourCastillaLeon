@@ -19,12 +19,13 @@ struct MainTabView: View {
                     Text("Mapa")
                 }
             
-            // SpecialPrize
-            SpecialPrizeListView()
+            // Lista de Desafíos (Challenges)
+            ChallengeListView()
                 .tabItem {
-                    Image(systemName: "star.fill")
-                    Text("Premios Especiales")
+                    Image(systemName: "list.bullet")
+                    Text("Desafíos")
                 }
+            
             // Perfil Tab
             SettingProfileView()
                 .tabItem {

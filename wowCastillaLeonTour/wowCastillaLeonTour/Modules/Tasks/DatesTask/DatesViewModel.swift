@@ -22,7 +22,8 @@ class DatesOrderViewModel: BaseViewModel {
     init(activityId: String) {
         self.activityId = activityId
         super.init()
-        fetchUserProfile() // Cargar el perfil del usuario cuando se inicia el viewModel
+        fetchUserProfile()
+        fetchDateEvent()
     }
     
     func fetchDateEvent() {
@@ -50,7 +51,6 @@ class DatesOrderViewModel: BaseViewModel {
     }
     
     func undoSelection() {
-        // Deshacer la última selección
         if !selectedEvents.isEmpty {
             selectedEvents.removeLast()
         }
@@ -62,27 +62,55 @@ class DatesOrderViewModel: BaseViewModel {
         if selectedEvents == dateEvent.correctAnswer {
             alertMessage = dateEvent.correctAnswerMessage
             isCorrectOrder = true
+            updateUserTask(dateEvent: dateEvent)
+            updateSpotForUser()
         } else {
             alertMessage = dateEvent.incorrectAnswerMessage
             isCorrectOrder = false
         }
         
         showResultAlert = true
-
-        // Después de mostrar el mensaje personalizado, actualizar la tarea
-        if isCorrectOrder {
-            updateUserTask(dateEvent: dateEvent)
-        }
     }
     
     private func updateUserTask(dateEvent: DateEvent) {
-        let activityType = "dateEvent"
-        var city: String? = nil
-        
-        if dateEvent.isCapital {
-            city = dateEvent.province
-        }
+        updateTaskForUser(taskID: dateEvent.id, challenge: dateEvent.challenge)
+    }
 
-        updateUserTaskIDs(taskID: dateEvent.id, activityType: activityType, city: city)
+    private func updateTaskForUser(taskID: String, challenge: String) {
+        firestoreManager.updateUserTaskIDs(taskID: taskID, challenge: challenge)
+            .sink { completion in
+                switch completion {
+                case .failure(let error):
+                    self.alertMessage = "Error actualizando la tarea: \(error.localizedDescription)"
+                    self.showAlert = true
+                case .finished:
+                    break
+                }
+            } receiveValue: { _ in
+                print("User task updated in Firestore")
+            }
+            .store(in: &cancellables)
+    }
+
+    private func updateSpotForUser() {
+        if let spotID = userDefaultsManager.getSpotID() {
+            firestoreManager.updateUserSpotIDs(spotID: spotID)
+                .sink { completion in
+                    switch completion {
+                    case .failure(let error):
+                        self.alertMessage = "Error actualizando el spot: \(error.localizedDescription)"
+                        self.showAlert = true
+                    case .finished:
+                        break
+                    }
+                } receiveValue: { _ in
+                    print("User spot updated in Firestore")
+                }
+                .store(in: &cancellables)
+
+            userDefaultsManager.clearSpotID()
+        } else {
+            print("No spotID found in UserDefaults")
+        }
     }
 }

@@ -5,7 +5,7 @@
 //  Created by Markel Juaristi on 21/8/24.
 //
 
-
+/*
 import SwiftUI
 import ARKit
 import RealityKit
@@ -93,3 +93,4 @@ struct ResultSpecialPrizeView: View {
         }
     }
 }
+*/

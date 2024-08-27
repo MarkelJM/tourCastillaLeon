@@ -8,24 +8,24 @@
 import SwiftUI
 
 struct MapCallOutView: View {
-    var point: Point
+    var spot: Spot
     @EnvironmentObject var appState: AppState
     @ObservedObject var viewModel: MapViewModel
 
     var body: some View {
         VStack(spacing: 20) {
-            Text(point.name)
+            Text(spot.name)
                 .font(.title2)
                 .fontWeight(.bold)
                 .foregroundColor(.mateRed)
             
-            Text(point.abstract)
+            Text(spot.abstract)
                 .font(.body)
                 .foregroundColor(.black)
                 .multilineTextAlignment(.center)
                 .padding(.horizontal)
             
-            AsyncImage(url: URL(string: point.image)) { image in
+            AsyncImage(url: URL(string: spot.image)) { image in
                 image
                     .resizable()
                     .aspectRatio(contentMode: .fit)
@@ -38,26 +38,30 @@ struct MapCallOutView: View {
             .padding(.horizontal)
 
             Button(action: {
-                if viewModel.isTaskCompleted(taskID: point.activityId, activityType: point.activityType) {
+                if viewModel.isTaskCompleted(taskID: spot.activityID, activityType: spot.activityType, challenge: viewModel.selectedChallenge) {
                     viewModel.alertMessage = "Esta tarea ya está completada."
                     viewModel.showAlert = true
                 } else {
-                    print("Participar button tapped for \(point.name)")
-                    switch point.activityType {
+                    print("Participar button tapped for \(spot.name)")
+                    
+                    // Guardar el spotID en UserDefaults
+                    viewModel.saveSpotID(spot.id)
+                    
+                    switch spot.activityType {
                     case "puzzles":
-                        appState.currentView = .puzzle(id: point.activityId)
+                        appState.currentView = .puzzle(id: spot.activityID)
                     case "coins":
-                        appState.currentView = .coin(id: point.activityId)
+                        appState.currentView = .coin(id: spot.activityID)
                     case "dates":
-                        appState.currentView = .dates(id: point.activityId)
+                        appState.currentView = .dates(id: spot.activityID)
                     case "fillGap":
-                        appState.currentView = .fillGap(id: point.activityId)
+                        appState.currentView = .fillGap(id: spot.activityID)
                     case "questionAnswers":
-                        appState.currentView = .questionAnswer(id: point.activityId)
+                        appState.currentView = .questionAnswer(id: spot.activityID)
                     case "takePhotos":
-                        appState.currentView = .takePhoto(id: point.activityId)
+                        appState.currentView = .takePhoto(id: spot.activityID)
                     default:
-                        print("Tipo de actividad no soportado: \(point.activityType)")
+                        print("Tipo de actividad no soportado: \(spot.activityType)")
                     }
                 }
             }) {
@@ -81,8 +85,3 @@ struct MapCallOutView: View {
         }
     }
 }
-/*
-#Preview {
-    MapCallOutView(point: <#Point#>)
-}
-*/

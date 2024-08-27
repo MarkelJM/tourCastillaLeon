@@ -18,4 +18,5 @@ struct Challenge: Identifiable, Codable {
     var isBegan: Bool
     var province: String
     var taskAmount: Int
+    var challengeMessage: String
 }
