@@ -10,7 +10,7 @@ import Combine
 
 class AppState: ObservableObject {
     @Published var isLoggedIn: Bool = false
-    @Published var currentView: AppView = .login {
+    @Published var currentView: AppView = .icon {
         didSet {
             print("Current view is now \(currentView)")
         }
@@ -23,6 +23,7 @@ class AppState: ObservableObject {
         case login
         case profile
         case map
+        case challengeList
         case avatarSelection
         case puzzle(id: String)
         case coin(id: String)

@@ -18,7 +18,7 @@ extension Challenge {
               let isBegan = firestoreData["isBegan"] as? Bool,
               let province = firestoreData["province"] as? String,
               let taskAmount = firestoreData["taskamount"] as? Int,
-              let challengeMessage = firestoreData["challenge_message"] as? String else { // Campo agregado
+              let challengeMessage = firestoreData["challengeMessage"] as? String else { // Campo agregado
             return nil
         }
 
@@ -46,7 +46,7 @@ extension Challenge {
             "isBegan": isBegan,
             "province": province,
             "taskamount": taskAmount,
-            "challenge_message": challengeMessage // Incluyendo el nuevo campo en la salida
+            "challengeMessage": challengeMessage // Incluyendo el nuevo campo en la salida
         ]
     }
 }

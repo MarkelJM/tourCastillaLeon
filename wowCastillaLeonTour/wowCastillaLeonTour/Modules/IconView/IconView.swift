@@ -14,8 +14,11 @@ struct IconView: View {
     var body: some View {
         ZStack {
             // Fondo de pantalla
-            Color.black.edgesIgnoringSafeArea(.all)
-            
+            Image("fondoSolar")
+                .resizable()
+                .scaledToFill()
+                .edgesIgnoringSafeArea(.all)
+
             VStack {
                 Spacer()
 
@@ -54,4 +57,5 @@ struct IconView: View {
 
 #Preview {
     IconView()
+        .environmentObject(AppState())
 }

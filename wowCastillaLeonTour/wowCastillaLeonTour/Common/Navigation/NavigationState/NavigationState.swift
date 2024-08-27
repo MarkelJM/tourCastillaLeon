@@ -41,6 +41,8 @@ struct NavigationState: View {
             ProfileView(viewModel: ProfileViewModel())
         case .map:
             MapView()
+        case .challengeList:
+            ChallengeListView()
         case .avatarSelection:
             AvatarSelectionView(selectedAvatar: .constant(.boy))
         case .puzzle(let id):

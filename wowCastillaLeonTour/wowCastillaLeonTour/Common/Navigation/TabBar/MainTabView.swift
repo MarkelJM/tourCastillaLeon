@@ -12,12 +12,6 @@ struct MainTabView: View {
 
     var body: some View {
         TabView {
-            // Mapa Tab
-            MapView()
-                .tabItem {
-                    Image(systemName: "map")
-                    Text("Mapa")
-                }
             
             // Lista de Desafíos (Challenges)
             ChallengeListView()
@@ -25,6 +19,15 @@ struct MainTabView: View {
                     Image(systemName: "list.bullet")
                     Text("Desafíos")
                 }
+            
+            // Mapa Tab
+            MapView()
+                .tabItem {
+                    Image(systemName: "map")
+                    Text("Mapa")
+                }
+            
+
             
             // Perfil Tab
             SettingProfileView()

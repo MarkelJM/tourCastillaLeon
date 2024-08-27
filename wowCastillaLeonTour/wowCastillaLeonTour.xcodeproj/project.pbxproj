@@ -45,6 +45,7 @@
 		D39648F42C7E45D200EAAC19 /* ChallengeRewardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39648F32C7E45D200EAAC19 /* ChallengeRewardViewModel.swift */; };
 		D39648F62C7E45F300EAAC19 /* ChallengeRewardDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39648F52C7E45F300EAAC19 /* ChallengeRewardDataManager.swift */; };
 		D39648F82C7E460E00EAAC19 /* ChallengeRewardFirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39648F72C7E460E00EAAC19 /* ChallengeRewardFirestoreManager.swift */; };
+		D39648FC2C7E49EF00EAAC19 /* KeyBoardObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39648FB2C7E49EF00EAAC19 /* KeyBoardObserver.swift */; };
 		D3DDA8782C18548D00C43CBA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDA8772C18548D00C43CBA /* User.swift */; };
 		D3DDA8822C18625200C43CBA /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDA8812C18625200C43CBA /* RegisterViewModel.swift */; };
 		D3DDA8862C18626A00C43CBA /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDA8852C18626A00C43CBA /* RegisterView.swift */; };
@@ -177,6 +178,7 @@
 		D39648F32C7E45D200EAAC19 /* ChallengeRewardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeRewardViewModel.swift; sourceTree = "<group>"; };
 		D39648F52C7E45F300EAAC19 /* ChallengeRewardDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeRewardDataManager.swift; sourceTree = "<group>"; };
 		D39648F72C7E460E00EAAC19 /* ChallengeRewardFirestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeRewardFirestoreManager.swift; sourceTree = "<group>"; };
+		D39648FB2C7E49EF00EAAC19 /* KeyBoardObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyBoardObserver.swift; sourceTree = "<group>"; };
 		D3DDA8772C18548D00C43CBA /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		D3DDA8812C18625200C43CBA /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
 		D3DDA8852C18626A00C43CBA /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
@@ -510,9 +512,26 @@
 			path = ChallengeReward;
 			sourceTree = "<group>";
 		};
+		D39648F92C7E49D200EAAC19 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				D39648FA2C7E49DA00EAAC19 /* KeyBoardObserver */,
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
+		D39648FA2C7E49DA00EAAC19 /* KeyBoardObserver */ = {
+			isa = PBXGroup;
+			children = (
+				D39648FB2C7E49EF00EAAC19 /* KeyBoardObserver.swift */,
+			);
+			path = KeyBoardObserver;
+			sourceTree = "<group>";
+		};
 		D3DDA8752C18547700C43CBA /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				D39648F92C7E49D200EAAC19 /* Tools */,
 				D39648DF2C7B9FCC00EAAC19 /* UserDefault */,
 				D3DEAF032C75F57800AB0325 /* ARController */,
 				D38F8F712C51031400315904 /* Base */,
@@ -1156,6 +1175,7 @@
 				D3E4B79A2C3E9558000BEE9F /* MapDatamanager.swift in Sources */,
 				D3DEAF052C75F59800AB0325 /* ARViewController.swift in Sources */,
 				D3E4B7A62C4117CF000BEE9F /* MapCallOut.swift in Sources */,
+				D39648FC2C7E49EF00EAAC19 /* KeyBoardObserver.swift in Sources */,
 				D38F8F762C6A57E300315904 /* CameraView.swift in Sources */,
 				D3DDA8862C18626A00C43CBA /* RegisterView.swift in Sources */,
 				D3DEAF332C78C89400AB0325 /* OnboardingTwoView.swift in Sources */,

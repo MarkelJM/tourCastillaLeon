@@ -84,13 +84,12 @@ struct ProfileView: View {
                         }
                     }
                     .padding(.bottom, 50)
-                    /*
+
                     if viewModel.showError {
                         Text(viewModel.errorMessage)
                             .foregroundColor(.red)
                             .padding()
                     }
-                     */
                 }
                 .background(Color.black.opacity(0.5))
                 .cornerRadius(20)
@@ -100,7 +99,14 @@ struct ProfileView: View {
                 print("AppState in ProfileView: \(appState)")
                 viewModel.fetchUserProfile()
             }
+            .onTapGesture {
+                hideKeyboard() // Ocultar el teclado al tocar fuera
+            }
         }
+    }
+    
+    private func hideKeyboard() {
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
 }
 

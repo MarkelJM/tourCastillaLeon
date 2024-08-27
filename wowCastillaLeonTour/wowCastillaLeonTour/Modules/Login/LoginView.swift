@@ -80,9 +80,16 @@ struct LoginView: View {
             .cornerRadius(20)
             .padding()
         }
+        .onTapGesture {
+            hideKeyboard() // Ocultar el teclado al tocar fuera
+        }
         .onReceive(viewModel.loginSuccess) { _ in
             appState.currentView = .map
         }
+    }
+
+    private func hideKeyboard() {
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
 }
 
