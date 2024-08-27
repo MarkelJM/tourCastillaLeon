@@ -261,4 +261,45 @@ class FirestoreManager {
         }
         .eraseToAnyPublisher()
     }
+    
+    func addSpecialRewardToUser(rewardID: String) -> AnyPublisher<Void, Error> {
+        Future { promise in
+            guard let uid = self.auth.currentUser?.uid else {
+                promise(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "User ID not found"])))
+                return
+            }
+
+            let userRef = self.db.collection("users").document(uid)
+
+            userRef.getDocument { document, error in
+                if let error = error {
+                    promise(.failure(error))
+                } else if let document = document, document.exists {
+                    var data = document.data() ?? [:]
+                    
+                    // Obtener los premios especiales actuales
+                    var specialRewards = data["specialRewards"] as? [String] ?? []
+                    
+                    // Añadir el nuevo rewardID si no existe ya
+                    if !specialRewards.contains(rewardID) {
+                        specialRewards.append(rewardID)
+                    }
+                    
+                    // Actualizar el documento de usuario con el array actualizado de specialRewards
+                    data["specialRewards"] = specialRewards
+
+                    userRef.setData(data) { error in
+                        if let error = error {
+                            promise(.failure(error))
+                        } else {
+                            promise(.success(()))
+                        }
+                    }
+                } else {
+                    promise(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Document does not exist"])))
+                }
+            }
+        }
+        .eraseToAnyPublisher()
+    }
 }

@@ -5,6 +5,101 @@
 //  Created by Markel Juaristi on 21/8/24.
 //
 
+import Foundation
+import ARKit
+import RealityKit
+import SwiftUI
+
+struct ARViewContainer<VM: BaseViewModel>: UIViewRepresentable {
+    var prizeImageName: String
+    var viewModel: VM
+    
+    func makeUIView(context: Context) -> ARView {
+        let arView = ARView(frame: .zero)
+        
+        #if !targetEnvironment(simulator)
+        let configuration = ARWorldTrackingConfiguration()
+        configuration.planeDetection = [.horizontal]
+        arView.session.run(configuration)
+        
+        setupARScene(arView: arView, context: context)
+        
+        let tapGesture = UITapGestureRecognizer(target: context.coordinator, action: #selector(context.coordinator.handleTap(_:)))
+        arView.addGestureRecognizer(tapGesture)
+        #endif
+        
+        return arView
+    }
+
+    func setupARScene(arView: ARView, context: Context) {
+        #if !targetEnvironment(simulator)
+        let anchorEntity = AnchorEntity(plane: .horizontal, minimumBounds: .zero)
+        guard let image = UIImage(named: prizeImageName) else {
+            print("Imagen no encontrada: \(prizeImageName)")
+            return
+        }
+        
+        var material = UnlitMaterial()
+        let mesh = MeshResource.generatePlane(width: 0.5, height: 0.5)
+        let modelEntity = ModelEntity(mesh: mesh)
+        
+        if let cgImage = image.cgImage, let texture = try? TextureResource.generate(from: cgImage, options: .init(semantic: nil)) {
+            material.baseColor = MaterialColorParameter.texture(texture)
+            modelEntity.model?.materials = [material]
+        } else {
+            print("Error al crear la textura")
+        }
+
+        modelEntity.position = [0, 0, -1]
+        modelEntity.generateCollisionShapes(recursive: true)
+        
+        anchorEntity.addChild(modelEntity)
+        arView.scene.addAnchor(anchorEntity)
+        
+        context.coordinator.currentEntity = modelEntity
+        #endif
+    }
+
+    func updateUIView(_ uiView: ARView, context: Context) {}
+
+    func makeCoordinator() -> Coordinator {
+        Coordinator(self, viewModel: viewModel)
+    }
+    
+    class Coordinator: NSObject {
+        var parent: ARViewContainer
+        var currentEntity: ModelEntity?
+        var viewModel: VM
+        
+        init(_ parent: ARViewContainer, viewModel: VM) {
+            self.parent = parent
+            self.viewModel = viewModel
+        }
+        
+        @objc func handleTap(_ sender: UITapGestureRecognizer) {
+            #if !targetEnvironment(simulator)
+            guard let arView = sender.view as? ARView else { return }
+            let tapLocation = sender.location(in: arView)
+            
+            if let tappedEntity = arView.entity(at: tapLocation), tappedEntity == currentEntity {
+                currentEntity?.removeFromParent()
+                
+                if let challengeRewardViewModel = viewModel as? ChallengeRewardViewModel {
+                    challengeRewardViewModel.completeRewardTask()
+                } else if let coinViewModel = viewModel as? CoinViewModel {
+                    if let coin = coinViewModel.coins.first {
+                        coinViewModel.completeTask(coin: coin)
+                    }
+                }
+                // Aquí puedes añadir más casos similares para otros tipos de ViewModels que necesiten interactuar con el ARView
+            }
+            #endif
+        }
+    }
+}
+
+
+/*
 
 import Foundation
 import ARKit
@@ -155,6 +250,8 @@ struct ARViewContainer<VM: BaseViewModel>: UIViewRepresentable {
         }
     }
 }
+ 
+ */
 
 /*
 struct ARViewContainer<VM: BaseViewModel>: UIViewRepresentable {

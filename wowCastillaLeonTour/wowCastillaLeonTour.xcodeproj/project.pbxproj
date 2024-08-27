@@ -41,6 +41,10 @@
 		D39648E92C7CCFFF00EAAC19 /* Coordinates.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39648E82C7CCFFF00EAAC19 /* Coordinates.swift */; };
 		D39648EC2C7E383600EAAC19 /* PolicyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39648EB2C7E383600EAAC19 /* PolicyView.swift */; };
 		D39648EF2C7E3AB700EAAC19 /* IconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39648EE2C7E3AB700EAAC19 /* IconView.swift */; };
+		D39648F22C7E45B900EAAC19 /* ChallengeRewardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39648F12C7E45B900EAAC19 /* ChallengeRewardView.swift */; };
+		D39648F42C7E45D200EAAC19 /* ChallengeRewardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39648F32C7E45D200EAAC19 /* ChallengeRewardViewModel.swift */; };
+		D39648F62C7E45F300EAAC19 /* ChallengeRewardDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39648F52C7E45F300EAAC19 /* ChallengeRewardDataManager.swift */; };
+		D39648F82C7E460E00EAAC19 /* ChallengeRewardFirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39648F72C7E460E00EAAC19 /* ChallengeRewardFirestoreManager.swift */; };
 		D3DDA8782C18548D00C43CBA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDA8772C18548D00C43CBA /* User.swift */; };
 		D3DDA8822C18625200C43CBA /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDA8812C18625200C43CBA /* RegisterViewModel.swift */; };
 		D3DDA8862C18626A00C43CBA /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDA8852C18626A00C43CBA /* RegisterView.swift */; };
@@ -169,6 +173,10 @@
 		D39648E82C7CCFFF00EAAC19 /* Coordinates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinates.swift; sourceTree = "<group>"; };
 		D39648EB2C7E383600EAAC19 /* PolicyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolicyView.swift; sourceTree = "<group>"; };
 		D39648EE2C7E3AB700EAAC19 /* IconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconView.swift; sourceTree = "<group>"; };
+		D39648F12C7E45B900EAAC19 /* ChallengeRewardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeRewardView.swift; sourceTree = "<group>"; };
+		D39648F32C7E45D200EAAC19 /* ChallengeRewardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeRewardViewModel.swift; sourceTree = "<group>"; };
+		D39648F52C7E45F300EAAC19 /* ChallengeRewardDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeRewardDataManager.swift; sourceTree = "<group>"; };
+		D39648F72C7E460E00EAAC19 /* ChallengeRewardFirestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeRewardFirestoreManager.swift; sourceTree = "<group>"; };
 		D3DDA8772C18548D00C43CBA /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		D3DDA8812C18625200C43CBA /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
 		D3DDA8852C18626A00C43CBA /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
@@ -435,6 +443,7 @@
 		D39648CE2C7A588500EAAC19 /* Challenge */ = {
 			isa = PBXGroup;
 			children = (
+				D39648F02C7E43FB00EAAC19 /* ChallengeReward */,
 				D39648C82C7A572700EAAC19 /* ChallengePresentation */,
 				D39648CD2C7A587600EAAC19 /* ChallengeList */,
 			);
@@ -488,6 +497,17 @@
 				D39648EE2C7E3AB700EAAC19 /* IconView.swift */,
 			);
 			path = IconView;
+			sourceTree = "<group>";
+		};
+		D39648F02C7E43FB00EAAC19 /* ChallengeReward */ = {
+			isa = PBXGroup;
+			children = (
+				D39648F12C7E45B900EAAC19 /* ChallengeRewardView.swift */,
+				D39648F32C7E45D200EAAC19 /* ChallengeRewardViewModel.swift */,
+				D39648F52C7E45F300EAAC19 /* ChallengeRewardDataManager.swift */,
+				D39648F72C7E460E00EAAC19 /* ChallengeRewardFirestoreManager.swift */,
+			);
+			path = ChallengeReward;
 			sourceTree = "<group>";
 		};
 		D3DDA8752C18547700C43CBA /* Common */ = {
@@ -1118,15 +1138,18 @@
 				D3DEAF1C2C76108D00AB0325 /* SpecialPrizeTaskDataManager.swift in Sources */,
 				D3E4B7912C3E9066000BEE9F /* Question+Firebase.swift in Sources */,
 				D3E4B8212C4E514F000BEE9F /* TakePhotoFirestoreManager.swift in Sources */,
+				D39648F82C7E460E00EAAC19 /* ChallengeRewardFirestoreManager.swift in Sources */,
 				D3E4B7552C19BC0C000BEE9F /* HomeView.swift in Sources */,
 				D3DEAF2E2C77AC4A00AB0325 /* EditProfileView.swift in Sources */,
 				D3DEAF072C76069A00AB0325 /* SpecialPrizeListViewModel.swift in Sources */,
+				D39648F42C7E45D200EAAC19 /* ChallengeRewardViewModel.swift in Sources */,
 				D39648C22C7A3C9D00EAAC19 /* Spot+Firebase.swift in Sources */,
 				D3E4B7E32C47D992000BEE9F /* PuzzleView.swift in Sources */,
 				D3E4B7DD2C47D902000BEE9F /* PuzzleFirestoreManager.swift in Sources */,
 				D39648E12C7B9FEC00EAAC19 /* UserDefaultManager.swift in Sources */,
 				D3E4B8192C4E50D6000BEE9F /* CoinFirestoreManager.swift in Sources */,
 				D39648C02C7A3C3000EAAC19 /* Spot.swift in Sources */,
+				D39648F22C7E45B900EAAC19 /* ChallengeRewardView.swift in Sources */,
 				D3E4B7982C3E9547000BEE9F /* MapFirestoreManager.swift in Sources */,
 				D3E4B7DF2C47D930000BEE9F /* PuzzleDataManager.swift in Sources */,
 				D3DEAEF62C75F2DF00AB0325 /* SpecialPrizeFirestoreManager.swift in Sources */,
@@ -1140,6 +1163,7 @@
 				D3E4B8092C4E4BE8000BEE9F /* FillGapViewModel.swift in Sources */,
 				D3E4B7502C19BAF7000BEE9F /* LoginDataManager.swift in Sources */,
 				D3E4B8152C4E4FD8000BEE9F /* QuestionAnswerDataManager.swift in Sources */,
+				D39648F62C7E45F300EAAC19 /* ChallengeRewardDataManager.swift in Sources */,
 				D3E4B81F2C4E512B000BEE9F /* QuestionAnswerFirestoreManager.swift in Sources */,
 				D3E4B7932C3E9084000BEE9F /* TakePhoto+Firebase.swift in Sources */,
 				D35F00512C173FA000780464 /* ContentView.swift in Sources */,
