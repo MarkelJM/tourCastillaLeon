@@ -49,8 +49,6 @@ struct MapView: View {
                     viewModel.checkChallengeStatus()
                     if viewModel.isChallengeBegan {
                         viewModel.fetchSpots()
-                    } else {
-                        viewModel.showChallengeSelection = true
                     }
                 }
                 .sheet(item: $selectedSpot) { spot in
@@ -58,9 +56,8 @@ struct MapView: View {
                         .environmentObject(appState)
                 }
 
-                // Botón para mostrar la selección de retos manualmente
                 Button(action: {
-                    viewModel.showChallengeSelection.toggle()
+                    viewModel.showChallengeSelectionView()
                 }) {
                     Text("Seleccionar Reto")
                         .font(.headline)
@@ -68,13 +65,12 @@ struct MapView: View {
                         .background(Color.blue)
                         .foregroundColor(.white)
                         .cornerRadius(10)
+                        .padding(.top, 20)
                 }
-                .padding()
             }
         }
         .sheet(isPresented: $viewModel.showChallengeSelection) {
             ChallengeSelectionView(viewModel: viewModel)
-                .environmentObject(appState)
         }
     }
 }

@@ -19,8 +19,7 @@ struct ChallengeSelectionView: View {
             List(viewModel.challenges, id: \.id) { challenge in
                 Button(action: {
                     viewModel.selectedChallenge = challenge.challengeName
-                    viewModel.userDefaultsManager.saveChallengeName(challenge.challengeName) // Guardar en UserDefaults
-                    viewModel.beginChallenge()
+                    viewModel.beginChallenge()  // Aquí se guarda en UserDefaults
                     viewModel.fetchSpots()
                     viewModel.showChallengeSelection = false
                 }) {

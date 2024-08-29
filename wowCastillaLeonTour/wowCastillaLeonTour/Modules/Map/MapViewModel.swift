@@ -5,7 +5,6 @@
 //  Created by Markel Juaristi on 10/7/24.
 //
 
-
 import Foundation
 import Combine
 import CoreLocation
@@ -13,7 +12,7 @@ import MapKit
 
 class MapViewModel: BaseViewModel {
     @Published var spots: [Spot] = []
-    @Published var challengeReward: ChallengeReward?
+    // @Published var challengeReward: ChallengeReward? // Comentado
     @Published var authorizationStatus: CLAuthorizationStatus?
     @Published var region: MKCoordinateRegion
     @Published var selectedChallenge: String
@@ -96,10 +95,11 @@ class MapViewModel: BaseViewModel {
         guard let completedTasks = user.challenges[selectedChallenge]?.count else { return }
 
         if completedTasks >= tasksAmount {
-            fetchChallengeReward()
+            // fetchChallengeReward() // Comentado
         }
     }
 
+    /*
     func fetchChallengeReward() {
         dataManager.fetchChallengeReward(for: selectedChallenge)
             .receive(on: DispatchQueue.main)
@@ -134,6 +134,7 @@ class MapViewModel: BaseViewModel {
 
         spots.append(rewardSpot)
     }
+    */
 
     func checkChallengeStatus() {
         guard let user = user else { return }
@@ -175,7 +176,14 @@ class MapViewModel: BaseViewModel {
     func saveSpotID(_ spotID: String) {
         userDefaultsManager.saveSpotID(spotID)
     }
+
+    func showChallengeSelectionView() {
+        showChallengeSelection = true
+    }
 }
+
+
+
 
 /*
 import Foundation
