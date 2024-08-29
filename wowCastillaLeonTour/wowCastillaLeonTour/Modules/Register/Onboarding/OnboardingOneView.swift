@@ -20,6 +20,20 @@ struct OnboardingOneView: View {
             
             VStack {
                 ScrollView {
+                    
+                    HStack {
+                        Button(action: {
+                            appState.currentView = .login
+                        }) {
+                            Image(systemName: "chevron.left")
+                                .font(.headline)
+                                .padding()
+                                .background(Color.mateGold)
+                                .foregroundColor(.black)
+                                .cornerRadius(10)
+                        }
+                        Spacer()
+                    }
                     VStack(alignment: .leading, spacing: 20) {
                         Text("Bienvenido a nuestra historia")
                             .font(.title)

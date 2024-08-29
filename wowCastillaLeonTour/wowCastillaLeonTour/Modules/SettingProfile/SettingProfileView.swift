@@ -12,6 +12,7 @@ struct SettingProfileView: View {
     @StateObject var viewModel = SettingProfileViewModel()
     @State private var showEditProfileModal = false
     @State private var showPolicyView = false
+    @EnvironmentObject var appState: AppState // Agregar AppState como EnvironmentObject
 
     var body: some View {
         ZStack(alignment: .topTrailing) {
@@ -164,6 +165,10 @@ struct SettingProfileView_Previews: PreviewProvider {
         SettingProfileView(viewModel: SettingProfileViewModel())
     }
 }
+
+
+
+
 
 /*
 import SwiftUI

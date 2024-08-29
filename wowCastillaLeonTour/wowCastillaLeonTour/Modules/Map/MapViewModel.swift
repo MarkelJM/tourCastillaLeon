@@ -6,9 +6,6 @@
 //
 
 
-
-
-
 import Foundation
 import Combine
 import CoreLocation
@@ -19,24 +16,26 @@ class MapViewModel: BaseViewModel {
     @Published var challengeReward: ChallengeReward?
     @Published var authorizationStatus: CLAuthorizationStatus?
     @Published var region: MKCoordinateRegion
-    @Published var selectedChallenge: String = "retoBasico"
+    @Published var selectedChallenge: String
     @Published var showChallengeSelection: Bool = false
     @Published var isChallengeBegan: Bool = false
     @Published var tasksAmount: Int = 0
+    @Published var challenges: [Challenge] = []
 
     private var locationManager = LocationManager()
     private var dataManager = MapDataManager()
     private var hasCenteredOnUser = false
 
-    override init() {
+    init(appState: AppState) {
         self.region = MKCoordinateRegion(
             center: CLLocationCoordinate2D(latitude: 41.6528, longitude: -2.7286),
             span: MKCoordinateSpan(latitudeDelta: 2.0, longitudeDelta: 2.0)
         )
+        self.selectedChallenge = "retoBasico"  // Inicializar temporalmente antes de super.init()
         super.init()
+        self.selectedChallenge = userDefaultsManager.getChallengeName() ?? "retoBasico"  // Reasignar después de super.init()
         setupBindings()
-        fetchUserProfile()
-        checkChallengeStatus()
+        fetchUserProfileAndUpdateState()
     }
 
     private func setupBindings() {
@@ -64,6 +63,17 @@ class MapViewModel: BaseViewModel {
             .store(in: &cancellables)
     }
 
+    private func fetchUserProfileAndUpdateState() {
+        super.fetchUserProfile()
+
+        if let user = self.user {
+            self.checkChallengeStatus()
+        } else {
+            self.alertMessage = "Error: No user data found."
+            self.showAlert = true
+        }
+    }
+
     func fetchSpots() {
         dataManager.fetchSpots(for: selectedChallenge)
             .receive(on: DispatchQueue.main)
@@ -84,7 +94,7 @@ class MapViewModel: BaseViewModel {
     func checkForChallengeCompletion() {
         guard let user = user else { return }
         guard let completedTasks = user.challenges[selectedChallenge]?.count else { return }
-        
+
         if completedTasks >= tasksAmount {
             fetchChallengeReward()
         }
@@ -121,7 +131,7 @@ class MapViewModel: BaseViewModel {
             province: reward.province,
             title: reward.challengeTitle
         )
-        
+
         spots.append(rewardSpot)
     }
 
@@ -136,11 +146,12 @@ class MapViewModel: BaseViewModel {
 
     func beginChallenge() {
         guard var user = user else { return }
-        
+
         if user.challenges[selectedChallenge] == nil {
             user.challenges[selectedChallenge] = []
             saveUserChallengeState(user: user)
         }
+        userDefaultsManager.saveChallengeName(selectedChallenge)
         isChallengeBegan = true
     }
 
@@ -160,11 +171,10 @@ class MapViewModel: BaseViewModel {
             }
             .store(in: &cancellables)
     }
-    
+
     func saveSpotID(_ spotID: String) {
         userDefaultsManager.saveSpotID(spotID)
     }
-
 }
 
 /*

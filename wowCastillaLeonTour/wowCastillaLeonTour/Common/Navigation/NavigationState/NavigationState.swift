@@ -6,53 +6,31 @@
 //
 
 
-
-
 import SwiftUI
 
 struct NavigationState: View {
     @EnvironmentObject var appState: AppState
     @StateObject private var registerViewModel = RegisterViewModel()
 
+    // Propiedad para controlar la visibilidad del CustomTabBar
+    private var shouldShowTabBar: Bool {
+        switch appState.currentView {
+        case .map, .challengeList,  .settings:
+            return true
+        default:
+            return false
+        }
+    }
+
     var body: some View {
         VStack {
-            currentView() // Mostrar la vista actual según el estado
-
-            Spacer()
-
-            // Barra de navegación personalizada en la parte inferior
-            HStack {
-                Button(action: {
-                    appState.currentView = .challengeList
-                }) {
-                    VStack {
-                        Image(systemName: "list.bullet")
-                        Text("Desafíos")
-                    }
-                }
-                Spacer()
-
-                Button(action: {
-                    appState.currentView = .map
-                }) {
-                    VStack {
-                        Image(systemName: "map")
-                        Text("Mapa")
-                    }
-                }
-                Spacer()
-
-                Button(action: {
-                    appState.currentView = .profile
-                }) {
-                    VStack {
-                        Image(systemName: "person.crop.circle")
-                        Text("Perfil")
-                    }
-                }
+            if shouldShowTabBar {
+                CustomTabBar(selectedTab: $appState.currentView)
             }
-            .padding()
-            .background(Color.gray.opacity(0.1))
+            
+            Spacer()
+            
+            currentView()
         }
         .onAppear {
             print("Current AppState in NavigationState: \(appState.currentView)")
@@ -90,17 +68,18 @@ struct NavigationState: View {
             QuestionAnswerView(viewModel: QuestionAnswerViewModel(activityId: id))
         case .takePhoto(let id):
             TakePhotoView(viewModel: TakePhotoViewModel(activityId: id))
-        
         case .onboardingOne:
-             OnboardingOneView()
-         case .onboardingTwo:
-             OnboardingTwoView()
+            OnboardingOneView()
+        case .onboardingTwo:
+            OnboardingTwoView()
         case .forgotPassword:
             ForgotPasswordView(viewModel: ForgotPasswordViewModel())
         case .termsAndConditions:
-              TermsAndConditionsView(agreeToTerms: $registerViewModel.agreeToTerms)
+            TermsAndConditionsView(agreeToTerms: $registerViewModel.agreeToTerms)
         case .challengePresentation(let challengeName):
             ChallengePresentationView(viewModel: ChallengePresentationViewModel(challengeName: challengeName))
+        case .settings:
+            SettingProfileView()
         }
     }
 }
@@ -111,7 +90,6 @@ struct NavigationState_Previews: PreviewProvider {
             .environmentObject(AppState())
     }
 }
-
 
 
 /*

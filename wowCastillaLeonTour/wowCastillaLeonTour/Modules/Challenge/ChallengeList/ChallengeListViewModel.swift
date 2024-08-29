@@ -25,7 +25,7 @@ class ChallengeListViewModel: BaseViewModel {
         self.$user
             .compactMap { $0 }
             .sink { [weak self] user in
-                print("User loaded: \(String(describing: user))")  // Imprimir los datos del usuario cargado
+                print("User loaded: \(String(describing: user))")
                 self?.isUserLoaded = true
             }
             .store(in: &self.cancellables)
@@ -37,13 +37,13 @@ class ChallengeListViewModel: BaseViewModel {
             .sink { completion in
                 switch completion {
                 case .failure(let error):
-                    print("Error in fetchChallenges: \(error.localizedDescription)")  // Imprimir el error
+                    print("Error in fetchChallenges: \(error.localizedDescription)")
                     self.errorMessage = error.localizedDescription
                 case .finished:
-                    print("Finished fetching challenges.")  // Indicar que la operación ha terminado
+                    print("Finished fetching challenges.")
                 }
             } receiveValue: { challenges in
-                print("Challenges received: \(challenges)")  // Imprimir los desafíos recibidos
+                print("Challenges received: \(challenges)")
                 self.challenges = challenges
             }
             .store(in: &self.cancellables)
@@ -55,14 +55,15 @@ class ChallengeListViewModel: BaseViewModel {
     }
 
     func selectChallenge(_ challenge: Challenge) {
-        print("Selected challenge: \(challenge)")  // Imprimir el desafío seleccionado
+        print("Selected challenge: \(challenge)")
         self.selectedChallengeId = challenge.id
+        userDefaultsManager.saveChallengeName(challenge.challengeName)
     }
 
     func isChallengeAlreadyBegan(challengeName: String) -> Bool {
         guard let user = user else { return false }
         let hasBegan = user.challenges[challengeName] != nil
-        print("Challenge \(challengeName) already began: \(hasBegan)")  // Imprimir si el desafío ya comenzó
+        print("Challenge \(challengeName) already began: \(hasBegan)")
         return hasBegan
     }
 }

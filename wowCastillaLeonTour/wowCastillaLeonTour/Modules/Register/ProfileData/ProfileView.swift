@@ -20,6 +20,19 @@ struct ProfileView: View {
 
             ScrollView {
                 VStack(spacing: 20) {
+                    HStack {
+                        Button(action: {
+                            appState.currentView = .onboardingTwo
+                        }) {
+                            Image(systemName: "chevron.left")
+                                .font(.headline)
+                                .padding()
+                                .background(Color.mateGold)
+                                .foregroundColor(.black)
+                                .cornerRadius(10)
+                        }
+                        Spacer()
+                    }
                     Text("Perfil")
                         .font(.largeTitle)
                         .fontWeight(.bold)

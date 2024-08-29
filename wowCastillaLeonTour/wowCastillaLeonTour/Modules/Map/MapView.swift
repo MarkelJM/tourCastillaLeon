@@ -9,7 +9,7 @@ import SwiftUI
 import MapKit
 
 struct MapView: View {
-    @StateObject private var viewModel = MapViewModel()
+    @StateObject private var viewModel = MapViewModel(appState: AppState())
     @State private var selectedSpot: Spot?
     @EnvironmentObject var appState: AppState
 
@@ -57,10 +57,24 @@ struct MapView: View {
                     MapCallOutView(spot: spot, viewModel: viewModel)
                         .environmentObject(appState)
                 }
+
+                // Botón para mostrar la selección de retos manualmente
+                Button(action: {
+                    viewModel.showChallengeSelection.toggle()
+                }) {
+                    Text("Seleccionar Reto")
+                        .font(.headline)
+                        .padding()
+                        .background(Color.blue)
+                        .foregroundColor(.white)
+                        .cornerRadius(10)
+                }
+                .padding()
             }
         }
         .sheet(isPresented: $viewModel.showChallengeSelection) {
             ChallengeSelectionView(viewModel: viewModel)
+                .environmentObject(appState)
         }
     }
 }

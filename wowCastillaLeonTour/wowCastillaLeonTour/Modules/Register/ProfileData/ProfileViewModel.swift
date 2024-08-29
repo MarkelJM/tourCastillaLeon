@@ -27,6 +27,11 @@ class ProfileViewModel: ObservableObject {
     private var cancellables = Set<AnyCancellable>()
 
     func saveUserProfile(completion: @escaping () -> Void) {
+        // Asegurarnos de que el reto 'retoBasico' esté en el perfil del usuario
+        if challenges["retoBasico"] == nil {
+            challenges["retoBasico"] = []
+        }
+        
         let user = User(
             id: UUID().uuidString,
             email: email,
@@ -81,6 +86,11 @@ class ProfileViewModel: ObservableObject {
                 self.spotIDs = user.spotIDs
                 self.specialRewards = user.specialRewards
                 self.challenges = user.challenges
+
+                // Asegurarse de que el reto 'retoBasico' esté presente al cargar el perfil
+                if self.challenges["retoBasico"] == nil {
+                    self.challenges["retoBasico"] = []
+                }
             }
             .store(in: &cancellables)
     }

@@ -7,43 +7,33 @@
 
 import SwiftUI
 
-
-
 struct ChallengeSelectionView: View {
     @ObservedObject var viewModel: MapViewModel
 
     var body: some View {
         VStack {
             Text("Selecciona un reto")
-                .font(.headline)
-            Picker("Reto", selection: $viewModel.selectedChallenge) {
-                Text("Reto Básico").tag("retoBasico")
-                Text("Reto Capital Burgos").tag("retoCapitalBurgos")
-                Text("Reto Norte Burgos").tag("retoNorteBurgos")
-                Text("Reto Sur Burgos").tag("retoSurBurgos")
-                // Añade más opciones según sea necesario
-            }
-            .pickerStyle(WheelPickerStyle())
+                .font(.title)
+                .padding()
 
-            Button(action: {
-                viewModel.beginChallenge()
-                viewModel.fetchSpots()
-                viewModel.showChallengeSelection = false
-            }) {
-                Text("Comenzar Reto")
-                    .font(.headline)
-                    .padding()
-                    .background(Color.blue)
-                    .foregroundColor(.white)
-                    .cornerRadius(10)
+            List(viewModel.challenges, id: \.id) { challenge in
+                Button(action: {
+                    viewModel.selectedChallenge = challenge.challengeName
+                    viewModel.userDefaultsManager.saveChallengeName(challenge.challengeName) // Guardar en UserDefaults
+                    viewModel.beginChallenge()
+                    viewModel.fetchSpots()
+                    viewModel.showChallengeSelection = false
+                }) {
+                    Text(challenge.challengeTitle)
+                        .font(.headline)
+                        .padding()
+                        .background(Color.blue)
+                        .foregroundColor(.white)
+                        .cornerRadius(10)
+                }
+                .padding(.vertical, 5)
             }
         }
         .padding()
     }
 }
-
-/*
-#Preview {
-    ChallengeSelectionView()
-}
-*/

@@ -24,28 +24,26 @@ class ChallengePresentationViewModel: BaseViewModel {
         user?.avatar.rawValue ?? "defaultAvatar"
     }
 
-    func beginChallenge(completion: @escaping () -> Void) {
-        guard let challenge = challenge, var user = user else { return }
+    func beginChallenge() -> AnyPublisher<Void, Error> {
+        guard let challenge = challenge, var user = user else {
+            return Fail(error: NSError(domain: "No user or challenge available", code: -1, userInfo: nil))
+                .eraseToAnyPublisher()
+        }
         
         // Añadir el nombre del desafío al diccionario challenges si no está presente
         if user.challenges[challengeName] == nil {
             user.challenges[challengeName] = [] // Inicializar con un array vacío
         }
 
+        // Guardar el nombre del desafío en UserDefaults
+        userDefaultsManager.saveChallengeName(challengeName)
+
         // Guardar el estado actualizado del desafío en Firestore
-        saveUserChallengeState(user: user)
-            .sink { completionResult in
-                switch completionResult {
-                case .failure(let error):
-                    self.alertMessage = "Error updating challenge: \(error.localizedDescription)"
-                    self.showAlert = true
-                case .finished:
-                    completion() // Ejecutar la navegación después de guardar el estado
-                }
-            } receiveValue: {
+        return saveUserChallengeState(user: user)
+            .handleEvents(receiveOutput: {
                 print("Challenge state saved in Firestore")
-            }
-            .store(in: &cancellables)
+            })
+            .eraseToAnyPublisher()
     }
 
     private func saveUserChallengeState(user: User) -> AnyPublisher<Void, Error> {

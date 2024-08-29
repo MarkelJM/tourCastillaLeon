@@ -23,7 +23,7 @@ struct ChallengeListView: View {
                     .font(.largeTitle)
                     .fontWeight(.bold)
                     .foregroundColor(.mateGold)
-                    .padding(.top, 40)
+                    .padding(.top, 20)
 
                 if viewModel.isUserLoaded {
                     List(viewModel.challenges) { challenge in
@@ -59,6 +59,7 @@ struct ChallengeListView: View {
                         .padding(.horizontal, 5)
                         .onTapGesture {
                             if viewModel.isChallengeAlreadyBegan(challengeName: challenge.challengeName) {
+                                viewModel.selectChallenge(challenge)
                                 appState.currentView = .map
                             } else {
                                 viewModel.selectChallenge(challenge)
@@ -78,7 +79,7 @@ struct ChallengeListView: View {
             .padding()
             .background(Color.black.opacity(0.7))
             .cornerRadius(20)
-            .padding(.top, 70)
+            .padding(.top, 30)
         }
         .onAppear {
             viewModel.fetchChallenges()

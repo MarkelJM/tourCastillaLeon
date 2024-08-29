@@ -32,12 +32,13 @@ struct CustomTabBar: View {
             }
             .frame(maxWidth: .infinity)
             
+            
             Button(action: {
-                selectedTab = .profile
+                selectedTab = .settings  // Añadimos settings
             }) {
                 VStack {
-                    Image(systemName: "person.crop.circle")
-                    Text("Perfil")
+                    Image(systemName: "gearshape")
+                    Text("Ajustes")
                 }
             }
             .frame(maxWidth: .infinity)
@@ -45,5 +46,6 @@ struct CustomTabBar: View {
         .padding()
         .background(Color.gray.opacity(0.1))
         .cornerRadius(10)
+        .padding(.top, 150)  // Aquí se aplica el padding superior de 150
     }
 }

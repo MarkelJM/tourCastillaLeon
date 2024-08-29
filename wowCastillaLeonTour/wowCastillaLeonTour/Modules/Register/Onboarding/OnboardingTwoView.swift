@@ -21,6 +21,20 @@ struct OnboardingTwoView: View {
             VStack {
                 ScrollView {
                     VStack(alignment: .leading, spacing: 20) {
+                        
+                        HStack {
+                            Button(action: {
+                                appState.currentView = .onboardingOne
+                            }) {
+                                Image(systemName: "chevron.left")
+                                    .font(.headline)
+                                    .padding()
+                                    .background(Color.mateGold)
+                                    .foregroundColor(.black)
+                                    .cornerRadius(10)
+                            }
+                            Spacer()
+                        }
                         Text("Continuación de la historia")
                             .font(.title)
                             .foregroundColor(.mateGold)

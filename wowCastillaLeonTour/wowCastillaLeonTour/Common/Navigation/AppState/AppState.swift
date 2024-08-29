@@ -37,5 +37,6 @@ class AppState: ObservableObject {
         case forgotPassword
         case termsAndConditions
         case challengePresentation(challengeName: String)
+        case settings
     }
 }

@@ -36,11 +36,10 @@ struct ChallengePresentationView: View {
                    }
                    .padding(.leading)
                 
-                
                 if let challenge = viewModel.challenge {
                     Image(viewModel.userAvatar)
                         .resizable()
-                        .aspectRatio(contentMode: .fit)  // Ajustar la imagen con su proporción original
+                        .aspectRatio(contentMode: .fit)
                         .frame(width: 150, height: 150)
                         .clipShape(Circle())
                         .padding(.top, 40)
@@ -59,11 +58,18 @@ struct ChallengePresentationView: View {
                     
                     Spacer()
                 
-
                     Button(action: {
-                        viewModel.beginChallenge {
-                            appState.currentView = .map
-                        }
+                        viewModel.beginChallenge()
+                            .sink(receiveCompletion: { completion in
+                                switch completion {
+                                case .finished:
+                                    appState.currentView = .map
+                                case .failure(let error):
+                                    viewModel.alertMessage = "Error updating challenge: \(error.localizedDescription)"
+                                    viewModel.showAlert = true
+                                }
+                            }, receiveValue: { })
+                            .store(in: &viewModel.cancellables)
                     }) {
                         Text("Comenzar")
                             .font(.headline)
@@ -95,10 +101,3 @@ struct ChallengePresentationView: View {
         }
     }
 }
-/*
-struct ChallengePresentationView_Previews: PreviewProvider {
-    static var previews: some View {
-        ChallengePresentationView(currentView: .constant(.challengePresentation(challengeName: "Reto de Prueba")), viewModel: ChallengePresentationViewModel(challengeName: "Reto de Prueba"))
-    }
-}
-*/

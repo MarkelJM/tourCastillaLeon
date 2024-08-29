@@ -9,19 +9,29 @@ import Foundation
 
 class UserDefaultsManager {
     private let spotIDKey = "spotID"
-    
-    // Guardar el ID del spot en UserDefaults
+    private let challengeNameKey = "challengeName"
+
     func saveSpotID(_ id: String) {
         UserDefaults.standard.set(id, forKey: spotIDKey)
     }
-    
-    // Obtener el ID del spot desde UserDefaults
+
     func getSpotID() -> String? {
         return UserDefaults.standard.string(forKey: spotIDKey)
     }
-    
-    // Eliminar el ID del spot desde UserDefaults
+
     func clearSpotID() {
         UserDefaults.standard.removeObject(forKey: spotIDKey)
+    }
+
+    func saveChallengeName(_ name: String) {
+        UserDefaults.standard.set(name, forKey: challengeNameKey)
+    }
+
+    func getChallengeName() -> String? {
+        return UserDefaults.standard.string(forKey: challengeNameKey)
+    }
+
+    func clearChallengeName() {
+        UserDefaults.standard.removeObject(forKey: challengeNameKey)
     }
 }
