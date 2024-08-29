@@ -24,18 +24,20 @@ class MapViewModel: BaseViewModel {
     private var locationManager = LocationManager()
     private var dataManager = MapDataManager()
     private var hasCenteredOnUser = false
+    var appState: AppState
 
     init(appState: AppState) {
+        self.appState = appState
         self.region = MKCoordinateRegion(
             center: CLLocationCoordinate2D(latitude: 41.6528, longitude: -2.7286),
             span: MKCoordinateSpan(latitudeDelta: 2.0, longitudeDelta: 2.0)
         )
-        self.selectedChallenge = "retoBasico"  // Inicializar temporalmente antes de super.init()
+        self.selectedChallenge = "retoBasico"
         super.init()
-        self.selectedChallenge = userDefaultsManager.getChallengeName() ?? "retoBasico"  // Reasignar después de super.init()
+        self.selectedChallenge = userDefaultsManager.getChallengeName() ?? "retoBasico"
         setupBindings()
         fetchUserProfileAndUpdateState()
-        fetchChallenges()  // Asegúrate de que los retos se carguen cuando se inicialice el ViewModel
+        fetchChallenges()
     }
 
     private func setupBindings() {
@@ -112,13 +114,29 @@ class MapViewModel: BaseViewModel {
         guard let completedTasks = user.challenges[selectedChallenge]?.count else { return }
 
         if completedTasks >= tasksAmount {
-            fetchChallengeReward()
+            // Aquí se comentan las partes relacionadas con `ChallengeReward`
+            // fetchChallengeReward()
         }
     }
 
+    func selectChallenge(_ challenge: Challenge) {
+        selectedChallenge = challenge.challengeName
+
+        if user?.challenges[selectedChallenge] != nil {
+            // Si el desafío ya está en los desafíos del usuario, navegar al mapa
+            appState.currentView = .map
+        } else {
+            // Si el desafío no está en los desafíos del usuario, navegar a la presentación del desafío
+            appState.currentView = .challengePresentation(challengeName: selectedChallenge)
+        }
+
+        userDefaultsManager.saveChallengeName(selectedChallenge)
+        showChallengeSelection = false
+    }
+
+    /*
+    // Comentamos la función relacionada con `ChallengeReward`
     func fetchChallengeReward() {
-        // Funcionalidad relacionada con ChallengeReward está comentada
-        /*
         dataManager.fetchChallengeReward(for: selectedChallenge)
             .receive(on: DispatchQueue.main)
             .sink { [weak self] completion in
@@ -134,7 +152,6 @@ class MapViewModel: BaseViewModel {
                 self?.addChallengeRewardToMap(reward: reward)
             }
             .store(in: &cancellables)
-        */
     }
 
     private func addChallengeRewardToMap(reward: ChallengeReward) {
@@ -153,6 +170,7 @@ class MapViewModel: BaseViewModel {
 
         spots.append(rewardSpot)
     }
+    */
 
     func checkChallengeStatus() {
         guard let user = user else { return }
@@ -169,6 +187,9 @@ class MapViewModel: BaseViewModel {
         if user.challenges[selectedChallenge] == nil {
             user.challenges[selectedChallenge] = []
             saveUserChallengeState(user: user)
+            appState.currentView = .challengePresentation(challengeName: selectedChallenge)
+        } else {
+            appState.currentView = .map
         }
         userDefaultsManager.saveChallengeName(selectedChallenge)
         isChallengeBegan = true
@@ -196,7 +217,7 @@ class MapViewModel: BaseViewModel {
     }
 
     func showChallengeSelectionView() {
-        showChallengeSelection = true
+        self.showChallengeSelection = true
     }
 }
 

@@ -17,22 +17,25 @@ struct ChallengeSelectionView: View {
                 .padding()
 
             List(viewModel.challenges, id: \.id) { challenge in
-                Button(action: {
-                    viewModel.selectedChallenge = challenge.challengeName
-                    viewModel.beginChallenge()  // Aquí se guarda en UserDefaults
-                    viewModel.fetchSpots()
-                    viewModel.showChallengeSelection = false
-                }) {
+                HStack {
                     Text(challenge.challengeTitle)
                         .font(.headline)
                         .padding()
-                        .background(Color.blue)
-                        .foregroundColor(.white)
-                        .cornerRadius(10)
+                        .foregroundColor(.mateWhite)
+                    
+                    Spacer()
                 }
+                .background(Color.mateRed)
+                .cornerRadius(10)
                 .padding(.vertical, 5)
+                .onTapGesture {
+                    viewModel.selectChallenge(challenge)
+                }
             }
         }
+        .padding()
+        .background(Color.black.opacity(0.8))
+        .cornerRadius(20)
         .padding()
     }
 }
