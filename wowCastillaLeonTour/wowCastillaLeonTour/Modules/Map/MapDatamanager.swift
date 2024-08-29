@@ -15,7 +15,14 @@ class MapDataManager {
         return firestoreManager.fetchSpots(for: challengeName)
     }
 
+    func fetchChallenges() -> AnyPublisher<[Challenge], Error> {
+        return firestoreManager.fetchChallenges()
+    }
+
+    // Funciones relacionadas con `ChallengeReward` comentadas
+    /*
     func fetchChallengeReward(for challengeName: String) -> AnyPublisher<ChallengeReward, Error> {
         return firestoreManager.fetchChallengeReward(for: challengeName)
     }
+    */
 }

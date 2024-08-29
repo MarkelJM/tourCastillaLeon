@@ -72,6 +72,7 @@ struct MapView: View {
         .sheet(isPresented: $viewModel.showChallengeSelection) {
             ChallengeSelectionView(viewModel: viewModel)
         }
+        .padding(.bottom, 100)
     }
 }
 

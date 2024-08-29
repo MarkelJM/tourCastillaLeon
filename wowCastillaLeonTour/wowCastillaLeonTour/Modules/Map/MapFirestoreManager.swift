@@ -11,7 +11,7 @@ import Combine
 
 class MapFirestoreManager {
     private var db = Firestore.firestore()
-
+    
     func fetchSpots(for challengeName: String) -> AnyPublisher<[Spot], Error> {
         Future { promise in
             self.db.collection("spots")
@@ -30,27 +30,40 @@ class MapFirestoreManager {
         }
         .eraseToAnyPublisher()
     }
-
-    func fetchChallengeReward(for challengeName: String) -> AnyPublisher<ChallengeReward, Error> {
+    
+    func fetchChallenges() -> AnyPublisher<[Challenge], Error> {
         Future { promise in
-            self.db.collection("challengeRewards")
-                .document(challengeName)
-                .getDocument { document, error in
-                    if let document = document, document.exists {
-                        if let rewardData = document.data(), let reward = ChallengeReward(from: rewardData) {
-                            promise(.success(reward))
-                        } else {
-                            promise(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Failed to parse ChallengeReward"])))
-                        }
-                    } else {
-                        promise(.failure(error ?? NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Document does not exist"])))
-                    }
+            self.db.collection("challenges").getDocuments { querySnapshot, error in
+                if let error = error {
+                    promise(.failure(error))
+                } else {
+                    let challenges = querySnapshot?.documents.compactMap { document in
+                        Challenge(from: document.data())
+                    } ?? []
+                    promise(.success(challenges))
                 }
+            }
         }
         .eraseToAnyPublisher()
     }
+    
+    // Funciones relacionadas con `ChallengeReward` comentadas
+    /*
+     func fetchChallengeReward(for challengeName: String) -> AnyPublisher<ChallengeReward, Error> {
+     Future { promise in
+     self.db.collection("challengeRewards")
+     .document(challengeName)
+     .getDocument { document, error in
+     if let document = document, document.exists {
+     if let rewardData = document.data(), let reward = ChallengeReward(from: rewardData) {
+     promise(.success(reward))
+     } else {
+     
+     
+     
+     */
+    
 }
-
 /*
 import FirebaseFirestore
 
