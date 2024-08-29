@@ -46,6 +46,7 @@
 		D39648F62C7E45F300EAAC19 /* ChallengeRewardDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39648F52C7E45F300EAAC19 /* ChallengeRewardDataManager.swift */; };
 		D39648F82C7E460E00EAAC19 /* ChallengeRewardFirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39648F72C7E460E00EAAC19 /* ChallengeRewardFirestoreManager.swift */; };
 		D39648FC2C7E49EF00EAAC19 /* KeyBoardObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39648FB2C7E49EF00EAAC19 /* KeyBoardObserver.swift */; };
+		D39648FF2C7F751C00EAAC19 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39648FE2C7F751C00EAAC19 /* CustomTabBar.swift */; };
 		D3DDA8782C18548D00C43CBA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDA8772C18548D00C43CBA /* User.swift */; };
 		D3DDA8822C18625200C43CBA /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDA8812C18625200C43CBA /* RegisterViewModel.swift */; };
 		D3DDA8862C18626A00C43CBA /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDA8852C18626A00C43CBA /* RegisterView.swift */; };
@@ -179,6 +180,7 @@
 		D39648F52C7E45F300EAAC19 /* ChallengeRewardDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeRewardDataManager.swift; sourceTree = "<group>"; };
 		D39648F72C7E460E00EAAC19 /* ChallengeRewardFirestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeRewardFirestoreManager.swift; sourceTree = "<group>"; };
 		D39648FB2C7E49EF00EAAC19 /* KeyBoardObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyBoardObserver.swift; sourceTree = "<group>"; };
+		D39648FE2C7F751C00EAAC19 /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
 		D3DDA8772C18548D00C43CBA /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		D3DDA8812C18625200C43CBA /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
 		D3DDA8852C18626A00C43CBA /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
@@ -528,6 +530,14 @@
 			path = KeyBoardObserver;
 			sourceTree = "<group>";
 		};
+		D39648FD2C7F750500EAAC19 /* CustomTabBar */ = {
+			isa = PBXGroup;
+			children = (
+				D39648FE2C7F751C00EAAC19 /* CustomTabBar.swift */,
+			);
+			path = CustomTabBar;
+			sourceTree = "<group>";
+		};
 		D3DDA8752C18547700C43CBA /* Common */ = {
 			isa = PBXGroup;
 			children = (
@@ -609,6 +619,7 @@
 		D3DDA87E2C18618600C43CBA /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
+				D39648FD2C7F750500EAAC19 /* CustomTabBar */,
 				D38F8F772C6FBE0800315904 /* TabBar */,
 				D3DDA8802C18619B00C43CBA /* NavigationState */,
 				D3DDA87F2C18619400C43CBA /* AppState */,
@@ -1174,6 +1185,7 @@
 				D3DEAEF62C75F2DF00AB0325 /* SpecialPrizeFirestoreManager.swift in Sources */,
 				D3E4B79A2C3E9558000BEE9F /* MapDatamanager.swift in Sources */,
 				D3DEAF052C75F59800AB0325 /* ARViewController.swift in Sources */,
+				D39648FF2C7F751C00EAAC19 /* CustomTabBar.swift in Sources */,
 				D3E4B7A62C4117CF000BEE9F /* MapCallOut.swift in Sources */,
 				D39648FC2C7E49EF00EAAC19 /* KeyBoardObserver.swift in Sources */,
 				D38F8F762C6A57E300315904 /* CameraView.swift in Sources */,

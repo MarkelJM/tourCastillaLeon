@@ -19,12 +19,11 @@ struct ChallengeListView: View {
                 .edgesIgnoringSafeArea(.all)
             
             VStack(spacing: 20) {
-                // Título "Retos"
                 Text("Retos")
                     .font(.largeTitle)
                     .fontWeight(.bold)
                     .foregroundColor(.mateGold)
-                    .padding(.top, 40) // Añadido un padding superior para separar el título del borde superior
+                    .padding(.top, 40)
 
                 if viewModel.isUserLoaded {
                     List(viewModel.challenges) { challenge in
@@ -34,7 +33,6 @@ struct ChallengeListView: View {
                                     .resizable()
                                     .frame(width: 60, height: 60)
                             } placeholder: {
-                                // Imagen predeterminada en caso de que la URL sea inválida
                                 Image(systemName: "photo")
                                     .resizable()
                                     .frame(width: 60, height: 60)
@@ -42,7 +40,7 @@ struct ChallengeListView: View {
 
                             Text(challenge.challengeTitle)
                                 .font(.headline)
-                                .foregroundColor(.mateWhite)  // Color blanco para mayor contraste
+                                .foregroundColor(.mateWhite)
                                 .padding(.leading, 16)
 
                             Spacer()
@@ -55,16 +53,15 @@ struct ChallengeListView: View {
                                 .padding(.trailing, 16)
                         }
                         .padding()
-                        .background(Color.gray)  // Fondo gris oscuro con mayor transparencia
-                        .cornerRadius(20) // Aumento del tamaño del radio de las esquinas
-                        .padding(.vertical, 8) // Incremento de padding vertical
-                        .padding(.horizontal, 5) // Añadido padding horizontal para hacer las celdas más grandes
+                        .background(Color.gray)
+                        .cornerRadius(20)
+                        .padding(.vertical, 8)
+                        .padding(.horizontal, 5)
                         .onTapGesture {
-                            viewModel.selectChallenge(challenge)
-
                             if viewModel.isChallengeAlreadyBegan(challengeName: challenge.challengeName) {
                                 appState.currentView = .map
                             } else {
+                                viewModel.selectChallenge(challenge)
                                 appState.currentView = .challengePresentation(challengeName: challenge.challengeName)
                             }
                         }
@@ -84,7 +81,6 @@ struct ChallengeListView: View {
             .padding(.top, 70)
         }
         .onAppear {
-            print("Fetching challenges on appear")
             viewModel.fetchChallenges()
         }
         .alert(isPresented: $viewModel.showAlert) {
@@ -97,9 +93,11 @@ struct ChallengeListView: View {
     }
 }
 
-#Preview {
-    ChallengeListView()
-        .environmentObject(AppState())
+struct ChallengeListView_Previews: PreviewProvider {
+    static var previews: some View {
+        ChallengeListView()
+            .environmentObject(AppState())
+    }
 }
 
 
@@ -212,7 +210,4 @@ struct ChallengeListView: View {
  
  */
 
-#Preview {
-    ChallengeListView()
-        .environmentObject(AppState())
-}
+

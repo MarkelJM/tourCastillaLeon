@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 
 struct ChallengePresentationView: View {
     @EnvironmentObject var appState: AppState
@@ -19,9 +20,27 @@ struct ChallengePresentationView: View {
                 .edgesIgnoringSafeArea(.all)
 
             VStack(spacing: 20) {
+                Spacer()
+                
+                Button(action: {
+                       appState.currentView = .challengeList
+                   }) {
+                       HStack {
+                           Image(systemName: "arrow.left")
+                       }
+                       .font(.headline)
+                       .padding()
+                       .background(Color.mateGold)
+                       .foregroundColor(.black)
+                       .cornerRadius(10)
+                   }
+                   .padding(.leading)
+                
+                
                 if let challenge = viewModel.challenge {
                     Image(viewModel.userAvatar)
                         .resizable()
+                        .aspectRatio(contentMode: .fit)  // Ajustar la imagen con su proporción original
                         .frame(width: 150, height: 150)
                         .clipShape(Circle())
                         .padding(.top, 40)
@@ -37,10 +56,14 @@ struct ChallengePresentationView: View {
                             .padding(.horizontal, 20)
                     }
                     .padding(.bottom, 40)
+                    
+                    Spacer()
+                
 
                     Button(action: {
-                        viewModel.beginChallenge()
-                        appState.currentView = .map
+                        viewModel.beginChallenge {
+                            appState.currentView = .map
+                        }
                     }) {
                         Text("Comenzar")
                             .font(.headline)
@@ -51,6 +74,8 @@ struct ChallengePresentationView: View {
                             .cornerRadius(10)
                             .padding(.horizontal, 20)
                     }
+                    Spacer()
+                    
                 } else {
                     Text("Cargando...")
                         .font(.title)
@@ -70,10 +95,10 @@ struct ChallengePresentationView: View {
         }
     }
 }
-
+/*
 struct ChallengePresentationView_Previews: PreviewProvider {
     static var previews: some View {
-        ChallengePresentationView(viewModel: ChallengePresentationViewModel(challengeName: "Reto de Prueba"))
-            .environmentObject(AppState())
+        ChallengePresentationView(currentView: .constant(.challengePresentation(challengeName: "Reto de Prueba")), viewModel: ChallengePresentationViewModel(challengeName: "Reto de Prueba"))
     }
 }
+*/

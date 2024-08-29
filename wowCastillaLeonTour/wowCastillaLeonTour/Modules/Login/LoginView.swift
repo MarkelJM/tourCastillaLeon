@@ -84,7 +84,7 @@ struct LoginView: View {
             hideKeyboard() // Ocultar el teclado al tocar fuera
         }
         .onReceive(viewModel.loginSuccess) { _ in
-            appState.currentView = .map
+            appState.currentView = .challengeList
         }
     }
 

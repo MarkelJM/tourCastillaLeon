@@ -24,17 +24,39 @@ class ChallengePresentationViewModel: BaseViewModel {
         user?.avatar.rawValue ?? "defaultAvatar"
     }
 
-    func beginChallenge() {
-        guard var challenge = challenge else { return }
-        challenge.isBegan = true
-        updateChallengeStatus(challenge: challenge)
+    func beginChallenge(completion: @escaping () -> Void) {
+        guard let challenge = challenge, var user = user else { return }
+        
+        // Añadir el nombre del desafío al diccionario challenges si no está presente
+        if user.challenges[challengeName] == nil {
+            user.challenges[challengeName] = [] // Inicializar con un array vacío
+        }
+
+        // Guardar el estado actualizado del desafío en Firestore
+        saveUserChallengeState(user: user)
+            .sink { completionResult in
+                switch completionResult {
+                case .failure(let error):
+                    self.alertMessage = "Error updating challenge: \(error.localizedDescription)"
+                    self.showAlert = true
+                case .finished:
+                    completion() // Ejecutar la navegación después de guardar el estado
+                }
+            } receiveValue: {
+                print("Challenge state saved in Firestore")
+            }
+            .store(in: &cancellables)
+    }
+
+    private func saveUserChallengeState(user: User) -> AnyPublisher<Void, Error> {
+        return firestoreManager.updateUserChallenges(user: user)
     }
 
     private func fetchChallenge() {
         dataManager.fetchChallengeByName(challengeName)
             .receive(on: DispatchQueue.main)
-            .sink { completion in
-                switch completion {
+            .sink { completionResult in
+                switch completionResult {
                 case .failure(let error):
                     self.alertMessage = "Error loading challenge: \(error.localizedDescription)"
                     self.showAlert = true
@@ -44,22 +66,6 @@ class ChallengePresentationViewModel: BaseViewModel {
             } receiveValue: { [weak self] challenge in
                 self?.challenge = challenge
             }
-            .store(in: &cancellables)
-    }
-
-    private func updateChallengeStatus(challenge: Challenge) {
-        dataManager.updateChallengeStatus(challengeID: challenge.id, isBegan: challenge.isBegan)
-            .receive(on: DispatchQueue.main)
-            .sink { completion in
-                switch completion {
-                case .failure(let error):
-                    self.alertMessage = "Error updating challenge status: \(error.localizedDescription)"
-                    self.showAlert = true
-                case .finished:
-                    self.alertMessage = "Challenge started successfully."
-                    self.showAlert = true
-                }
-            } receiveValue: { _ in }
             .store(in: &cancellables)
     }
 }
