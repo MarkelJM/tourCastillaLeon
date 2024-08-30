@@ -56,6 +56,8 @@ struct NavigationState: View {
             ChallengeListView()
         case .avatarSelection:
             AvatarSelectionView(selectedAvatar: .constant(.boy))
+        case .challengeReward(let activityId):
+            ChallengeRewardView(viewModel: ChallengeRewardViewModel(activityId: activityId))
         case .puzzle(let id):
             PuzzleView(viewModel: PuzzleViewModel(activityId: id, appState: appState))
         case .coin(let id):

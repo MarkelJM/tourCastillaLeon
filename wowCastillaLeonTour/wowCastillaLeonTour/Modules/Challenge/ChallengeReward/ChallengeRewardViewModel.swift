@@ -5,8 +5,7 @@
 //  Created by Markel Juaristi on 27/8/24.
 //
 
-import Combine
-import FirebaseFirestore
+import SwiftUI
 
 class ChallengeRewardViewModel: BaseViewModel {
     @Published var challengeReward: ChallengeReward?
@@ -46,9 +45,30 @@ class ChallengeRewardViewModel: BaseViewModel {
     func completeRewardTask() {
         guard let reward = challengeReward else { return }
         
+        // Añadir el premio especial al diccionario
+        if let user = user {
+            // Añadir el ID del premio especial al diccionario `specialRewards` del usuario
+            var updatedRewards = user.specialRewards
+            updatedRewards[reward.challenge] = reward.prizeImage
+            
+            // Actualizar Firestore con el nuevo diccionario
+            firestoreManager.updateSpecialRewardsForUser(updatedRewards)
+                .sink { completion in
+                    switch completion {
+                    case .failure(let error):
+                        self.alertMessage = "Error añadiendo el premio especial: \(error.localizedDescription)"
+                        self.showAlert = true
+                    case .finished:
+                        break
+                    }
+                } receiveValue: { _ in
+                    print("Special reward added to user in Firestore")
+                }
+                .store(in: &cancellables)
+        }
+
         updateTaskForUser(taskID: reward.id, challenge: reward.challenge)
         updateSpotForUser()
-        addSpecialRewardToUser(rewardID: reward.id)
 
         // Mostrar el mensaje personalizado desde Firestore
         self.resultMessage = reward.correctAnswerMessage
@@ -91,21 +111,5 @@ class ChallengeRewardViewModel: BaseViewModel {
         } else {
             print("No spotID found in UserDefaults")
         }
-    }
-
-    private func addSpecialRewardToUser(rewardID: String) {
-        firestoreManager.addSpecialRewardToUser(rewardID: rewardID)
-            .sink { completion in
-                switch completion {
-                case .failure(let error):
-                    self.alertMessage = "Error añadiendo el premio especial: \(error.localizedDescription)"
-                    self.showAlert = true
-                case .finished:
-                    break
-                }
-            } receiveValue: { _ in
-                print("Special reward added to user in Firestore")
-            }
-            .store(in: &cancellables)
     }
 }

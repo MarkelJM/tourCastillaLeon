@@ -18,7 +18,7 @@ class ProfileViewModel: ObservableObject {
     @Published var province: Province = .other
     @Published var avatar: Avatar = .boy
     @Published var spotIDs: [String] = []
-    @Published var specialRewards: [String] = []
+    @Published var specialRewards: [String: String] = [:]  // Diccionario de retos y sus recompensas especiales
     @Published var challenges: [String: [String]] = [:]  // Diccionario para retos y sus tasks
     @Published var showError: Bool = false
     @Published var errorMessage: String = ""
@@ -43,7 +43,7 @@ class ProfileViewModel: ObservableObject {
             province: province,
             avatar: avatar,
             spotIDs: spotIDs,
-            specialRewards: specialRewards,
+            specialRewards: specialRewards,  // Actualización aquí
             challenges: challenges
         )
         
@@ -84,7 +84,7 @@ class ProfileViewModel: ObservableObject {
                 self.province = user.province
                 self.avatar = user.avatar
                 self.spotIDs = user.spotIDs
-                self.specialRewards = user.specialRewards
+                self.specialRewards = user.specialRewards  // Actualización aquí
                 self.challenges = user.challenges
 
                 // Asegurarse de que el reto 'retoBasico' esté presente al cargar el perfil

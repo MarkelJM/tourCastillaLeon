@@ -14,6 +14,26 @@ class FirestoreManager {
     private let db = Firestore.firestore()
     private let auth = Auth.auth()
     
+    func updateSpecialRewardsForUser(_ rewards: [String: String]) -> AnyPublisher<Void, Error> {
+            guard let userID = Auth.auth().currentUser?.uid else {
+                return Fail(error: NSError(domain: "User not logged in", code: 401, userInfo: nil))
+                    .eraseToAnyPublisher()
+            }
+            
+            return Future<Void, Error> { promise in
+                self.db.collection("users").document(userID).updateData([
+                    "specialRewards": rewards
+                ]) { error in
+                    if let error = error {
+                        promise(.failure(error))
+                    } else {
+                        promise(.success(()))
+                    }
+                }
+            }
+            .eraseToAnyPublisher()
+        }
+    
     // Create user profile in Firestore
     func createUserProfile(user: User) -> AnyPublisher<Void, Error> {
         Future { promise in

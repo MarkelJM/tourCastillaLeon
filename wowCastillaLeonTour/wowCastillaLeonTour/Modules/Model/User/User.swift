@@ -40,7 +40,7 @@ struct User: Identifiable, Codable {
     var province: Province
     var avatar: Avatar
     var spotIDs: [String]  // Manteniendo el array taskIDs
-    var specialRewards: [String]  // Manteniendo el array specialRewards
+    var specialRewards: [String: String]
     var challenges: [String: [String]]  // Diccionario donde la clave es el ID del reto y el valor es un array con los IDs de las tasks completadas en ese reto.
 }
 

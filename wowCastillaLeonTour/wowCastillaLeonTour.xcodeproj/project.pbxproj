@@ -47,6 +47,7 @@
 		D39648F82C7E460E00EAAC19 /* ChallengeRewardFirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39648F72C7E460E00EAAC19 /* ChallengeRewardFirestoreManager.swift */; };
 		D39648FC2C7E49EF00EAAC19 /* KeyBoardObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39648FB2C7E49EF00EAAC19 /* KeyBoardObserver.swift */; };
 		D39648FF2C7F751C00EAAC19 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39648FE2C7F751C00EAAC19 /* CustomTabBar.swift */; };
+		D39649052C81EA7800EAAC19 /* UnifiedAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39649042C81EA7800EAAC19 /* UnifiedAnnotation.swift */; };
 		D3DDA8782C18548D00C43CBA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDA8772C18548D00C43CBA /* User.swift */; };
 		D3DDA8822C18625200C43CBA /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDA8812C18625200C43CBA /* RegisterViewModel.swift */; };
 		D3DDA8862C18626A00C43CBA /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDA8852C18626A00C43CBA /* RegisterView.swift */; };
@@ -181,6 +182,7 @@
 		D39648F72C7E460E00EAAC19 /* ChallengeRewardFirestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeRewardFirestoreManager.swift; sourceTree = "<group>"; };
 		D39648FB2C7E49EF00EAAC19 /* KeyBoardObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyBoardObserver.swift; sourceTree = "<group>"; };
 		D39648FE2C7F751C00EAAC19 /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
+		D39649042C81EA7800EAAC19 /* UnifiedAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnifiedAnnotation.swift; sourceTree = "<group>"; };
 		D3DDA8772C18548D00C43CBA /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		D3DDA8812C18625200C43CBA /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
 		D3DDA8852C18626A00C43CBA /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
@@ -482,6 +484,7 @@
 		D39648E72C7CCFEE00EAAC19 /* Coordinate */ = {
 			isa = PBXGroup;
 			children = (
+				D39649032C81EA6600EAAC19 /* UnifiedSpot */,
 				D39648E82C7CCFFF00EAAC19 /* Coordinates.swift */,
 			);
 			path = Coordinate;
@@ -536,6 +539,14 @@
 				D39648FE2C7F751C00EAAC19 /* CustomTabBar.swift */,
 			);
 			path = CustomTabBar;
+			sourceTree = "<group>";
+		};
+		D39649032C81EA6600EAAC19 /* UnifiedSpot */ = {
+			isa = PBXGroup;
+			children = (
+				D39649042C81EA7800EAAC19 /* UnifiedAnnotation.swift */,
+			);
+			path = UnifiedSpot;
 			sourceTree = "<group>";
 		};
 		D3DDA8752C18547700C43CBA /* Common */ = {
@@ -1149,6 +1160,7 @@
 				D3E4B7852C3E890A000BEE9F /* TakePhotoModel.swift in Sources */,
 				D3E4B79C2C3E9562000BEE9F /* MapViewModel.swift in Sources */,
 				D39648C52C7A3CC000EAAC19 /* Challenge.swift in Sources */,
+				D39649052C81EA7800EAAC19 /* UnifiedAnnotation.swift in Sources */,
 				D3E4B7DA2C4683C7000BEE9F /* Color.swift in Sources */,
 				D3E4B7FB2C4E46FA000BEE9F /* TakePhotoView.swift in Sources */,
 				D39648DB2C7A5A8200EAAC19 /* ChallengeListFirestoreManager.swift in Sources */,

@@ -10,7 +10,7 @@ import MapKit
 
 struct MapView: View {
     @StateObject private var viewModel = MapViewModel(appState: AppState())
-    @State private var selectedSpot: Spot?
+    @State private var selectedAnnotation: UnifiedAnnotation?
     @EnvironmentObject var appState: AppState
 
     var body: some View {
@@ -24,36 +24,28 @@ struct MapView: View {
                 Text("Location permissions denied.")
                     .foregroundColor(.red)
             } else {
-                Map(coordinateRegion: $viewModel.region, showsUserLocation: true, annotationItems: viewModel.spots) { spot in
-                    MapAnnotation(coordinate: CLLocationCoordinate2D(latitude: spot.coordinates.latitude, longitude: spot.coordinates.longitude)) {
+                Map(coordinateRegion: $viewModel.region, showsUserLocation: true, annotationItems: viewModel.mapAnnotations) { annotation in
+                    MapAnnotation(coordinate: annotation.coordinate) {
                         VStack {
-                            if viewModel.isTaskCompleted(taskID: spot.activityID, activityType: spot.activityType, challenge: viewModel.selectedChallenge) {
-                                // Si la tarea está completada, mostrar un círculo verde con un check
-                                Circle()
-                                    .fill(Color.green)
-                                    .frame(width: 30, height: 30)
-                                    .overlay(
-                                        Image(systemName: "checkmark")
-                                            .foregroundColor(.white)
-                                    )
+                            if annotation.activityType == "specialAward" {
+                                Image(systemName: "trophy.circle.fill")
+                                    .resizable()
+                                    .foregroundColor(.yellow)
+                                    .frame(width: 40, height: 40)
                             } else {
-                                // Si la tarea no está completada, mostrar la imagen normal
-                                AsyncImage(url: URL(string: spot.image)) { image in
+                                AsyncImage(url: URL(string: annotation.image)) { image in
                                     image
                                         .resizable()
                                         .aspectRatio(contentMode: .fill)
                                         .frame(width: 30, height: 30)
                                         .clipShape(Circle())
-                                        .overlay(
-                                            spot.isCompleted ? Circle().stroke(Color.green, lineWidth: 3) : nil
-                                        )
                                 } placeholder: {
                                     ProgressView()
                                 }
                             }
                         }
                         .onTapGesture {
-                            selectedSpot = spot
+                            selectedAnnotation = annotation
                         }
                     }
                 }
@@ -63,8 +55,8 @@ struct MapView: View {
                         viewModel.fetchSpots()
                     }
                 }
-                .sheet(item: $selectedSpot) { spot in
-                    MapCallOutView(spot: spot, viewModel: viewModel)
+                .sheet(item: $selectedAnnotation) { annotation in
+                    MapCallOutView(spot: annotation.spot, reward: annotation.reward, viewModel: viewModel)
                         .environmentObject(appState)
                 }
 

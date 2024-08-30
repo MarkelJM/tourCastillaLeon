@@ -18,8 +18,7 @@ class MapViewModel: BaseViewModel {
     @Published var showChallengeSelection: Bool = false
     @Published var isChallengeBegan: Bool = false
     @Published var challenges: [Challenge] = []
-    private var tasksAmount: Int = 0  // Definir tasksAmount aquí
-
+    @Published var mapAnnotations: [UnifiedAnnotation] = []
 
     private var locationManager = LocationManager()
     private var dataManager = MapDataManager()
@@ -27,18 +26,18 @@ class MapViewModel: BaseViewModel {
     var appState: AppState
 
     init(appState: AppState) {
-            self.appState = appState
-            self.region = MKCoordinateRegion(
-                center: CLLocationCoordinate2D(latitude: 41.6528, longitude: -2.7286),
-                span: MKCoordinateSpan(latitudeDelta: 2.0, longitudeDelta: 2.0)
-            )
-            self.selectedChallenge = "retoBasico"  // Asignar un valor predeterminado temporalmente
-            super.init()
-            self.selectedChallenge = userDefaultsManager.getChallengeName() ?? "retoBasico"  // Reasignar después de super.init()
-            setupBindings()
-            fetchUserProfileAndUpdateState()
-            fetchChallenges()
-        }
+        self.appState = appState
+        self.region = MKCoordinateRegion(
+            center: CLLocationCoordinate2D(latitude: 41.6528, longitude: -2.7286),
+            span: MKCoordinateSpan(latitudeDelta: 2.0, longitudeDelta: 2.0)
+        )
+        self.selectedChallenge = "retoBasico"  // Asignar un valor predeterminado temporalmente
+        super.init()
+        self.selectedChallenge = userDefaultsManager.getChallengeName() ?? "retoBasico"
+        setupBindings()
+        fetchUserProfileAndUpdateState()
+        fetchChallenges()
+    }
 
     private func setupBindings() {
         locationManager.$authorizationStatus
@@ -87,7 +86,6 @@ class MapViewModel: BaseViewModel {
                     break
                 }
             } receiveValue: { [weak self] challenges in
-                print("Challenges received: \(challenges)")
                 self?.challenges = challenges
             }
             .store(in: &cancellables)
@@ -104,27 +102,49 @@ class MapViewModel: BaseViewModel {
                     break
                 }
             } receiveValue: { [weak self] spots in
-                print("Spots received: \(spots)")
                 self?.spots = spots
-                self?.checkForChallengeCompletion()
+                self?.addSpotsToMap(spots: spots)
+                self?.checkForChallengeCompletionAndAddReward()
             }
             .store(in: &cancellables)
     }
 
-    func checkForChallengeCompletion() {
+    func addSpotsToMap(spots: [Spot]) {
         guard let user = user else { return }
-        guard let completedTasks = user.challenges[selectedChallenge]?.count else { return }
 
-        if completedTasks >= tasksAmount {
-            print("Challenge \(selectedChallenge) completed.")
-            // Aquí se podría implementar la lógica para gestionar la recompensa del desafío si fuera necesario.
-            // fetchChallengeReward()
-        } else {
-            print("Challenge \(selectedChallenge) has not been completed yet.")
+        let completedSpotIDs = user.spotIDs
+
+        for spot in spots {
+            var annotation = UnifiedAnnotation(spot: spot)
+
+            if completedSpotIDs.contains(spot.id) {
+                annotation.image = "checkmark.circle.fill" // Cambiamos la imagen a un checkmark si el spot está completado
+            }
+            
+            mapAnnotations.append(annotation)
+        }
+
+        print("Map annotations count after loading spots: \(mapAnnotations.count)")
+    }
+
+    func checkForChallengeCompletionAndAddReward() {
+        guard let user = user else { return }
+
+        if let challenge = challenges.first(where: { $0.challengeName == selectedChallenge }) {
+            let completedTasksCount = user.challenges[selectedChallenge]?.count ?? 0
+            let tasksRequired = challenge.taskAmount
+
+            print("Completed tasks count: \(completedTasksCount), tasks required: \(tasksRequired)")
+
+            if completedTasksCount >= tasksRequired {
+                print("Challenge \(selectedChallenge) completed.")
+                fetchChallengeReward()
+            } else {
+                print("Challenge \(selectedChallenge) has not been completed yet.")
+            }
         }
     }
 
-    /*
     func fetchChallengeReward() {
         dataManager.fetchChallengeReward(for: selectedChallenge)
             .receive(on: DispatchQueue.main)
@@ -136,40 +156,39 @@ class MapViewModel: BaseViewModel {
                     break
                 }
             } receiveValue: { [weak self] reward in
-                self?.challengeReward = reward
-                self?.tasksAmount = reward.tasksAmount
+                print("Reward received: \(reward)")
                 self?.addChallengeRewardToMap(reward: reward)
             }
             .store(in: &cancellables)
     }
 
-    private func addChallengeRewardToMap(reward: ChallengeReward) {
-        let rewardSpot = Spot(
-            id: reward.id,
-            abstract: reward.abstract,
-            activityID: reward.activityID,
-            activityType: reward.activityType,
-            coordinates: reward.location,
-            image: reward.prizeImage,
-            isCompleted: false,
-            name: reward.challengeTitle,
-            province: reward.province,
-            title: reward.challengeTitle
-        )
-
-        spots.append(rewardSpot)
+    func addChallengeRewardToMap(reward: ChallengeReward) {
+        let annotation = UnifiedAnnotation(reward: reward)
+        mapAnnotations.append(annotation)
+        print("Added reward annotation. Total annotations: \(mapAnnotations.count)")
     }
-    */
+
+    func handleRewardTap(annotation: UnifiedAnnotation) {
+        if let reward = annotation.reward {
+            appState.currentView = .challengeReward(activityId: reward.id)
+        }
+    }
+
+    func isTaskCompleted(taskID: String) -> Bool {
+        guard let user = user else { return false }
+        return user.spotIDs.contains(taskID)
+    }
+
+    func showChallengeSelectionView() {
+        self.showChallengeSelection = true
+    }
 
     func selectChallenge(_ challenge: Challenge) {
-        print("Selected challenge: \(challenge.challengeName)")
         selectedChallenge = challenge.challengeName
 
         if user?.challenges[selectedChallenge] != nil {
-            print("Challenge \(selectedChallenge) has already begun.")
             appState.currentView = .map
         } else {
-            print("Challenge \(selectedChallenge) does not exist in user challenges, navigating to challenge presentation.")
             appState.currentView = .challengePresentation(challengeName: selectedChallenge)
         }
 
@@ -179,13 +198,7 @@ class MapViewModel: BaseViewModel {
 
     func checkChallengeStatus() {
         guard let user = user else { return }
-        if user.challenges[selectedChallenge] != nil {
-            isChallengeBegan = true
-            print("Challenge \(selectedChallenge) has already begun.")
-        } else {
-            isChallengeBegan = false
-            print("Challenge \(selectedChallenge) has not begun yet.")
-        }
+        isChallengeBegan = user.challenges[selectedChallenge] != nil
     }
 
     func beginChallenge() {
@@ -198,6 +211,7 @@ class MapViewModel: BaseViewModel {
         } else {
             appState.currentView = .map
         }
+
         userDefaultsManager.saveChallengeName(selectedChallenge)
         isChallengeBegan = true
     }
@@ -211,7 +225,7 @@ class MapViewModel: BaseViewModel {
                     self.alertMessage = "Error: \(error.localizedDescription)"
                     self.showAlert = true
                 case .finished:
-                    print("Challenge state saved in Firestore")
+                    break
                 }
             } receiveValue: { _ in
                 print("User challenge state successfully updated in Firestore")
@@ -222,12 +236,10 @@ class MapViewModel: BaseViewModel {
     func saveSpotID(_ spotID: String) {
         userDefaultsManager.saveSpotID(spotID)
     }
-
-    func showChallengeSelectionView() {
-        self.showChallengeSelection = true
-        print("Showing challenge selection view.")
-    }
 }
+
+
+
 
 /*
 import Foundation

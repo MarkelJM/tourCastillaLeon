@@ -47,23 +47,27 @@ class MapFirestoreManager {
         .eraseToAnyPublisher()
     }
     
-    // Funciones relacionadas con `ChallengeReward` comentadas
-    /*
-     func fetchChallengeReward(for challengeName: String) -> AnyPublisher<ChallengeReward, Error> {
-     Future { promise in
-     self.db.collection("challengeRewards")
-     .document(challengeName)
-     .getDocument { document, error in
-     if let document = document, document.exists {
-     if let rewardData = document.data(), let reward = ChallengeReward(from: rewardData) {
-     promise(.success(reward))
-     } else {
-     
-     
-     
-     */
-    
+    func fetchChallengeReward(for challengeName: String) -> AnyPublisher<ChallengeReward, Error> {
+        Future { promise in
+            self.db.collection("challengeAward")
+                .document(challengeName)
+                .getDocument { document, error in
+                    if let document = document, document.exists {
+                        if let rewardData = document.data(), let reward = ChallengeReward(from: rewardData) {
+                            promise(.success(reward))
+                        } else {
+                            promise(.failure(NSError(domain: "Error decoding reward", code: -1, userInfo: nil)))
+                        }
+                    } else {
+                        promise(.failure(error ?? NSError(domain: "Document does not exist", code: -1, userInfo: nil)))
+                    }
+                }
+        }
+        .eraseToAnyPublisher()
+    }
 }
+
+
 /*
 import FirebaseFirestore
 
