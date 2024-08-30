@@ -84,6 +84,7 @@ struct QuestionAnswerView: View {
                     .padding()
                     .sheet(isPresented: $viewModel.showResultModal) {
                         ResultQuestionView(viewModel: viewModel)
+                            .environmentObject(appState)  // Pasar appState al resultado también
                     }
                 
             }
@@ -92,6 +93,11 @@ struct QuestionAnswerView: View {
             }
         }
     }
+}
+
+#Preview {
+    QuestionAnswerView(viewModel: QuestionAnswerViewModel(activityId: "mockId", appState: AppState()))
+        .environmentObject(AppState())
 }
 
 struct ResultQuestionView: View {
@@ -128,7 +134,4 @@ struct ResultQuestionView: View {
     }
 }
 
-#Preview {
-    QuestionAnswerView(viewModel: QuestionAnswerViewModel(activityId: "mockId"))
-        .environmentObject(AppState())
-}
+

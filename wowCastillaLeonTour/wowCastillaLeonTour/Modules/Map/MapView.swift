@@ -27,17 +27,29 @@ struct MapView: View {
                 Map(coordinateRegion: $viewModel.region, showsUserLocation: true, annotationItems: viewModel.spots) { spot in
                     MapAnnotation(coordinate: CLLocationCoordinate2D(latitude: spot.coordinates.latitude, longitude: spot.coordinates.longitude)) {
                         VStack {
-                            AsyncImage(url: URL(string: spot.image)) { image in
-                                image
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fill)
+                            if viewModel.isTaskCompleted(taskID: spot.activityID, activityType: spot.activityType, challenge: viewModel.selectedChallenge) {
+                                // Si la tarea está completada, mostrar un círculo verde con un check
+                                Circle()
+                                    .fill(Color.green)
                                     .frame(width: 30, height: 30)
-                                    .clipShape(Circle())
                                     .overlay(
-                                        spot.isCompleted ? Circle().stroke(Color.green, lineWidth: 3) : nil
+                                        Image(systemName: "checkmark")
+                                            .foregroundColor(.white)
                                     )
-                            } placeholder: {
-                                ProgressView()
+                            } else {
+                                // Si la tarea no está completada, mostrar la imagen normal
+                                AsyncImage(url: URL(string: spot.image)) { image in
+                                    image
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fill)
+                                        .frame(width: 30, height: 30)
+                                        .clipShape(Circle())
+                                        .overlay(
+                                            spot.isCompleted ? Circle().stroke(Color.green, lineWidth: 3) : nil
+                                        )
+                                } placeholder: {
+                                    ProgressView()
+                                }
                             }
                         }
                         .onTapGesture {
@@ -66,13 +78,14 @@ struct MapView: View {
                         .foregroundColor(.white)
                         .cornerRadius(10)
                         .padding(.top, 20)
+                        .padding(.bottom, 150)
                 }
+                Spacer()
             }
         }
         .sheet(isPresented: $viewModel.showChallengeSelection) {
             ChallengeSelectionView(viewModel: viewModel)
         }
-        .padding(.bottom, 100)
     }
 }
 

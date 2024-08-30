@@ -59,15 +59,15 @@ struct NavigationState: View {
         case .puzzle(let id):
             PuzzleView(viewModel: PuzzleViewModel(activityId: id, appState: appState))
         case .coin(let id):
-            CoinView(viewModel: CoinViewModel(activityId: id))
+            CoinView(viewModel: CoinViewModel(activityId: id, appState: appState))
         case .dates(let id):
-            DatesOrderView(viewModel: DatesOrderViewModel(activityId: id))
+            DatesOrderView(viewModel: DatesOrderViewModel(activityId: id, appState: appState))
         case .fillGap(let id):
-            FillGapView(viewModel: FillGapViewModel(activityId: id))
+            FillGapView(viewModel: FillGapViewModel(activityId: id, appState: appState))
         case .questionAnswer(let id):
-            QuestionAnswerView(viewModel: QuestionAnswerViewModel(activityId: id))
+            QuestionAnswerView(viewModel: QuestionAnswerViewModel(activityId: id, appState: appState))
         case .takePhoto(let id):
-            TakePhotoView(viewModel: TakePhotoViewModel(activityId: id))
+            TakePhotoView(viewModel: TakePhotoViewModel(activityId: id, appState: appState))
         case .onboardingOne:
             OnboardingOneView()
         case .onboardingTwo:

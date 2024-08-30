@@ -16,9 +16,11 @@ class FillGapViewModel: BaseViewModel {
     
     private let dataManager = FillGapDataManager()
     private var activityId: String
-    
-    init(activityId: String) {
+    private weak var appState: AppState? // Referencia débil a AppState
+
+    init(activityId: String, appState: AppState) {
         self.activityId = activityId
+        self.appState = appState
         super.init()
         fetchUserProfile()
         fetchFillGap()
@@ -47,7 +49,11 @@ class FillGapViewModel: BaseViewModel {
     func submitAnswers() {
         guard let fillGap = fillGap else { return }
         
-        if userAnswers == fillGap.correctPositions {
+        // Normalizar respuestas a minúsculas y eliminar espacios en blanco al inicio y al final
+        let normalizedUserAnswers = userAnswers.map { $0.trimmingCharacters(in: .whitespacesAndNewlines).lowercased() }
+        let normalizedCorrectAnswers = fillGap.correctPositions.map { $0.trimmingCharacters(in: .whitespacesAndNewlines).lowercased() }
+        
+        if normalizedUserAnswers == normalizedCorrectAnswers {
             alertMessage = fillGap.correctAnswerMessage
             updateUserTask(fillGap: fillGap)
             updateSpotForUser()
@@ -72,8 +78,9 @@ class FillGapViewModel: BaseViewModel {
                 case .finished:
                     break
                 }
-            } receiveValue: { _ in
+            } receiveValue: { [weak self] _ in
                 print("User task updated in Firestore")
+                self?.appState?.currentView = .map  // Navegar al mapa después de actualizar
             }
             .store(in: &cancellables)
     }

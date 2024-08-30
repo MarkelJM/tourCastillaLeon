@@ -152,6 +152,6 @@ struct ResultDatesOrderView: View {
 }
 
 #Preview {
-    DatesOrderView(viewModel: DatesOrderViewModel(activityId: "mockId"))
+    DatesOrderView(viewModel: DatesOrderViewModel(activityId: "mockId", appState: AppState()))
         .environmentObject(AppState())
 }

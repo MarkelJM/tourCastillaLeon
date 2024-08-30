@@ -77,13 +77,20 @@ struct FillGapView: View {
                                 ProgressView()
                                     .frame(maxWidth: 300)
                             }
-                            
+
+                            // Etiquetas para los campos de texto
                             ForEach(0..<fillGap.correctPositions.count, id: \.self) { index in
-                                TextField("Escribe aquí", text: $viewModel.userAnswers[index])
-                                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                                    .padding()
-                                    .background(Color.mateWhite.opacity(0.8))
-                                    .cornerRadius(10)
+                                HStack {
+                                    Text("\(Character(UnicodeScalar(65 + index)!)).") // Muestra "A.", "B.", "C.", etc.
+                                        .font(.headline)
+                                        .foregroundColor(.mateGold)
+
+                                    TextField("Escribe aquí", text: $viewModel.userAnswers[index])
+                                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                                        .padding()
+                                        .background(Color.mateWhite.opacity(0.8))
+                                        .cornerRadius(10)
+                                }
                             }
                         }
                     }
@@ -153,8 +160,8 @@ struct ResultFillGapView: View {
         }
     }
 }
-
+/*
 #Preview {
-    FillGapView(viewModel: FillGapViewModel(activityId: "mockId"))
-        .environmentObject(AppState())
+    FillGapView(viewModel: FillGapViewModel(activityId: id, appState: appState))        .environmentObject(AppState())
 }
+*/

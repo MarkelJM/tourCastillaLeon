@@ -11,6 +11,7 @@ struct MapCallOutView: View {
     var spot: Spot
     @EnvironmentObject var appState: AppState
     @ObservedObject var viewModel: MapViewModel
+    @State private var showCompletedAlert = false
 
     var body: some View {
         VStack(spacing: 20) {
@@ -39,14 +40,15 @@ struct MapCallOutView: View {
 
             Button(action: {
                 if viewModel.isTaskCompleted(taskID: spot.activityID, activityType: spot.activityType, challenge: viewModel.selectedChallenge) {
-                    viewModel.alertMessage = "Esta tarea ya está completada."
-                    viewModel.showAlert = true
+                    showCompletedAlert = true
                 } else {
+                    // Si la tarea no está completada, procedemos con la acción
                     print("Participar button tapped for \(spot.name)")
                     
                     // Guardar el spotID en UserDefaults
                     viewModel.saveSpotID(spot.id)
                     
+                    // Navegamos a la tarea correspondiente
                     switch spot.activityType {
                     case "puzzles":
                         appState.currentView = .puzzle(id: spot.activityID)
@@ -73,6 +75,13 @@ struct MapCallOutView: View {
                     .cornerRadius(10)
                     .shadow(radius: 5)
             }
+            .alert(isPresented: $showCompletedAlert) {
+                Alert(
+                    title: Text("Aviso"),
+                    message: Text("Tarea ya completada."),
+                    dismissButton: .default(Text("OK"))
+                )
+            }
 
             Spacer()
         }
@@ -80,8 +89,5 @@ struct MapCallOutView: View {
         .background(Color.mateWhite.opacity(0.9))
         .cornerRadius(20)
         .shadow(radius: 10)
-        //.alert(isPresented: $viewModel.showAlert) {
-            //Alert(title: Text("Aviso"), message: Text(viewModel.alertMessage), dismissButton: .default(Text("OK")))
-        //}
     }
 }
