@@ -108,6 +108,11 @@ class MapViewModel: BaseViewModel {
             }
             .store(in: &cancellables)
     }
+    
+    func isTaskCompleted(spotID: String) -> Bool {
+        guard let user = user else { return false }
+        return user.spotIDs.contains(spotID)
+    }
 
     func addSpotsToMap(spots: [Spot]) {
         guard let user = user else { return }

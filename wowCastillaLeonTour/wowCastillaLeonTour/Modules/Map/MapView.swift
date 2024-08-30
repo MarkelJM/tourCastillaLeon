@@ -10,7 +10,8 @@ import MapKit
 
 struct MapView: View {
     @StateObject private var viewModel = MapViewModel(appState: AppState())
-    @State private var selectedAnnotation: UnifiedAnnotation?
+    @State private var selectedSpot: Spot?
+    @State private var selectedReward: ChallengeReward?
     @EnvironmentObject var appState: AppState
 
     var body: some View {
@@ -32,7 +33,17 @@ struct MapView: View {
                                     .resizable()
                                     .foregroundColor(.yellow)
                                     .frame(width: 40, height: 40)
+                            } else if viewModel.isTaskCompleted(spotID: annotation.spot?.id ?? "") {
+                                // Si la tarea está completada, mostrar un círculo verde con un check
+                                Circle()
+                                    .fill(Color.green)
+                                    .frame(width: 30, height: 30)
+                                    .overlay(
+                                        Image(systemName: "checkmark")
+                                            .foregroundColor(.white)
+                                    )
                             } else {
+                                // Si la tarea no está completada, mostrar la imagen normal
                                 AsyncImage(url: URL(string: annotation.image)) { image in
                                     image
                                         .resizable()
@@ -45,7 +56,13 @@ struct MapView: View {
                             }
                         }
                         .onTapGesture {
-                            selectedAnnotation = annotation
+                            if annotation.activityType == "specialAward" {
+                                selectedReward = annotation.reward
+                                selectedSpot = nil // Deseleccionar spot para evitar conflictos
+                            } else {
+                                selectedSpot = annotation.spot
+                                selectedReward = nil // Deseleccionar reward para evitar conflictos
+                            }
                         }
                     }
                 }
@@ -55,8 +72,12 @@ struct MapView: View {
                         viewModel.fetchSpots()
                     }
                 }
-                .sheet(item: $selectedAnnotation) { annotation in
-                    MapCallOutView(spot: annotation.spot, reward: annotation.reward, viewModel: viewModel)
+                .sheet(item: $selectedSpot) { spot in
+                    MapCallOutView(spot: spot, viewModel: viewModel)
+                        .environmentObject(appState)
+                }
+                .sheet(item: $selectedReward) { reward in
+                    MapCallOutView(reward: reward, viewModel: viewModel)
                         .environmentObject(appState)
                 }
 

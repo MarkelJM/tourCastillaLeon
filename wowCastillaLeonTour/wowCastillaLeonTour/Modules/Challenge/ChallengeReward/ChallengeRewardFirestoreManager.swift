@@ -20,7 +20,7 @@ class ChallengeRewardFirestoreManager {
                 } else if let data = snapshot?.data(), let reward = ChallengeReward(from: data) {
                     promise(.success(reward))
                 } else {
-                    promise(.failure(NSError(domain: "Document not found", code: 404, userInfo: nil)))
+                    promise(.failure(NSError(domain: "Document not found challenge Reward", code: 404, userInfo: nil)))
                 }
             }
         }
