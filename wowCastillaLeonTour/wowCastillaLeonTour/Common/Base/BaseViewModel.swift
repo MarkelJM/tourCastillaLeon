@@ -18,6 +18,7 @@ class BaseViewModel: ObservableObject {
     var cancellables = Set<AnyCancellable>()
     let userDefaultsManager = UserDefaultsManager()
     
+    // Fetch the user profile from Firestore and store it in 'user'
     func fetchUserProfile() {
         firestoreManager.fetchUserProfile()
             .receive(on: DispatchQueue.main)
@@ -34,29 +35,33 @@ class BaseViewModel: ObservableObject {
             .store(in: &cancellables)
     }
     
+    // Update task IDs and spot IDs in the user's profile
     func updateUserTaskIDs(taskID: String, activityType: String, city: String? = nil, challenge: String) {
         guard var user = user else { return }
         
+        // Check if the task has already been completed
         if isTaskAlreadyCompleted(taskID: taskID, activityType: activityType, city: city, challenge: challenge, user: user) {
             alertMessage = "Esta tarea ya está completada."
             showAlert = true
             return
         }
 
-        // Añadir la tarea al reto específico
+        // Add the task ID to the challenge
         if user.challenges[challenge] != nil {
             user.challenges[challenge]?.append(taskID)
         } else {
             user.challenges[challenge] = [taskID]
         }
 
-        // Reasignar el usuario modificado a la propiedad 'user'
+        // Reassign the updated user to the 'user' property
         self.user = user
         
+        // Update Firestore with the new task ID and spot ID
         updateTaskForUser(taskID: taskID, challenge: challenge)
         updateSpotForUser()
     }
 
+    // Update task IDs in Firestore
     private func updateTaskForUser(taskID: String, challenge: String) {
         firestoreManager.updateUserTaskIDs(taskID: taskID, challenge: challenge)
             .sink { completion in
@@ -73,8 +78,9 @@ class BaseViewModel: ObservableObject {
             .store(in: &cancellables)
     }
 
+    // Update spot IDs in Firestore
     private func updateSpotForUser() {
-        // Actualizar spotID si existe
+        // Get the spot ID from UserDefaults
         if let spotID = userDefaultsManager.getSpotID() {
             firestoreManager.updateUserSpotIDs(spotID: spotID)
                 .sink { completion in
@@ -90,16 +96,19 @@ class BaseViewModel: ObservableObject {
                 }
                 .store(in: &cancellables)
 
-            userDefaultsManager.clearSpotID() // Limpiar el spotID después de actualizarlo
+            // Clear the spot ID from UserDefaults after updating
+            userDefaultsManager.clearSpotID()
         } else {
             print("No spotID found in UserDefaults")
         }
     }
 
+    // Check if the task is already completed
     private func isTaskAlreadyCompleted(taskID: String, activityType: String, city: String?, challenge: String, user: User) -> Bool {
         return user.challenges[challenge]?.contains(taskID) ?? false
     }
 
+    // Public method to check if a task is completed
     func isTaskCompleted(taskID: String, activityType: String, city: String? = nil, challenge: String) -> Bool {
         guard let user = user else { return false }
         return user.challenges[challenge]?.contains(taskID) ?? false

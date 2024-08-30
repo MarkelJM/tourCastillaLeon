@@ -60,7 +60,7 @@ class FirestoreManager {
         }
         .eraseToAnyPublisher()
     }
-    
+    /*
     func updateUserTaskIDs(taskID: String, challenge: String) -> AnyPublisher<Void, Error> {
         Future { promise in
             guard let uid = self.auth.currentUser?.uid else {
@@ -99,7 +99,28 @@ class FirestoreManager {
         }
         .eraseToAnyPublisher()
     }
+     */
+    
+    func updateUserTaskIDs(taskID: String, challenge: String) -> AnyPublisher<Void, Error> {
+        guard let userID = Auth.auth().currentUser?.uid else {
+            return Fail(error: NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "No user ID found"])).eraseToAnyPublisher()
+        }
 
+        let userRef = db.collection("users").document(userID)
+        
+        return Future { promise in
+            userRef.updateData([
+                "challenges.\(challenge)": FieldValue.arrayUnion([taskID])
+            ]) { error in
+                if let error = error {
+                    promise(.failure(error))
+                } else {
+                    promise(.success(()))
+                }
+            }
+        }
+        .eraseToAnyPublisher()
+    }
     // Actualizar spotIDs completados por el usuario
     func updateUserSpotIDs(spotID: String) -> AnyPublisher<Void, Error> {
         Future { promise in

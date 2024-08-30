@@ -12,14 +12,14 @@ import MapKit
 
 class MapViewModel: BaseViewModel {
     @Published var spots: [Spot] = []
-    @Published var challengeReward: ChallengeReward?
     @Published var authorizationStatus: CLAuthorizationStatus?
     @Published var region: MKCoordinateRegion
     @Published var selectedChallenge: String
     @Published var showChallengeSelection: Bool = false
     @Published var isChallengeBegan: Bool = false
-    @Published var tasksAmount: Int = 0
     @Published var challenges: [Challenge] = []
+    private var tasksAmount: Int = 0  // Definir tasksAmount aquí
+
 
     private var locationManager = LocationManager()
     private var dataManager = MapDataManager()
@@ -27,18 +27,18 @@ class MapViewModel: BaseViewModel {
     var appState: AppState
 
     init(appState: AppState) {
-        self.appState = appState
-        self.region = MKCoordinateRegion(
-            center: CLLocationCoordinate2D(latitude: 41.6528, longitude: -2.7286),
-            span: MKCoordinateSpan(latitudeDelta: 2.0, longitudeDelta: 2.0)
-        )
-        self.selectedChallenge = "retoBasico"
-        super.init()
-        self.selectedChallenge = userDefaultsManager.getChallengeName() ?? "retoBasico"
-        setupBindings()
-        fetchUserProfileAndUpdateState()
-        fetchChallenges()
-    }
+            self.appState = appState
+            self.region = MKCoordinateRegion(
+                center: CLLocationCoordinate2D(latitude: 41.6528, longitude: -2.7286),
+                span: MKCoordinateSpan(latitudeDelta: 2.0, longitudeDelta: 2.0)
+            )
+            self.selectedChallenge = "retoBasico"  // Asignar un valor predeterminado temporalmente
+            super.init()
+            self.selectedChallenge = userDefaultsManager.getChallengeName() ?? "retoBasico"  // Reasignar después de super.init()
+            setupBindings()
+            fetchUserProfileAndUpdateState()
+            fetchChallenges()
+        }
 
     private func setupBindings() {
         locationManager.$authorizationStatus
@@ -87,6 +87,7 @@ class MapViewModel: BaseViewModel {
                     break
                 }
             } receiveValue: { [weak self] challenges in
+                print("Challenges received: \(challenges)")
                 self?.challenges = challenges
             }
             .store(in: &cancellables)
@@ -103,6 +104,7 @@ class MapViewModel: BaseViewModel {
                     break
                 }
             } receiveValue: { [weak self] spots in
+                print("Spots received: \(spots)")
                 self?.spots = spots
                 self?.checkForChallengeCompletion()
             }
@@ -114,28 +116,15 @@ class MapViewModel: BaseViewModel {
         guard let completedTasks = user.challenges[selectedChallenge]?.count else { return }
 
         if completedTasks >= tasksAmount {
-            // Aquí se comentan las partes relacionadas con `ChallengeReward`
+            print("Challenge \(selectedChallenge) completed.")
+            // Aquí se podría implementar la lógica para gestionar la recompensa del desafío si fuera necesario.
             // fetchChallengeReward()
-        }
-    }
-
-    func selectChallenge(_ challenge: Challenge) {
-        selectedChallenge = challenge.challengeName
-
-        if user?.challenges[selectedChallenge] != nil {
-            // Si el desafío ya está en los desafíos del usuario, navegar al mapa
-            appState.currentView = .map
         } else {
-            // Si el desafío no está en los desafíos del usuario, navegar a la presentación del desafío
-            appState.currentView = .challengePresentation(challengeName: selectedChallenge)
+            print("Challenge \(selectedChallenge) has not been completed yet.")
         }
-
-        userDefaultsManager.saveChallengeName(selectedChallenge)
-        showChallengeSelection = false
     }
 
     /*
-    // Comentamos la función relacionada con `ChallengeReward`
     func fetchChallengeReward() {
         dataManager.fetchChallengeReward(for: selectedChallenge)
             .receive(on: DispatchQueue.main)
@@ -172,12 +161,30 @@ class MapViewModel: BaseViewModel {
     }
     */
 
+    func selectChallenge(_ challenge: Challenge) {
+        print("Selected challenge: \(challenge.challengeName)")
+        selectedChallenge = challenge.challengeName
+
+        if user?.challenges[selectedChallenge] != nil {
+            print("Challenge \(selectedChallenge) has already begun.")
+            appState.currentView = .map
+        } else {
+            print("Challenge \(selectedChallenge) does not exist in user challenges, navigating to challenge presentation.")
+            appState.currentView = .challengePresentation(challengeName: selectedChallenge)
+        }
+
+        userDefaultsManager.saveChallengeName(selectedChallenge)
+        showChallengeSelection = false
+    }
+
     func checkChallengeStatus() {
         guard let user = user else { return }
         if user.challenges[selectedChallenge] != nil {
             isChallengeBegan = true
+            print("Challenge \(selectedChallenge) has already begun.")
         } else {
             isChallengeBegan = false
+            print("Challenge \(selectedChallenge) has not begun yet.")
         }
     }
 
@@ -204,10 +211,10 @@ class MapViewModel: BaseViewModel {
                     self.alertMessage = "Error: \(error.localizedDescription)"
                     self.showAlert = true
                 case .finished:
-                    break
+                    print("Challenge state saved in Firestore")
                 }
             } receiveValue: { _ in
-                print("Challenge state saved in Firestore")
+                print("User challenge state successfully updated in Firestore")
             }
             .store(in: &cancellables)
     }
@@ -218,6 +225,7 @@ class MapViewModel: BaseViewModel {
 
     func showChallengeSelectionView() {
         self.showChallengeSelection = true
+        print("Showing challenge selection view.")
     }
 }
 

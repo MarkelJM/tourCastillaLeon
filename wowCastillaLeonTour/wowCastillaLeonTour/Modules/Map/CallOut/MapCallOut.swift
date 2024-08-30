@@ -80,8 +80,8 @@ struct MapCallOutView: View {
         .background(Color.mateWhite.opacity(0.9))
         .cornerRadius(20)
         .shadow(radius: 10)
-        .alert(isPresented: $viewModel.showAlert) {
-            Alert(title: Text("Aviso"), message: Text(viewModel.alertMessage), dismissButton: .default(Text("OK")))
-        }
+        //.alert(isPresented: $viewModel.showAlert) {
+            //Alert(title: Text("Aviso"), message: Text(viewModel.alertMessage), dismissButton: .default(Text("OK")))
+        //}
     }
 }

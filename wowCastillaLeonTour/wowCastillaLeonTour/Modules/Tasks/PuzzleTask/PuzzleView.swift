@@ -163,6 +163,7 @@ struct PuzzleView: View {
 
 struct ResulPuzzleSheetView: View {
     @ObservedObject var viewModel: PuzzleViewModel
+    @EnvironmentObject var appState: AppState  // Añadir el environment object
     
     var body: some View {
         ZStack {
@@ -179,6 +180,7 @@ struct ResulPuzzleSheetView: View {
 
                 Button(action: {
                     viewModel.showSheet = false
+                    appState.currentView = .map  // Navegar al mapa después de cerrar el sheet
                 }) {
                     Text("Continuar")
                         .padding()
@@ -188,18 +190,18 @@ struct ResulPuzzleSheetView: View {
                 }
             }
             .padding()
-            .background(Color.black.opacity(0.5)) // Fondo del VStack con transparencia
+            .background(Color.black.opacity(0.5))
             .cornerRadius(20)
             .padding()
         }
     }
 }
 
+/*
 #Preview {
-    PuzzleView(viewModel: PuzzleViewModel(activityId: "mockId"))
-        .environmentObject(AppState())
+    PuzzleView(viewModel: PuzzleViewModel(activityId: "mockId", appState: appState))        .environmentObject(AppState())
 }
-
+*/
 /*
 struct PuzzleView_Previews: PreviewProvider {
     static var previews: some View {
