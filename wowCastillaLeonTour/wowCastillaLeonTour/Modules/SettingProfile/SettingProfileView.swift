@@ -95,6 +95,7 @@ struct SettingProfileView: View {
                         .frame(maxWidth: .infinity)
                         .background(Color.blue)
                         .cornerRadius(10)
+                        .padding(.bottom, 100)
                     }
                     .padding(.horizontal)
                     .padding(.top, 20)

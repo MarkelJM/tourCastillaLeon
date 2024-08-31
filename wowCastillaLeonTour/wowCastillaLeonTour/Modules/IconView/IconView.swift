@@ -25,12 +25,12 @@ struct IconView: View {
                 Text("Bienvenido a ConquistaCyL")
                     .font(.largeTitle)
                     .fontWeight(.bold)
-                    .foregroundColor(.white)
+                    .foregroundColor(.mateGold)
                     .padding(.top, 20)
                 
                 Text("¡Logra todos tus retos!")
                     .font(.title2)
-                    .foregroundColor(.white)
+                    .foregroundColor(.mateGold)
                     .padding(.bottom, 20)
 
                 Image("iconoConquistaCyL")
