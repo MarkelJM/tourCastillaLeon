@@ -572,6 +572,17 @@
 			path = Keychain;
 			sourceTree = "<group>";
 		};
+		D396490F2C837FE200EAAC19 /* 2D */ = {
+			isa = PBXGroup;
+			children = (
+				D3E4B7972C3E9547000BEE9F /* MapFirestoreManager.swift */,
+				D3E4B7992C3E9558000BEE9F /* MapDatamanager.swift */,
+				D3E4B79B2C3E9562000BEE9F /* MapViewModel.swift */,
+				D3E4B79D2C3E9575000BEE9F /* MapView.swift */,
+			);
+			path = 2D;
+			sourceTree = "<group>";
+		};
 		D3DDA8752C18547700C43CBA /* Common */ = {
 			isa = PBXGroup;
 			children = (
@@ -901,10 +912,7 @@
 				D39648DC2C7B954600EAAC19 /* ChallengeSelection */,
 				D3E4B7AA2C4514EF000BEE9F /* 3DMap */,
 				D3E4B7A42C41179A000BEE9F /* CallOut */,
-				D3E4B7972C3E9547000BEE9F /* MapFirestoreManager.swift */,
-				D3E4B7992C3E9558000BEE9F /* MapDatamanager.swift */,
-				D3E4B79B2C3E9562000BEE9F /* MapViewModel.swift */,
-				D3E4B79D2C3E9575000BEE9F /* MapView.swift */,
+				D396490F2C837FE200EAAC19 /* 2D */,
 			);
 			path = Map;
 			sourceTree = "<group>";
