@@ -48,6 +48,9 @@
 		D39648FC2C7E49EF00EAAC19 /* KeyBoardObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39648FB2C7E49EF00EAAC19 /* KeyBoardObserver.swift */; };
 		D39648FF2C7F751C00EAAC19 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39648FE2C7F751C00EAAC19 /* CustomTabBar.swift */; };
 		D39649052C81EA7800EAAC19 /* UnifiedAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39649042C81EA7800EAAC19 /* UnifiedAnnotation.swift */; };
+		D39649072C82205B00EAAC19 /* CalloutRewardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39649062C82205B00EAAC19 /* CalloutRewardView.swift */; };
+		D396490B2C836F6500EAAC19 /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D396490A2C836F6500EAAC19 /* KeychainManager.swift */; };
+		D396490E2C836F7E00EAAC19 /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D396490D2C836F7E00EAAC19 /* KeychainSwift */; };
 		D3DDA8782C18548D00C43CBA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDA8772C18548D00C43CBA /* User.swift */; };
 		D3DDA8822C18625200C43CBA /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDA8812C18625200C43CBA /* RegisterViewModel.swift */; };
 		D3DDA8862C18626A00C43CBA /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDA8852C18626A00C43CBA /* RegisterView.swift */; };
@@ -183,6 +186,8 @@
 		D39648FB2C7E49EF00EAAC19 /* KeyBoardObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyBoardObserver.swift; sourceTree = "<group>"; };
 		D39648FE2C7F751C00EAAC19 /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
 		D39649042C81EA7800EAAC19 /* UnifiedAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnifiedAnnotation.swift; sourceTree = "<group>"; };
+		D39649062C82205B00EAAC19 /* CalloutRewardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalloutRewardView.swift; sourceTree = "<group>"; };
+		D396490A2C836F6500EAAC19 /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
 		D3DDA8772C18548D00C43CBA /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		D3DDA8812C18625200C43CBA /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
 		D3DDA8852C18626A00C43CBA /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
@@ -273,6 +278,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D396490E2C836F7E00EAAC19 /* KeychainSwift in Frameworks */,
 				D3DEAF1F2C7650A200AB0325 /* FirebaseAnalytics in Frameworks */,
 				D3DEAF232C7650A200AB0325 /* FirebaseCrashlytics in Frameworks */,
 				D3DEAF292C7650A200AB0325 /* FirebaseMessaging in Frameworks */,
@@ -484,8 +490,8 @@
 		D39648E72C7CCFEE00EAAC19 /* Coordinate */ = {
 			isa = PBXGroup;
 			children = (
-				D39649032C81EA6600EAAC19 /* UnifiedSpot */,
 				D39648E82C7CCFFF00EAAC19 /* Coordinates.swift */,
+				D39649032C81EA6600EAAC19 /* UnifiedSpot */,
 			);
 			path = Coordinate;
 			sourceTree = "<group>";
@@ -549,11 +555,28 @@
 			path = UnifiedSpot;
 			sourceTree = "<group>";
 		};
+		D39649082C836F2F00EAAC19 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				D39649092C836F4F00EAAC19 /* Keychain */,
+				D39648DF2C7B9FCC00EAAC19 /* UserDefault */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		D39649092C836F4F00EAAC19 /* Keychain */ = {
+			isa = PBXGroup;
+			children = (
+				D396490A2C836F6500EAAC19 /* KeychainManager.swift */,
+			);
+			path = Keychain;
+			sourceTree = "<group>";
+		};
 		D3DDA8752C18547700C43CBA /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				D39649082C836F2F00EAAC19 /* Data */,
 				D39648F92C7E49D200EAAC19 /* Tools */,
-				D39648DF2C7B9FCC00EAAC19 /* UserDefault */,
 				D3DEAF032C75F57800AB0325 /* ARController */,
 				D38F8F712C51031400315904 /* Base */,
 				D3E4B7C12C4681F3000BEE9F /* Design */,
@@ -800,7 +823,7 @@
 				D3E4B7832C3E88F7000BEE9F /* TakePhoto */,
 				D3E4B7762C3E883F000BEE9F /* QuestionAnswer */,
 				D3E4B7752C3E8838000BEE9F /* Puzzle */,
-				D3E4B7742C3E882B000BEE9F /* Spot */,
+				D3E4B7742C3E882B000BEE9F /* Point */,
 				D3E4B7732C3E881A000BEE9F /* FillGap */,
 				D3E4B7722C3E8813000BEE9F /* Dates */,
 				D3E4B7712C3E8805000BEE9F /* Coin */,
@@ -835,13 +858,13 @@
 			path = FillGap;
 			sourceTree = "<group>";
 		};
-		D3E4B7742C3E882B000BEE9F /* Spot */ = {
+		D3E4B7742C3E882B000BEE9F /* Point */ = {
 			isa = PBXGroup;
 			children = (
 				D3E4B77D2C3E88A3000BEE9F /* PointModel.swift */,
 				D3E4B78C2C3E8FC4000BEE9F /* Point+Firebase.swift */,
 			);
-			path = Spot;
+			path = Point;
 			sourceTree = "<group>";
 		};
 		D3E4B7752C3E8838000BEE9F /* Puzzle */ = {
@@ -898,6 +921,7 @@
 			isa = PBXGroup;
 			children = (
 				D3E4B7A52C4117CF000BEE9F /* MapCallOut.swift */,
+				D39649062C82205B00EAAC19 /* CalloutRewardView.swift */,
 			);
 			path = CallOut;
 			sourceTree = "<group>";
@@ -1019,6 +1043,7 @@
 				D3DEAF262C7650A200AB0325 /* FirebaseFunctions */,
 				D3DEAF282C7650A200AB0325 /* FirebaseMessaging */,
 				D3DEAF2A2C7650A200AB0325 /* FirebaseStorage */,
+				D396490D2C836F7E00EAAC19 /* KeychainSwift */,
 			);
 			productName = wowCastillaLeonTour;
 			productReference = D35F004B2C173FA000780464 /* wowCastillaLeonTour.app */;
@@ -1050,6 +1075,7 @@
 			mainGroup = D35F00422C173FA000780464;
 			packageReferences = (
 				D3DEAF1D2C7650A200AB0325 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				D396490C2C836F7E00EAAC19 /* XCRemoteSwiftPackageReference "keychain-swift" */,
 			);
 			productRefGroup = D35F004C2C173FA000780464 /* Products */;
 			projectDirPath = "";
@@ -1126,6 +1152,7 @@
 				D3E4B7D42C4682B2000BEE9F /* ColorButtonView.swift in Sources */,
 				D39648D52C7A59EB00EAAC19 /* ChallengeListView.swift in Sources */,
 				D3E4B8132C4E4FC2000BEE9F /* FillGapDataManager.swift in Sources */,
+				D39649072C82205B00EAAC19 /* CalloutRewardView.swift in Sources */,
 				D38F8F8B2C6FD56000315904 /* SettingProfileViewModel.swift in Sources */,
 				D3E4B78F2C3E8FEE000BEE9F /* Puzzle+Firebase.swift in Sources */,
 				D3E4B8032C4E4741000BEE9F /* CoinView.swift in Sources */,
@@ -1139,6 +1166,7 @@
 				D3E4B77A2C3E8879000BEE9F /* DateModel.swift in Sources */,
 				D39648E42C7CBD7E00EAAC19 /* ChallengeReward.swift in Sources */,
 				D3DDA8A52C19AD1D00C43CBA /* ProfileViewModel.swift in Sources */,
+				D396490B2C836F6500EAAC19 /* KeychainManager.swift in Sources */,
 				D3DDA8A92C19AD6800C43CBA /* ProfileView.swift in Sources */,
 				D3E4B80D2C4E4C42000BEE9F /* TakePhotoViewModel.swift in Sources */,
 				D39648D12C7A58B800EAAC19 /* ChallengePresentationFirestoreManager.swift in Sources */,
@@ -1444,6 +1472,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		D396490C2C836F7E00EAAC19 /* XCRemoteSwiftPackageReference "keychain-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/evgenyneu/keychain-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 24.0.0;
+			};
+		};
 		D3DEAF1D2C7650A200AB0325 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -1455,6 +1491,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		D396490D2C836F7E00EAAC19 /* KeychainSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D396490C2C836F7E00EAAC19 /* XCRemoteSwiftPackageReference "keychain-swift" */;
+			productName = KeychainSwift;
+		};
 		D3DEAF1E2C7650A200AB0325 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = D3DEAF1D2C7650A200AB0325 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

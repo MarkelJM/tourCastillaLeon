@@ -12,7 +12,6 @@ struct NavigationState: View {
     @EnvironmentObject var appState: AppState
     @StateObject private var registerViewModel = RegisterViewModel()
 
-    // Propiedad para controlar la visibilidad del CustomTabBar
     private var shouldShowTabBar: Bool {
         switch appState.currentView {
         case .map, .challengeList,  .settings:
@@ -56,8 +55,8 @@ struct NavigationState: View {
             ChallengeListView()
         case .avatarSelection:
             AvatarSelectionView(selectedAvatar: .constant(.boy))
-        case .challengeReward(let activityId):
-            ChallengeRewardView(viewModel: ChallengeRewardViewModel(activityId: activityId))
+        case .challengeReward(let challengeName):
+            ChallengeRewardView(viewModel: ChallengeRewardViewModel(activityId: challengeName))
         case .puzzle(let id):
             PuzzleView(viewModel: PuzzleViewModel(activityId: id, appState: appState))
         case .coin(let id):

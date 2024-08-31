@@ -38,7 +38,7 @@ class AppState: ObservableObject {
         case termsAndConditions
         case challengePresentation(challengeName: String)
         case settings
-        case challengeReward(activityId: String)  // Añadir este caso para la vista de recompensa
+        case challengeReward(challengeName: String)  // Añadir este caso para la vista de recompensa
 
     }
 }

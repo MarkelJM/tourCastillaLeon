@@ -91,9 +91,8 @@ struct ProfileView: View {
                         .padding()
 
                     redBackgroundButton(title: "Guardar Perfil") {
-                        print("Guardando perfil...")
                         viewModel.saveUserProfile {
-                            self.appState.currentView = .map // Navegar a la vista de mapa
+                            self.appState.currentView = .challengeList
                         }
                     }
                     .padding(.bottom, 50)
@@ -109,11 +108,10 @@ struct ProfileView: View {
                 .padding()
             }
             .onAppear {
-                print("AppState in ProfileView: \(appState)")
                 viewModel.fetchUserProfile()
             }
             .onTapGesture {
-                hideKeyboard() // Ocultar el teclado al tocar fuera
+                hideKeyboard()
             }
         }
     }

@@ -10,8 +10,6 @@ import MapKit
 
 protocol IdentifiableAnnotation: MKAnnotation, Identifiable {}
 
-
-
 class UnifiedAnnotation: NSObject, IdentifiableAnnotation {
     var id: UUID
     var coordinate: CLLocationCoordinate2D
@@ -20,6 +18,7 @@ class UnifiedAnnotation: NSObject, IdentifiableAnnotation {
     var activityID: String
     var activityType: String
     var image: String
+    var challenge: String  // Nuevo campo agregado
     
     var spot: Spot?
     var reward: ChallengeReward?
@@ -32,6 +31,7 @@ class UnifiedAnnotation: NSObject, IdentifiableAnnotation {
         self.activityID = spot.activityID
         self.activityType = spot.activityType
         self.image = spot.image
+        self.challenge = spot.challenge  // Asignación del campo challenge
         self.spot = spot
         self.reward = nil
     }
@@ -44,8 +44,8 @@ class UnifiedAnnotation: NSObject, IdentifiableAnnotation {
         self.activityID = reward.activityID
         self.activityType = reward.activityType
         self.image = reward.prizeImage
+        self.challenge = reward.challenge  // Asignación del campo challenge
         self.spot = nil
         self.reward = reward
     }
 }
-

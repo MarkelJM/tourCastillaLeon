@@ -61,6 +61,7 @@ struct ChallengeRewardView: View {
     }
 }
 
+
 struct ResultChallengeRewardView: View {
     @ObservedObject var viewModel: ChallengeRewardViewModel
     @EnvironmentObject var appState: AppState
@@ -79,7 +80,6 @@ struct ResultChallengeRewardView: View {
                     .padding()
 
                 Button("Continuar") {
-                    // Navegar de vuelta al mapa
                     viewModel.showResultModal = false
                     appState.currentView = .map
                 }
@@ -89,7 +89,7 @@ struct ResultChallengeRewardView: View {
                 .cornerRadius(10)
             }
             .padding()
-            .background(Color.black.opacity(0.5))  // Fondo semitransparente del VStack
+            .background(Color.black.opacity(0.5))
             .cornerRadius(20)
             .padding()
         }

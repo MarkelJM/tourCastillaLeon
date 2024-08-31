@@ -13,7 +13,6 @@ struct IconView: View {
 
     var body: some View {
         ZStack {
-            // Fondo de pantalla
             Image("fondoSolar")
                 .resizable()
                 .scaledToFill()
@@ -21,17 +20,29 @@ struct IconView: View {
 
             VStack {
                 Spacer()
+                
+                // Bienvenida
+                Text("Bienvenido a ConquistaCyL")
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
+                    .foregroundColor(.white)
+                    .padding(.top, 20)
+                
+                Text("¡Logra todos tus retos!")
+                    .font(.title2)
+                    .foregroundColor(.white)
+                    .padding(.bottom, 20)
 
-                // Icono de la aplicación
                 Image("iconoConquistaCyL")
                     .resizable()
                     .scaledToFit()
                     .frame(width: 200, height: 200)
+                    .clipShape(RoundedRectangle(cornerRadius: 20))
+                    .shadow(color: .black.opacity(0.7), radius: 10, x: 0, y: 10)
                     .padding()
 
                 Spacer()
 
-                // Barra de progreso
                 ProgressView(value: progress)
                     .progressViewStyle(LinearProgressViewStyle(tint: .mateGold))
                     .frame(width: 200)
@@ -47,15 +58,13 @@ struct IconView: View {
         withAnimation(.easeInOut(duration: 1.0)) {
             progress = 1.0
         }
-
-        // Navegar al LoginView después de 1 segundo
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-            appState.currentView = .login
+            if let _ = KeychainManager.shared.read(key: "userUID") {
+                appState.currentView = .challengeList
+            } else {
+                appState.currentView = .login
+            }
         }
     }
-}
-
-#Preview {
-    IconView()
-        .environmentObject(AppState())
 }

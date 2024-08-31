@@ -18,4 +18,5 @@ struct Spot: Identifiable, Codable {
     var name: String
     var province: String
     var title: String
+    var challenge: String  // Nuevo campo agregado
 }

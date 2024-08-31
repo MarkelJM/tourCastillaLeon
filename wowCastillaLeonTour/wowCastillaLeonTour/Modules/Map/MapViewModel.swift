@@ -143,15 +143,15 @@ class MapViewModel: BaseViewModel {
 
             if completedTasksCount >= tasksRequired {
                 print("Challenge \(selectedChallenge) completed.")
-                fetchChallengeReward()
+                fetchChallengeReward(for: selectedChallenge)  // Cambiado para pasar el nombre del challenge
             } else {
                 print("Challenge \(selectedChallenge) has not been completed yet.")
             }
         }
     }
 
-    func fetchChallengeReward() {
-        dataManager.fetchChallengeReward(for: selectedChallenge)
+    func fetchChallengeReward(for challengeName: String) {
+        dataManager.fetchChallengeReward(for: challengeName)
             .receive(on: DispatchQueue.main)
             .sink { [weak self] completion in
                 switch completion {
@@ -175,13 +175,9 @@ class MapViewModel: BaseViewModel {
 
     func handleRewardTap(annotation: UnifiedAnnotation) {
         if let reward = annotation.reward {
-            appState.currentView = .challengeReward(activityId: reward.id)
+            print("Navigating to challengeReward with challenge: \(reward.challenge)")
+            appState.currentView = .challengeReward(challengeName: reward.challenge) // Ahora pasamos el challengeName
         }
-    }
-
-    func isTaskCompleted(taskID: String) -> Bool {
-        guard let user = user else { return false }
-        return user.spotIDs.contains(taskID)
     }
 
     func showChallengeSelectionView() {
@@ -242,7 +238,6 @@ class MapViewModel: BaseViewModel {
         userDefaultsManager.saveSpotID(spotID)
     }
 }
-
 
 
 

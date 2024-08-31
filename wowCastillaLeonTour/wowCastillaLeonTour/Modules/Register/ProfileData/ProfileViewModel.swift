@@ -27,11 +27,23 @@ class ProfileViewModel: ObservableObject {
     private var cancellables = Set<AnyCancellable>()
 
     func saveUserProfile(completion: @escaping () -> Void) {
+        guard validatePostalCode() else {
+            showError = true
+            errorMessage = "El código postal debe ser un número de 5 dígitos."
+            return
+        }
+        
+        guard validateCity() else {
+            showError = true
+            errorMessage = "La ciudad solo puede contener letras."
+            return
+        }
+        
         // Asegurarnos de que el reto 'retoBasico' esté en el perfil del usuario
         if challenges["retoBasico"] == nil {
             challenges["retoBasico"] = []
         }
-        
+
         let user = User(
             id: UUID().uuidString,
             email: email,
@@ -94,4 +106,15 @@ class ProfileViewModel: ObservableObject {
             }
             .store(in: &cancellables)
     }
+    
+    func validatePostalCode() -> Bool {
+        let postalCodePattern = "^[0-9]{5}$"
+        return postalCode.range(of: postalCodePattern, options: .regularExpression) != nil
+    }
+
+    func validateCity() -> Bool {
+        let cityPattern = "^[A-Za-záéíóúÁÉÍÓÚñÑ\\s]+$"
+        return city.range(of: cityPattern, options: .regularExpression) != nil
+    }
+
 }

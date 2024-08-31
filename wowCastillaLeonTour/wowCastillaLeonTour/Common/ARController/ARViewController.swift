@@ -33,6 +33,134 @@ struct ARViewContainer<VM: BaseViewModel>: UIViewRepresentable {
 
     func setupARScene(arView: ARView, context: Context) {
         #if !targetEnvironment(simulator)
+        let anchorEntity = AnchorEntity(plane: .horizontal)
+        
+        if let url = URL(string: prizeImageName), UIApplication.shared.canOpenURL(url) {
+            // Si es una URL, descarga la imagen
+            downloadImage(from: url) { image in
+                if let cgImage = image?.cgImage {
+                    DispatchQueue.main.async {
+                        self.addImageToARView(cgImage, arView: arView, context: context)
+                    }
+                }
+            }
+        } else if let image = UIImage(named: prizeImageName), let cgImage = image.cgImage {
+            // Si es una imagen local, úsala directamente
+            addImageToARView(cgImage, arView: arView, context: context)
+        } else {
+            print("Error: No se encontró la imagen local o la URL es inválida.")
+        }
+        #endif
+    }
+
+    private func addImageToARView(_ cgImage: CGImage, arView: ARView, context: Context) {
+        var material = UnlitMaterial()
+        let mesh = MeshResource.generatePlane(width: 0.5, height: 0.5)
+        let modelEntity = ModelEntity(mesh: mesh)
+        
+        if let texture = try? TextureResource.generate(from: cgImage, options: .init(semantic: nil)) {
+            material.baseColor = MaterialColorParameter.texture(texture)
+            modelEntity.model?.materials = [material]
+            print("Imagen cargada correctamente en ARView.")
+        } else {
+            print("Error al crear la textura para la imagen.")
+        }
+
+        modelEntity.position = [0, 0, -1]
+        modelEntity.generateCollisionShapes(recursive: true)
+        
+        let anchorEntity = AnchorEntity(plane: .horizontal)
+        anchorEntity.addChild(modelEntity)
+        arView.scene.addAnchor(anchorEntity)
+        
+        context.coordinator.currentEntity = modelEntity
+    }
+
+    private func downloadImage(from url: URL, completion: @escaping (UIImage?) -> Void) {
+        let task = URLSession.shared.dataTask(with: url) { data, response, error in
+            if let error = error {
+                print("Error al descargar la imagen: \(error.localizedDescription)")
+                completion(nil)
+                return
+            }
+            if let data = data, let image = UIImage(data: data) {
+                completion(image)
+            } else {
+                print("Error al convertir los datos en imagen.")
+                completion(nil)
+            }
+        }
+        task.resume()
+    }
+
+    func updateUIView(_ uiView: ARView, context: Context) {}
+
+    func makeCoordinator() -> Coordinator {
+        Coordinator(self, viewModel: viewModel)
+    }
+    
+    class Coordinator: NSObject {
+        var parent: ARViewContainer
+        var currentEntity: ModelEntity?
+        var viewModel: VM
+        
+        init(_ parent: ARViewContainer, viewModel: VM) {
+            self.parent = parent
+            self.viewModel = viewModel
+        }
+        
+        @objc func handleTap(_ sender: UITapGestureRecognizer) {
+            #if !targetEnvironment(simulator)
+            guard let arView = sender.view as? ARView else { return }
+            let tapLocation = sender.location(in: arView)
+            
+            if let tappedEntity = arView.entity(at: tapLocation), tappedEntity == currentEntity {
+                currentEntity?.removeFromParent()
+                
+                if let challengeRewardViewModel = viewModel as? ChallengeRewardViewModel {
+                    challengeRewardViewModel.completeRewardTask()
+                } else if let coinViewModel = viewModel as? CoinViewModel {
+                    if let coin = coinViewModel.coins.first {
+                        coinViewModel.completeTask(coin: coin)
+                    }
+                }
+            }
+            #endif
+        }
+    }
+}
+
+/*
+ ///USANDO COIN EN ASSETS
+ 
+import Foundation
+import ARKit
+import RealityKit
+import SwiftUI
+
+struct ARViewContainer<VM: BaseViewModel>: UIViewRepresentable {
+    var prizeImageName: String
+    var viewModel: VM
+    
+    func makeUIView(context: Context) -> ARView {
+        let arView = ARView(frame: .zero)
+        
+        #if !targetEnvironment(simulator)
+        let configuration = ARWorldTrackingConfiguration()
+        configuration.planeDetection = [.horizontal]
+        arView.session.run(configuration)
+        
+        setupARScene(arView: arView, context: context)
+        
+        let tapGesture = UITapGestureRecognizer(target: context.coordinator, action: #selector(context.coordinator.handleTap(_:)))
+        arView.addGestureRecognizer(tapGesture)
+        #endif
+        
+        return arView
+    }
+    /*
+    func setupARScene(arView: ARView, context: Context) {
+        #if !targetEnvironment(simulator)
         let anchorEntity = AnchorEntity(plane: .horizontal, minimumBounds: .zero)
         guard let image = UIImage(named: prizeImageName) else {
             print("Imagen no encontrada: \(prizeImageName)")
@@ -48,6 +176,36 @@ struct ARViewContainer<VM: BaseViewModel>: UIViewRepresentable {
             modelEntity.model?.materials = [material]
         } else {
             print("Error al crear la textura")
+        }
+
+        modelEntity.position = [0, 0, -1]
+        modelEntity.generateCollisionShapes(recursive: true)
+        
+        anchorEntity.addChild(modelEntity)
+        arView.scene.addAnchor(anchorEntity)
+        
+        context.coordinator.currentEntity = modelEntity
+        #endif
+    }
+     */
+    func setupARScene(arView: ARView, context: Context) {
+        #if !targetEnvironment(simulator)
+        let anchorEntity = AnchorEntity(plane: .horizontal, minimumBounds: .zero)
+        guard let image = UIImage(named: prizeImageName) else {
+            print("Imagen no encontrada: \(prizeImageName)")
+            return
+        }
+        
+        var material = UnlitMaterial()
+        let mesh = MeshResource.generatePlane(width: 0.5, height: 0.5)
+        let modelEntity = ModelEntity(mesh: mesh)
+        
+        if let cgImage = image.cgImage, let texture = try? TextureResource.generate(from: cgImage, options: .init(semantic: nil)) {
+            material.baseColor = MaterialColorParameter.texture(texture)
+            modelEntity.model?.materials = [material]
+            print("Imagen cargada correctamente en ARView: \(prizeImageName)")
+        } else {
+            print("Error al crear la textura para la imagen: \(prizeImageName)")
         }
 
         modelEntity.position = [0, 0, -1]
@@ -97,7 +255,7 @@ struct ARViewContainer<VM: BaseViewModel>: UIViewRepresentable {
         }
     }
 }
-
+*/
 
 /*
 

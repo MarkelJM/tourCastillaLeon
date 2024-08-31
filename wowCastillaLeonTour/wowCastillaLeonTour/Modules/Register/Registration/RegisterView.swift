@@ -88,7 +88,7 @@ struct RegisterView: View {
                 .background(Color.black.opacity(0.5))
                 .cornerRadius(20)
                 .padding()
-                .padding(.bottom, keyboardObserver.keyboardHeight) // Ajusta el padding inferior
+                .padding(.bottom, keyboardObserver.keyboardHeight)
                 .padding(.top, 100)
             }
         }
@@ -102,6 +102,9 @@ struct RegisterView: View {
         }
     }
 }
+
+
+
 /*
 import SwiftUI
 
