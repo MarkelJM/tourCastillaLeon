@@ -23,6 +23,7 @@ class AppState: ObservableObject {
         case login
         case profile
         case map
+        case map3D
         case challengeList
         case avatarSelection
         case puzzle(id: String)

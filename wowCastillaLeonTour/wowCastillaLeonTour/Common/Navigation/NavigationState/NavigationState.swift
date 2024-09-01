@@ -51,6 +51,8 @@ struct NavigationState: View {
             ProfileView(viewModel: ProfileViewModel())
         case .map:
             MapView()
+        case .map3D:
+            Map3DView()
         case .challengeList:
             ChallengeListView()
         case .avatarSelection:
