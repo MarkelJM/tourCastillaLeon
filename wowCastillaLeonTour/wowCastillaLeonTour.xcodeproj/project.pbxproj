@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C752AF88562CE2E96041FB6A /* Pods_wowCastillaLeonTour.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7780C580DC3A9E1C0DCAC850 /* Pods_wowCastillaLeonTour.framework */; };
+		90ADFE266659506C60AC901A /* Pods_wowCastillaLeonTour.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D353BE5CFB86433C1ACD911 /* Pods_wowCastillaLeonTour.framework */; };
 		D35F004F2C173FA000780464 /* wowCastillaLeonTourApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35F004E2C173FA000780464 /* wowCastillaLeonTourApp.swift */; };
 		D35F00512C173FA000780464 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35F00502C173FA000780464 /* ContentView.swift */; };
 		D35F00532C173FA100780464 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D35F00522C173FA100780464 /* Assets.xcassets */; };
@@ -56,6 +56,7 @@
 		D39649142C84B68800EAAC19 /* MapToggleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39649132C84B68800EAAC19 /* MapToggleView.swift */; };
 		D39649162C84C34F00EAAC19 /* Map3DViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39649152C84C34F00EAAC19 /* Map3DViewModel.swift */; };
 		D39649192C84E28600EAAC19 /* FirebaseFunctionsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39649182C84E28600EAAC19 /* FirebaseFunctionsManager.swift */; };
+		D396491B2C85B47C00EAAC19 /* Map3DDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D396491A2C85B47C00EAAC19 /* Map3DDataManager.swift */; };
 		D3DDA8782C18548D00C43CBA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDA8772C18548D00C43CBA /* User.swift */; };
 		D3DDA8822C18625200C43CBA /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDA8812C18625200C43CBA /* RegisterViewModel.swift */; };
 		D3DDA8862C18626A00C43CBA /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDA8852C18626A00C43CBA /* RegisterView.swift */; };
@@ -114,7 +115,7 @@
 		D3E4B7982C3E9547000BEE9F /* MapFirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B7972C3E9547000BEE9F /* MapFirestoreManager.swift */; };
 		D3E4B79A2C3E9558000BEE9F /* MapDatamanager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B7992C3E9558000BEE9F /* MapDatamanager.swift */; };
 		D3E4B79C2C3E9562000BEE9F /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B79B2C3E9562000BEE9F /* MapViewModel.swift */; };
-		D3E4B79E2C3E9575000BEE9F /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B79D2C3E9575000BEE9F /* MapView.swift */; };
+		D3E4B79E2C3E9575000BEE9F /* Map2DView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B79D2C3E9575000BEE9F /* Map2DView.swift */; };
 		D3E4B7A12C3FE14C000BEE9F /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B7A02C3FE14C000BEE9F /* LocationManager.swift */; };
 		D3E4B7A62C4117CF000BEE9F /* MapCallOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B7A52C4117CF000BEE9F /* MapCallOut.swift */; };
 		D3E4B7A92C4121F2000BEE9F /* SceneKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3E4B7A82C4121F2000BEE9F /* SceneKit.framework */; };
@@ -149,9 +150,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		7780C580DC3A9E1C0DCAC850 /* Pods_wowCastillaLeonTour.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_wowCastillaLeonTour.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		942C0911158971675010018B /* Pods-wowCastillaLeonTour.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wowCastillaLeonTour.debug.xcconfig"; path = "Target Support Files/Pods-wowCastillaLeonTour/Pods-wowCastillaLeonTour.debug.xcconfig"; sourceTree = "<group>"; };
-		97D5A182E3860DD73A98C2FC /* Pods-wowCastillaLeonTour.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wowCastillaLeonTour.release.xcconfig"; path = "Target Support Files/Pods-wowCastillaLeonTour/Pods-wowCastillaLeonTour.release.xcconfig"; sourceTree = "<group>"; };
+		2D353BE5CFB86433C1ACD911 /* Pods_wowCastillaLeonTour.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_wowCastillaLeonTour.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4F63BB5B667A7CA32AEA8583 /* Pods-wowCastillaLeonTour.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wowCastillaLeonTour.debug.xcconfig"; path = "Target Support Files/Pods-wowCastillaLeonTour/Pods-wowCastillaLeonTour.debug.xcconfig"; sourceTree = "<group>"; };
+		B48410A60158930D6849ED9B /* Pods-wowCastillaLeonTour.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wowCastillaLeonTour.release.xcconfig"; path = "Target Support Files/Pods-wowCastillaLeonTour/Pods-wowCastillaLeonTour.release.xcconfig"; sourceTree = "<group>"; };
 		D35F004B2C173FA000780464 /* wowCastillaLeonTour.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = wowCastillaLeonTour.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D35F004E2C173FA000780464 /* wowCastillaLeonTourApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = wowCastillaLeonTourApp.swift; sourceTree = "<group>"; };
 		D35F00502C173FA000780464 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -200,6 +201,7 @@
 		D39649132C84B68800EAAC19 /* MapToggleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapToggleView.swift; sourceTree = "<group>"; };
 		D39649152C84C34F00EAAC19 /* Map3DViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Map3DViewModel.swift; sourceTree = "<group>"; };
 		D39649182C84E28600EAAC19 /* FirebaseFunctionsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseFunctionsManager.swift; sourceTree = "<group>"; };
+		D396491A2C85B47C00EAAC19 /* Map3DDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Map3DDataManager.swift; sourceTree = "<group>"; };
 		D3DDA8772C18548D00C43CBA /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		D3DDA8812C18625200C43CBA /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
 		D3DDA8852C18626A00C43CBA /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
@@ -251,7 +253,7 @@
 		D3E4B7972C3E9547000BEE9F /* MapFirestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapFirestoreManager.swift; sourceTree = "<group>"; };
 		D3E4B7992C3E9558000BEE9F /* MapDatamanager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapDatamanager.swift; sourceTree = "<group>"; };
 		D3E4B79B2C3E9562000BEE9F /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
-		D3E4B79D2C3E9575000BEE9F /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		D3E4B79D2C3E9575000BEE9F /* Map2DView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Map2DView.swift; sourceTree = "<group>"; };
 		D3E4B7A02C3FE14C000BEE9F /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		D3E4B7A52C4117CF000BEE9F /* MapCallOut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCallOut.swift; sourceTree = "<group>"; };
 		D3E4B7A82C4121F2000BEE9F /* SceneKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SceneKit.framework; path = System/Library/Frameworks/SceneKit.framework; sourceTree = SDKROOT; };
@@ -299,7 +301,7 @@
 				D3DEAF2B2C7650A200AB0325 /* FirebaseStorage in Frameworks */,
 				D3DEAF252C7650A200AB0325 /* FirebaseFirestore in Frameworks */,
 				D3E4B7A92C4121F2000BEE9F /* SceneKit.framework in Frameworks */,
-				C752AF88562CE2E96041FB6A /* Pods_wowCastillaLeonTour.framework in Frameworks */,
+				90ADFE266659506C60AC901A /* Pods_wowCastillaLeonTour.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -309,8 +311,8 @@
 		7AD7817E2387E23C09161DD9 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				942C0911158971675010018B /* Pods-wowCastillaLeonTour.debug.xcconfig */,
-				97D5A182E3860DD73A98C2FC /* Pods-wowCastillaLeonTour.release.xcconfig */,
+				4F63BB5B667A7CA32AEA8583 /* Pods-wowCastillaLeonTour.debug.xcconfig */,
+				B48410A60158930D6849ED9B /* Pods-wowCastillaLeonTour.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -601,7 +603,7 @@
 				D3E4B7972C3E9547000BEE9F /* MapFirestoreManager.swift */,
 				D3E4B7992C3E9558000BEE9F /* MapDatamanager.swift */,
 				D3E4B79B2C3E9562000BEE9F /* MapViewModel.swift */,
-				D3E4B79D2C3E9575000BEE9F /* MapView.swift */,
+				D3E4B79D2C3E9575000BEE9F /* Map2DView.swift */,
 			);
 			path = 2D;
 			sourceTree = "<group>";
@@ -979,7 +981,7 @@
 			isa = PBXGroup;
 			children = (
 				D3E4B7A82C4121F2000BEE9F /* SceneKit.framework */,
-				7780C580DC3A9E1C0DCAC850 /* Pods_wowCastillaLeonTour.framework */,
+				2D353BE5CFB86433C1ACD911 /* Pods_wowCastillaLeonTour.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -989,6 +991,7 @@
 			children = (
 				D39649102C84B58B00EAAC19 /* Map3DView.swift */,
 				D39649152C84C34F00EAAC19 /* Map3DViewModel.swift */,
+				D396491A2C85B47C00EAAC19 /* Map3DDataManager.swift */,
 			);
 			path = 3DMap;
 			sourceTree = "<group>";
@@ -1077,12 +1080,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D35F00742C173FA100780464 /* Build configuration list for PBXNativeTarget "wowCastillaLeonTour" */;
 			buildPhases = (
-				D0326FF7ECAF8C5D8BEB227C /* [CP] Check Pods Manifest.lock */,
+				EFDA188856A4D4A7F6BE6BF0 /* [CP] Check Pods Manifest.lock */,
 				D35F00472C173FA000780464 /* Sources */,
 				D35F00482C173FA000780464 /* Frameworks */,
 				D35F00492C173FA000780464 /* Resources */,
 				D35F008F2C17422C00780464 /* ShellScript */,
-				58B2BB21816C2E31AA6FFB7A /* [CP] Embed Pods Frameworks */,
+				3732DDF3551262CCE9092A8D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1154,7 +1157,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		58B2BB21816C2E31AA6FFB7A /* [CP] Embed Pods Frameworks */ = {
+		3732DDF3551262CCE9092A8D /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1169,28 +1172,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-wowCastillaLeonTour/Pods-wowCastillaLeonTour-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D0326FF7ECAF8C5D8BEB227C /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-wowCastillaLeonTour-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D35F008F2C17422C00780464 /* ShellScript */ = {
@@ -1214,6 +1195,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${BUILD_DIR%/Build/*}/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run\"\n";
+		};
+		EFDA188856A4D4A7F6BE6BF0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-wowCastillaLeonTour-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1274,7 +1277,7 @@
 				D39648D72C7A5A5500EAAC19 /* ChallengeListViewModel.swift in Sources */,
 				D39648E92C7CCFFF00EAAC19 /* Coordinates.swift in Sources */,
 				D35F00582C173FA100780464 /* Persistence.swift in Sources */,
-				D3E4B79E2C3E9575000BEE9F /* MapView.swift in Sources */,
+				D3E4B79E2C3E9575000BEE9F /* Map2DView.swift in Sources */,
 				D3DDA8AE2C19B10F00C43CBA /* User+Firebase.swift in Sources */,
 				D38F8F732C51032600315904 /* BaseViewModel.swift in Sources */,
 				D3E4B7822C3E88D0000BEE9F /* QuestionModel.swift in Sources */,
@@ -1326,6 +1329,7 @@
 				D3E4B7A62C4117CF000BEE9F /* MapCallOut.swift in Sources */,
 				D39648FC2C7E49EF00EAAC19 /* KeyBoardObserver.swift in Sources */,
 				D38F8F762C6A57E300315904 /* CameraView.swift in Sources */,
+				D396491B2C85B47C00EAAC19 /* Map3DDataManager.swift in Sources */,
 				D3DDA8862C18626A00C43CBA /* RegisterView.swift in Sources */,
 				D3DEAF332C78C89400AB0325 /* OnboardingTwoView.swift in Sources */,
 				D3DDA88A2C18629300C43CBA /* VerificationEmailView.swift in Sources */,
@@ -1475,7 +1479,7 @@
 		};
 		D35F00752C173FA100780464 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 942C0911158971675010018B /* Pods-wowCastillaLeonTour.debug.xcconfig */;
+			baseConfigurationReference = 4F63BB5B667A7CA32AEA8583 /* Pods-wowCastillaLeonTour.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1512,7 +1516,7 @@
 		};
 		D35F00762C173FA100780464 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 97D5A182E3860DD73A98C2FC /* Pods-wowCastillaLeonTour.release.xcconfig */;
+			baseConfigurationReference = B48410A60158930D6849ED9B /* Pods-wowCastillaLeonTour.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

@@ -9,7 +9,7 @@
 import SwiftUI
 import MapKit
 
-struct MapView: View {
+struct Map2DView: View {
     @StateObject private var viewModel = MapViewModel(appState: AppState())
     @State private var selectedSpot: Spot?
     @State private var selectedReward: ChallengeReward?
@@ -96,6 +96,9 @@ struct MapView: View {
         }
     }
 }
+
+
+
 
 /*
 import SwiftUI

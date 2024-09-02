@@ -10,6 +10,7 @@ import MapboxMaps
 
 class Map3DViewModel: MapViewModel {
     @Published var mapView: MapView?
+    private var pointAnnotationManager: PointAnnotationManager?
 
     override init(appState: AppState) {
         super.init(appState: appState)
@@ -20,39 +21,37 @@ class Map3DViewModel: MapViewModel {
         
         // Configurar el estilo del mapa
         try? mapView.mapboxMap.loadStyleURI(.streets)
-
+        
+        // Crear el PointAnnotationManager
+        pointAnnotationManager = mapView.annotations.makePointAnnotationManager()
+        
         // Añadir anotaciones 3D basadas en los spots
-        addSpotsToMap3D(spots: spots)
+        fetchSpotsAndAddToMap3D()
     }
 
-    func addSpotsToMap3D(spots: [Spot]) {
-        guard let mapView = mapView else { return }
-        
-        var annotations = [PointAnnotation]()
+    private func fetchSpotsAndAddToMap3D() {
+        fetchSpots()
+        addSpotsToMap(spots: self.spots)  // Pasar los spots obtenidos al método de mapeo
+    }
 
-        for spot in spots {
-            let coordinates = CLLocationCoordinate2D(latitude: spot.coordinates.latitude, longitude: spot.coordinates.longitude)
-            var annotation = PointAnnotation(coordinate: coordinates)
-            
-            // Configura la anotación según si el spot está completado o no
-            if isTaskCompleted(spotID: spot.id) {
-                annotation.image = .init(image: UIImage(systemName: "checkmark.circle.fill")!, name: "completedSpot")
-            } else {
-                annotation.image = .init(image: UIImage(named: spot.image)!, name: "spotImage")
-            }
-            
-            annotations.append(annotation)
+    override func addSpotsToMap(spots: [Spot]) {
+        guard let pointAnnotationManager = pointAnnotationManager else { return }
+        
+        let annotations = spots.map { spot -> PointAnnotation in
+            let unifiedAnnotation = UnifiedAnnotation(spot: spot)
+            return unifiedAnnotation.toPointAnnotation() // Convertir cada spot en PointAnnotation
         }
 
-        // Añadir anotaciones al mapa
-        let annotationManager = mapView.annotations.makePointAnnotationManager()
-        annotationManager.annotations = annotations
+        pointAnnotationManager.annotations = annotations
     }
 
     func handleTap(on annotation: PointAnnotation) {
-        if let spot = spots.first(where: { $0.coordinates.latitude == annotation.coordinate.latitude && $0.coordinates.longitude == annotation.coordinate.longitude }) {
+        if let spot = spots.first(where: {
+            $0.coordinates.latitude == annotation.point.coordinates.latitude &&
+            $0.coordinates.longitude == annotation.point.coordinates.longitude
+        }) {
             print("Spot selected: \(spot.name)")
-            // Lógica adicional, como mostrar un callout o cambiar la vista
+            // Aquí se puede manejar la lógica adicional, como mostrar un callout o cambiar la vista
         }
     }
 }

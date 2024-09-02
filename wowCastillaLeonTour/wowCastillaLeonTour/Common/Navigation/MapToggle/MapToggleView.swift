@@ -16,7 +16,7 @@ struct MapToggleView: View {
                 Map3DView()
                     .edgesIgnoringSafeArea(.all)
             } else {
-                MapView()
+                Map2DView()
                     .edgesIgnoringSafeArea(.all)
             }
             

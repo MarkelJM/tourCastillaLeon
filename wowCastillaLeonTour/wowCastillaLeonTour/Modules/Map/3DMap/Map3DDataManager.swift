@@ -1,17 +1,17 @@
 //
-//  FirebaseFunctionsManager.swift
+//  Map3DDataManager.swift
 //  wowCastillaLeonTour
 //
-//  Created by Markel Juaristi on 1/9/24.
+//  Created by Markel Juaristi on 2/9/24.
 //
 
-import FirebaseFunctions
 import Foundation
+import FirebaseFunctions
 import Combine
 
-class FirebaseFunctionsManager {
+class Map3DDataManager {
     private lazy var functions = Functions.functions()
-    
+
     func getMapboxToken() -> AnyPublisher<String, Error> {
         Future<String, Error> { promise in
             self.functions.httpsCallable("getMapboxToken").call { result, error in

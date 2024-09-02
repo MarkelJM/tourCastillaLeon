@@ -22,7 +22,7 @@ struct MainTabView: View {
                 .tag(0)
             
             // Mapa Tab
-            MapView()
+            Map2DView()
                 .tabItem {
                     Image(systemName: "map")
                     Text("Mapa")
