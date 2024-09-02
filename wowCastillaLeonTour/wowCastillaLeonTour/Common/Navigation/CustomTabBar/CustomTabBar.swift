@@ -23,7 +23,7 @@ struct CustomTabBar: View {
             .frame(maxWidth: .infinity)
             
             Button(action: {
-                selectedTab = .map
+                selectedTab = .mapContainer
             }) {
                 VStack {
                     Image(systemName: "map")

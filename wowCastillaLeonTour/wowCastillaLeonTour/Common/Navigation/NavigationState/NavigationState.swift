@@ -49,6 +49,8 @@ struct NavigationState: View {
             LoginView(viewModel: LoginViewModel())
         case .profile:
             ProfileView(viewModel: ProfileViewModel())
+        case .mapContainer:  // Nuevo caso para la vista combinada
+            MapContainerView()
         case .map:
             Map2DView()
         case .map3D:

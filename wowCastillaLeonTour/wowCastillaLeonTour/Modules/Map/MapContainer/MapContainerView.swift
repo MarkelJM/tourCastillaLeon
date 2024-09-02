@@ -1,13 +1,15 @@
 //
-//  MapToggleView.swift
+//  MapContainerView.swift
 //  wowCastillaLeonTour
 //
-//  Created by Markel Juaristi on 1/9/24.
+//  Created by Markel Juaristi on 2/9/24.
 //
 
 import SwiftUI
 
-struct MapToggleView: View {
+import SwiftUI
+
+struct MapContainerView: View {
     @State private var is3DView = false
     
     var body: some View {
@@ -30,9 +32,10 @@ struct MapToggleView: View {
                     .background(Color.blue)
                     .clipShape(Circle())
                     .shadow(radius: 10)
+                    .padding(.bottom, 50) // Ajusta para que no esté pegado al borde
+                    .padding(.trailing, 20) // Ajusta para que no esté pegado al borde
             }
-            .padding(.bottom, 50) // Espacio adicional desde el borde inferior de la pantalla
-            .padding(.trailing, 20) // Espacio adicional desde el borde derecho de la pantalla
         }
     }
 }
+

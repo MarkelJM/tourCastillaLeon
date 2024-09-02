@@ -63,7 +63,7 @@ struct ChallengePresentationView: View {
                             .sink(receiveCompletion: { completion in
                                 switch completion {
                                 case .finished:
-                                    appState.currentView = .map
+                                    appState.currentView = .mapContainer
                                 case .failure(let error):
                                     viewModel.alertMessage = "Error updating challenge: \(error.localizedDescription)"
                                     viewModel.showAlert = true

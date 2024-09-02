@@ -60,7 +60,7 @@ struct ChallengeListView: View {
                         .onTapGesture {
                             if viewModel.isChallengeAlreadyBegan(challengeName: challenge.challengeName) {
                                 viewModel.selectChallenge(challenge)
-                                appState.currentView = .map
+                                appState.currentView = .mapContainer
                             } else {
                                 viewModel.selectChallenge(challenge)
                                 appState.currentView = .challengePresentation(challengeName: challenge.challengeName)
