@@ -11,10 +11,12 @@ import SwiftUI
 struct NavigationState: View {
     @EnvironmentObject var appState: AppState
     @StateObject private var registerViewModel = RegisterViewModel()
+    @State private var selectedSpot: Spot? = nil
+    @State private var selectedReward: ChallengeReward? = nil
 
     private var shouldShowTabBar: Bool {
         switch appState.currentView {
-        case .map, .challengeList,  .settings:
+        case .map, .challengeList, .settings:
             return true
         default:
             return false
@@ -50,11 +52,15 @@ struct NavigationState: View {
         case .profile:
             ProfileView(viewModel: ProfileViewModel())
         case .mapContainer:  // Nuevo caso para la vista combinada
-            MapContainerView()
+            MapContainerView().environmentObject(appState)
         case .map:
             Map2DView()
         case .map3D:
-            Map3DView()
+            Map3DView(
+                selectedSpot: $selectedSpot,
+                selectedReward: $selectedReward,
+                viewModel: Map3DViewModel(appState: appState)
+            )
         case .challengeList:
             ChallengeListView()
         case .avatarSelection:
@@ -95,7 +101,6 @@ struct NavigationState_Previews: PreviewProvider {
             .environmentObject(AppState())
     }
 }
-
 
 /*
 import SwiftUI

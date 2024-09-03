@@ -7,7 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		90ADFE266659506C60AC901A /* Pods_wowCastillaLeonTour.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D353BE5CFB86433C1ACD911 /* Pods_wowCastillaLeonTour.framework */; };
+		068B998C73AFE1226040C4A7 /* Pods_wowCastillaLeonTour.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21B7470EEDDA1A90E3135ACF /* Pods_wowCastillaLeonTour.framework */; };
+		D320C77E2C862F500088DA83 /* Map3DFirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D320C77D2C862F500088DA83 /* Map3DFirestoreManager.swift */; };
+		D320C7812C86FA0F0088DA83 /* Map3DAnnotations.swift in Sources */ = {isa = PBXBuildFile; fileRef = D320C7802C86FA0F0088DA83 /* Map3DAnnotations.swift */; };
+		D320C7872C870DEF0088DA83 /* Map3DCallOutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D320C7862C870DEF0088DA83 /* Map3DCallOutView.swift */; };
+		D320C7892C870E110088DA83 /* Callout3DRewardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D320C7882C870E110088DA83 /* Callout3DRewardView.swift */; };
+		D320C78C2C8712AC0088DA83 /* Map3DViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D320C78B2C8712AC0088DA83 /* Map3DViewContainer.swift */; };
 		D354685F2C85F5A300F6C39A /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D354685E2C85F5A300F6C39A /* KeychainSwift */; };
 		D35468622C85F5D100F6C39A /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = D35468612C85F5D100F6C39A /* FirebaseAnalytics */; };
 		D35468642C85F5D100F6C39A /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = D35468632C85F5D100F6C39A /* FirebaseAuth */; };
@@ -151,9 +156,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2D353BE5CFB86433C1ACD911 /* Pods_wowCastillaLeonTour.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_wowCastillaLeonTour.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		4F63BB5B667A7CA32AEA8583 /* Pods-wowCastillaLeonTour.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wowCastillaLeonTour.debug.xcconfig"; path = "Target Support Files/Pods-wowCastillaLeonTour/Pods-wowCastillaLeonTour.debug.xcconfig"; sourceTree = "<group>"; };
-		B48410A60158930D6849ED9B /* Pods-wowCastillaLeonTour.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wowCastillaLeonTour.release.xcconfig"; path = "Target Support Files/Pods-wowCastillaLeonTour/Pods-wowCastillaLeonTour.release.xcconfig"; sourceTree = "<group>"; };
+		21B7470EEDDA1A90E3135ACF /* Pods_wowCastillaLeonTour.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_wowCastillaLeonTour.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D31FA5C9B5E6DB0EA5D8F67 /* Pods-wowCastillaLeonTour.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wowCastillaLeonTour.debug.xcconfig"; path = "Target Support Files/Pods-wowCastillaLeonTour/Pods-wowCastillaLeonTour.debug.xcconfig"; sourceTree = "<group>"; };
+		6D91BA8C3FAF5DDA61137EF0 /* Pods-wowCastillaLeonTour.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wowCastillaLeonTour.release.xcconfig"; path = "Target Support Files/Pods-wowCastillaLeonTour/Pods-wowCastillaLeonTour.release.xcconfig"; sourceTree = "<group>"; };
+		D320C77C2C8622B80088DA83 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		D320C77D2C862F500088DA83 /* Map3DFirestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Map3DFirestoreManager.swift; sourceTree = "<group>"; };
+		D320C7802C86FA0F0088DA83 /* Map3DAnnotations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Map3DAnnotations.swift; sourceTree = "<group>"; };
+		D320C7862C870DEF0088DA83 /* Map3DCallOutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Map3DCallOutView.swift; sourceTree = "<group>"; };
+		D320C7882C870E110088DA83 /* Callout3DRewardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Callout3DRewardView.swift; sourceTree = "<group>"; };
+		D320C78B2C8712AC0088DA83 /* Map3DViewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Map3DViewContainer.swift; sourceTree = "<group>"; };
 		D35468702C85F86500F6C39A /* MapContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapContainerView.swift; sourceTree = "<group>"; };
 		D35F004B2C173FA000780464 /* wowCastillaLeonTour.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = wowCastillaLeonTour.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D35F004E2C173FA000780464 /* wowCastillaLeonTourApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = wowCastillaLeonTourApp.swift; sourceTree = "<group>"; };
@@ -302,8 +313,8 @@
 				D354686A2C85F5D100F6C39A /* FirebaseFunctions in Frameworks */,
 				D35468662C85F5D100F6C39A /* FirebaseCrashlytics in Frameworks */,
 				D35468622C85F5D100F6C39A /* FirebaseAnalytics in Frameworks */,
-				90ADFE266659506C60AC901A /* Pods_wowCastillaLeonTour.framework in Frameworks */,
 				D35468682C85F5D100F6C39A /* FirebaseFirestore in Frameworks */,
+				068B998C73AFE1226040C4A7 /* Pods_wowCastillaLeonTour.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -313,10 +324,35 @@
 		7AD7817E2387E23C09161DD9 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				4F63BB5B667A7CA32AEA8583 /* Pods-wowCastillaLeonTour.debug.xcconfig */,
-				B48410A60158930D6849ED9B /* Pods-wowCastillaLeonTour.release.xcconfig */,
+				2D31FA5C9B5E6DB0EA5D8F67 /* Pods-wowCastillaLeonTour.debug.xcconfig */,
+				6D91BA8C3FAF5DDA61137EF0 /* Pods-wowCastillaLeonTour.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		D320C77F2C86F9ED0088DA83 /* 3DAnnotation */ = {
+			isa = PBXGroup;
+			children = (
+				D320C7802C86FA0F0088DA83 /* Map3DAnnotations.swift */,
+			);
+			path = 3DAnnotation;
+			sourceTree = "<group>";
+		};
+		D320C7852C870DD30088DA83 /* Callouts */ = {
+			isa = PBXGroup;
+			children = (
+				D320C7862C870DEF0088DA83 /* Map3DCallOutView.swift */,
+				D320C7882C870E110088DA83 /* Callout3DRewardView.swift */,
+			);
+			path = Callouts;
+			sourceTree = "<group>";
+		};
+		D320C78A2C87128B0088DA83 /* 3DViewContainer */ = {
+			isa = PBXGroup;
+			children = (
+				D320C78B2C8712AC0088DA83 /* Map3DViewContainer.swift */,
+			);
+			path = 3DViewContainer;
 			sourceTree = "<group>";
 		};
 		D354686F2C85F81200F6C39A /* MapContainer */ = {
@@ -348,6 +384,7 @@
 		D35F004D2C173FA000780464 /* wowCastillaLeonTour */ = {
 			isa = PBXGroup;
 			children = (
+				D320C77C2C8622B80088DA83 /* Info.plist */,
 				D3DDA8752C18547700C43CBA /* Common */,
 				D35F007D2C173FBB00780464 /* Modules */,
 				D35F00502C173FA000780464 /* ContentView.swift */,
@@ -963,9 +1000,9 @@
 			isa = PBXGroup;
 			children = (
 				D354686F2C85F81200F6C39A /* MapContainer */,
-				D39648DC2C7B954600EAAC19 /* ChallengeSelection */,
 				D3E4B7AA2C4514EF000BEE9F /* 3DMap */,
 				D3E4B7A42C41179A000BEE9F /* CallOut */,
+				D39648DC2C7B954600EAAC19 /* ChallengeSelection */,
 				D396490F2C837FE200EAAC19 /* 2D */,
 			);
 			path = Map;
@@ -992,7 +1029,7 @@
 			isa = PBXGroup;
 			children = (
 				D3E4B7A82C4121F2000BEE9F /* SceneKit.framework */,
-				2D353BE5CFB86433C1ACD911 /* Pods_wowCastillaLeonTour.framework */,
+				21B7470EEDDA1A90E3135ACF /* Pods_wowCastillaLeonTour.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1000,9 +1037,13 @@
 		D3E4B7AA2C4514EF000BEE9F /* 3DMap */ = {
 			isa = PBXGroup;
 			children = (
+				D320C78A2C87128B0088DA83 /* 3DViewContainer */,
+				D320C7852C870DD30088DA83 /* Callouts */,
+				D320C77F2C86F9ED0088DA83 /* 3DAnnotation */,
 				D39649102C84B58B00EAAC19 /* Map3DView.swift */,
 				D39649152C84C34F00EAAC19 /* Map3DViewModel.swift */,
 				D396491A2C85B47C00EAAC19 /* Map3DDataManager.swift */,
+				D320C77D2C862F500088DA83 /* Map3DFirestoreManager.swift */,
 			);
 			path = 3DMap;
 			sourceTree = "<group>";
@@ -1091,12 +1132,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D35F00742C173FA100780464 /* Build configuration list for PBXNativeTarget "wowCastillaLeonTour" */;
 			buildPhases = (
-				EFDA188856A4D4A7F6BE6BF0 /* [CP] Check Pods Manifest.lock */,
+				FD3D6F686DBA9BAE03F4F238 /* [CP] Check Pods Manifest.lock */,
 				D35F00472C173FA000780464 /* Sources */,
 				D35F00482C173FA000780464 /* Frameworks */,
 				D35F00492C173FA000780464 /* Resources */,
 				D35F008F2C17422C00780464 /* ShellScript */,
-				3732DDF3551262CCE9092A8D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1168,23 +1208,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		3732DDF3551262CCE9092A8D /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-wowCastillaLeonTour/Pods-wowCastillaLeonTour-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-wowCastillaLeonTour/Pods-wowCastillaLeonTour-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-wowCastillaLeonTour/Pods-wowCastillaLeonTour-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		D35F008F2C17422C00780464 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1207,7 +1230,7 @@
 			shellPath = /bin/sh;
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${BUILD_DIR%/Build/*}/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run\"\n";
 		};
-		EFDA188856A4D4A7F6BE6BF0 /* [CP] Check Pods Manifest.lock */ = {
+		FD3D6F686DBA9BAE03F4F238 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1272,6 +1295,7 @@
 				D3DDA8822C18625200C43CBA /* RegisterViewModel.swift in Sources */,
 				D3DEAF002C75F42200AB0325 /* SpecialPrizeTaskView.swift in Sources */,
 				D3E4B77A2C3E8879000BEE9F /* DateModel.swift in Sources */,
+				D320C78C2C8712AC0088DA83 /* Map3DViewContainer.swift in Sources */,
 				D39648E42C7CBD7E00EAAC19 /* ChallengeReward.swift in Sources */,
 				D3DDA8A52C19AD1D00C43CBA /* ProfileViewModel.swift in Sources */,
 				D396490B2C836F6500EAAC19 /* KeychainManager.swift in Sources */,
@@ -1290,6 +1314,7 @@
 				D35F00582C173FA100780464 /* Persistence.swift in Sources */,
 				D3E4B79E2C3E9575000BEE9F /* Map2DView.swift in Sources */,
 				D3DDA8AE2C19B10F00C43CBA /* User+Firebase.swift in Sources */,
+				D320C7812C86FA0F0088DA83 /* Map3DAnnotations.swift in Sources */,
 				D38F8F732C51032600315904 /* BaseViewModel.swift in Sources */,
 				D3E4B7822C3E88D0000BEE9F /* QuestionModel.swift in Sources */,
 				D3E4B74C2C19BAE4000BEE9F /* ProfileDataManager.swift in Sources */,
@@ -1311,6 +1336,7 @@
 				D3DDA89B2C1870AC00C43CBA /* LoginView.swift in Sources */,
 				D3E4B7782C3E885B000BEE9F /* CoinModel.swift in Sources */,
 				D3DEAF3A2C78CE7300AB0325 /* ForgotPasswordDataManager.swift in Sources */,
+				D320C7892C870E110088DA83 /* Callout3DRewardView.swift in Sources */,
 				D39648CC2C7A576700EAAC19 /* ChallengePresentationViewModel.swift in Sources */,
 				D3DEAF1A2C76107F00AB0325 /* SpecialPrizeTaskFirestoreManager.swift in Sources */,
 				D35468712C85F86500F6C39A /* MapContainerView.swift in Sources */,
@@ -1320,6 +1346,7 @@
 				D3E4B7912C3E9066000BEE9F /* Question+Firebase.swift in Sources */,
 				D3E4B8212C4E514F000BEE9F /* TakePhotoFirestoreManager.swift in Sources */,
 				D39648F82C7E460E00EAAC19 /* ChallengeRewardFirestoreManager.swift in Sources */,
+				D320C7872C870DEF0088DA83 /* Map3DCallOutView.swift in Sources */,
 				D39649142C84B68800EAAC19 /* MapToggleView.swift in Sources */,
 				D3E4B7552C19BC0C000BEE9F /* HomeView.swift in Sources */,
 				D3DEAF2E2C77AC4A00AB0325 /* EditProfileView.swift in Sources */,
@@ -1353,6 +1380,7 @@
 				D3E4B7932C3E9084000BEE9F /* TakePhoto+Firebase.swift in Sources */,
 				D35F00512C173FA000780464 /* ContentView.swift in Sources */,
 				D3DEAF022C75F46800AB0325 /* SpecialPrize+Firebase.swift in Sources */,
+				D320C77E2C862F500088DA83 /* Map3DFirestoreManager.swift in Sources */,
 				D3DDA8782C18548D00C43CBA /* User.swift in Sources */,
 				D39648EC2C7E383600EAAC19 /* PolicyView.swift in Sources */,
 				D3E4B8012C4E4730000BEE9F /* DatesView.swift in Sources */,
@@ -1491,7 +1519,7 @@
 		};
 		D35F00752C173FA100780464 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4F63BB5B667A7CA32AEA8583 /* Pods-wowCastillaLeonTour.debug.xcconfig */;
+			baseConfigurationReference = 2D31FA5C9B5E6DB0EA5D8F67 /* Pods-wowCastillaLeonTour.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1501,6 +1529,7 @@
 				DEVELOPMENT_TEAM = BHC56Q6KCK;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = wowCastillaLeonTour/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_NSAppleMusicUsageDescription = "Necesitamos acceso a la galería para guardar y cargar fotos relacionadas con la aplicación.";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Necesitamos acceso a la cámara para tomar fotos como parte de las actividades.";
@@ -1528,7 +1557,7 @@
 		};
 		D35F00762C173FA100780464 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B48410A60158930D6849ED9B /* Pods-wowCastillaLeonTour.release.xcconfig */;
+			baseConfigurationReference = 6D91BA8C3FAF5DDA61137EF0 /* Pods-wowCastillaLeonTour.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1538,6 +1567,7 @@
 				DEVELOPMENT_TEAM = BHC56Q6KCK;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = wowCastillaLeonTour/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_NSAppleMusicUsageDescription = "Necesitamos acceso a la galería para guardar y cargar fotos relacionadas con la aplicación.";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Necesitamos acceso a la cámara para tomar fotos como parte de las actividades.";

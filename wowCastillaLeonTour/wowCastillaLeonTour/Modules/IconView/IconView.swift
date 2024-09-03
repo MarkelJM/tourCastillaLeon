@@ -22,16 +22,23 @@ struct IconView: View {
                 Spacer()
                 
                 // Bienvenida
-                Text("Bienvenido a ConquistaCyL")
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
-                    .foregroundColor(.mateGold)
-                    .padding(.top, 20)
                 
-                Text("¡Logra todos tus retos!")
-                    .font(.title2)
-                    .foregroundColor(.mateGold)
-                    .padding(.bottom, 20)
+                VStack{
+                    Text("Bienvenido a ConquistaCyL")
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
+                        .foregroundColor(.mateGold)
+                        .padding(.top, 20)
+                    
+                    Text("¡Logra todos tus retos!")
+                        .font(.title2)
+                        .foregroundColor(.mateGold)
+                        .padding(.bottom, 20)
+                }
+                .background(Color.black.opacity(0.5))
+                .cornerRadius(20)
+
+
 
                 Image("iconoConquistaCyL")
                     .resizable()

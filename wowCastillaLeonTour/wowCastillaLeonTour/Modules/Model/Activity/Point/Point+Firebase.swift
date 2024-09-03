@@ -4,7 +4,7 @@
 //
 //  Created by Markel Juaristi on 10/7/24.
 //
-
+/*
 import Foundation
 import FirebaseFirestore
 import CoreLocation
@@ -55,6 +55,8 @@ extension Point {
     }
 }
 
+ 
+ */
 /*
 extension Point {
     init?(from firestoreData: [String: Any]) {

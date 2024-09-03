@@ -7,7 +7,6 @@
 
 import Foundation
 import MapKit
-import MapboxMaps
 
 protocol IdentifiableAnnotation: MKAnnotation, Identifiable {}
 
@@ -51,11 +50,5 @@ class UnifiedAnnotation: NSObject, IdentifiableAnnotation {
     }
     
     
-    // Método para convertir UnifiedAnnotation a PointAnnotation de Mapbox
-     func toPointAnnotation() -> PointAnnotation {
-         var pointAnnotation = PointAnnotation(coordinate: self.coordinate)
-         pointAnnotation.image = .init(image: UIImage(systemName: self.image)!, name: self.image)
-         pointAnnotation.textField = self.title ?? ""
-         return pointAnnotation
-     }
+    
 }

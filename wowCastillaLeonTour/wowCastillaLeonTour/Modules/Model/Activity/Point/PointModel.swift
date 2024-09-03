@@ -4,7 +4,7 @@
 //
 //  Created by Markel Juaristi on 10/7/24.
 //
-
+/*
 import Foundation
 import CoreLocation
 
@@ -25,3 +25,4 @@ struct Coordinate: Identifiable {
     var latitude: Double
     var longitude: Double
 }
+*/
