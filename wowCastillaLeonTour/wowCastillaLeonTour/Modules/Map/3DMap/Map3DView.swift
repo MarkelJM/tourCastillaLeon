@@ -11,7 +11,6 @@ import MapKit
 struct Map3DView: UIViewRepresentable {
     @Binding var selectedSpot: Spot?
     @Binding var selectedReward: ChallengeReward?
-
     @ObservedObject var viewModel: Map3DViewModel
 
     class Coordinator: NSObject, MKMapViewDelegate {
@@ -21,13 +20,34 @@ struct Map3DView: UIViewRepresentable {
             self.parent = parent
         }
 
+        func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+            // Configurar la vista para cada anotación
+            let annotationView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: "spot")
+            annotationView.canShowCallout = true
+            
+            if let spotAnnotation = annotation as? UnifiedAnnotation {
+                if let spot = spotAnnotation.spot, parent.viewModel.isTaskCompleted(spotID: spot.id) {
+                    annotationView.markerTintColor = .green
+                    annotationView.glyphImage = UIImage(systemName: "checkmark.circle.fill")
+                } else if spotAnnotation.reward != nil {
+                    annotationView.glyphImage = UIImage(systemName: "trophy.circle.fill")
+                    annotationView.markerTintColor = .yellow
+                } else {
+                    annotationView.markerTintColor = .red
+                }
+            }
+
+            return annotationView
+        }
+
         func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-            print("Annotation selected: \(String(describing: view.annotation?.coordinate))")
             if let annotation = view.annotation as? UnifiedAnnotation {
                 if let spot = annotation.spot {
                     parent.selectedSpot = spot
+                    parent.viewModel.focusOnAnnotation(annotation: annotation, mapView: mapView)
                 } else if let reward = annotation.reward {
                     parent.selectedReward = reward
+                    parent.viewModel.focusOnAnnotation(annotation: annotation, mapView: mapView)
                 }
             }
         }
@@ -38,13 +58,14 @@ struct Map3DView: UIViewRepresentable {
     }
 
     func makeUIView(context: Context) -> MKMapView {
-        print("Creating MKMapView...")
         let mapView = MKMapView()
         mapView.delegate = context.coordinator
         
-        let camera = MKMapCamera(lookingAtCenter: viewModel.region.center, fromDistance: 2000, pitch: 45, heading: 0)
+        // Configuración de la cámara 3D
+        let camera = MKMapCamera(lookingAtCenter: viewModel.region.center, fromDistance: 1000, pitch: 80, heading: 0)
         mapView.setCamera(camera, animated: false)
         
+        // Configuración del resto de propiedades del mapView
         mapView.showsUserLocation = true
         mapView.isPitchEnabled = true
         mapView.isRotateEnabled = true
@@ -60,10 +81,10 @@ struct Map3DView: UIViewRepresentable {
     }
 
     func updateUIView(_ uiView: MKMapView, context: Context) {
-        print("Updating MKMapView with new annotations...")
         uiView.removeAnnotations(uiView.annotations)
         uiView.addAnnotations(viewModel.mapAnnotations)
-        // Aquí podemos ver si esta actualización es la que causa que el callout no aparezca
+        
+        // Actualizar la región cuando sea necesario
         uiView.setRegion(viewModel.region, animated: true)
     }
 }
