@@ -43,9 +43,9 @@ struct CustomTabBar: View {
             }
             .frame(maxWidth: .infinity)
         }
-        .padding()
+        //.padding()
         .background(Color.gray.opacity(0.1))
         .cornerRadius(10)
-        .padding(.top, 150)  // Aquí se aplica el padding superior de 150
+        .padding(.top, 200)  // Aquí se aplica el padding superior de 150
     }
 }

@@ -5,7 +5,7 @@
 //  Created by Markel Juaristi on 1/9/24.
 //
 
-
+/*
 import SwiftUI
 
 struct MapToggleView: View {
@@ -41,6 +41,9 @@ struct MapToggleView: View {
         }
     }
 }
+*/
+
+
 
 /*
 import SwiftUI

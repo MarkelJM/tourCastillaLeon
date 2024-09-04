@@ -16,7 +16,7 @@ struct NavigationState: View {
 
     private var shouldShowTabBar: Bool {
         switch appState.currentView {
-        case .map, .challengeList, .settings:
+        case .mapContainer, .challengeList, .settings:
             return true
         default:
             return false
@@ -25,9 +25,13 @@ struct NavigationState: View {
 
     var body: some View {
         VStack {
+            
+            
             if shouldShowTabBar {
                 CustomTabBar(selectedTab: $appState.currentView)
             }
+            
+            
             
             Spacer()
             

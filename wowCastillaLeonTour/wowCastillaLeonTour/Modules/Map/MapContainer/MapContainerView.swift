@@ -16,25 +16,23 @@ struct MapContainerView: View {
 
     var body: some View {
         ZStack(alignment: .bottomTrailing) {
-            VStack(spacing: 0) {
-                CustomTabBar(selectedTab: $appState.currentView)
-                    .padding(.top, 100)
-                    .zIndex(1)
+            VStack {
+                
 
                 if is3DView {
                     Map3DView(selectedSpot: $selectedSpot, selectedReward: $selectedReward, viewModel: viewModel)
-                        .edgesIgnoringSafeArea(.all)
+                        .edgesIgnoringSafeArea([.top, .bottom])
                 } else {
                     Map2DView()
-                        .edgesIgnoringSafeArea(.all)
+                        //.edgesIgnoringSafeArea(.all)
                 }
             }
-            .padding(.bottom, 10)
+            //.padding(.bottom, 10)
 
             Button(action: {
                 is3DView.toggle()
             }) {
-                Text(is3DView ? "Cambiar a 2D" : "Cambiar a 3D")
+                Text(is3DView ? "2D" : "3D")
                     .font(.headline)
                     .foregroundColor(.white)
                     .padding()
@@ -43,7 +41,7 @@ struct MapContainerView: View {
                     .shadow(radius: 10)
                     .padding()
             }
-            .padding(.bottom, 200)
+            .padding(.bottom, 250)
 
             // Aquí se muestran los sheets en base a la selección
             .sheet(item: $selectedSpot) { spot in
