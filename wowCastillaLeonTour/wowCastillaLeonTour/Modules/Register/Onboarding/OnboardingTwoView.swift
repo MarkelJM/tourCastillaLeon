@@ -32,6 +32,10 @@ struct OnboardingTwoView: View {
                                     .background(Color.mateGold)
                                     .foregroundColor(.black)
                                     .cornerRadius(10)
+                                    .padding(.top, 50)
+
+                                
+                                
                             }
                             Spacer()
                         }
@@ -62,6 +66,7 @@ struct OnboardingTwoView: View {
                         .cornerRadius(10)
                         .padding(.bottom, 40)
                 }
+                Spacer()
             }
             .padding()
             .background(Color.black.opacity(0.6))  // Fondo con opacidad
@@ -70,7 +75,8 @@ struct OnboardingTwoView: View {
         }
     }
 }
-
+/*
 #Preview {
     OnboardingTwoView()
 }
+*/

@@ -23,7 +23,7 @@ struct IconView: View {
                 
                 // Bienvenida
                 
-                VStack{
+                VStack {
                     Text("Bienvenido a ConquistaCyL")
                         .font(.largeTitle)
                         .fontWeight(.bold)
@@ -35,8 +35,14 @@ struct IconView: View {
                         .foregroundColor(.mateGold)
                         .padding(.bottom, 20)
                 }
+                .padding(30) // Agrega más espacio dentro del VStack
                 .background(Color.black.opacity(0.5))
                 .cornerRadius(20)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 20) // Agrega un borde
+                        .stroke(Color.mateGold, lineWidth: 2)
+                )
+                .padding(.horizontal, 40) // Controla el espaciado externo
 
 
 
