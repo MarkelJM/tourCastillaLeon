@@ -17,6 +17,21 @@ class SettingProfileViewModel: BaseViewModel {
     @Published var editedProvince: Province = .other
     @Published var editedAvatar: Avatar = .boy  // Estado para el avatar seleccionado
     @Published var isEditing = false
+    @Published var isSoundEnabled: Bool = false
+
+    
+    
+    override init() {
+        super.init()
+        // Cargar la configuración de sonido al iniciar el ViewModel
+        self.isSoundEnabled = userDefaultsManager.isSoundEnabled()
+    }
+
+    // Método para actualizar la configuración de sonido
+    func setSoundEnabled(_ isEnabled: Bool) {
+        userDefaultsManager.setSoundEnabled(isEnabled)
+        isSoundEnabled = isEnabled
+    }
 
     // Inicializar los valores editables con los datos del usuario actual cuando se inicie la edición
     func startEditing() {

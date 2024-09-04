@@ -13,6 +13,8 @@
 		D320C7872C870DEF0088DA83 /* Map3DCallOutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D320C7862C870DEF0088DA83 /* Map3DCallOutView.swift */; };
 		D320C7892C870E110088DA83 /* Callout3DRewardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D320C7882C870E110088DA83 /* Callout3DRewardView.swift */; };
 		D320C78C2C8712AC0088DA83 /* Map3DViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D320C78B2C8712AC0088DA83 /* Map3DViewContainer.swift */; };
+		D320C78F2C88C8890088DA83 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D320C78E2C88C8880088DA83 /* WebView.swift */; };
+		D320C7912C88CCE70088DA83 /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D320C7902C88CCE70088DA83 /* SoundManager.swift */; };
 		D354685F2C85F5A300F6C39A /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D354685E2C85F5A300F6C39A /* KeychainSwift */; };
 		D35468622C85F5D100F6C39A /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = D35468612C85F5D100F6C39A /* FirebaseAnalytics */; };
 		D35468642C85F5D100F6C39A /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = D35468632C85F5D100F6C39A /* FirebaseAuth */; };
@@ -165,6 +167,8 @@
 		D320C7862C870DEF0088DA83 /* Map3DCallOutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Map3DCallOutView.swift; sourceTree = "<group>"; };
 		D320C7882C870E110088DA83 /* Callout3DRewardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Callout3DRewardView.swift; sourceTree = "<group>"; };
 		D320C78B2C8712AC0088DA83 /* Map3DViewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Map3DViewContainer.swift; sourceTree = "<group>"; };
+		D320C78E2C88C8880088DA83 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
+		D320C7902C88CCE70088DA83 /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
 		D35468702C85F86500F6C39A /* MapContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapContainerView.swift; sourceTree = "<group>"; };
 		D35F004B2C173FA000780464 /* wowCastillaLeonTour.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = wowCastillaLeonTour.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D35F004E2C173FA000780464 /* wowCastillaLeonTourApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = wowCastillaLeonTourApp.swift; sourceTree = "<group>"; };
@@ -353,6 +357,14 @@
 				D320C78B2C8712AC0088DA83 /* Map3DViewContainer.swift */,
 			);
 			path = 3DViewContainer;
+			sourceTree = "<group>";
+		};
+		D320C78D2C88C8690088DA83 /* WebView */ = {
+			isa = PBXGroup;
+			children = (
+				D320C78E2C88C8880088DA83 /* WebView.swift */,
+			);
+			path = WebView;
 			sourceTree = "<group>";
 		};
 		D354686F2C85F81200F6C39A /* MapContainer */ = {
@@ -598,7 +610,9 @@
 		D39648F92C7E49D200EAAC19 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				D320C78D2C88C8690088DA83 /* WebView */,
 				D39648FA2C7E49DA00EAAC19 /* KeyBoardObserver */,
+				D320C7902C88CCE70088DA83 /* SoundManager.swift */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -1303,6 +1317,7 @@
 				D39649192C84E28600EAAC19 /* FirebaseFunctionsManager.swift in Sources */,
 				D3E4B80D2C4E4C42000BEE9F /* TakePhotoViewModel.swift in Sources */,
 				D39648D12C7A58B800EAAC19 /* ChallengePresentationFirestoreManager.swift in Sources */,
+				D320C7912C88CCE70088DA83 /* SoundManager.swift in Sources */,
 				D3E4B81B2C4E50F7000BEE9F /* DatesFirestoreManager.swift in Sources */,
 				D3E4B7872C3E8C1D000BEE9F /* Coin+Firebase.swift in Sources */,
 				D3E4B80F2C4E4F72000BEE9F /* CoinDataManager.swift in Sources */,
@@ -1320,6 +1335,7 @@
 				D3E4B74C2C19BAE4000BEE9F /* ProfileDataManager.swift in Sources */,
 				D39648D92C7A5A6B00EAAC19 /* ChallengeListDataManager.swift in Sources */,
 				D3E4B7852C3E890A000BEE9F /* TakePhotoModel.swift in Sources */,
+				D320C78F2C88C8890088DA83 /* WebView.swift in Sources */,
 				D3E4B79C2C3E9562000BEE9F /* MapViewModel.swift in Sources */,
 				D39648C52C7A3CC000EAAC19 /* Challenge.swift in Sources */,
 				D39649052C81EA7800EAAC19 /* UnifiedAnnotation.swift in Sources */,

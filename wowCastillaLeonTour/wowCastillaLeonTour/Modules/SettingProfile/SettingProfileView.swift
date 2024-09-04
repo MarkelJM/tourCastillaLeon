@@ -24,7 +24,7 @@ struct SettingProfileView: View {
 
             ScrollView {
                 VStack(spacing: 20) {
-                    // Botón "Cerrar Sesión" en la parte superior izquierda
+                    // Botón "Cerrar Sesión"
                     HStack {
                         Button(action: {
                             KeychainManager.shared.delete(key: "userUID")
@@ -50,6 +50,7 @@ struct SettingProfileView: View {
                         .overlay(Circle().stroke(Color.mateRed, lineWidth: 2))
                         .padding(.top, 40)
 
+                    // Información de perfil
                     VStack(alignment: .leading, spacing: 10) {
                         ProfileInfoRow(label: "Nombre:", value: viewModel.user?.firstName ?? "")
                         ProfileInfoRow(label: "Apellido:", value: viewModel.user?.lastName ?? "")
@@ -62,6 +63,7 @@ struct SettingProfileView: View {
                     .background(Color.black.opacity(0.7))
                     .cornerRadius(15)
 
+                    // Estadísticas por desafío
                     VStack(spacing: 10) {
                         Text("Estadísticas por Desafío")
                             .font(.title3)
@@ -80,7 +82,18 @@ struct SettingProfileView: View {
                     }
                     .padding(.horizontal)
 
-                    // Botón "Términos y Condiciones"
+                    // Toggle para activar o desactivar los sonidos
+                    Toggle(isOn: $viewModel.isSoundEnabled) {
+                        Text("Activar efectos de sonido")
+                            .foregroundColor(.white)
+                            .font(.headline)
+                    }
+                    .padding()
+                    .background(Color.black.opacity(0.7))
+                    .cornerRadius(10)
+                    .padding(.horizontal)
+
+                    // Botón de Términos y Condiciones
                     Button(action: {
                         showPolicyView = true
                     }) {
@@ -107,7 +120,7 @@ struct SettingProfileView: View {
                 .padding(.top, 40)
             }
 
-            // Botón de edición en la parte superior derecha
+            // Botón de edición de perfil
             Button(action: {
                 viewModel.startEditing()
                 showEditProfileModal = true
@@ -135,9 +148,6 @@ struct SettingProfileView: View {
                     showEditProfileModal = false
                 }
             )
-            .background(Color.black.opacity(0.2))
-            .cornerRadius(20)
-            .padding()
         }
         .sheet(isPresented: $showPolicyView) {
             PolicyView()
