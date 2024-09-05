@@ -134,6 +134,14 @@ struct ResultDatesOrderView: View {
                     .foregroundColor(.mateGold)
                     .padding()
 
+                if let informationDetail = viewModel.dateEvent?.informationDetail {
+                    Text(informationDetail)  // Mostrar el campo informationDetail
+                        .font(.body)
+                        .foregroundColor(.white)
+                        .multilineTextAlignment(.center)
+                        .padding()
+                }
+
                 Button(action: {
                     viewModel.showResultAlert = false
                 }) {

@@ -119,6 +119,14 @@ struct ResultQuestionView: View {
                     .foregroundColor(.mateGold)
                     .padding()
 
+                if let informationDetail = viewModel.questionAnswer?.informationDetail {
+                    Text(informationDetail)  // Mostrar el campo informationDetail
+                        .font(.body)
+                        .foregroundColor(.white)
+                        .multilineTextAlignment(.center)
+                        .padding()
+                }
+
                 Button(action: {
                     viewModel.showResultModal = false
                 }) {

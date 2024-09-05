@@ -19,7 +19,8 @@ extension QuestionAnswer {
               let correctAnswerMessage = firestoreData["correct_answer_message"] as? String,
               let incorrectAnswerMessage = firestoreData["incorrect_answer_message"] as? String,
               let isCapital = firestoreData["isCapital"] as? Bool,
-              let challenge = firestoreData["challenge"] as? String else {  // Nuevo campo
+              let challenge = firestoreData["challenge"] as? String,
+              let informationDetail = firestoreData["informationDetail"] as? String else {  // Nuevo campo
             return nil
         }
 
@@ -33,6 +34,7 @@ extension QuestionAnswer {
         self.incorrectAnswerMessage = incorrectAnswerMessage
         self.isCapital = isCapital
         self.challenge = challenge
+        self.informationDetail = informationDetail
     }
     
     func toFirestoreData() -> [String: Any] {
@@ -46,7 +48,8 @@ extension QuestionAnswer {
             "correct_answer_message": correctAnswerMessage,
             "incorrect_answer_message": incorrectAnswerMessage,
             "isCapital": isCapital,
-            "challenge": challenge  // Nuevo campo
+            "challenge": challenge,
+            "informationDetail": informationDetail  // Nuevo campo
         ]
     }
 }

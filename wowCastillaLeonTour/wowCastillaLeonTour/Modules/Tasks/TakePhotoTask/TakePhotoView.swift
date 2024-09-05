@@ -245,6 +245,15 @@ struct ResultTakePhotoView: View {
                     .foregroundColor(.mateGold)
                     .padding()
 
+                // Mostrar el campo 'informationDetail' antes del botón de continuar
+                if let informationDetail = viewModel.takePhoto?.informationDetail {
+                    Text(informationDetail)
+                        .font(.body)
+                        .foregroundColor(.white)
+                        .multilineTextAlignment(.center)
+                        .padding()
+                }
+
                 Button(action: {
                     viewModel.showResultModal = false
                 }) {
@@ -262,7 +271,6 @@ struct ResultTakePhotoView: View {
         }
     }
 }
-
 
 /*
 #Preview {
