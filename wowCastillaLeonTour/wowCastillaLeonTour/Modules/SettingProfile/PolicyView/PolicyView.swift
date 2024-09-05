@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct PolicyView: View {
+    
+    private let url = URL(string: "https://conquistacyl.wordpress.com")!
+    
     var body: some View {
         ZStack {
             // Fondo de pantalla
@@ -23,9 +26,11 @@ struct PolicyView: View {
                         .foregroundColor(.mateGold)
                         .padding()
                     
-                    Text("Aquí van los términos y condiciones...") // Reemplaza con el contenido real
-                        .foregroundColor(.white)
-                        .padding()
+                    // Aquí va la WebView que carga el enlace
+                    WebView(url: url)
+                        .frame(height: 400) // Ajusta el tamaño según sea necesario
+                        .cornerRadius(10)
+                        .padding(.horizontal)
                     
                     Spacer()
                 }
