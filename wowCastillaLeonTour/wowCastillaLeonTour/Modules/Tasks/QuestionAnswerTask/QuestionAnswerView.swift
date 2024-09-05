@@ -100,12 +100,12 @@ struct QuestionAnswerView: View {
         .environmentObject(AppState())
 }
 
+
 struct ResultQuestionView: View {
     @ObservedObject var viewModel: QuestionAnswerViewModel
     @EnvironmentObject var appState: AppState
-
     let soundManager = SoundManager.shared
-    
+
     var body: some View {
         ZStack {
             Image("fondoSolar")
@@ -119,13 +119,19 @@ struct ResultQuestionView: View {
                     .foregroundColor(.mateGold)
                     .padding()
 
-                if let informationDetail = viewModel.questionAnswer?.informationDetail {
-                    Text(informationDetail)  // Mostrar el campo informationDetail
-                        .font(.body)
-                        .foregroundColor(.white)
-                        .multilineTextAlignment(.center)
-                        .padding()
+                // ScrollView para manejar textos largos en informationDetail
+                ScrollView {
+                    VStack {
+                        if let informationDetail = viewModel.questionAnswer?.informationDetail {
+                            Text(informationDetail)
+                                .font(.body)
+                                .foregroundColor(.white)
+                                .multilineTextAlignment(.center)
+                                .padding()
+                        }
+                    }
                 }
+                .frame(maxHeight: 200)
 
                 Button(action: {
                     viewModel.showResultModal = false
@@ -136,9 +142,10 @@ struct ResultQuestionView: View {
                         .foregroundColor(.mateWhite)
                         .cornerRadius(10)
                 }
+                .padding(.top, 20)
             }
             .padding()
-            .background(Color.black.opacity(0.5))  // Fondo del VStack con transparencia
+            .background(Color.black.opacity(0.5))
             .cornerRadius(20)
             .padding()
         }

@@ -229,6 +229,8 @@ struct TakePhotoView: View {
     }
 }
 */
+
+
 struct ResultTakePhotoView: View {
     @ObservedObject var viewModel: TakePhotoViewModel
     
@@ -245,14 +247,19 @@ struct ResultTakePhotoView: View {
                     .foregroundColor(.mateGold)
                     .padding()
 
-                // Mostrar el campo 'informationDetail' antes del botón de continuar
-                if let informationDetail = viewModel.takePhoto?.informationDetail {
-                    Text(informationDetail)
-                        .font(.body)
-                        .foregroundColor(.white)
-                        .multilineTextAlignment(.center)
-                        .padding()
+                // ScrollView para manejar textos largos en informationDetail
+                ScrollView {
+                    VStack {
+                        if let informationDetail = viewModel.takePhoto?.informationDetail {
+                            Text(informationDetail)
+                                .font(.body)
+                                .foregroundColor(.white)
+                                .multilineTextAlignment(.center)
+                                .padding()
+                        }
+                    }
                 }
+                .frame(maxHeight: 200)
 
                 Button(action: {
                     viewModel.showResultModal = false
@@ -263,9 +270,10 @@ struct ResultTakePhotoView: View {
                         .foregroundColor(.mateWhite)
                         .cornerRadius(10)
                 }
+                .padding(.top, 20)
             }
             .padding()
-            .background(Color.black.opacity(0.5))  // Fondo del VStack con transparencia
+            .background(Color.black.opacity(0.5))
             .cornerRadius(20)
             .padding()
         }
