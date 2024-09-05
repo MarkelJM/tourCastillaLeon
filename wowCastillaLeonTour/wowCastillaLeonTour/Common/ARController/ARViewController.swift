@@ -12,7 +12,7 @@ import RealityKit
 struct ARViewContainer<VM: BaseViewModel>: UIViewRepresentable {
     var prizeImageName: String
     var viewModel: VM
-
+    
     func makeUIView(context: Context) -> UIView {
         #if targetEnvironment(simulator)
         // Simulador: Mostrar una vista vacía o un mensaje indicando que AR no está disponible
@@ -46,7 +46,7 @@ struct ARViewContainer<VM: BaseViewModel>: UIViewRepresentable {
     }
 
     func updateUIView(_ uiView: UIView, context: Context) {
-        // No hay necesidad de actualizar nada para esta versión simplificada.
+        // No se necesita actualizar nada para esta versión simplificada.
     }
 
     func makeCoordinator() -> Coordinator {
@@ -74,6 +74,68 @@ struct ARViewContainer<VM: BaseViewModel>: UIViewRepresentable {
             #endif
         }
     }
+    
+    #if !targetEnvironment(simulator)
+    private func setupARScene(arView: ARView, context: Context) {
+        let anchorEntity = AnchorEntity(plane: .horizontal)
+        
+        if let url = URL(string: prizeImageName), UIApplication.shared.canOpenURL(url) {
+            // Si es una URL, descarga la imagen
+            downloadImage(from: url) { image in
+                if let cgImage = image?.cgImage {
+                    DispatchQueue.main.async {
+                        self.addImageToARView(cgImage, arView: arView, context: context)
+                    }
+                }
+            }
+        } else if let image = UIImage(named: prizeImageName), let cgImage = image.cgImage {
+            // Si es una imagen local, úsala directamente
+            addImageToARView(cgImage, arView: arView, context: context)
+        } else {
+            print("Error: No se encontró la imagen local o la URL es inválida.")
+        }
+    }
+
+    private func addImageToARView(_ cgImage: CGImage, arView: ARView, context: Context) {
+        var material = UnlitMaterial()
+        let mesh = MeshResource.generatePlane(width: 0.5, height: 0.5)
+        let modelEntity = ModelEntity(mesh: mesh)
+        
+        if let texture = try? TextureResource.generate(from: cgImage, options: .init(semantic: nil)) {
+            material.baseColor = MaterialColorParameter.texture(texture)
+            modelEntity.model?.materials = [material]
+            print("Imagen cargada correctamente en ARView.")
+        } else {
+            print("Error al crear la textura para la imagen.")
+        }
+
+        modelEntity.position = [0, 0, -1]
+        modelEntity.generateCollisionShapes(recursive: true)
+        
+        let anchorEntity = AnchorEntity(plane: .horizontal)
+        anchorEntity.addChild(modelEntity)
+        arView.scene.addAnchor(anchorEntity)
+        
+        context.coordinator.currentEntity = modelEntity
+    }
+
+    private func downloadImage(from url: URL, completion: @escaping (UIImage?) -> Void) {
+        let task = URLSession.shared.dataTask(with: url) { data, response, error in
+            if let error = error {
+                print("Error al descargar la imagen: \(error.localizedDescription)")
+                completion(nil)
+                return
+            }
+            if let data = data, let image = UIImage(data: data) {
+                completion(image)
+            } else {
+                print("Error al convertir los datos en imagen.")
+                completion(nil)
+            }
+        }
+        task.resume()
+    }
+    #endif
 }
 /*
 //FUNCIONA, PERO PARA SIMULADOR Y SACAR CAPTURAS DA PROBLEMAS
