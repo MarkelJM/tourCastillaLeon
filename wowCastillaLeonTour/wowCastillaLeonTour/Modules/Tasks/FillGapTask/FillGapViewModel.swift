@@ -16,11 +16,14 @@ class FillGapViewModel: BaseViewModel {
     
     private let dataManager = FillGapDataManager()
     private var activityId: String
-    
-    init(activityId: String) {
+    private weak var appState: AppState? // Referencia débil a AppState
+
+    init(activityId: String, appState: AppState) {
         self.activityId = activityId
+        self.appState = appState
         super.init()
         fetchUserProfile()
+        fetchFillGap()
     }
     
     func fetchFillGap() {
@@ -46,9 +49,14 @@ class FillGapViewModel: BaseViewModel {
     func submitAnswers() {
         guard let fillGap = fillGap else { return }
         
-        if userAnswers == fillGap.correctPositions {
+        // Normalizar respuestas a minúsculas y eliminar espacios en blanco al inicio y al final
+        let normalizedUserAnswers = userAnswers.map { $0.trimmingCharacters(in: .whitespacesAndNewlines).lowercased() }
+        let normalizedCorrectAnswers = fillGap.correctPositions.map { $0.trimmingCharacters(in: .whitespacesAndNewlines).lowercased() }
+        
+        if normalizedUserAnswers == normalizedCorrectAnswers {
             alertMessage = fillGap.correctAnswerMessage
             updateUserTask(fillGap: fillGap)
+            updateSpotForUser()
         } else {
             alertMessage = fillGap.incorrectAnswerMessage
         }
@@ -57,13 +65,45 @@ class FillGapViewModel: BaseViewModel {
     }
     
     private func updateUserTask(fillGap: FillGap) {
-        let activityType = "fillGap"
-        var city: String? = nil
-        
-        if fillGap.isCapital {
-            city = fillGap.province
-        }
+        updateTaskForUser(taskID: fillGap.id, challenge: fillGap.challenge)
+    }
 
-        updateUserTaskIDs(taskID: fillGap.id, activityType: activityType, city: city)
+    private func updateTaskForUser(taskID: String, challenge: String) {
+        firestoreManager.updateUserTaskIDs(taskID: taskID, challenge: challenge)
+            .sink { completion in
+                switch completion {
+                case .failure(let error):
+                    self.alertMessage = "Error actualizando la tarea: \(error.localizedDescription)"
+                    self.showAlert = true
+                case .finished:
+                    break
+                }
+            } receiveValue: { [weak self] _ in
+                print("User task updated in Firestore")
+                self?.appState?.currentView = .map  // Navegar al mapa después de actualizar
+            }
+            .store(in: &cancellables)
+    }
+
+    private func updateSpotForUser() {
+        if let spotID = userDefaultsManager.getSpotID() {
+            firestoreManager.updateUserSpotIDs(spotID: spotID)
+                .sink { completion in
+                    switch completion {
+                    case .failure(let error):
+                        self.alertMessage = "Error actualizando el spot: \(error.localizedDescription)"
+                        self.showAlert = true
+                    case .finished:
+                        break
+                    }
+                } receiveValue: { _ in
+                    print("User spot updated in Firestore")
+                }
+                .store(in: &cancellables)
+
+            userDefaultsManager.clearSpotID()
+        } else {
+            print("No spotID found in UserDefaults")
+        }
     }
 }

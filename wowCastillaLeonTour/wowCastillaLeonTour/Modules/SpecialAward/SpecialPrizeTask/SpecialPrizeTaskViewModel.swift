@@ -4,7 +4,7 @@
 //
 //  Created by Markel Juaristi on 21/8/24.
 //
-
+/*
 import SwiftUI
 import Combine
 
@@ -46,3 +46,4 @@ class SpecialPrizeTaskViewModel: BaseViewModel {
         showResultModal = true
     }
 }
+*/

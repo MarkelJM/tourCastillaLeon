@@ -4,7 +4,7 @@
 //
 //  Created by Markel Juaristi on 21/8/24.
 //
-
+/*
 import SwiftUI
 import Combine
 
@@ -112,3 +112,4 @@ class SpecialPrizeListViewModel: BaseViewModel {
         }
     }
 }
+*/

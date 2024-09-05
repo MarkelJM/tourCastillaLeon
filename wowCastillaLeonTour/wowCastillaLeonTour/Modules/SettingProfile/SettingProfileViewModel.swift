@@ -6,7 +6,6 @@
 //
 
 
-
 import SwiftUI
 import Combine
 
@@ -18,6 +17,21 @@ class SettingProfileViewModel: BaseViewModel {
     @Published var editedProvince: Province = .other
     @Published var editedAvatar: Avatar = .boy  // Estado para el avatar seleccionado
     @Published var isEditing = false
+    @Published var isSoundEnabled: Bool = true
+
+    //private let userDefaultsManager = UserDefaultsManager()
+
+    override init() {
+        super.init()
+        // Cargar la configuración de sonido al iniciar el ViewModel
+        self.isSoundEnabled = userDefaultsManager.isSoundEnabled()
+    }
+
+    // Método para actualizar la configuración de sonido
+    func toggleSoundEnabled() {
+        isSoundEnabled.toggle()  // Cambiar el estado actual
+        userDefaultsManager.setSoundEnabled(isSoundEnabled)
+    }
 
     // Inicializar los valores editables con los datos del usuario actual cuando se inicie la edición
     func startEditing() {
@@ -61,6 +75,8 @@ class SettingProfileViewModel: BaseViewModel {
             .store(in: &cancellables)
     }
 }
+
+
 
 /*
 import SwiftUI

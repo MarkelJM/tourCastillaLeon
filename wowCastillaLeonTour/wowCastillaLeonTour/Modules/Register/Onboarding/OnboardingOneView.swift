@@ -21,20 +21,40 @@ struct OnboardingOneView: View {
             VStack {
                 ScrollView {
                     VStack(alignment: .leading, spacing: 20) {
-                        Text("Bienvenido a nuestra historia")
-                            .font(.title)
-                            .foregroundColor(.mateGold)
-                            .padding(.top, 40)
-                        
-                        Text("""
-                            Aquí puedes contar la historia que desees sobre la aplicación.
-                            Puedes incluir una descripción detallada y cualquier otra información relevante
-                            que el usuario deba saber antes de comenzar su experiencia.
-                            """)
-                            .font(.body)
-                            .foregroundColor(.mateWhite)
+                        HStack {
+                            Button(action: {
+                                appState.currentView = .login
+                            }) {
+                                Image(systemName: "chevron.left")
+                                    .font(.headline)
+                                    .padding()
+                                    .background(Color.mateGold)
+                                    .foregroundColor(.black)
+                                    .cornerRadius(10)
+                                    .padding(.top, 50)
+                            }
+                            Spacer()
+                        }
+                        VStack(alignment: .leading, spacing: 20) {
+                            Text("Bienvenido a nuestra historia")
+                                .font(.title)
+                                .foregroundColor(.mateGold)
+                                .padding(.top, 40)
+                            
+                            Text("""
+                                Aquí puedes contar la historia que desees sobre la aplicación.
+                                Puedes incluir una descripción detallada y cualquier otra información relevante
+                                que el usuario deba saber antes de comenzar su experiencia.
+                                """)
+                                .font(.body)
+                                .foregroundColor(.mateWhite)
+                        }
+                        .padding()
                     }
-                    .padding()
+                    
+
+                    
+                    
                 }
                 
                 Spacer()
@@ -49,6 +69,7 @@ struct OnboardingOneView: View {
                         .cornerRadius(10)
                         .padding(.bottom, 40)
                 }
+                Spacer()
             }
             .padding()
             .background(Color.black.opacity(0.6))  // Fondo con opacidad
@@ -58,6 +79,8 @@ struct OnboardingOneView: View {
     }
 }
 
+/*
 #Preview {
     OnboardingOneView()
 }
+*/

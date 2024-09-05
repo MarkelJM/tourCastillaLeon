@@ -5,69 +5,224 @@
 //  Created by Markel Juaristi on 12/7/24.
 //
 
+
 import SwiftUI
 
 struct MapCallOutView: View {
-    var point: Point
+    var spot: Spot?
+    var reward: ChallengeReward?
+    var challenge: String?
     @EnvironmentObject var appState: AppState
     @ObservedObject var viewModel: MapViewModel
+    @State private var showCompletedAlert = false
+    let soundManager = SoundManager.shared
 
     var body: some View {
         VStack(spacing: 20) {
-            Text(point.name)
-                .font(.title2)
-                .fontWeight(.bold)
-                .foregroundColor(.mateRed)
-            
-            Text(point.abstract)
-                .font(.body)
-                .foregroundColor(.black)
-                .multilineTextAlignment(.center)
-                .padding(.horizontal)
-            
-            AsyncImage(url: URL(string: point.image)) { image in
-                image
+            if let reward = reward, let challenge = challenge {
+                Text(reward.challengeTitle)
+                    .font(.title2)
+                    .fontWeight(.bold)
+                    .foregroundColor(.mateRed)
+                
+                Text(reward.abstract)
+                    .font(.body)
+                    .foregroundColor(.black)
+                    .multilineTextAlignment(.center)
+                    .padding(.horizontal)
+                
+                Image(systemName: "star.circle.fill")
                     .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(height: 200)
+                    .foregroundColor(.yellow)
+                    .frame(width: 100, height: 100)
                     .cornerRadius(10)
                     .shadow(radius: 5)
-            } placeholder: {
-                ProgressView()
-            }
-            .padding(.horizontal)
+                    .padding(.horizontal)
 
-            Button(action: {
-                if viewModel.isTaskCompleted(taskID: point.activityId, activityType: point.activityType) {
-                    viewModel.alertMessage = "Esta tarea ya está completada."
-                    viewModel.showAlert = true
-                } else {
-                    print("Participar button tapped for \(point.name)")
-                    switch point.activityType {
-                    case "puzzles":
-                        appState.currentView = .puzzle(id: point.activityId)
-                    case "coins":
-                        appState.currentView = .coin(id: point.activityId)
-                    case "dates":
-                        appState.currentView = .dates(id: point.activityId)
-                    case "fillGap":
-                        appState.currentView = .fillGap(id: point.activityId)
-                    case "questionAnswers":
-                        appState.currentView = .questionAnswer(id: point.activityId)
-                    case "takePhotos":
-                        appState.currentView = .takePhoto(id: point.activityId)
-                    default:
-                        print("Tipo de actividad no soportado: \(point.activityType)")
-                    }
+                Button(action: {
+                    viewModel.saveSpotID(reward.id)
+                    appState.currentView = .challengeReward(challengeName: reward.challenge)
+                }) {
+                    Text("Obtener Recompensa")
+                        .font(.headline)
+                        .foregroundColor(.mateWhite)
+                        .padding()
+                        .background(Color.mateGold)
+                        .cornerRadius(10)
+                        .shadow(radius: 5)
                 }
-            }) {
-                Text("Participar")
-                    .font(.headline)
-                    .foregroundColor(.mateWhite)
-                    .padding()
-                    .background(Color.mateRed)
+            } else if let spot = spot {
+                Text(spot.name)
+                    .font(.title2)
+                    .fontWeight(.bold)
+                    .foregroundColor(.mateRed)
+                
+                Text(spot.abstract)
+                    .font(.body)
+                    .foregroundColor(.black)
+                    .multilineTextAlignment(.center)
+                    .padding(.horizontal)
+                
+                AsyncImage(url: URL(string: spot.image)) { image in
+                    image
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(height: 200)
+                        .cornerRadius(10)
+                        .shadow(radius: 5)
+                } placeholder: {
+                    ProgressView()
+                }
+                .padding(.horizontal)
+
+                Button(action: {
+                    if viewModel.isTaskCompleted(taskID: spot.activityID, activityType: spot.activityType, challenge: viewModel.selectedChallenge) {
+                        showCompletedAlert = true
+                    } else {
+                        soundManager.playButtonSound() // Reproducir sonido al pulsar "Participar"
+                        viewModel.saveSpotID(spot.id)
+                        navigateToActivity(for: spot)
+                    }
+                }) {
+                    Text("Participar")
+                        .font(.headline)
+                        .foregroundColor(.mateWhite)
+                        .padding()
+                        .background(Color.mateRed)
+                        .cornerRadius(10)
+                        .shadow(radius: 5)
+                }
+                .alert(isPresented: $showCompletedAlert) {
+                    Alert(
+                        title: Text("Aviso"),
+                        message: Text("Tarea ya completada."),
+                        dismissButton: .default(Text("OK"))
+                    )
+                }
+            }
+            Spacer()
+        }
+        .padding()
+        .background(Color.mateWhite.opacity(0.9))
+        .cornerRadius(20)
+        .shadow(radius: 10)
+    }
+
+    private func navigateToActivity(for spot: Spot) {
+        switch spot.activityType {
+        case "puzzles":
+            appState.currentView = .puzzle(id: spot.activityID)
+        case "coins":
+            appState.currentView = .coin(id: spot.activityID)
+        case "dates":
+            appState.currentView = .dates(id: spot.activityID)
+        case "fillGap":
+            appState.currentView = .fillGap(id: spot.activityID)
+        case "questionAnswers":
+            appState.currentView = .questionAnswer(id: spot.activityID)
+        case "takePhotos":
+            appState.currentView = .takePhoto(id: spot.activityID)
+        default:
+            print("Tipo de actividad no soportado: \(spot.activityType)")
+        }
+    }
+}
+
+/*
+import SwiftUI
+
+struct MapCallOutView: View {
+    var spot: Spot?
+    var reward: ChallengeReward?
+    var challenge: String?  // Añadimos el campo challenge
+    @EnvironmentObject var appState: AppState
+    @ObservedObject var viewModel: MapViewModel
+    @State private var showCompletedAlert = false
+
+    var body: some View {
+        VStack(spacing: 20) {
+            if let reward = reward, let challenge = challenge {  // Verificamos que tanto reward como challenge no sean nil
+                Text(reward.challengeTitle)
+                    .font(.title2)
+                    .fontWeight(.bold)
+                    .foregroundColor(.mateRed)
+                
+                Text(reward.abstract)
+                    .font(.body)
+                    .foregroundColor(.black)
+                    .multilineTextAlignment(.center)
+                    .padding(.horizontal)
+                
+                Image(systemName: "star.circle.fill")
+                    .resizable()
+                    .foregroundColor(.yellow)
+                    .frame(width: 100, height: 100)
                     .cornerRadius(10)
                     .shadow(radius: 5)
+                    .padding(.horizontal)
+
+                Button(action: {
+                    viewModel.saveSpotID(reward.id)
+                    print("Navigating to challengeReward with id: \(reward.id) and challenge: \(challenge)")
+                    appState.currentView = .challengeReward(challengeName: reward.id)
+                }) {
+                    Text("Obtener Recompensa")
+                        .font(.headline)
+                        .foregroundColor(.mateWhite)
+                        .padding()
+                        .background(Color.mateGold)
+                        .cornerRadius(10)
+                        .shadow(radius: 5)
+                }
+            } else if let spot = spot {
+                // Muestra la vista de Spot como anteriormente
+                Text(spot.name)
+                    .font(.title2)
+                    .fontWeight(.bold)
+                    .foregroundColor(.mateRed)
+                
+                Text(spot.abstract)
+                    .font(.body)
+                    .foregroundColor(.black)
+                    .multilineTextAlignment(.center)
+                    .padding(.horizontal)
+                
+                AsyncImage(url: URL(string: spot.image)) { image in
+                    image
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(height: 200)
+                        .cornerRadius(10)
+                        .shadow(radius: 5)
+                } placeholder: {
+                    ProgressView()
+                }
+                .padding(.horizontal)
+
+                Button(action: {
+                    if viewModel.isTaskCompleted(taskID: spot.activityID, activityType: spot.activityType, challenge: viewModel.selectedChallenge) {
+                        showCompletedAlert = true
+                    } else {
+                        print("Participar button tapped for \(spot.name)")
+                        viewModel.saveSpotID(spot.id)
+                        navigateToActivity(for: spot)
+                    }
+                }) {
+                    Text("Participar")
+                        .font(.headline)
+                        .foregroundColor(.mateWhite)
+                        .padding()
+                        .background(Color.mateRed)
+                        .cornerRadius(10)
+                        .shadow(radius: 5)
+                }
+                .alert(isPresented: $showCompletedAlert) {
+                    Alert(
+                        title: Text("Aviso"),
+                        message: Text("Tarea ya completada."),
+                        dismissButton: .default(Text("OK"))
+                    )
+                }
             }
 
             Spacer()
@@ -76,13 +231,25 @@ struct MapCallOutView: View {
         .background(Color.mateWhite.opacity(0.9))
         .cornerRadius(20)
         .shadow(radius: 10)
-        .alert(isPresented: $viewModel.showAlert) {
-            Alert(title: Text("Aviso"), message: Text(viewModel.alertMessage), dismissButton: .default(Text("OK")))
+    }
+
+    private func navigateToActivity(for spot: Spot) {
+        switch spot.activityType {
+        case "puzzles":
+            appState.currentView = .puzzle(id: spot.activityID)
+        case "coins":
+            appState.currentView = .coin(id: spot.activityID)
+        case "dates":
+            appState.currentView = .dates(id: spot.activityID)
+        case "fillGap":
+            appState.currentView = .fillGap(id: spot.activityID)
+        case "questionAnswers":
+            appState.currentView = .questionAnswer(id: spot.activityID)
+        case "takePhotos":
+            appState.currentView = .takePhoto(id: spot.activityID)
+        default:
+            print("Tipo de actividad no soportado: \(spot.activityType)")
         }
     }
-}
-/*
-#Preview {
-    MapCallOutView(point: <#Point#>)
 }
 */

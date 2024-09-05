@@ -11,6 +11,8 @@ import SwiftUI
 struct SettingProfileView: View {
     @StateObject var viewModel = SettingProfileViewModel()
     @State private var showEditProfileModal = false
+    @State private var showPolicyView = false
+    @EnvironmentObject var appState: AppState
 
     var body: some View {
         ZStack(alignment: .topTrailing) {
@@ -20,65 +22,111 @@ struct SettingProfileView: View {
                 .scaledToFill()
                 .edgesIgnoringSafeArea(.all)
 
-            VStack(spacing: 20) {
-                // Avatar
-                Image(viewModel.user?.avatar.rawValue ?? "normalMutila")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 120, height: 120)
-                    .clipShape(Circle())
-                    .overlay(Circle().stroke(Color.mateRed, lineWidth: 2))
-                    .padding(.top, 40)
+            ScrollView {
+                VStack(spacing: 20) {
+                    // Botón "Cerrar Sesión"
+                    HStack {
+                        Button(action: {
+                            KeychainManager.shared.delete(key: "userUID")
+                            appState.currentView = .login
+                        }) {
+                            Text("Cerrar Sesión")
+                                .padding()
+                                .background(Color.red)
+                                .foregroundColor(.white)
+                                .cornerRadius(10)
+                        }
+                        .padding([.top, .leading], 20)
 
-                // Profile Information
-                VStack(alignment: .leading, spacing: 10) {
-                    ProfileInfoRow(label: "Nombre:", value: viewModel.user?.firstName ?? "")
-                    ProfileInfoRow(label: "Apellido:", value: viewModel.user?.lastName ?? "")
-                    ProfileInfoRow(label: "Fecha de Nacimiento:", value: viewModel.user?.birthDate.formatted(date: .abbreviated, time: .omitted) ?? "")
-                    ProfileInfoRow(label: "Código Postal:", value: viewModel.user?.postalCode ?? "")
-                    ProfileInfoRow(label: "Ciudad:", value: viewModel.user?.city ?? "")
-                    ProfileInfoRow(label: "Provincia:", value: viewModel.user?.province.rawValue ?? "")
+                        Spacer()
+                    }
+
+                    // Avatar e información de perfil
+                    Image(viewModel.user?.avatar.rawValue ?? "normalMutila")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 120, height: 120)
+                        .clipShape(Circle())
+                        .overlay(Circle().stroke(Color.mateRed, lineWidth: 2))
+                        .padding(.top, 40)
+
+                    // Información de perfil
+                    VStack(alignment: .leading, spacing: 10) {
+                        ProfileInfoRow(label: "Nombre:", value: viewModel.user?.firstName ?? "")
+                        ProfileInfoRow(label: "Apellido:", value: viewModel.user?.lastName ?? "")
+                        ProfileInfoRow(label: "Fecha de Nacimiento:", value: viewModel.user?.birthDate.formatted(date: .abbreviated, time: .omitted) ?? "")
+                        ProfileInfoRow(label: "Código Postal:", value: viewModel.user?.postalCode ?? "")
+                        ProfileInfoRow(label: "Ciudad:", value: viewModel.user?.city ?? "")
+                        ProfileInfoRow(label: "Provincia:", value: viewModel.user?.province.rawValue ?? "")
+                    }
+                    .padding()
+                    .background(Color.black.opacity(0.7))
+                    .cornerRadius(15)
+
+                    // Estadísticas por desafío
+                    VStack(spacing: 10) {
+                        Text("Estadísticas por Desafío")
+                            .font(.title3)
+                            .fontWeight(.bold)
+                            .foregroundColor(.mateGold)
+
+                        if let challenges = viewModel.user?.challenges {
+                            ForEach(challenges.keys.sorted(), id: \.self) { challenge in
+                                let taskCount = challenges[challenge]?.count ?? 0
+                                ChallengeStatView(challenge: challenge, count: taskCount)
+                            }
+                        } else {
+                            Text("No hay desafíos completados")
+                                .foregroundColor(.gray)
+                        }
+                    }
+                    .padding(.horizontal)
+
+                    // Toggle para activar o desactivar los sonidos
+                    Toggle(isOn: $viewModel.isSoundEnabled) {
+                        Text("Activar efectos de sonido")
+                            .foregroundColor(.white)
+                            .font(.headline)
+                    }
+                    .onChange(of: viewModel.isSoundEnabled) { newValue in
+                        viewModel.toggleSoundEnabled()
+                    }
+                    .padding()
+                    .background(Color.black.opacity(0.7))
+                    .cornerRadius(10)
+                    .padding(.horizontal)
+
+                    // Botón de Términos y Condiciones
+                    Button(action: {
+                        showPolicyView = true
+                    }) {
+                        HStack {
+                            Image(systemName: "doc.text")
+                                .foregroundColor(.white)
+                            Text("Términos y Condiciones")
+                                .foregroundColor(.white)
+                                .font(.headline)
+                        }
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(Color.blue)
+                        .cornerRadius(10)
+                        .padding(.bottom, 100)
+                    }
+                    .padding(.horizontal)
+                    .padding(.top, 20)
                 }
                 .padding()
-                .background(Color.black.opacity(0.7))
-                .cornerRadius(15)
-
-                // Task Statistics
-                VStack(spacing: 10) {
-                    Text("Estadísticas por Provincia")
-                        .font(.title3)
-                        .fontWeight(.bold)
-                        .foregroundColor(.mateGold)
-
-                    HStack(spacing: 20) {
-                        ProvinceStatView(province: "Ávila", count: viewModel.user?.avilaCityTaskIDs.count ?? 0)
-                        ProvinceStatView(province: "Burgos", count: viewModel.user?.burgosCityTaskIDs.count ?? 0)
-                        ProvinceStatView(province: "León", count: viewModel.user?.leonCityTaskIDs.count ?? 0)
-                    }
-
-                    HStack(spacing: 20) {
-                        ProvinceStatView(province: "Palencia", count: viewModel.user?.palenciaCityTaskIDs.count ?? 0)
-                        ProvinceStatView(province: "Salamanca", count: viewModel.user?.salamancaCityTaskIDs.count ?? 0)
-                        ProvinceStatView(province: "Segovia", count: viewModel.user?.segoviaCityTaskIDs.count ?? 0)
-                    }
-
-                    HStack(spacing: 20) {
-                        ProvinceStatView(province: "Soria", count: viewModel.user?.soriaCityTaskIDs.count ?? 0)
-                        ProvinceStatView(province: "Valladolid", count: viewModel.user?.valladolidCityTaskIDs.count ?? 0)
-                        ProvinceStatView(province: "Zamora", count: viewModel.user?.zamoraCityTaskIDs.count ?? 0)
-                    }
-                }
+                .background(Color.black.opacity(0.65))
+                .cornerRadius(20)
+                .padding()
+                .padding(.top, 40)
             }
-            .padding()
-            .background(Color.black.opacity(0.65))  // Fondo con transparencia del VStack principal
-            .cornerRadius(20)
-            .padding()
-            .padding(.top, 40)
 
-            // Botón de edición en la parte superior derecha
+            // Botón de edición de perfil
             Button(action: {
-                viewModel.startEditing()  // Cargar datos en el modal
-                showEditProfileModal = true  // Mostrar el modal
+                viewModel.startEditing()
+                showEditProfileModal = true
             }) {
                 Image(systemName: "pencil.circle")
                     .font(.largeTitle)
@@ -94,7 +142,7 @@ struct SettingProfileView: View {
                 editedPostalCode: $viewModel.editedPostalCode,
                 editedCity: $viewModel.editedCity,
                 editedProvince: $viewModel.editedProvince,
-                editedAvatar: $viewModel.editedAvatar,  // Pasamos el avatar editable al modal
+                editedAvatar: $viewModel.editedAvatar,
                 onSave: {
                     viewModel.saveProfileChanges()
                     showEditProfileModal = false
@@ -103,9 +151,9 @@ struct SettingProfileView: View {
                     showEditProfileModal = false
                 }
             )
-            .background(Color.black.opacity(0.2))  // Fondo semitransparente del modal
-            .cornerRadius(20)
-            .padding()
+        }
+        .sheet(isPresented: $showPolicyView) {
+            PolicyView()
         }
         .onAppear {
             viewModel.fetchUserProfile()
@@ -130,16 +178,16 @@ struct ProfileInfoRow: View {
     }
 }
 
-struct ProvinceStatView: View {
-    var province: String
+struct ChallengeStatView: View {
+    var challenge: String
     var count: Int
 
     var body: some View {
         VStack {
-            Text(province)
+            Text(challenge)
                 .font(.headline)
                 .foregroundColor(.mateBlue)
-            Text("\(count)")
+            Text("\(count) tareas completadas")
                 .font(.title)
                 .fontWeight(.bold)
                 .foregroundColor(.mateRed)
@@ -152,6 +200,10 @@ struct SettingProfileView_Previews: PreviewProvider {
         SettingProfileView(viewModel: SettingProfileViewModel())
     }
 }
+
+
+
+
 
 /*
 import SwiftUI

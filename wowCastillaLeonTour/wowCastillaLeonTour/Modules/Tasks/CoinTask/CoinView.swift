@@ -67,6 +67,7 @@ struct CoinView: View {
 struct ResultCoinView: View {
     @ObservedObject var viewModel: CoinViewModel
     @EnvironmentObject var appState: AppState
+    let soundManager = SoundManager.shared  
 
     var body: some View {
         ZStack {
@@ -95,6 +96,9 @@ struct ResultCoinView: View {
             .background(Color.black.opacity(0.5))  // Fondo semitransparente del VStack
             .cornerRadius(20)
             .padding()
+        }
+        .onAppear {
+            soundManager.playWinnerSound() // Reproducir sonido cuando aparezca el resultado
         }
     }
 }

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import FirebaseFirestore
 
 extension DateEvent {
     init?(from firestoreData: [String: Any]) {
@@ -17,17 +18,8 @@ extension DateEvent {
               let customMessage = firestoreData["custom_message"] as? String,
               let correctAnswerMessage = firestoreData["correct_answer_message"] as? String,
               let incorrectAnswerMessage = firestoreData["incorrect_answer_message"] as? String,
-              let isCapital = firestoreData["isCapital"] as? Bool else {
-            print("Failed to decode one of the fields:")
-            print("id: \(firestoreData["id"] ?? "nil")")
-            print("province: \(firestoreData["province"] ?? "nil")")
-            print("question: \(firestoreData["question"] ?? "nil")")
-            print("options: \(firestoreData["options"] ?? "nil")")
-            print("correctAnswer: \(firestoreData["correct_answer"] ?? "nil")")
-            print("customMessage: \(firestoreData["custom_message"] ?? "nil")")
-            print("correctAnswerMessage: \(firestoreData["correct_answer_message"] ?? "nil")")
-            print("incorrectAnswerMessage: \(firestoreData["incorrect_answer_message"] ?? "nil")")
-            print("isCapital: \(firestoreData["isCapital"] ?? "nil")")
+              let isCapital = firestoreData["isCapital"] as? Bool,
+              let challenge = firestoreData["challenge"] as? String else {  // Nuevo campo
             return nil
         }
 
@@ -40,6 +32,7 @@ extension DateEvent {
         self.correctAnswerMessage = correctAnswerMessage
         self.incorrectAnswerMessage = incorrectAnswerMessage
         self.isCapital = isCapital
+        self.challenge = challenge
     }
     
     func toFirestoreData() -> [String: Any] {
@@ -48,11 +41,12 @@ extension DateEvent {
             "province": province,
             "question": question,
             "options": options,
-            "correctAnswer": correctAnswer,
-            "customMessage": customMessage,
-            "correctAnswerMessage": correctAnswerMessage,
-            "incorrectAnswerMessage": incorrectAnswerMessage,
-            "isCapital": isCapital
+            "correct_answer": correctAnswer,
+            "custom_message": customMessage,
+            "correct_answer_message": correctAnswerMessage,
+            "incorrect_answer_message": incorrectAnswerMessage,
+            "isCapital": isCapital,
+            "challenge": challenge  // Nuevo campo
         ]
     }
 }

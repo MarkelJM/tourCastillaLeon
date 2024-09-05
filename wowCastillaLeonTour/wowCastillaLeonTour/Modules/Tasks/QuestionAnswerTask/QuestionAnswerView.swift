@@ -84,6 +84,7 @@ struct QuestionAnswerView: View {
                     .padding()
                     .sheet(isPresented: $viewModel.showResultModal) {
                         ResultQuestionView(viewModel: viewModel)
+                            .environmentObject(appState)  // Pasar appState al resultado también
                     }
                 
             }
@@ -94,8 +95,16 @@ struct QuestionAnswerView: View {
     }
 }
 
+#Preview {
+    QuestionAnswerView(viewModel: QuestionAnswerViewModel(activityId: "mockId", appState: AppState()))
+        .environmentObject(AppState())
+}
+
 struct ResultQuestionView: View {
     @ObservedObject var viewModel: QuestionAnswerViewModel
+    @EnvironmentObject var appState: AppState
+
+    let soundManager = SoundManager.shared
     
     var body: some View {
         ZStack {
@@ -125,10 +134,10 @@ struct ResultQuestionView: View {
             .cornerRadius(20)
             .padding()
         }
+        .onAppear {
+            soundManager.playWinnerSound() // Reproducir sonido cuando aparezca el resultado
+        }
     }
 }
 
-#Preview {
-    QuestionAnswerView(viewModel: QuestionAnswerViewModel(activityId: "mockId"))
-        .environmentObject(AppState())
-}
+

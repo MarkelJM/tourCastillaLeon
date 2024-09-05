@@ -21,6 +21,24 @@ struct OnboardingTwoView: View {
             VStack {
                 ScrollView {
                     VStack(alignment: .leading, spacing: 20) {
+                        
+                        HStack {
+                            Button(action: {
+                                appState.currentView = .onboardingOne
+                            }) {
+                                Image(systemName: "chevron.left")
+                                    .font(.headline)
+                                    .padding()
+                                    .background(Color.mateGold)
+                                    .foregroundColor(.black)
+                                    .cornerRadius(10)
+                                    .padding(.top, 50)
+
+                                
+                                
+                            }
+                            Spacer()
+                        }
                         Text("Continuación de la historia")
                             .font(.title)
                             .foregroundColor(.mateGold)
@@ -48,6 +66,7 @@ struct OnboardingTwoView: View {
                         .cornerRadius(10)
                         .padding(.bottom, 40)
                 }
+                Spacer()
             }
             .padding()
             .background(Color.black.opacity(0.6))  // Fondo con opacidad
@@ -56,7 +75,8 @@ struct OnboardingTwoView: View {
         }
     }
 }
-
+/*
 #Preview {
     OnboardingTwoView()
 }
+*/

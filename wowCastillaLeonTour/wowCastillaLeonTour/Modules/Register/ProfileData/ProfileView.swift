@@ -20,6 +20,19 @@ struct ProfileView: View {
 
             ScrollView {
                 VStack(spacing: 20) {
+                    HStack {
+                        Button(action: {
+                            appState.currentView = .onboardingTwo
+                        }) {
+                            Image(systemName: "chevron.left")
+                                .font(.headline)
+                                .padding()
+                                .background(Color.mateGold)
+                                .foregroundColor(.black)
+                                .cornerRadius(10)
+                        }
+                        Spacer()
+                    }
                     Text("Perfil")
                         .font(.largeTitle)
                         .fontWeight(.bold)
@@ -78,29 +91,33 @@ struct ProfileView: View {
                         .padding()
 
                     redBackgroundButton(title: "Guardar Perfil") {
-                        print("Guardando perfil...")
                         viewModel.saveUserProfile {
-                            self.appState.currentView = .map // Navegar a la vista de mapa
+                            self.appState.currentView = .challengeList
                         }
                     }
                     .padding(.bottom, 50)
-                    /*
+
                     if viewModel.showError {
                         Text(viewModel.errorMessage)
                             .foregroundColor(.red)
                             .padding()
                     }
-                     */
                 }
                 .background(Color.black.opacity(0.5))
                 .cornerRadius(20)
                 .padding()
             }
             .onAppear {
-                print("AppState in ProfileView: \(appState)")
                 viewModel.fetchUserProfile()
             }
+            .onTapGesture {
+                hideKeyboard()
+            }
         }
+    }
+    
+    private func hideKeyboard() {
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
 }
 

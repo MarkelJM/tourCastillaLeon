@@ -6,10 +6,12 @@
 //
 
 import SwiftUI
+import Combine
 
 struct TermsAndConditionsView: View {
     @EnvironmentObject var appState: AppState
     @Binding var agreeToTerms: Bool
+    private let url = URL(string: "https://conquistacyl.wordpress.com")! // Enlace de tu web
     
     var body: some View {
         ZStack {
@@ -41,9 +43,11 @@ struct TermsAndConditionsView: View {
                         .foregroundColor(.mateGold)
                         .padding()
                     
-                    Text("Aquí van los términos y condiciones...") // Reemplaza con el contenido real
-                        .foregroundColor(.white)
-                        .padding()
+                    // Aquí va la WebView que carga el enlace
+                    WebView(url: url)
+                        .frame(height: 400) // Ajusta el tamaño según sea necesario
+                        .cornerRadius(10)
+                        .padding(.horizontal)
                     
                     Spacer()
                     

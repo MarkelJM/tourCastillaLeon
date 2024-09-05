@@ -14,21 +14,12 @@ extension QuestionAnswer {
               let province = firestoreData["province"] as? String,
               let question = firestoreData["question"] as? String,
               let options = firestoreData["options"] as? [String],
-              let correctAnswer = firestoreData["correct_answer"] as? String, // Cambiado a "correct_answer"
-              let customMessage = firestoreData["custom_message"] as? String, // Cambiado a "custom_message"
-              let correctAnswerMessage = firestoreData["correct_answer_message"] as? String, // Cambiado a "correct_answer_message"
-              let incorrectAnswerMessage = firestoreData["incorrect_answer_message"] as? String, // Cambiado a "incorrect_answer_message"
-              let isCapital = firestoreData["isCapital"] as? Bool else { // "isCapital" ya estaba bien
-            print("Failed to decode one of the fields:")
-            print("id: \(firestoreData["id"] ?? "nil")")
-            print("province: \(firestoreData["province"] ?? "nil")")
-            print("question: \(firestoreData["question"] ?? "nil")")
-            print("options: \(firestoreData["options"] ?? "nil")")
-            print("correctAnswer: \(firestoreData["correct_answer"] ?? "nil")")
-            print("customMessage: \(firestoreData["custom_message"] ?? "nil")")
-            print("correctAnswerMessage: \(firestoreData["correct_answer_message"] ?? "nil")")
-            print("incorrectAnswerMessage: \(firestoreData["incorrect_answer_message"] ?? "nil")")
-            print("isCapital: \(firestoreData["isCapital"] ?? "nil")")
+              let correctAnswer = firestoreData["correct_answer"] as? String,
+              let customMessage = firestoreData["custom_message"] as? String,
+              let correctAnswerMessage = firestoreData["correct_answer_message"] as? String,
+              let incorrectAnswerMessage = firestoreData["incorrect_answer_message"] as? String,
+              let isCapital = firestoreData["isCapital"] as? Bool,
+              let challenge = firestoreData["challenge"] as? String else {  // Nuevo campo
             return nil
         }
 
@@ -41,6 +32,7 @@ extension QuestionAnswer {
         self.correctAnswerMessage = correctAnswerMessage
         self.incorrectAnswerMessage = incorrectAnswerMessage
         self.isCapital = isCapital
+        self.challenge = challenge
     }
     
     func toFirestoreData() -> [String: Any] {
@@ -49,11 +41,12 @@ extension QuestionAnswer {
             "province": province,
             "question": question,
             "options": options,
-            "correct_answer": correctAnswer, // Cambiado a "correct_answer"
-            "custom_message": customMessage, // Cambiado a "custom_message"
-            "correct_answer_message": correctAnswerMessage, // Cambiado a "correct_answer_message"
-            "incorrect_answer_message": incorrectAnswerMessage, // Cambiado a "incorrect_answer_message"
-            "isCapital": isCapital
+            "correct_answer": correctAnswer,
+            "custom_message": customMessage,
+            "correct_answer_message": correctAnswerMessage,
+            "incorrect_answer_message": incorrectAnswerMessage,
+            "isCapital": isCapital,
+            "challenge": challenge  // Nuevo campo
         ]
     }
 }

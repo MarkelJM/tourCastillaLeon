@@ -23,11 +23,21 @@ class RegisterViewModel: ObservableObject {
 
     private let dataManager = RegisterDataManager()
     private var cancellables = Set<AnyCancellable>()
+    
+    func validateEmail() -> Bool {
+        return email.contains("@")
+    }
 
     func register() {
         guard password == repeatPassword else {
             showError = true
             errorMessage = "Las contraseñas no coinciden"
+            return
+        }
+        
+        guard validateEmail() else {
+            showError = true
+            errorMessage = "El email debe contener un @"
             return
         }
         
@@ -96,6 +106,9 @@ class RegisterViewModel: ObservableObject {
                 }
             } receiveValue: { isVerified in
                 if isVerified {
+                    if let uid = Auth.auth().currentUser?.uid {
+                        KeychainManager.shared.save(key: "userUID", value: uid)
+                    }
                     self.isVerified = true
                 } else {
                     self.showError = true
