@@ -102,6 +102,9 @@ struct QuestionAnswerView: View {
 
 struct ResultQuestionView: View {
     @ObservedObject var viewModel: QuestionAnswerViewModel
+    @EnvironmentObject var appState: AppState
+
+    let soundManager = SoundManager.shared
     
     var body: some View {
         ZStack {
@@ -130,6 +133,9 @@ struct ResultQuestionView: View {
             .background(Color.black.opacity(0.5))  // Fondo del VStack con transparencia
             .cornerRadius(20)
             .padding()
+        }
+        .onAppear {
+            soundManager.playWinnerSound() // Reproducir sonido cuando aparezca el resultado
         }
     }
 }

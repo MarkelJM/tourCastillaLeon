@@ -12,6 +12,8 @@ struct CalloutRewardView: View {
     var challenge: String
     @ObservedObject var viewModel: MapViewModel
     @EnvironmentObject var appState: AppState
+    let soundManager = SoundManager.shared
+
 
     var body: some View {
         VStack(spacing: 20) {
@@ -41,6 +43,7 @@ struct CalloutRewardView: View {
 
             Button(action: {
                 appState.currentView = .challengeReward(challengeName: reward.challenge)  // Aquí usamos reward.challenge
+                soundManager.playButtonSound()
             }) {
                 Text("Obtener Recompensa")
                     .font(.headline)

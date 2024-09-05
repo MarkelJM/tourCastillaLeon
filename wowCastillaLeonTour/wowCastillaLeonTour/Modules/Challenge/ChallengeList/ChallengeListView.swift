@@ -10,6 +10,8 @@ import SwiftUI
 struct ChallengeListView: View {
     @StateObject var viewModel = ChallengeListViewModel()
     @EnvironmentObject var appState: AppState
+    let soundManager = SoundManager.shared
+
 
     var body: some View {
         ZStack {
@@ -58,6 +60,9 @@ struct ChallengeListView: View {
                         .padding(.vertical, 8)
                         .padding(.horizontal, 5)
                         .onTapGesture {
+                            
+                            soundManager.playButtonSound()
+                            
                             if viewModel.isChallengeAlreadyBegan(challengeName: challenge.challengeName) {
                                 viewModel.selectChallenge(challenge)
                                 appState.currentView = .mapContainer

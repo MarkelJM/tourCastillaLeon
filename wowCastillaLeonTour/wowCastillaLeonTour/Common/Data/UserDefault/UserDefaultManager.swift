@@ -19,7 +19,11 @@ class UserDefaultsManager {
     
     // Método para obtener la preferencia de sonido
     func isSoundEnabled() -> Bool {
-        UserDefaults.standard.bool(forKey: soundEnabledKey)
+        if UserDefaults.standard.object(forKey: soundEnabledKey) == nil {
+            // Si no se ha guardado el valor antes, lo activamos por defecto
+            return true
+        }
+        return UserDefaults.standard.bool(forKey: soundEnabledKey)
     }
 
 
@@ -46,4 +50,6 @@ class UserDefaultsManager {
     func clearChallengeName() {
         UserDefaults.standard.removeObject(forKey: challengeNameKey)
     }
+    
+    
 }

@@ -11,6 +11,8 @@ import Combine
 struct ChallengePresentationView: View {
     @EnvironmentObject var appState: AppState
     @StateObject var viewModel: ChallengePresentationViewModel
+    let soundManager = SoundManager.shared 
+
 
     var body: some View {
         ZStack {
@@ -59,6 +61,8 @@ struct ChallengePresentationView: View {
                     Spacer()
                 
                     Button(action: {
+                        soundManager.playButtonSound()
+
                         viewModel.beginChallenge()
                             .sink(receiveCompletion: { completion in
                                 switch completion {

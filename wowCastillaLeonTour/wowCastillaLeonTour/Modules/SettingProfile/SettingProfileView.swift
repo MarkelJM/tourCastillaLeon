@@ -88,6 +88,9 @@ struct SettingProfileView: View {
                             .foregroundColor(.white)
                             .font(.headline)
                     }
+                    .onChange(of: viewModel.isSoundEnabled) { newValue in
+                        viewModel.toggleSoundEnabled()
+                    }
                     .padding()
                     .background(Color.black.opacity(0.7))
                     .cornerRadius(10)

@@ -163,7 +163,8 @@ struct PuzzleView: View {
 
 struct ResulPuzzleSheetView: View {
     @ObservedObject var viewModel: PuzzleViewModel
-    @EnvironmentObject var appState: AppState  // Añadir el environment object
+    @EnvironmentObject var appState: AppState
+    let soundManager = SoundManager.shared  
     
     var body: some View {
         ZStack {
@@ -193,6 +194,9 @@ struct ResulPuzzleSheetView: View {
             .background(Color.black.opacity(0.5))
             .cornerRadius(20)
             .padding()
+        }
+        .onAppear {
+            soundManager.playWinnerSound() // Reproducir sonido cuando aparezca el resultado
         }
     }
 }

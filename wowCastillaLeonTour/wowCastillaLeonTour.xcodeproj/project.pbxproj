@@ -367,6 +367,14 @@
 			path = WebView;
 			sourceTree = "<group>";
 		};
+		D320C7922C899F860088DA83 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				D320C7902C88CCE70088DA83 /* SoundManager.swift */,
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
 		D354686F2C85F81200F6C39A /* MapContainer */ = {
 			isa = PBXGroup;
 			children = (
@@ -610,9 +618,9 @@
 		D39648F92C7E49D200EAAC19 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				D320C7922C899F860088DA83 /* Sounds */,
 				D320C78D2C88C8690088DA83 /* WebView */,
 				D39648FA2C7E49DA00EAAC19 /* KeyBoardObserver */,
-				D320C7902C88CCE70088DA83 /* SoundManager.swift */,
 			);
 			path = Tools;
 			sourceTree = "<group>";

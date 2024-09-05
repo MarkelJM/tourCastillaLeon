@@ -119,6 +119,7 @@ struct DatesOrderView: View {
 
 struct ResultDatesOrderView: View {
     @ObservedObject var viewModel: DatesOrderViewModel
+    let soundManager = SoundManager.shared
     
     var body: some View {
         ZStack {
@@ -147,6 +148,9 @@ struct ResultDatesOrderView: View {
             .background(Color.black.opacity(0.5))  // Fondo del VStack con transparencia
             .cornerRadius(20)
             .padding()
+        }
+        .onAppear {
+            soundManager.playWinnerSound() // Reproducir sonido cuando aparezca el resultado
         }
     }
 }

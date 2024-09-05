@@ -11,14 +11,15 @@ import SwiftUI
 struct MapCallOutView: View {
     var spot: Spot?
     var reward: ChallengeReward?
-    var challenge: String?  // Añadimos el campo challenge
+    var challenge: String?
     @EnvironmentObject var appState: AppState
     @ObservedObject var viewModel: MapViewModel
     @State private var showCompletedAlert = false
+    let soundManager = SoundManager.shared
 
     var body: some View {
         VStack(spacing: 20) {
-            if let reward = reward, let challenge = challenge {  // Verificamos que tanto reward como challenge no sean nil
+            if let reward = reward, let challenge = challenge {
                 Text(reward.challengeTitle)
                     .font(.title2)
                     .fontWeight(.bold)
@@ -40,8 +41,7 @@ struct MapCallOutView: View {
 
                 Button(action: {
                     viewModel.saveSpotID(reward.id)
-                    print("Navigating to challengeReward with challenge: \(challenge)")
-                    appState.currentView = .challengeReward(challengeName: reward.challenge)  // Usar `reward.challenge`
+                    appState.currentView = .challengeReward(challengeName: reward.challenge)
                 }) {
                     Text("Obtener Recompensa")
                         .font(.headline)
@@ -52,7 +52,6 @@ struct MapCallOutView: View {
                         .shadow(radius: 5)
                 }
             } else if let spot = spot {
-                // Muestra la vista de Spot como anteriormente
                 Text(spot.name)
                     .font(.title2)
                     .fontWeight(.bold)
@@ -80,7 +79,7 @@ struct MapCallOutView: View {
                     if viewModel.isTaskCompleted(taskID: spot.activityID, activityType: spot.activityType, challenge: viewModel.selectedChallenge) {
                         showCompletedAlert = true
                     } else {
-                        print("Participar button tapped for \(spot.name)")
+                        soundManager.playButtonSound() // Reproducir sonido al pulsar "Participar"
                         viewModel.saveSpotID(spot.id)
                         navigateToActivity(for: spot)
                     }
@@ -101,7 +100,6 @@ struct MapCallOutView: View {
                     )
                 }
             }
-
             Spacer()
         }
         .padding()
@@ -129,7 +127,6 @@ struct MapCallOutView: View {
         }
     }
 }
-
 
 /*
 import SwiftUI

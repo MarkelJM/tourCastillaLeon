@@ -65,6 +65,7 @@ struct ChallengeRewardView: View {
 struct ResultChallengeRewardView: View {
     @ObservedObject var viewModel: ChallengeRewardViewModel
     @EnvironmentObject var appState: AppState
+    let soundManager = SoundManager.shared 
 
     var body: some View {
         ZStack {
@@ -93,5 +94,9 @@ struct ResultChallengeRewardView: View {
             .cornerRadius(20)
             .padding()
         }
+        .onAppear {
+            soundManager.playWinnerSound() // Reproducir sonido cuando aparezca el resultado
+        }
+        
     }
 }
