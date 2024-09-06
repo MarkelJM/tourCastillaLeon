@@ -14,7 +14,6 @@ struct QuestionAnswerView: View {
     var body: some View {
         ScrollView {
             ZStack {
-                // Fondo de pantalla
                 Image("fondoSolar")
                     .resizable()
                     .scaledToFill()
@@ -79,12 +78,11 @@ struct QuestionAnswerView: View {
                         }
                     }
                     .padding()
-                    .background(Color.black.opacity(0.5))  // Fondo del VStack con transparencia
-                    .cornerRadius(20)
+                    .background(Color.black.opacity(0.5))
                     .padding()
                     .sheet(isPresented: $viewModel.showResultModal) {
                         ResultQuestionView(viewModel: viewModel)
-                            .environmentObject(appState)  // Pasar appState al resultado también
+                            .environmentObject(appState) 
                     }
                 
             }
@@ -135,6 +133,8 @@ struct ResultQuestionView: View {
 
                 Button(action: {
                     viewModel.showResultModal = false
+                    appState.currentView = .mapContainer
+
                 }) {
                     Text("Continuar")
                         .padding()
@@ -150,7 +150,7 @@ struct ResultQuestionView: View {
             .padding()
         }
         .onAppear {
-            soundManager.playWinnerSound() // Reproducir sonido cuando aparezca el resultado
+            soundManager.playWinnerSound()
         }
     }
 }

@@ -12,7 +12,6 @@ struct OnboardingOneView: View {
     
     var body: some View {
         ZStack {
-            // Fondo de pantalla
             Image("fondoSolar")
                 .resizable()
                 .scaledToFill()

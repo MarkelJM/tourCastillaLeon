@@ -35,7 +35,6 @@ class Map3DDataManager {
                     return
                 }
 
-                // Verificar la respuesta y decodificar el token
                 guard let data = result?.data else {
                     print("No hay datos disponibles en la respuesta")
                     promise(.failure(NSError(domain: "DataUnavailable", code: -1, userInfo: [NSLocalizedDescriptionKey: "No hay datos disponibles"])))

@@ -18,8 +18,8 @@ class ProfileViewModel: ObservableObject {
     @Published var province: Province = .other
     @Published var avatar: Avatar = .boy
     @Published var spotIDs: [String] = []
-    @Published var specialRewards: [String: String] = [:]  // Diccionario de retos y sus recompensas especiales
-    @Published var challenges: [String: [String]] = [:]  // Diccionario para retos y sus tasks
+    @Published var specialRewards: [String: String] = [:]
+    @Published var challenges: [String: [String]] = [:]
     @Published var showError: Bool = false
     @Published var errorMessage: String = ""
 
@@ -39,7 +39,6 @@ class ProfileViewModel: ObservableObject {
             return
         }
         
-        // Asegurarnos de que el reto 'retoBasico' esté en el perfil del usuario
         if challenges["retoBasico"] == nil {
             challenges["retoBasico"] = []
         }
@@ -55,7 +54,7 @@ class ProfileViewModel: ObservableObject {
             province: province,
             avatar: avatar,
             spotIDs: spotIDs,
-            specialRewards: specialRewards,  // Actualización aquí
+            specialRewards: specialRewards,
             challenges: challenges
         )
         
@@ -96,10 +95,9 @@ class ProfileViewModel: ObservableObject {
                 self.province = user.province
                 self.avatar = user.avatar
                 self.spotIDs = user.spotIDs
-                self.specialRewards = user.specialRewards  // Actualización aquí
+                self.specialRewards = user.specialRewards
                 self.challenges = user.challenges
 
-                // Asegurarse de que el reto 'retoBasico' esté presente al cargar el perfil
                 if self.challenges["retoBasico"] == nil {
                     self.challenges["retoBasico"] = []
                 }

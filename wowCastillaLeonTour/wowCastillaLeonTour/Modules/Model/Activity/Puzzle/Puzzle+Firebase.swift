@@ -20,7 +20,7 @@ extension Puzzle {
               let correctAnswerMessage = firestoreData["correct_answer_message"] as? String,
               let incorrectAnswerMessage = firestoreData["incorrect_answer_message"] as? String,
               let isCapital = firestoreData["isCapital"] as? Bool,
-              let challenge = firestoreData["challenge"] as? String else {  // Nuevo campo
+              let challenge = firestoreData["challenge"] as? String else {
             return nil
         }
 
@@ -61,7 +61,7 @@ extension Puzzle {
             "correct_answer_message": correctAnswerMessage,
             "incorrect_answer_message": incorrectAnswerMessage,
             "isCapital": isCapital,
-            "challenge": challenge  // Nuevo campo
+            "challenge": challenge  
         ]
     }
 }

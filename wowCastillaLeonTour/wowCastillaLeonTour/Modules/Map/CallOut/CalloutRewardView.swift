@@ -42,7 +42,7 @@ struct CalloutRewardView: View {
             }
 
             Button(action: {
-                appState.currentView = .challengeReward(challengeName: reward.challenge)  // Aquí usamos reward.challenge
+                appState.currentView = .challengeReward(challengeName: reward.challenge)  
                 soundManager.playButtonSound()
             }) {
                 Text("Obtener Recompensa")

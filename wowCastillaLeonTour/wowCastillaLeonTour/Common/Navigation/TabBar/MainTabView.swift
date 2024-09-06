@@ -5,6 +5,9 @@
 //  Created by Markel Juaristi on 16/8/24.
 //
 
+
+/*
+ ///USING CUSTOMTABABAR
 import SwiftUI
 
 struct MainTabView: View {
@@ -58,3 +61,4 @@ struct MainTabView_Previews: PreviewProvider {
             .environmentObject(AppState())
     }
 }
+*/

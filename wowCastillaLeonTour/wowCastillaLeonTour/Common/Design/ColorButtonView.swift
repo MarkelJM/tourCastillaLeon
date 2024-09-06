@@ -40,19 +40,3 @@ func redBackgroundButton(title: String, action: @escaping () -> Void) -> some Vi
             )
     }
 }
-/*
-struct ButtonExamplesView: View {
-    var body: some View {
-        VStack(spacing: 20) {
-            whiteBackgroundButton(title: "Botón 1", action: { print("Botón 1 presionado") })
-            redBackgroundButton(title: "Botón 2", action: { print("Botón 2 presionado") })
-        }
-    }
-}
-
-struct ButtonExamplesView_Previews: PreviewProvider {
-    static var previews: some View {
-        ButtonExamplesView()
-    }
-}
-*/

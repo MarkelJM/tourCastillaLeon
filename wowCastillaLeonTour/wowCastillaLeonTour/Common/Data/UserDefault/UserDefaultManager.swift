@@ -12,12 +12,10 @@ class UserDefaultsManager {
     private let challengeNameKey = "challengeName"
     private let soundEnabledKey = "soundEnabled"
     
-    // Método para guardar la preferencia de sonido
     func setSoundEnabled(_ isEnabled: Bool) {
         UserDefaults.standard.set(isEnabled, forKey: soundEnabledKey)
     }
     
-    // Método para obtener la preferencia de sonido
     func isSoundEnabled() -> Bool {
         if UserDefaults.standard.object(forKey: soundEnabledKey) == nil {
             // Si no se ha guardado el valor antes, lo activamos por defecto

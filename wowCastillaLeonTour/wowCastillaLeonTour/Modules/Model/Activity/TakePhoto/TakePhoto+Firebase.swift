@@ -18,7 +18,7 @@ extension TakePhoto {
               let incorrectAnswerMessage = firestoreData["incorrect_answer_message"] as? String,
               let isCapital = firestoreData["isCapital"] as? Bool,
               let challenge = firestoreData["challenge"] as? String,
-              let informationDetail = firestoreData["informationDetail"] as? String else {  // Nuevo campo
+              let informationDetail = firestoreData["informationDetail"] as? String else {  
             return nil
         }
 

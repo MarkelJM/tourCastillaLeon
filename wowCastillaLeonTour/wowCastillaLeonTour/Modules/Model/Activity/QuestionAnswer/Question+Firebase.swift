@@ -20,7 +20,7 @@ extension QuestionAnswer {
               let incorrectAnswerMessage = firestoreData["incorrect_answer_message"] as? String,
               let isCapital = firestoreData["isCapital"] as? Bool,
               let challenge = firestoreData["challenge"] as? String,
-              let informationDetail = firestoreData["informationDetail"] as? String else {  // Nuevo campo
+              let informationDetail = firestoreData["informationDetail"] as? String else {  
             return nil
         }
 
@@ -49,7 +49,7 @@ extension QuestionAnswer {
             "incorrect_answer_message": incorrectAnswerMessage,
             "isCapital": isCapital,
             "challenge": challenge,
-            "informationDetail": informationDetail  // Nuevo campo
+            "informationDetail": informationDetail
         ]
     }
 }

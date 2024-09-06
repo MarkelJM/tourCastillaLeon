@@ -10,7 +10,7 @@ import Combine
 import FirebaseFirestore
 
 class PuzzleDataManager {
-    //private let db = Firestore.firestore()
+    
     private let firestoreManager = PuzzleFirestoreManager()
     
     func fetchPuzzleById(_ id: String) -> AnyPublisher<Puzzle, Error> {

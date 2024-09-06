@@ -8,10 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		D320C77E2C862F500088DA83 /* Map3DFirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D320C77D2C862F500088DA83 /* Map3DFirestoreManager.swift */; };
-		D320C7812C86FA0F0088DA83 /* Map3DAnnotations.swift in Sources */ = {isa = PBXBuildFile; fileRef = D320C7802C86FA0F0088DA83 /* Map3DAnnotations.swift */; };
-		D320C7872C870DEF0088DA83 /* Map3DCallOutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D320C7862C870DEF0088DA83 /* Map3DCallOutView.swift */; };
-		D320C7892C870E110088DA83 /* Callout3DRewardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D320C7882C870E110088DA83 /* Callout3DRewardView.swift */; };
-		D320C78C2C8712AC0088DA83 /* Map3DViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D320C78B2C8712AC0088DA83 /* Map3DViewContainer.swift */; };
 		D320C78F2C88C8890088DA83 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D320C78E2C88C8880088DA83 /* WebView.swift */; };
 		D320C7912C88CCE70088DA83 /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D320C7902C88CCE70088DA83 /* SoundManager.swift */; };
 		D354685F2C85F5A300F6C39A /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D354685E2C85F5A300F6C39A /* KeychainSwift */; };
@@ -84,16 +80,8 @@
 		D3DDA8A92C19AD6800C43CBA /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDA8A82C19AD6800C43CBA /* ProfileView.swift */; };
 		D3DDA8AE2C19B10F00C43CBA /* User+Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DDA8AD2C19B10F00C43CBA /* User+Firebase.swift */; };
 		D3DEAEF42C75F29A00AB0325 /* SpecialPrizeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DEAEF32C75F29A00AB0325 /* SpecialPrizeModel.swift */; };
-		D3DEAEF62C75F2DF00AB0325 /* SpecialPrizeFirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DEAEF52C75F2DF00AB0325 /* SpecialPrizeFirestoreManager.swift */; };
-		D3DEAEF82C75F37D00AB0325 /* SpecialPrizeDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DEAEF72C75F37D00AB0325 /* SpecialPrizeDataManager.swift */; };
-		D3DEAEFD2C75F3F000AB0325 /* SpecialPrizeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DEAEFC2C75F3F000AB0325 /* SpecialPrizeListView.swift */; };
-		D3DEAF002C75F42200AB0325 /* SpecialPrizeTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DEAEFF2C75F42200AB0325 /* SpecialPrizeTaskView.swift */; };
 		D3DEAF022C75F46800AB0325 /* SpecialPrize+Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DEAF012C75F46800AB0325 /* SpecialPrize+Firebase.swift */; };
 		D3DEAF052C75F59800AB0325 /* ARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DEAF042C75F59800AB0325 /* ARViewController.swift */; };
-		D3DEAF072C76069A00AB0325 /* SpecialPrizeListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DEAF062C76069A00AB0325 /* SpecialPrizeListViewModel.swift */; };
-		D3DEAF092C7606CB00AB0325 /* SpecialPrizeTaskViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DEAF082C7606CB00AB0325 /* SpecialPrizeTaskViewModel.swift */; };
-		D3DEAF1A2C76107F00AB0325 /* SpecialPrizeTaskFirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DEAF192C76107F00AB0325 /* SpecialPrizeTaskFirestoreManager.swift */; };
-		D3DEAF1C2C76108D00AB0325 /* SpecialPrizeTaskDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DEAF1B2C76108D00AB0325 /* SpecialPrizeTaskDataManager.swift */; };
 		D3DEAF2E2C77AC4A00AB0325 /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DEAF2D2C77AC4A00AB0325 /* EditProfileView.swift */; };
 		D3DEAF312C78C87400AB0325 /* OnboardingOneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DEAF302C78C87400AB0325 /* OnboardingOneView.swift */; };
 		D3DEAF332C78C89400AB0325 /* OnboardingTwoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DEAF322C78C89400AB0325 /* OnboardingTwoView.swift */; };
@@ -104,18 +92,15 @@
 		D3E4B7482C19BAB7000BEE9F /* RegisterDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B7472C19BAB7000BEE9F /* RegisterDataManager.swift */; };
 		D3E4B74C2C19BAE4000BEE9F /* ProfileDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B74B2C19BAE4000BEE9F /* ProfileDataManager.swift */; };
 		D3E4B7502C19BAF7000BEE9F /* LoginDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B74F2C19BAF7000BEE9F /* LoginDataManager.swift */; };
-		D3E4B7552C19BC0C000BEE9F /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B7542C19BC0C000BEE9F /* HomeView.swift */; };
 		D3E4B7782C3E885B000BEE9F /* CoinModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B7772C3E885B000BEE9F /* CoinModel.swift */; };
 		D3E4B77A2C3E8879000BEE9F /* DateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B7792C3E8879000BEE9F /* DateModel.swift */; };
 		D3E4B77C2C3E888F000BEE9F /* FillGapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B77B2C3E888F000BEE9F /* FillGapModel.swift */; };
-		D3E4B77E2C3E88A3000BEE9F /* PointModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B77D2C3E88A3000BEE9F /* PointModel.swift */; };
 		D3E4B7802C3E88B6000BEE9F /* PuzzleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B77F2C3E88B6000BEE9F /* PuzzleModel.swift */; };
 		D3E4B7822C3E88D0000BEE9F /* QuestionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B7812C3E88D0000BEE9F /* QuestionModel.swift */; };
 		D3E4B7852C3E890A000BEE9F /* TakePhotoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B7842C3E890A000BEE9F /* TakePhotoModel.swift */; };
 		D3E4B7872C3E8C1D000BEE9F /* Coin+Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B7862C3E8C1D000BEE9F /* Coin+Firebase.swift */; };
 		D3E4B7892C3E8C4B000BEE9F /* Dates+Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B7882C3E8C4B000BEE9F /* Dates+Firebase.swift */; };
 		D3E4B78B2C3E8FA2000BEE9F /* FillGap+Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B78A2C3E8FA2000BEE9F /* FillGap+Firebase.swift */; };
-		D3E4B78D2C3E8FC4000BEE9F /* Point+Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B78C2C3E8FC4000BEE9F /* Point+Firebase.swift */; };
 		D3E4B78F2C3E8FEE000BEE9F /* Puzzle+Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B78E2C3E8FEE000BEE9F /* Puzzle+Firebase.swift */; };
 		D3E4B7912C3E9066000BEE9F /* Question+Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B7902C3E9066000BEE9F /* Question+Firebase.swift */; };
 		D3E4B7932C3E9084000BEE9F /* TakePhoto+Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B7922C3E9084000BEE9F /* TakePhoto+Firebase.swift */; };
@@ -128,7 +113,6 @@
 		D3E4B7A92C4121F2000BEE9F /* SceneKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3E4B7A82C4121F2000BEE9F /* SceneKit.framework */; };
 		D3E4B7C02C458BEF000BEE9F /* AvatarSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B7BF2C458BEF000BEE9F /* AvatarSelectionView.swift */; };
 		D3E4B7D42C4682B2000BEE9F /* ColorButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B7D32C4682B2000BEE9F /* ColorButtonView.swift */; };
-		D3E4B7D62C4682C3000BEE9F /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B7D52C4682C3000BEE9F /* BackgroundView.swift */; };
 		D3E4B7DA2C4683C7000BEE9F /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B7D92C4683C7000BEE9F /* Color.swift */; };
 		D3E4B7DD2C47D902000BEE9F /* PuzzleFirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B7DC2C47D902000BEE9F /* PuzzleFirestoreManager.swift */; };
 		D3E4B7DF2C47D930000BEE9F /* PuzzleDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B7DE2C47D930000BEE9F /* PuzzleDataManager.swift */; };
@@ -161,10 +145,6 @@
 		6D91BA8C3FAF5DDA61137EF0 /* Pods-wowCastillaLeonTour.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wowCastillaLeonTour.release.xcconfig"; path = "Target Support Files/Pods-wowCastillaLeonTour/Pods-wowCastillaLeonTour.release.xcconfig"; sourceTree = "<group>"; };
 		D320C77C2C8622B80088DA83 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		D320C77D2C862F500088DA83 /* Map3DFirestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Map3DFirestoreManager.swift; sourceTree = "<group>"; };
-		D320C7802C86FA0F0088DA83 /* Map3DAnnotations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Map3DAnnotations.swift; sourceTree = "<group>"; };
-		D320C7862C870DEF0088DA83 /* Map3DCallOutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Map3DCallOutView.swift; sourceTree = "<group>"; };
-		D320C7882C870E110088DA83 /* Callout3DRewardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Callout3DRewardView.swift; sourceTree = "<group>"; };
-		D320C78B2C8712AC0088DA83 /* Map3DViewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Map3DViewContainer.swift; sourceTree = "<group>"; };
 		D320C78E2C88C8880088DA83 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		D320C7902C88CCE70088DA83 /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
 		D35468702C85F86500F6C39A /* MapContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapContainerView.swift; sourceTree = "<group>"; };
@@ -230,16 +210,8 @@
 		D3DDA8A82C19AD6800C43CBA /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		D3DDA8AD2C19B10F00C43CBA /* User+Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+Firebase.swift"; sourceTree = "<group>"; };
 		D3DEAEF32C75F29A00AB0325 /* SpecialPrizeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialPrizeModel.swift; sourceTree = "<group>"; };
-		D3DEAEF52C75F2DF00AB0325 /* SpecialPrizeFirestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialPrizeFirestoreManager.swift; sourceTree = "<group>"; };
-		D3DEAEF72C75F37D00AB0325 /* SpecialPrizeDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialPrizeDataManager.swift; sourceTree = "<group>"; };
-		D3DEAEFC2C75F3F000AB0325 /* SpecialPrizeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialPrizeListView.swift; sourceTree = "<group>"; };
-		D3DEAEFF2C75F42200AB0325 /* SpecialPrizeTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialPrizeTaskView.swift; sourceTree = "<group>"; };
 		D3DEAF012C75F46800AB0325 /* SpecialPrize+Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SpecialPrize+Firebase.swift"; sourceTree = "<group>"; };
 		D3DEAF042C75F59800AB0325 /* ARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewController.swift; sourceTree = "<group>"; };
-		D3DEAF062C76069A00AB0325 /* SpecialPrizeListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialPrizeListViewModel.swift; sourceTree = "<group>"; };
-		D3DEAF082C7606CB00AB0325 /* SpecialPrizeTaskViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialPrizeTaskViewModel.swift; sourceTree = "<group>"; };
-		D3DEAF192C76107F00AB0325 /* SpecialPrizeTaskFirestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialPrizeTaskFirestoreManager.swift; sourceTree = "<group>"; };
-		D3DEAF1B2C76108D00AB0325 /* SpecialPrizeTaskDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialPrizeTaskDataManager.swift; sourceTree = "<group>"; };
 		D3DEAF2D2C77AC4A00AB0325 /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
 		D3DEAF302C78C87400AB0325 /* OnboardingOneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingOneView.swift; sourceTree = "<group>"; };
 		D3DEAF322C78C89400AB0325 /* OnboardingTwoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingTwoView.swift; sourceTree = "<group>"; };
@@ -250,18 +222,15 @@
 		D3E4B7472C19BAB7000BEE9F /* RegisterDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterDataManager.swift; sourceTree = "<group>"; };
 		D3E4B74B2C19BAE4000BEE9F /* ProfileDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDataManager.swift; sourceTree = "<group>"; };
 		D3E4B74F2C19BAF7000BEE9F /* LoginDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginDataManager.swift; sourceTree = "<group>"; };
-		D3E4B7542C19BC0C000BEE9F /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		D3E4B7772C3E885B000BEE9F /* CoinModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinModel.swift; sourceTree = "<group>"; };
 		D3E4B7792C3E8879000BEE9F /* DateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateModel.swift; sourceTree = "<group>"; };
 		D3E4B77B2C3E888F000BEE9F /* FillGapModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FillGapModel.swift; sourceTree = "<group>"; };
-		D3E4B77D2C3E88A3000BEE9F /* PointModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointModel.swift; sourceTree = "<group>"; };
 		D3E4B77F2C3E88B6000BEE9F /* PuzzleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzleModel.swift; sourceTree = "<group>"; };
 		D3E4B7812C3E88D0000BEE9F /* QuestionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionModel.swift; sourceTree = "<group>"; };
 		D3E4B7842C3E890A000BEE9F /* TakePhotoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakePhotoModel.swift; sourceTree = "<group>"; };
 		D3E4B7862C3E8C1D000BEE9F /* Coin+Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Coin+Firebase.swift"; sourceTree = "<group>"; };
 		D3E4B7882C3E8C4B000BEE9F /* Dates+Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dates+Firebase.swift"; sourceTree = "<group>"; };
 		D3E4B78A2C3E8FA2000BEE9F /* FillGap+Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FillGap+Firebase.swift"; sourceTree = "<group>"; };
-		D3E4B78C2C3E8FC4000BEE9F /* Point+Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Point+Firebase.swift"; sourceTree = "<group>"; };
 		D3E4B78E2C3E8FEE000BEE9F /* Puzzle+Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Puzzle+Firebase.swift"; sourceTree = "<group>"; };
 		D3E4B7902C3E9066000BEE9F /* Question+Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Question+Firebase.swift"; sourceTree = "<group>"; };
 		D3E4B7922C3E9084000BEE9F /* TakePhoto+Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TakePhoto+Firebase.swift"; sourceTree = "<group>"; };
@@ -274,7 +243,6 @@
 		D3E4B7A82C4121F2000BEE9F /* SceneKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SceneKit.framework; path = System/Library/Frameworks/SceneKit.framework; sourceTree = SDKROOT; };
 		D3E4B7BF2C458BEF000BEE9F /* AvatarSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarSelectionView.swift; sourceTree = "<group>"; };
 		D3E4B7D32C4682B2000BEE9F /* ColorButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorButtonView.swift; sourceTree = "<group>"; };
-		D3E4B7D52C4682C3000BEE9F /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
 		D3E4B7D92C4683C7000BEE9F /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		D3E4B7DC2C47D902000BEE9F /* PuzzleFirestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzleFirestoreManager.swift; sourceTree = "<group>"; };
 		D3E4B7DE2C47D930000BEE9F /* PuzzleDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzleDataManager.swift; sourceTree = "<group>"; };
@@ -329,31 +297,6 @@
 				6D91BA8C3FAF5DDA61137EF0 /* Pods-wowCastillaLeonTour.release.xcconfig */,
 			);
 			path = Pods;
-			sourceTree = "<group>";
-		};
-		D320C77F2C86F9ED0088DA83 /* 3DAnnotation */ = {
-			isa = PBXGroup;
-			children = (
-				D320C7802C86FA0F0088DA83 /* Map3DAnnotations.swift */,
-			);
-			path = 3DAnnotation;
-			sourceTree = "<group>";
-		};
-		D320C7852C870DD30088DA83 /* Callouts */ = {
-			isa = PBXGroup;
-			children = (
-				D320C7862C870DEF0088DA83 /* Map3DCallOutView.swift */,
-				D320C7882C870E110088DA83 /* Callout3DRewardView.swift */,
-			);
-			path = Callouts;
-			sourceTree = "<group>";
-		};
-		D320C78A2C87128B0088DA83 /* 3DViewContainer */ = {
-			isa = PBXGroup;
-			children = (
-				D320C78B2C8712AC0088DA83 /* Map3DViewContainer.swift */,
-			);
-			path = 3DViewContainer;
 			sourceTree = "<group>";
 		};
 		D320C78D2C88C8690088DA83 /* WebView */ = {
@@ -427,11 +370,9 @@
 			children = (
 				D39648ED2C7E3AA900EAAC19 /* IconView */,
 				D39648CE2C7A588500EAAC19 /* Challenge */,
-				D3DEAEF12C75EF0400AB0325 /* SpecialAward */,
 				D3DEAEF02C75EEC700AB0325 /* Tasks */,
 				D38F8F892C6FD51D00315904 /* SettingProfile */,
 				D3E4B7962C3E9339000BEE9F /* Map */,
-				D3E4B7532C19BBFE000BEE9F /* Home */,
 				D3DDA8952C18708400C43CBA /* Login */,
 				D3DDA8792C18612D00C43CBA /* Register */,
 				D3DDA8762C18548000C43CBA /* Model */,
@@ -846,15 +787,6 @@
 			path = Tasks;
 			sourceTree = "<group>";
 		};
-		D3DEAEF12C75EF0400AB0325 /* SpecialAward */ = {
-			isa = PBXGroup;
-			children = (
-				D3DEAEFE2C75F40400AB0325 /* SpecialPrizeTask */,
-				D3DEAEFB2C75F3BF00AB0325 /* SpecialPrizeList */,
-			);
-			path = SpecialAward;
-			sourceTree = "<group>";
-		};
 		D3DEAEF22C75F27500AB0325 /* SpecialPrize */ = {
 			isa = PBXGroup;
 			children = (
@@ -862,28 +794,6 @@
 				D3DEAF012C75F46800AB0325 /* SpecialPrize+Firebase.swift */,
 			);
 			path = SpecialPrize;
-			sourceTree = "<group>";
-		};
-		D3DEAEFB2C75F3BF00AB0325 /* SpecialPrizeList */ = {
-			isa = PBXGroup;
-			children = (
-				D3DEAEFC2C75F3F000AB0325 /* SpecialPrizeListView.swift */,
-				D3DEAF062C76069A00AB0325 /* SpecialPrizeListViewModel.swift */,
-				D3DEAEF72C75F37D00AB0325 /* SpecialPrizeDataManager.swift */,
-				D3DEAEF52C75F2DF00AB0325 /* SpecialPrizeFirestoreManager.swift */,
-			);
-			path = SpecialPrizeList;
-			sourceTree = "<group>";
-		};
-		D3DEAEFE2C75F40400AB0325 /* SpecialPrizeTask */ = {
-			isa = PBXGroup;
-			children = (
-				D3DEAEFF2C75F42200AB0325 /* SpecialPrizeTaskView.swift */,
-				D3DEAF082C7606CB00AB0325 /* SpecialPrizeTaskViewModel.swift */,
-				D3DEAF1B2C76108D00AB0325 /* SpecialPrizeTaskDataManager.swift */,
-				D3DEAF192C76107F00AB0325 /* SpecialPrizeTaskFirestoreManager.swift */,
-			);
-			path = SpecialPrizeTask;
 			sourceTree = "<group>";
 		};
 		D3DEAF032C75F57800AB0325 /* ARController */ = {
@@ -929,21 +839,12 @@
 			path = TermsAndConditions;
 			sourceTree = "<group>";
 		};
-		D3E4B7532C19BBFE000BEE9F /* Home */ = {
-			isa = PBXGroup;
-			children = (
-				D3E4B7542C19BC0C000BEE9F /* HomeView.swift */,
-			);
-			path = Home;
-			sourceTree = "<group>";
-		};
 		D3E4B7682C32C539000BEE9F /* Activity */ = {
 			isa = PBXGroup;
 			children = (
 				D3E4B7832C3E88F7000BEE9F /* TakePhoto */,
 				D3E4B7762C3E883F000BEE9F /* QuestionAnswer */,
 				D3E4B7752C3E8838000BEE9F /* Puzzle */,
-				D3E4B7742C3E882B000BEE9F /* Point */,
 				D3E4B7732C3E881A000BEE9F /* FillGap */,
 				D3E4B7722C3E8813000BEE9F /* Dates */,
 				D3E4B7712C3E8805000BEE9F /* Coin */,
@@ -976,15 +877,6 @@
 				D3E4B78A2C3E8FA2000BEE9F /* FillGap+Firebase.swift */,
 			);
 			path = FillGap;
-			sourceTree = "<group>";
-		};
-		D3E4B7742C3E882B000BEE9F /* Point */ = {
-			isa = PBXGroup;
-			children = (
-				D3E4B77D2C3E88A3000BEE9F /* PointModel.swift */,
-				D3E4B78C2C3E8FC4000BEE9F /* Point+Firebase.swift */,
-			);
-			path = Point;
 			sourceTree = "<group>";
 		};
 		D3E4B7752C3E8838000BEE9F /* Puzzle */ = {
@@ -1055,9 +947,6 @@
 		D3E4B7AA2C4514EF000BEE9F /* 3DMap */ = {
 			isa = PBXGroup;
 			children = (
-				D320C78A2C87128B0088DA83 /* 3DViewContainer */,
-				D320C7852C870DD30088DA83 /* Callouts */,
-				D320C77F2C86F9ED0088DA83 /* 3DAnnotation */,
 				D39649102C84B58B00EAAC19 /* Map3DView.swift */,
 				D39649152C84C34F00EAAC19 /* Map3DViewModel.swift */,
 				D396491A2C85B47C00EAAC19 /* Map3DDataManager.swift */,
@@ -1070,7 +959,6 @@
 			isa = PBXGroup;
 			children = (
 				D3E4B7D32C4682B2000BEE9F /* ColorButtonView.swift */,
-				D3E4B7D52C4682C3000BEE9F /* BackgroundView.swift */,
 				D3E4B7D92C4683C7000BEE9F /* Color.swift */,
 			);
 			path = Design;
@@ -1281,7 +1169,6 @@
 				D38F8F912C6FD6C000315904 /* SettingProfileFirestoreManager.swift in Sources */,
 				D3E4B7892C3E8C4B000BEE9F /* Dates+Firebase.swift in Sources */,
 				D3DDA8A12C19AC3200C43CBA /* FirestoreManager.swift in Sources */,
-				D3E4B7D62C4682C3000BEE9F /* BackgroundView.swift in Sources */,
 				D3E4B8052C4E4B6F000BEE9F /* CoinViewModel.swift in Sources */,
 				D35F005B2C173FA100780464 /* wowCastillaLeonTour.xcdatamodeld in Sources */,
 				D3E4B7802C3E88B6000BEE9F /* PuzzleModel.swift in Sources */,
@@ -1292,7 +1179,6 @@
 				D39648C72C7A3CD800EAAC19 /* Challenge+Firebase.swift in Sources */,
 				D39648E62C7CBE4300EAAC19 /* ChallengeReward+Firebase.swift in Sources */,
 				D39648EF2C7E3AB700EAAC19 /* IconView.swift in Sources */,
-				D3DEAF092C7606CB00AB0325 /* SpecialPrizeTaskViewModel.swift in Sources */,
 				D3E4B80B2C4E4C15000BEE9F /* QuestionAnswerViewModel.swift in Sources */,
 				D3E4B8172C4E4FEF000BEE9F /* TakePhotoDataManager.swift in Sources */,
 				D3DDA8972C18709500C43CBA /* LoginViewModel.swift in Sources */,
@@ -1311,9 +1197,7 @@
 				D3E4B7E12C47D961000BEE9F /* PuzzleViewModel.swift in Sources */,
 				D38F8F8D2C6FD58300315904 /* SettingProfileView.swift in Sources */,
 				D3DDA8822C18625200C43CBA /* RegisterViewModel.swift in Sources */,
-				D3DEAF002C75F42200AB0325 /* SpecialPrizeTaskView.swift in Sources */,
 				D3E4B77A2C3E8879000BEE9F /* DateModel.swift in Sources */,
-				D320C78C2C8712AC0088DA83 /* Map3DViewContainer.swift in Sources */,
 				D39648E42C7CBD7E00EAAC19 /* ChallengeReward.swift in Sources */,
 				D3DDA8A52C19AD1D00C43CBA /* ProfileViewModel.swift in Sources */,
 				D396490B2C836F6500EAAC19 /* KeychainManager.swift in Sources */,
@@ -1333,7 +1217,6 @@
 				D35F00582C173FA100780464 /* Persistence.swift in Sources */,
 				D3E4B79E2C3E9575000BEE9F /* Map2DView.swift in Sources */,
 				D3DDA8AE2C19B10F00C43CBA /* User+Firebase.swift in Sources */,
-				D320C7812C86FA0F0088DA83 /* Map3DAnnotations.swift in Sources */,
 				D38F8F732C51032600315904 /* BaseViewModel.swift in Sources */,
 				D3E4B7822C3E88D0000BEE9F /* QuestionModel.swift in Sources */,
 				D3E4B74C2C19BAE4000BEE9F /* ProfileDataManager.swift in Sources */,
@@ -1351,26 +1234,18 @@
 				D39648D32C7A58CB00EAAC19 /* ChallengePresentationDataManager.swift in Sources */,
 				D39648DE2C7B955E00EAAC19 /* ChallengeSelectionView.swift in Sources */,
 				D3E4B7FF2C4E471D000BEE9F /* FillGapView.swift in Sources */,
-				D3DEAEF82C75F37D00AB0325 /* SpecialPrizeDataManager.swift in Sources */,
-				D3E4B78D2C3E8FC4000BEE9F /* Point+Firebase.swift in Sources */,
 				D3DDA89B2C1870AC00C43CBA /* LoginView.swift in Sources */,
 				D3E4B7782C3E885B000BEE9F /* CoinModel.swift in Sources */,
 				D3DEAF3A2C78CE7300AB0325 /* ForgotPasswordDataManager.swift in Sources */,
-				D320C7892C870E110088DA83 /* Callout3DRewardView.swift in Sources */,
 				D39648CC2C7A576700EAAC19 /* ChallengePresentationViewModel.swift in Sources */,
-				D3DEAF1A2C76107F00AB0325 /* SpecialPrizeTaskFirestoreManager.swift in Sources */,
 				D35468712C85F86500F6C39A /* MapContainerView.swift in Sources */,
 				D38F8F612C4E761100315904 /* PuzzlePiece.swift in Sources */,
 				D3E4B78B2C3E8FA2000BEE9F /* FillGap+Firebase.swift in Sources */,
-				D3DEAF1C2C76108D00AB0325 /* SpecialPrizeTaskDataManager.swift in Sources */,
 				D3E4B7912C3E9066000BEE9F /* Question+Firebase.swift in Sources */,
 				D3E4B8212C4E514F000BEE9F /* TakePhotoFirestoreManager.swift in Sources */,
 				D39648F82C7E460E00EAAC19 /* ChallengeRewardFirestoreManager.swift in Sources */,
-				D320C7872C870DEF0088DA83 /* Map3DCallOutView.swift in Sources */,
 				D39649142C84B68800EAAC19 /* MapToggleView.swift in Sources */,
-				D3E4B7552C19BC0C000BEE9F /* HomeView.swift in Sources */,
 				D3DEAF2E2C77AC4A00AB0325 /* EditProfileView.swift in Sources */,
-				D3DEAF072C76069A00AB0325 /* SpecialPrizeListViewModel.swift in Sources */,
 				D39648F42C7E45D200EAAC19 /* ChallengeRewardViewModel.swift in Sources */,
 				D39648C22C7A3C9D00EAAC19 /* Spot+Firebase.swift in Sources */,
 				D3E4B7E32C47D992000BEE9F /* PuzzleView.swift in Sources */,
@@ -1381,7 +1256,6 @@
 				D39648F22C7E45B900EAAC19 /* ChallengeRewardView.swift in Sources */,
 				D3E4B7982C3E9547000BEE9F /* MapFirestoreManager.swift in Sources */,
 				D3E4B7DF2C47D930000BEE9F /* PuzzleDataManager.swift in Sources */,
-				D3DEAEF62C75F2DF00AB0325 /* SpecialPrizeFirestoreManager.swift in Sources */,
 				D3E4B79A2C3E9558000BEE9F /* MapDatamanager.swift in Sources */,
 				D3DEAF052C75F59800AB0325 /* ARViewController.swift in Sources */,
 				D39648FF2C7F751C00EAAC19 /* CustomTabBar.swift in Sources */,
@@ -1406,8 +1280,6 @@
 				D3E4B8012C4E4730000BEE9F /* DatesView.swift in Sources */,
 				D3E4B77C2C3E888F000BEE9F /* FillGapModel.swift in Sources */,
 				D3E4B8072C4E4BB6000BEE9F /* DatesViewModel.swift in Sources */,
-				D3E4B77E2C3E88A3000BEE9F /* PointModel.swift in Sources */,
-				D3DEAEFD2C75F3F000AB0325 /* SpecialPrizeListView.swift in Sources */,
 				D3DEAF382C78CE4400AB0325 /* ForgotPasswordViewModel.swift in Sources */,
 				D35F004F2C173FA000780464 /* wowCastillaLeonTourApp.swift in Sources */,
 				D3E4B7FD2C4E470E000BEE9F /* QuestionAnswerView.swift in Sources */,

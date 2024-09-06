@@ -18,5 +18,5 @@ struct QuestionAnswer: Identifiable {
     var incorrectAnswerMessage: String
     var isCapital: Bool
     var challenge: String
-    var informationDetail: String  // Nuevo campo
+    var informationDetail: String  
 }

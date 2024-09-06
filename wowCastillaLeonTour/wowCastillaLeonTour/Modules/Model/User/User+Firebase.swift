@@ -21,7 +21,7 @@ extension User {
               let avatarString = firestoreData["avatar"] as? String,
               let avatar = Avatar(rawValue: avatarString),
               let spotIDs = firestoreData["spotIDs"] as? [String],
-              let specialRewards = firestoreData["specialRewards"] as? [String: String],  // Actualización aquí
+              let specialRewards = firestoreData["specialRewards"] as? [String: String],  
               let challenges = firestoreData["challenges"] as? [String: [String]] else {
             return nil
         }
@@ -52,7 +52,7 @@ extension User {
             "province": province.rawValue,
             "avatar": avatar.rawValue,
             "spotIDs": spotIDs,
-            "specialRewards": specialRewards,  // Actualización aquí
+            "specialRewards": specialRewards,
             "challenges": challenges
         ]
     }

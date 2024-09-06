@@ -34,7 +34,7 @@ struct CustomTabBar: View {
             
             
             Button(action: {
-                selectedTab = .settings  // Añadimos settings
+                selectedTab = .settings
             }) {
                 VStack {
                     Image(systemName: "gearshape")
@@ -43,9 +43,8 @@ struct CustomTabBar: View {
             }
             .frame(maxWidth: .infinity)
         }
-        //.padding()
         .background(Color.gray.opacity(0.1))
         .cornerRadius(10)
-        .padding(.top, 200)  // Aquí se aplica el padding superior de 150
+        .padding(.top, 200)
     }
 }

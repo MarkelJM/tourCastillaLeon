@@ -11,11 +11,10 @@ import Combine
 struct TermsAndConditionsView: View {
     @EnvironmentObject var appState: AppState
     @Binding var agreeToTerms: Bool
-    private let url = URL(string: "https://conquistacyl.wordpress.com")! // Enlace de tu web
+    private let url = URL(string: "https://conquistacyl.wordpress.com")!
     
     var body: some View {
         ZStack {
-            // Fondo de pantalla
             Image("fondoSolar")
                 .resizable()
                 .scaledToFill()
@@ -45,7 +44,7 @@ struct TermsAndConditionsView: View {
                     
                     // Aquí va la WebView que carga el enlace
                     WebView(url: url)
-                        .frame(height: 400) // Ajusta el tamaño según sea necesario
+                        .frame(height: 400)
                         .cornerRadius(10)
                         .padding(.horizontal)
                     
@@ -63,7 +62,7 @@ struct TermsAndConditionsView: View {
                     }
                     .padding(.bottom, 50)
                 }
-                .background(Color.black.opacity(0.5))  // Fondo del VStack con transparencia
+                .background(Color.black.opacity(0.5))  
                 .cornerRadius(20)
                 .padding()
             }

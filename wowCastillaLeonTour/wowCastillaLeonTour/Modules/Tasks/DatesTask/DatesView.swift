@@ -14,7 +14,6 @@ struct DatesOrderView: View {
     var body: some View {
         ScrollView {
             ZStack {
-                // Fondo de pantalla
                 Image("fondoSolar")
                     .resizable()
                     .scaledToFill()
@@ -86,7 +85,6 @@ struct DatesOrderView: View {
                                         .cornerRadius(10)
                                 }
 
-                                // Botón de deshacer selección
                                 Button(action: {
                                     viewModel.undoSelection()
                                 }) {
@@ -102,7 +100,7 @@ struct DatesOrderView: View {
                     }
                 }
                 .padding()
-                .background(Color.black.opacity(0.5))  // Fondo del VStack con transparencia
+                .background(Color.black.opacity(0.5))
                 .cornerRadius(20)
                 .padding()
                 .sheet(isPresented: $viewModel.showResultAlert) {
@@ -120,6 +118,7 @@ struct DatesOrderView: View {
  
 struct ResultDatesOrderView: View {
     @ObservedObject var viewModel: DatesOrderViewModel
+    @EnvironmentObject var appState: AppState
     let soundManager = SoundManager.shared
 
     var body: some View {
@@ -135,7 +134,6 @@ struct ResultDatesOrderView: View {
                     .foregroundColor(.mateGold)
                     .padding()
 
-                // ScrollView para manejar textos largos en informationDetail
                 ScrollView {
                     VStack {
                         if let informationDetail = viewModel.dateEvent?.informationDetail {
@@ -151,6 +149,8 @@ struct ResultDatesOrderView: View {
 
                 Button(action: {
                     viewModel.showResultAlert = false
+                    appState.currentView = .mapContainer
+
                 }) {
                     Text("Continuar")
                         .padding()
@@ -166,7 +166,7 @@ struct ResultDatesOrderView: View {
             .padding()
         }
         .onAppear {
-            soundManager.playWinnerSound() // Reproducir sonido cuando aparezca el resultado
+            soundManager.playWinnerSound() 
         }
     }
 }

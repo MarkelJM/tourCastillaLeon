@@ -61,12 +61,12 @@ struct IconView: View {
         }
         .onAppear {
             startProgress()
-            soundManager.playInitialSound() // Reproducir el sonido de inicio
+            soundManager.playInitialSound()
         }
     }
 
     private func startProgress() {
-        withAnimation(.easeInOut(duration: 1.0)) {
+        withAnimation(.easeInOut(duration: 2.0)) {
             progress = 1.0
         }
         

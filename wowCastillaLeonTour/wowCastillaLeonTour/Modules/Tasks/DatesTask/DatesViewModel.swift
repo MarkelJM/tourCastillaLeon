@@ -17,10 +17,10 @@ class DatesOrderViewModel: BaseViewModel {
     
     private let dataManager = DatesOrderDataManager()
     private var activityId: String
-    private var appState: AppState  // Ahora es una propiedad en lugar de @EnvironmentObject
+    private var appState: AppState
     var isCorrectOrder: Bool = false
     
-    init(activityId: String, appState: AppState) {  // Incluir appState en el inicializador
+    init(activityId: String, appState: AppState) {  
         self.activityId = activityId
         self.appState = appState
         super.init()
@@ -77,7 +77,6 @@ class DatesOrderViewModel: BaseViewModel {
     private func updateUserTask(dateEvent: DateEvent) {
         guard let user = user else { return }
         
-        // Evitar duplicados
         if user.challenges[dateEvent.challenge]?.contains(dateEvent.id) == true {
             print("Task ID already exists, not adding again.")
             return
@@ -98,7 +97,7 @@ class DatesOrderViewModel: BaseViewModel {
                 }
             } receiveValue: { [weak self] _ in
                 print("User task updated in Firestore")
-                self?.appState.currentView = .map  // Navegar al mapa después de actualizar
+                self?.appState.currentView = .mapContainer
             }
             .store(in: &cancellables)
     }

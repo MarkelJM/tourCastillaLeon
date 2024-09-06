@@ -17,13 +17,13 @@ class ChallengeListFirestoreManager {
         Future { promise in
             self.db.collection("challenges").getDocuments { snapshot, error in
                 if let error = error {
-                    print("Error fetching challenges: \(error.localizedDescription)")  // Imprimir el error
+                    print("Error fetching challenges: \(error.localizedDescription)")  
                     promise(.failure(error))
                 } else {
                     let challenges = snapshot?.documents.compactMap { document in
                         return Challenge(from: document.data())
                     } ?? []
-                    print("Challenges fetched: \(challenges)")  // Imprimir la lista de desafíos obtenida
+                    print("Challenges fetched: \(challenges)")
                     promise(.success(challenges))
                 }
             }

@@ -16,7 +16,6 @@ struct FillGapView: View {
     var body: some View {
         ScrollView {
             ZStack {
-                // Fondo de pantalla
                 Image("fondoSolar")
                     .resizable()
                     .scaledToFill()
@@ -96,7 +95,7 @@ struct FillGapView: View {
                     }
                 }
                 .padding()
-                .background(Color.black.opacity(0.5))  // Fondo del VStack con transparencia
+                .background(Color.black.opacity(0.5))
                 .cornerRadius(20)
                 .padding()
                 .sheet(isPresented: $viewModel.showResultAlert) {
@@ -129,7 +128,8 @@ struct FillGapView: View {
 
 struct ResultFillGapView: View {
     @ObservedObject var viewModel: FillGapViewModel
-    let soundManager = SoundManager.shared 
+    @EnvironmentObject var appState: AppState
+    let soundManager = SoundManager.shared
     
     var body: some View {
         ZStack {
@@ -146,6 +146,8 @@ struct ResultFillGapView: View {
 
                 Button(action: {
                     viewModel.showResultAlert = false
+                    appState.currentView = .mapContainer
+
                 }) {
                     Text("Continuar")
                         .padding()
@@ -155,7 +157,7 @@ struct ResultFillGapView: View {
                 }
             }
             .padding()
-            .background(Color.black.opacity(0.5))  // Fondo del VStack con transparencia
+            .background(Color.black.opacity(0.5))  
             .cornerRadius(20)
             .padding()
         }
