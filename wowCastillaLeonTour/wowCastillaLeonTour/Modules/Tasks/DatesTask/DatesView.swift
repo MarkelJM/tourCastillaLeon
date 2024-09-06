@@ -24,7 +24,7 @@ struct DatesOrderView: View {
                     
                     HStack {
                         Button(action: {
-                            appState.currentView = .map
+                            appState.currentView = .mapContainer
                         }) {
                             Image(systemName: "chevron.left")
                                 .font(.headline)
@@ -117,7 +117,7 @@ struct DatesOrderView: View {
     }
 }
 
-
+ 
 struct ResultDatesOrderView: View {
     @ObservedObject var viewModel: DatesOrderViewModel
     let soundManager = SoundManager.shared

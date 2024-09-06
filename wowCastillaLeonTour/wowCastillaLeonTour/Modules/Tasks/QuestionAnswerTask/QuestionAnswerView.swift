@@ -24,7 +24,7 @@ struct QuestionAnswerView: View {
                     
                         HStack {
                             Button(action: {
-                                appState.currentView = .map
+                                appState.currentView = .mapContainer
                             }) {
                                 Image(systemName: "chevron.left")
                                     .font(.headline)

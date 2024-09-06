@@ -34,7 +34,7 @@ struct PuzzleView: View {
                             HStack {
                                 // Botón de "Atrás" con imagen de flecha
                                 Button(action: {
-                                    appState.currentView = .map
+                                    appState.currentView = .mapContainer
                                 }) {
                                     Image(systemName: "chevron.left") // Imagen de flecha del sistema
                                         .font(.headline)
