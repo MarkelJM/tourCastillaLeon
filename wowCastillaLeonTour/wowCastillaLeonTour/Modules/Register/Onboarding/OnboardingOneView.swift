@@ -41,9 +41,9 @@ struct OnboardingOneView: View {
                                 .padding(.top, 40)
                             
                             Text("""
-                                Aquí puedes contar la historia que desees sobre la aplicación.
-                                Puedes incluir una descripción detallada y cualquier otra información relevante
-                                que el usuario deba saber antes de comenzar su experiencia.
+                                Demuestra que no solo conoces los lugares más emblemáticos de Castilla y León sino que también su historia.
+                                
+                                ¡Vamos a la Conquista de CyL!
                                 """)
                                 .font(.body)
                                 .foregroundColor(.mateWhite)
