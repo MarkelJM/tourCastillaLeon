@@ -18,5 +18,6 @@ struct Puzzle: Identifiable {
     var correctAnswerMessage: String
     var incorrectAnswerMessage: String
     var isCapital: Bool
-    var challenge: String  
+    var challenge: String
+    var informationDetail: String
 }

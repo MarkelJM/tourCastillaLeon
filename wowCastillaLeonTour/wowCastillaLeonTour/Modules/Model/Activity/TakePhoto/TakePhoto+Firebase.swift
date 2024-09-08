@@ -43,7 +43,7 @@ extension TakePhoto {
             "incorrect_answer_message": incorrectAnswerMessage,
             "isCapital": isCapital,
             "challenge": challenge,
-            "informationDetail": informationDetail  // Nuevo campo
+            "informationDetail": informationDetail  
         ]
     }
 }
