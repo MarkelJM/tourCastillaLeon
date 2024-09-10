@@ -21,6 +21,7 @@ class MapViewModel: BaseViewModel {
     @Published var isChallengeBegan: Bool = false
     @Published var challenges: [Challenge] = []
     @Published var mapAnnotations: [UnifiedAnnotation] = []
+    @Published var userLocationAnnotation: UnifiedAnnotation?
 
 
 
@@ -66,9 +67,13 @@ class MapViewModel: BaseViewModel {
                     self.region.center = location.coordinate
                     self.hasCenteredOnUser = true
                 }
+                let avatarImage = self.user?.avatar.rawValue ?? "defaultAvatar"
+                self.userLocationAnnotation = UnifiedAnnotation(userLocation: location.coordinate, avatarImage: avatarImage)
+
             }
             .store(in: &cancellables)
     }
+  
 
     private func fetchUserProfileAndUpdateState() {
         super.fetchUserProfile()

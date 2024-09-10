@@ -19,6 +19,7 @@
 		D354686C2C85F5D100F6C39A /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = D354686B2C85F5D100F6C39A /* FirebaseMessaging */; };
 		D354686E2C85F5D100F6C39A /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = D354686D2C85F5D100F6C39A /* FirebaseStorage */; };
 		D35468712C85F86500F6C39A /* MapContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35468702C85F86500F6C39A /* MapContainerView.swift */; };
+		D35489182C9092EB0019F58C /* UserAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35489172C9092EB0019F58C /* UserAnnotation.swift */; };
 		D35F004F2C173FA000780464 /* wowCastillaLeonTourApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35F004E2C173FA000780464 /* wowCastillaLeonTourApp.swift */; };
 		D35F00512C173FA000780464 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35F00502C173FA000780464 /* ContentView.swift */; };
 		D35F00532C173FA100780464 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D35F00522C173FA100780464 /* Assets.xcassets */; };
@@ -148,6 +149,7 @@
 		D320C78E2C88C8880088DA83 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		D320C7902C88CCE70088DA83 /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
 		D35468702C85F86500F6C39A /* MapContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapContainerView.swift; sourceTree = "<group>"; };
+		D35489172C9092EB0019F58C /* UserAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAnnotation.swift; sourceTree = "<group>"; };
 		D35F004B2C173FA000780464 /* wowCastillaLeonTour.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = wowCastillaLeonTour.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D35F004E2C173FA000780464 /* wowCastillaLeonTourApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = wowCastillaLeonTourApp.swift; sourceTree = "<group>"; };
 		D35F00502C173FA000780464 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -915,6 +917,7 @@
 				D3E4B7A42C41179A000BEE9F /* CallOut */,
 				D39648DC2C7B954600EAAC19 /* ChallengeSelection */,
 				D396490F2C837FE200EAAC19 /* 2D */,
+				D35489172C9092EB0019F58C /* UserAnnotation.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -1222,6 +1225,7 @@
 				D3E4B74C2C19BAE4000BEE9F /* ProfileDataManager.swift in Sources */,
 				D39648D92C7A5A6B00EAAC19 /* ChallengeListDataManager.swift in Sources */,
 				D3E4B7852C3E890A000BEE9F /* TakePhotoModel.swift in Sources */,
+				D35489182C9092EB0019F58C /* UserAnnotation.swift in Sources */,
 				D320C78F2C88C8890088DA83 /* WebView.swift in Sources */,
 				D3E4B79C2C3E9562000BEE9F /* MapViewModel.swift in Sources */,
 				D39648C52C7A3CC000EAAC19 /* Challenge.swift in Sources */,

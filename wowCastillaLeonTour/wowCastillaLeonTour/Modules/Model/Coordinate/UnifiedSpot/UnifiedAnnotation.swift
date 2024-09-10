@@ -22,6 +22,7 @@ class UnifiedAnnotation: NSObject, IdentifiableAnnotation {
     
     var spot: Spot?
     var reward: ChallengeReward?
+    var isUserLocation: Bool = false
 
     init(spot: Spot) {
         self.id = UUID()
@@ -48,6 +49,21 @@ class UnifiedAnnotation: NSObject, IdentifiableAnnotation {
         self.spot = nil
         self.reward = reward
     }
+    
+    init(userLocation: CLLocationCoordinate2D, avatarImage: String) {
+        self.id = UUID()
+        self.coordinate = userLocation
+        self.title = "Tu ubicación"
+        self.abstract = ""
+        self.activityID = ""
+        self.activityType = ""
+        self.image = avatarImage  
+        self.challenge = ""
+        self.isUserLocation = true
+        self.spot = nil
+        self.reward = nil
+    }
+
     
     
     
