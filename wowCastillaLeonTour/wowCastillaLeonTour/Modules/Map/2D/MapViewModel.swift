@@ -34,7 +34,7 @@ class MapViewModel: BaseViewModel {
         self.appState = appState
         self.region = MKCoordinateRegion(
             center: CLLocationCoordinate2D(latitude: 41.6528, longitude: -2.7286),
-            span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+            span: MKCoordinateSpan(latitudeDelta: 2.0, longitudeDelta: 2.0)
         )
         self.selectedChallenge = "retoBasico"
         super.init()

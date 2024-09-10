@@ -75,8 +75,11 @@ struct ChallengeListView: View {
                     .listStyle(PlainListStyle())
                     .background(Color.black.opacity(0.2))
                     .cornerRadius(20)
-                    Spacer()
-                    Spacer()
+                    
+                    Spacer()//to push up last cell
+                    Spacer()//to push up last cell
+                    Spacer()//to push up last cell
+                    
                 } else {
                     Text("Cargando datos...")
                         .font(.title)
