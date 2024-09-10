@@ -16,4 +16,7 @@ struct DateEvent: Identifiable {
     var customMessage: String
     var correctAnswerMessage: String
     var incorrectAnswerMessage: String
+    var isCapital: Bool
+    var challenge: String
+    var informationDetail: String  
 }

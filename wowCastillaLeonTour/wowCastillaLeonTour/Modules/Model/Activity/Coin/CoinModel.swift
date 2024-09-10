@@ -15,4 +15,6 @@ struct Coin: Identifiable {
     var correctAnswerMessage: String
     var incorrectAnswerMessage: String
     var prize: String
+    var isCapital: Bool
+    var challenge: String
 }

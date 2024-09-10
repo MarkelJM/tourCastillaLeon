@@ -13,9 +13,12 @@ extension TakePhoto {
         guard let id = firestoreData["id"] as? String,
               let province = firestoreData["province"] as? String,
               let question = firestoreData["question"] as? String,
-              let customMessage = firestoreData["customMessage"] as? String,
-              let correctAnswerMessage = firestoreData["correctAnswerMessage"] as? String,
-              let incorrectAnswerMessage = firestoreData["incorrectAnswerMessage"] as? String else {
+              let customMessage = firestoreData["custom_message"] as? String,
+              let correctAnswerMessage = firestoreData["correct_answer_message"] as? String,
+              let incorrectAnswerMessage = firestoreData["incorrect_answer_message"] as? String,
+              let isCapital = firestoreData["isCapital"] as? Bool,
+              let challenge = firestoreData["challenge"] as? String,
+              let informationDetail = firestoreData["informationDetail"] as? String else {  
             return nil
         }
 
@@ -25,6 +28,9 @@ extension TakePhoto {
         self.customMessage = customMessage
         self.correctAnswerMessage = correctAnswerMessage
         self.incorrectAnswerMessage = incorrectAnswerMessage
+        self.isCapital = isCapital
+        self.challenge = challenge
+        self.informationDetail = informationDetail
     }
     
     func toFirestoreData() -> [String: Any] {
@@ -32,9 +38,12 @@ extension TakePhoto {
             "id": id,
             "province": province,
             "question": question,
-            "customMessage": customMessage,
-            "correctAnswerMessage": correctAnswerMessage,
-            "incorrectAnswerMessage": incorrectAnswerMessage
+            "custom_message": customMessage,
+            "correct_answer_message": correctAnswerMessage,
+            "incorrect_answer_message": incorrectAnswerMessage,
+            "isCapital": isCapital,
+            "challenge": challenge,
+            "informationDetail": informationDetail  
         ]
     }
 }

@@ -13,10 +13,12 @@ extension Coin {
         guard let id = firestoreData["id"] as? String,
               let province = firestoreData["province"] as? String,
               let description = firestoreData["description"] as? String,
-              let customMessage = firestoreData["customMessage"] as? String,
-              let correctAnswerMessage = firestoreData["correctAnswerMessage"] as? String,
-              let incorrectAnswerMessage = firestoreData["incorrectAnswerMessage"] as? String,
-              let prize = firestoreData["prize"] as? String else {
+              let customMessage = firestoreData["custom_message"] as? String,
+              let correctAnswerMessage = firestoreData["correct_answer_message"] as? String,
+              let incorrectAnswerMessage = firestoreData["incorrect_answer_message"] as? String,
+              let prize = firestoreData["prize"] as? String,
+              let isCapital = firestoreData["isCapital"] as? Bool,
+              let challenge = firestoreData["challenge"] as? String else {
             return nil
         }
 
@@ -27,6 +29,8 @@ extension Coin {
         self.correctAnswerMessage = correctAnswerMessage
         self.incorrectAnswerMessage = incorrectAnswerMessage
         self.prize = prize
+        self.isCapital = isCapital
+        self.challenge = challenge
     }
     
     func toFirestoreData() -> [String: Any] {
@@ -34,10 +38,12 @@ extension Coin {
             "id": id,
             "province": province,
             "description": description,
-            "customMessage": customMessage,
-            "correctAnswerMessage": correctAnswerMessage,
-            "incorrectAnswerMessage": incorrectAnswerMessage,
-            "prize": prize
+            "custom_message": customMessage,
+            "correct_answer_message": correctAnswerMessage,
+            "incorrect_answer_message": incorrectAnswerMessage,
+            "prize": prize,
+            "isCapital": isCapital,
+            "challenge": challenge  
         ]
     }
 }

@@ -5,35 +5,85 @@
 //  Created by Markel Juaristi on 11/6/24.
 //
 
+
+
+
+ 
+ 
 import SwiftUI
 
 struct RegisterView: View {
     @EnvironmentObject var appState: AppState
-    @StateObject private var viewModel = RegisterViewModel()
+    @ObservedObject var viewModel: RegisterViewModel
+    @StateObject private var keyboardObserver = KeyboardObserver()
 
     var body: some View {
-        VStack {
-            TextField("Email", text: $viewModel.email)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
+        ZStack {
+            Image("fondoSolar")
+                .resizable()
+                .scaledToFill()
+                .edgesIgnoringSafeArea(.all)
+            
+            ScrollView {
+                VStack(spacing: 20) {
+                    Text("Registra email")
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
+                        .foregroundColor(.mateGold)
+                        .padding(.top, 50)
+                    
+                    TextField("Email", text: $viewModel.email)
+                        .padding()
+                        .background(Color.mateWhite.opacity(0.8))
+                        .cornerRadius(10)
+                        .padding(.horizontal, 40)
+                    
+                    SecureField("Contraseña", text: $viewModel.password)
+                        .padding()
+                        .background(Color.mateWhite.opacity(0.8))
+                        .cornerRadius(10)
+                        .padding(.horizontal, 40)
+                    
+                    SecureField("Repetir Contraseña", text: $viewModel.repeatPassword)
+                        .padding()
+                        .background(Color.mateWhite.opacity(0.8))
+                        .cornerRadius(10)
+                        .padding(.horizontal, 40)
+                    
+                    HStack {
+                        Toggle(isOn: $viewModel.agreeToTerms) {
+                            Text("He leído y acepto los")
+                        }
+                        .toggleStyle(CheckboxToggleStyle())
+                        .padding(.horizontal, 10)
+                        
+                        Button(action: {
+                            appState.currentView = .termsAndConditions
+                        }) {
+                            Text("Términos y Condiciones")
+                                .foregroundColor(.blue)
+                        }
+                    }
+                    .padding(.horizontal, 40)
+                    
+                    redBackgroundButton(title: "Registrarse") {
+                        viewModel.register()
+                    }
+                    .padding(.top, 20)
+                    .padding(.bottom, 50)
+                    .disabled(!viewModel.agreeToTerms)
+                    
+                    if viewModel.showError {
+                        Text(viewModel.errorMessage)
+                            .foregroundColor(.red)
+                            .padding()
+                    }
+                }
+                .background(Color.black.opacity(0.5))
+                .cornerRadius(20)
                 .padding()
-
-            SecureField("Contraseña", text: $viewModel.password)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .padding()
-
-            SecureField("Repetir Contraseña", text: $viewModel.repeatPassword)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .padding()
-
-            Button("Registrarse") {
-                viewModel.register()
-            }
-            .padding()
-
-            if viewModel.showError {
-                Text(viewModel.errorMessage)
-                    .foregroundColor(.red)
-                    .padding()
+                .padding(.bottom, keyboardObserver.keyboardHeight)
+                .padding(.top, 100)
             }
         }
         .sheet(isPresented: $viewModel.showVerificationModal) {
@@ -44,12 +94,26 @@ struct RegisterView: View {
                 appState.currentView = .profile
             }
         }
-        .padding()
     }
 }
 
 
+struct CheckboxToggleStyle: ToggleStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        Button(action: {
+            configuration.isOn.toggle()
+        }) {
+            HStack {
+                Image(systemName: configuration.isOn ? "checkmark.square" : "square")
+                    .foregroundColor(configuration.isOn ? .blue : .secondary)
+                configuration.label
+            }
+        }
+    }
+}
 
 #Preview {
-    RegisterView()
+    RegisterView(viewModel: RegisterViewModel())
+        .environmentObject(AppState())
 }
+

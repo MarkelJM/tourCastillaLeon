@@ -4,21 +4,21 @@
 //
 //  Created by Markel Juaristi on 12/6/24.
 //
-
 import Foundation
+import Combine
 
 class RegisterDataManager {
     private let firestoreManager = FirestoreManager()
     
-    func registerUser(email: String, password: String, completion: @escaping (Result<Void, Error>) -> Void) {
-        firestoreManager.registerUser(email: email, password: password, completion: completion)
+    func registerUser(email: String, password: String) -> AnyPublisher<Void, Error> {
+        firestoreManager.registerUser(email: email, password: password)
     }
     
-    func sendEmailVerification(completion: @escaping (Result<Void, Error>) -> Void) {
-        firestoreManager.sendEmailVerification(completion: completion)
+    func sendEmailVerification() -> AnyPublisher<Void, Error> {
+        firestoreManager.sendEmailVerification()
     }
     
-    func checkEmailVerification(completion: @escaping (Result<Bool, Error>) -> Void) {
-        firestoreManager.checkEmailVerification(completion: completion)
+    func checkEmailVerification() -> AnyPublisher<Bool, Error> {
+        firestoreManager.checkEmailVerification()
     }
 }

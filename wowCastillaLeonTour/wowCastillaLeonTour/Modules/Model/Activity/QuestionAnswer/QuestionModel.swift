@@ -8,7 +8,7 @@
 import Foundation
 
 struct QuestionAnswer: Identifiable {
-    var id: String 
+    var id: String
     var province: String
     var question: String
     var options: [String]
@@ -16,4 +16,7 @@ struct QuestionAnswer: Identifiable {
     var customMessage: String
     var correctAnswerMessage: String
     var incorrectAnswerMessage: String
+    var isCapital: Bool
+    var challenge: String
+    var informationDetail: String  
 }

@@ -14,10 +14,12 @@ extension FillGap {
               let province = firestoreData["province"] as? String,
               let question = firestoreData["question"] as? String,
               let images = firestoreData["images"] as? String,
-              let correctPositions = firestoreData["correctPositions"] as? [String],
-              let customMessage = firestoreData["customMessage"] as? String,
-              let correctAnswerMessage = firestoreData["correctAnswerMessage"] as? String,
-              let incorrectAnswerMessage = firestoreData["incorrectAnswerMessage"] as? String else {
+              let correctPositions = firestoreData["correct_positions"] as? [String],
+              let customMessage = firestoreData["custom_message"] as? String,
+              let correctAnswerMessage = firestoreData["correct_answer_message"] as? String,
+              let incorrectAnswerMessage = firestoreData["incorrect_answer_message"] as? String,
+              let isCapital = firestoreData["isCapital"] as? Bool,
+              let challenge = firestoreData["challenge"] as? String else {
             return nil
         }
 
@@ -29,6 +31,8 @@ extension FillGap {
         self.customMessage = customMessage
         self.correctAnswerMessage = correctAnswerMessage
         self.incorrectAnswerMessage = incorrectAnswerMessage
+        self.isCapital = isCapital
+        self.challenge = challenge
     }
     
     func toFirestoreData() -> [String: Any] {
@@ -37,10 +41,12 @@ extension FillGap {
             "province": province,
             "question": question,
             "images": images,
-            "correctPositions": correctPositions,
-            "customMessage": customMessage,
-            "correctAnswerMessage": correctAnswerMessage,
-            "incorrectAnswerMessage": incorrectAnswerMessage
+            "correct_positions": correctPositions,
+            "custom_message": customMessage,
+            "correct_answer_message": correctAnswerMessage,
+            "incorrect_answer_message": incorrectAnswerMessage,
+            "isCapital": isCapital,
+            "challenge": challenge  
         ]
     }
 }

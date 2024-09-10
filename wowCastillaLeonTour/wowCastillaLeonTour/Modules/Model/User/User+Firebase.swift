@@ -5,7 +5,6 @@
 //  Created by Markel Juaristi on 12/6/24.
 //
 
-import Foundation
 import FirebaseFirestore
 
 extension User {
@@ -20,7 +19,10 @@ extension User {
               let provinceString = firestoreData["province"] as? String,
               let province = Province(rawValue: provinceString),
               let avatarString = firestoreData["avatar"] as? String,
-              let avatar = Avatar(rawValue: avatarString) else {
+              let avatar = Avatar(rawValue: avatarString),
+              let spotIDs = firestoreData["spotIDs"] as? [String],
+              let specialRewards = firestoreData["specialRewards"] as? [String: String],  
+              let challenges = firestoreData["challenges"] as? [String: [String]] else {
             return nil
         }
         
@@ -33,6 +35,9 @@ extension User {
         self.city = city
         self.province = province
         self.avatar = avatar
+        self.spotIDs = spotIDs
+        self.specialRewards = specialRewards
+        self.challenges = challenges
     }
     
     func toFirestoreData() -> [String: Any] {
@@ -45,7 +50,10 @@ extension User {
             "postalCode": postalCode,
             "city": city,
             "province": province.rawValue,
-            "avatar": avatar.rawValue
+            "avatar": avatar.rawValue,
+            "spotIDs": spotIDs,
+            "specialRewards": specialRewards,
+            "challenges": challenges
         ]
     }
 }

@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import SwiftUI
+import Combine
 
 class ProfileViewModel: ObservableObject {
     @Published var email: String = ""
@@ -17,47 +17,102 @@ class ProfileViewModel: ObservableObject {
     @Published var city: String = ""
     @Published var province: Province = .other
     @Published var avatar: Avatar = .boy
+    @Published var spotIDs: [String] = []
+    @Published var specialRewards: [String: String] = [:]
+    @Published var challenges: [String: [String]] = [:]
     @Published var showError: Bool = false
     @Published var errorMessage: String = ""
-    @Published var navigateToAvatarSelection: Bool = false // Nueva propiedad
 
     private let dataManager = ProfileDataManager()
-    
-    func saveUserProfile() {
-        let user = User(id: UUID().uuidString, email: email, firstName: firstName, lastName: lastName, birthDate: birthDate, postalCode: postalCode, city: city, province: province, avatar: avatar)
-        dataManager.createUserProfile(user: user) { [weak self] result in
-            switch result {
-            case .success:
-                DispatchQueue.main.async {
-                    // Navegar a la vista deseada
+    private var cancellables = Set<AnyCancellable>()
+
+    func saveUserProfile(completion: @escaping () -> Void) {
+        guard validatePostalCode() else {
+            showError = true
+            errorMessage = "El código postal debe ser un número de 5 dígitos."
+            return
+        }
+        
+        guard validateCity() else {
+            showError = true
+            errorMessage = "La ciudad solo puede contener letras."
+            return
+        }
+        
+        if challenges["retoBasico"] == nil {
+            challenges["retoBasico"] = []
+        }
+
+        let user = User(
+            id: UUID().uuidString,
+            email: email,
+            firstName: firstName,
+            lastName: lastName,
+            birthDate: birthDate,
+            postalCode: postalCode,
+            city: city,
+            province: province,
+            avatar: avatar,
+            spotIDs: spotIDs,
+            specialRewards: specialRewards,
+            challenges: challenges
+        )
+        
+        dataManager.createUserProfile(user: user)
+            .receive(on: DispatchQueue.main)
+            .sink { completion in
+                switch completion {
+                case .failure(let error):
+                    self.showError = true
+                    self.errorMessage = error.localizedDescription
+                case .finished:
+                    break
                 }
-            case .failure(let error):
-                self?.showError = true
-                self?.errorMessage = error.localizedDescription
+            } receiveValue: {
+                completion()
             }
-        }
+            .store(in: &cancellables)
     }
-    
+
     func fetchUserProfile() {
-        dataManager.fetchUserProfile { [weak self] result in
-            switch result {
-            case .success(let user):
-                self?.email = user.email
-                self?.firstName = user.firstName
-                self?.lastName = user.lastName
-                self?.birthDate = user.birthDate
-                self?.postalCode = user.postalCode
-                self?.city = user.city
-                self?.province = user.province
-                self?.avatar = user.avatar
-            case .failure(let error):
-                self?.showError = true
-                self?.errorMessage = error.localizedDescription
+        dataManager.fetchUserProfile()
+            .receive(on: DispatchQueue.main)
+            .sink { completion in
+                switch completion {
+                case .failure(let error):
+                    self.showError = true
+                    self.errorMessage = error.localizedDescription
+                case .finished:
+                    break
+                }
+            } receiveValue: { user in
+                self.email = user.email
+                self.firstName = user.firstName
+                self.lastName = user.lastName
+                self.birthDate = user.birthDate
+                self.postalCode = user.postalCode
+                self.city = user.city
+                self.province = user.province
+                self.avatar = user.avatar
+                self.spotIDs = user.spotIDs
+                self.specialRewards = user.specialRewards
+                self.challenges = user.challenges
+
+                if self.challenges["retoBasico"] == nil {
+                    self.challenges["retoBasico"] = []
+                }
             }
-        }
+            .store(in: &cancellables)
     }
     
-    func navigateToAvatarSelectionView() {
-        navigateToAvatarSelection = true
+    func validatePostalCode() -> Bool {
+        let postalCodePattern = "^[0-9]{5}$"
+        return postalCode.range(of: postalCodePattern, options: .regularExpression) != nil
     }
+
+    func validateCity() -> Bool {
+        let cityPattern = "^[A-Za-záéíóúÁÉÍÓÚñÑ\\s]+$"
+        return city.range(of: cityPattern, options: .regularExpression) != nil
+    }
+
 }

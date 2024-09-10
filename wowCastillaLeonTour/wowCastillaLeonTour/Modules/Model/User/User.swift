@@ -8,8 +8,8 @@
 import Foundation
 
 enum Avatar: String, Codable, CaseIterable, Identifiable {
-    case boy = "normalMutila"
-    case girl = "normalChica"
+    case boy = "chico"
+    case girl = "chica"
 
     var id: String { self.rawValue }
 }
@@ -39,4 +39,9 @@ struct User: Identifiable, Codable {
     var city: String
     var province: Province
     var avatar: Avatar
+    var spotIDs: [String]
+    var specialRewards: [String: String]
+    var challenges: [String: [String]]
 }
+
+
