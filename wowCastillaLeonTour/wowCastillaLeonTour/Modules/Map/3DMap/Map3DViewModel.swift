@@ -28,7 +28,7 @@ class Map3DViewModel: MapViewModel {
 
     func focusOnAnnotation(annotation: UnifiedAnnotation, mapView: MKMapView) {
         print("Focusing on annotation at coordinate: \(annotation.coordinate)")
-        let camera = MKMapCamera(lookingAtCenter: annotation.coordinate, fromDistance: 300, pitch: 60, heading: 0)
+        let camera = MKMapCamera(lookingAtCenter: annotation.coordinate, fromDistance: 600, pitch: 60, heading: 0)
         mapView.setCamera(camera, animated: true)
     }
 
