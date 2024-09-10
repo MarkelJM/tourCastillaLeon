@@ -125,6 +125,8 @@ struct Map3DView: UIViewRepresentable {
         uiView.removeAnnotations(uiView.annotations)
         uiView.addAnnotations(viewModel.mapAnnotations)
         uiView.setRegion(viewModel.region, animated: true)
+        let updatedCamera = MKMapCamera(lookingAtCenter: viewModel.region.center, fromDistance: 1000, pitch: 60, heading: 0)
+        uiView.setCamera(updatedCamera, animated: true)
     }
 }
 

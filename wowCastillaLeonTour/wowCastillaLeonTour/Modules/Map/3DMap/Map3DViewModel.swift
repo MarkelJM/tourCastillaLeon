@@ -23,12 +23,12 @@ class Map3DViewModel: MapViewModel {
         print("Configuring 3D camera...")
         self.cameraBoundary = MKMapView.CameraBoundary(coordinateRegion: region)
         self.cameraZoomRange = MKMapView.CameraZoomRange(minCenterCoordinateDistance: 500, maxCenterCoordinateDistance: 50000)
-        region.span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+        region.span = MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
     }
 
     func focusOnAnnotation(annotation: UnifiedAnnotation, mapView: MKMapView) {
         print("Focusing on annotation at coordinate: \(annotation.coordinate)")
-        let camera = MKMapCamera(lookingAtCenter: annotation.coordinate, fromDistance: 600, pitch: 60, heading: 0)
+        let camera = MKMapCamera(lookingAtCenter: annotation.coordinate, fromDistance: 1000, pitch: 60, heading: 0)
         mapView.setCamera(camera, animated: true)
     }
 
