@@ -14,7 +14,7 @@ class ChallengeRewardFirestoreManager {
 
     func fetchChallengeRewardById(_ id: String) -> AnyPublisher<ChallengeReward, Error> {
         Future { promise in
-            self.db.collection("challengeAward").document(id).getDocument { snapshot, error in
+            self.db.collection("challengeReward").document(id).getDocument { snapshot, error in
                 if let error = error {
                     promise(.failure(error))
                 } else if let data = snapshot?.data(), let reward = ChallengeReward(from: data) {

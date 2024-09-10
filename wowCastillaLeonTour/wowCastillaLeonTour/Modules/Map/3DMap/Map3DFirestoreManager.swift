@@ -49,7 +49,7 @@ class Map3DFirestoreManager {
     
     func fetchChallengeReward(for challengeName: String) -> AnyPublisher<ChallengeReward, Error> {
         Future { promise in
-            self.db.collection("challengeAward")  
+            self.db.collection("challengeReward")  
                 .document(challengeName)
                 .getDocument { document, error in
                     if let document = document, document.exists {
