@@ -36,6 +36,7 @@ struct TermsAndConditionsView: View {
                         Spacer()
                     }
                     .padding([.top, .leading], 20)
+                    Spacer()
                     
                     Text("Términos y Condiciones")
                         .font(.largeTitle)

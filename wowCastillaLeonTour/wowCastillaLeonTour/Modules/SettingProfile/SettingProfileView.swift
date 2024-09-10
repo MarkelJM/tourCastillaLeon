@@ -94,11 +94,13 @@ struct SettingProfileView: View {
                         showPolicyView = true
                     }) {
                         HStack {
+                            
                             Image(systemName: "doc.text")
                                 .foregroundColor(.white)
                             Text("Términos y Condiciones")
                                 .foregroundColor(.white)
                                 .font(.headline)
+                                .padding(.top, 30)
                         }
                         .padding()
                         .frame(maxWidth: .infinity)
