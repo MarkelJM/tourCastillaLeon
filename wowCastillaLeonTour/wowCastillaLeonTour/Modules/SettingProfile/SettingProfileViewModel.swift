@@ -8,6 +8,7 @@
 
 import SwiftUI
 import Combine
+import FirebaseAuth
 
 class SettingProfileViewModel: BaseViewModel {
     @Published var editedFirstName: String = ""
@@ -68,6 +69,19 @@ class SettingProfileViewModel: BaseViewModel {
                 self.isEditing = false
             }
             .store(in: &cancellables)
+    }
+    
+    func deleteAccount() {
+        Auth.auth().currentUser?.delete { error in
+            if let error = error {
+                self.alertMessage = "Error al eliminar la cuenta: \(error.localizedDescription)"
+                self.showAlert = true
+            } else {
+                self.alertMessage = "Cuenta eliminada correctamente."
+                self.showAlert = true
+                
+            }
+        }
     }
 }
 

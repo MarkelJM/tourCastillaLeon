@@ -110,6 +110,27 @@ struct SettingProfileView: View {
                     }
                     .padding(.horizontal)
                     .padding(.top, 20)
+                    
+                    Button(action: {
+                        KeychainManager.shared.delete(key: "userUID")
+                        appState.currentView = .login
+                        viewModel.deleteAccount()
+                    }) {
+                        HStack {
+                            Image(systemName: "trash")
+                                .foregroundColor(.white)
+                            Text("Eliminar Cuenta")
+                                .foregroundColor(.mateWhite)
+                                .font(.headline)
+                                .padding(.top, 30)
+                        }
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(Color.red)
+                        .cornerRadius(10)
+                        .padding(.bottom, 20)
+                    }
+                    .padding(.horizontal)
                 }
                 .padding()
                 .background(Color.black.opacity(0.65))

@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import FirebaseAuth
 
 class ProfileViewModel: ObservableObject {
     @Published var email: String = ""
@@ -27,6 +28,11 @@ class ProfileViewModel: ObservableObject {
     private var cancellables = Set<AnyCancellable>()
 
     func saveUserProfile(completion: @escaping () -> Void) {
+        guard let email = Auth.auth().currentUser?.email else {
+            showError = true
+            errorMessage = "Email no encontrado."
+            return
+        }
         guard validatePostalCode() else {
             showError = true
             errorMessage = "El código postal debe ser un número de 5 dígitos."
