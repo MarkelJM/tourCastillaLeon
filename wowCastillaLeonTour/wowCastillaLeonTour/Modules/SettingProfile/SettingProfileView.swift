@@ -100,13 +100,13 @@ struct SettingProfileView: View {
                             Text("Términos y Condiciones")
                                 .foregroundColor(.white)
                                 .font(.headline)
-                                .padding(.top, 30)
+                                //.padding(.top, 30)
                         }
                         .padding()
                         .frame(maxWidth: .infinity)
                         .background(Color.blue)
                         .cornerRadius(10)
-                        .padding(.bottom, 100)
+                        .padding(.bottom, 30)
                     }
                     .padding(.horizontal)
                     .padding(.top, 20)
@@ -122,13 +122,13 @@ struct SettingProfileView: View {
                             Text("Eliminar Cuenta")
                                 .foregroundColor(.mateWhite)
                                 .font(.headline)
-                                .padding(.top, 30)
+                                //.padding(.top, 30)
                         }
                         .padding()
                         .frame(maxWidth: .infinity)
                         .background(Color.red)
                         .cornerRadius(10)
-                        .padding(.bottom, 20)
+                        .padding(.top, 20)
                     }
                     .padding(.horizontal)
                 }
@@ -136,8 +136,9 @@ struct SettingProfileView: View {
                 .background(Color.black.opacity(0.65))
                 .cornerRadius(20)
                 .padding()
-                .padding(.top, 40)
+                .padding(.bottom, 150)
             }
+            Spacer()
 
             Button(action: {
                 viewModel.startEditing()
