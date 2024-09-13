@@ -12,6 +12,8 @@ struct SettingProfileView: View {
     @StateObject var viewModel = SettingProfileViewModel()
     @State private var showEditProfileModal = false
     @State private var showPolicyView = false
+    @State private var showDeleteAccountAlert = false
+    @State private var showContactSheet = false
     @EnvironmentObject var appState: AppState
 
     var body: some View {
@@ -112,6 +114,26 @@ struct SettingProfileView: View {
                     .padding(.top, 20)
                     
                     Button(action: {
+                        showContactSheet = true
+                    }) {
+                        HStack {
+                            Image(systemName: "envelope")
+                                .foregroundColor(.white)
+                            Text("Contacto Email")
+                                .foregroundColor(.white)
+                                .font(.headline)
+                        }
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(Color.green)
+                        .cornerRadius(10)
+                    }
+                    .padding(.horizontal)
+                    .sheet(isPresented: $showContactSheet) {
+                        ContactSheetView()
+                    }
+                    
+                    Button(action: {
                         KeychainManager.shared.delete(key: "userUID")
                         appState.currentView = .login
                         viewModel.deleteAccount()
@@ -131,6 +153,16 @@ struct SettingProfileView: View {
                         .padding(.top, 20)
                     }
                     .padding(.horizontal)
+                    .alert(isPresented: $showDeleteAccountAlert) {
+                        Alert(
+                            title: Text("Confirmar eliminación"),
+                            message: Text("¿Seguro que quieres eliminar tu cuenta de ConquistaCyL? Esta acción no se puede deshacer."),
+                            primaryButton: .destructive(Text("Eliminar")) {
+                                viewModel.deleteAccount() //
+                            },
+                            secondaryButton: .cancel(Text("Cancelar"))
+                        )
+                    }
                 }
                 .padding()
                 .background(Color.black.opacity(0.65))
