@@ -14,7 +14,6 @@ struct DatesOrderView: View {
     var body: some View {
         ScrollView {
             ZStack {
-                // Fondo de pantalla
                 Image("fondoSolar")
                     .resizable()
                     .scaledToFill()
@@ -24,7 +23,7 @@ struct DatesOrderView: View {
                     
                     HStack {
                         Button(action: {
-                            appState.currentView = .map
+                            appState.currentView = .mapContainer
                         }) {
                             Image(systemName: "chevron.left")
                                 .font(.headline)
@@ -86,7 +85,6 @@ struct DatesOrderView: View {
                                         .cornerRadius(10)
                                 }
 
-                                // Botón de deshacer selección
                                 Button(action: {
                                     viewModel.undoSelection()
                                 }) {
@@ -102,7 +100,7 @@ struct DatesOrderView: View {
                     }
                 }
                 .padding()
-                .background(Color.black.opacity(0.5))  // Fondo del VStack con transparencia
+                .background(Color.black.opacity(0.5))
                 .cornerRadius(20)
                 .padding()
                 .sheet(isPresented: $viewModel.showResultAlert) {
@@ -117,10 +115,12 @@ struct DatesOrderView: View {
     }
 }
 
+ 
 struct ResultDatesOrderView: View {
     @ObservedObject var viewModel: DatesOrderViewModel
+    @EnvironmentObject var appState: AppState
     let soundManager = SoundManager.shared
-    
+
     var body: some View {
         ZStack {
             Image("fondoSolar")
@@ -134,8 +134,23 @@ struct ResultDatesOrderView: View {
                     .foregroundColor(.mateGold)
                     .padding()
 
+                ScrollView {
+                    VStack {
+                        if let informationDetail = viewModel.dateEvent?.informationDetail {
+                            Text(informationDetail)
+                                .font(.body)
+                                .foregroundColor(.white)
+                                .multilineTextAlignment(.center)
+                                .padding()
+                        }
+                    }
+                }
+                .frame(maxHeight: 200)
+
                 Button(action: {
                     viewModel.showResultAlert = false
+                    appState.currentView = .mapContainer
+
                 }) {
                     Text("Continuar")
                         .padding()
@@ -143,14 +158,15 @@ struct ResultDatesOrderView: View {
                         .foregroundColor(.mateWhite)
                         .cornerRadius(10)
                 }
+                .padding(.top, 20)
             }
             .padding()
-            .background(Color.black.opacity(0.5))  // Fondo del VStack con transparencia
+            .background(Color.black.opacity(0.5))
             .cornerRadius(20)
             .padding()
         }
         .onAppear {
-            soundManager.playWinnerSound() // Reproducir sonido cuando aparezca el resultado
+            soundManager.playWinnerSound() 
         }
     }
 }

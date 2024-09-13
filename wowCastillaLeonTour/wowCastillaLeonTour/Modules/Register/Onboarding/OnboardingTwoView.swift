@@ -45,8 +45,9 @@ struct OnboardingTwoView: View {
                             .padding(.top, 40)
                         
                         Text("""
-                            Aquí puedes continuar la historia o proporcionar más información sobre cómo utilizar la aplicación,
-                            qué pueden esperar los usuarios y cómo pueden aprovechar al máximo las funciones disponibles.
+                            Elige el reto y conquista uno por uno cada territorio. Tras finalizar cada reto conseguirás una recompensa.
+                            Al finalizar todos los retos habrás conseguido conquistar a través de tu conocimiento CyL
+
                             """)
                             .font(.body)
                             .foregroundColor(.mateWhite)

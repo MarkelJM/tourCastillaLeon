@@ -13,7 +13,7 @@ class RegisterViewModel: ObservableObject {
     @Published var email: String = ""
     @Published var password: String = ""
     @Published var repeatPassword: String = ""
-    @Published var agreeToTerms: Bool = false // Propiedad para el Toggle
+    @Published var agreeToTerms: Bool = false
     @Published var showError: Bool = false
     @Published var errorMessage: String = ""
     @Published var showVerificationModal: Bool = false
@@ -68,10 +68,10 @@ class RegisterViewModel: ObservableObject {
                         self.errorMessage = "Error desconocido: \(error.localizedDescription)"
                     }
                 case .finished:
-                    self.sendEmailVerification() // Enviar email de verificación después de registrarse
+                    self.sendEmailVerification()
                 }
             } receiveValue: {
-                // Acciones adicionales después del registro
+                // not needed because wu navivato to profile in verificationview
             }
             .store(in: &cancellables)
     }

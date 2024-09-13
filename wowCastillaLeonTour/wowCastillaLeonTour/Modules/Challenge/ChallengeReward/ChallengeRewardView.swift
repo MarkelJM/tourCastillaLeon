@@ -95,7 +95,7 @@ struct ResultChallengeRewardView: View {
             .padding()
         }
         .onAppear {
-            soundManager.playWinnerSound() // Reproducir sonido cuando aparezca el resultado
+            soundManager.playWinnerSound() 
         }
         
     }

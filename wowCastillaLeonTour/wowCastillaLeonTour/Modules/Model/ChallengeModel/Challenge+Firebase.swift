@@ -18,11 +18,11 @@ extension Challenge {
               let isBegan = firestoreData["isBegan"] as? Bool,
               let province = firestoreData["province"] as? String,
               let taskAmount = firestoreData["taskamount"] as? Int,
-              let challengeMessage = firestoreData["challengeMessage"] as? String else { // Campo agregado
+              let challengeMessage = firestoreData["challengeMessage"] as? String else {
             return nil
         }
 
-        self.id = firestoreData["challengeID"] as? String ?? "" // Asignamos el id si existe en Firestore, si no, vacío
+        self.id = firestoreData["challengeID"] as? String ?? ""
         self.challengeName = challengeName
         self.challengeTaskIDs = challengeTaskIDs
         self.challengeTitle = challengeTitle
@@ -32,7 +32,7 @@ extension Challenge {
         self.isBegan = isBegan
         self.province = province
         self.taskAmount = taskAmount
-        self.challengeMessage = challengeMessage // Asignación del nuevo campo
+        self.challengeMessage = challengeMessage
     }
     
     func toFirestoreData() -> [String: Any] {
@@ -46,7 +46,7 @@ extension Challenge {
             "isBegan": isBegan,
             "province": province,
             "taskamount": taskAmount,
-            "challengeMessage": challengeMessage // Incluyendo el nuevo campo en la salida
+            "challengeMessage": challengeMessage 
         ]
     }
 }

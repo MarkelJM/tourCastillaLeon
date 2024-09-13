@@ -21,7 +21,7 @@ class KeychainManager {
             kSecValueData as String: data
         ]
         
-        SecItemDelete(query as CFDictionary) // Eliminar cualquier valor anterior
+        SecItemDelete(query as CFDictionary) // deletes data before save
         let status = SecItemAdd(query as CFDictionary, nil)
         return status == errSecSuccess
     }

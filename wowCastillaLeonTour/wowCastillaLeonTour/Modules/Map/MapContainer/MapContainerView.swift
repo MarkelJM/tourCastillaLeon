@@ -12,7 +12,7 @@ struct MapContainerView: View {
     @State private var is3DView = false
     @State private var selectedSpot: Spot?
     @State private var selectedReward: ChallengeReward?
-    @StateObject private var viewModel = Map3DViewModel(appState: AppState()) // Crear instancia del ViewModel
+    @StateObject private var viewModel = Map3DViewModel(appState: AppState())
 
     var body: some View {
         ZStack(alignment: .bottomTrailing) {
@@ -43,7 +43,6 @@ struct MapContainerView: View {
             }
             .padding(.bottom, 250)
 
-            // Aquí se muestran los sheets en base a la selección
             .sheet(item: $selectedSpot) { spot in
                 MapCallOutView(spot: spot, viewModel: viewModel)
                     .environmentObject(appState)

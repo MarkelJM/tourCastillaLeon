@@ -6,7 +6,7 @@
 //
 
 
-
+//Not usesing now
 import FirebaseFunctions
 import Foundation
 import Combine
@@ -53,34 +53,3 @@ class FirebaseFunctionsManager {
     }
 }
 
-
-
-/*
-import FirebaseFunctions
-import Foundation
-import Combine
-
-class FirebaseFunctionsManager {
-    private lazy var functions = Functions.functions()
-    
-    func getMapboxToken() -> AnyPublisher<String, Error> {
-        Future<String, Error> { promise in
-            self.functions.httpsCallable("getMapboxToken").call { result, error in
-                if let error = error {
-                    print("Error al obtener el token de Mapbox: \(error.localizedDescription)")
-                    promise(.failure(error))
-                } else if let data = result?.data as? [String: Any],
-                          let token = data["token"] as? String {
-                    print("Token de Mapbox recibido: \(token)")
-                    promise(.success(token))
-                } else {
-                    let error = NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Token no encontrado"])
-                    print("Error: Token no encontrado en la respuesta")
-                    promise(.failure(error))
-                }
-            }
-        }
-        .eraseToAnyPublisher()
-    }
-}
-*/

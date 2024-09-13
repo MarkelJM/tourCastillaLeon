@@ -13,7 +13,6 @@ struct PolicyView: View {
     
     var body: some View {
         ZStack {
-            // Fondo de pantalla
             Image("fondoSolar")
                 .resizable()
                 .scaledToFill()
@@ -26,15 +25,14 @@ struct PolicyView: View {
                         .foregroundColor(.mateGold)
                         .padding()
                     
-                    // Aquí va la WebView que carga el enlace
                     WebView(url: url)
-                        .frame(height: 400) // Ajusta el tamaño según sea necesario
+                        .frame(height: 400)
                         .cornerRadius(10)
                         .padding(.horizontal)
                     
                     Spacer()
                 }
-                .background(Color.black.opacity(0.5))  // Fondo del VStack con transparencia
+                .background(Color.black.opacity(0.5))  
                 .cornerRadius(20)
                 .padding()
             }

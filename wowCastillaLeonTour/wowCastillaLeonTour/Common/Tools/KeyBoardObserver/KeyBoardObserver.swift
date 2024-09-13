@@ -8,6 +8,7 @@
 import SwiftUI
 import Combine
 
+//dismiss de keyboard
 final class KeyboardObserver: ObservableObject {
     @Published var keyboardHeight: CGFloat = 0
 

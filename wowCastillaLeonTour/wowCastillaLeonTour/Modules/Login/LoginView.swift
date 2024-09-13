@@ -13,7 +13,6 @@ struct LoginView: View {
 
     var body: some View {
         ZStack {
-            // Fondo de pantalla
             Image("fondoSolar")
                 .resizable()
                 .scaledToFill()
@@ -37,7 +36,6 @@ struct LoginView: View {
                     .background(Color.white.opacity(0.8))
                     .cornerRadius(10)
                 
-                // Botón "¿Olvidaste la contraseña?"
                 Button(action: {
                     appState.currentView = .forgotPassword
                 }) {
@@ -81,7 +79,7 @@ struct LoginView: View {
             .padding()
         }
         .onTapGesture {
-            hideKeyboard() // Ocultar el teclado al tocar fuera
+            hideKeyboard()
         }
         .onReceive(viewModel.loginSuccess) { _ in
             appState.currentView = .challengeList

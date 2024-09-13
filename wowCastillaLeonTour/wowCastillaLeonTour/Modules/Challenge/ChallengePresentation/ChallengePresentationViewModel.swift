@@ -30,15 +30,15 @@ class ChallengePresentationViewModel: BaseViewModel {
                 .eraseToAnyPublisher()
         }
         
-        // Añadir el nombre del desafío al diccionario challenges si no está presente
+        // adding challengeName if is empty
         if user.challenges[challengeName] == nil {
-            user.challenges[challengeName] = [] // Inicializar con un array vacío
+            user.challenges[challengeName] = [] // INITIAL EMPTY ARRAY
         }
 
-        // Guardar el nombre del desafío en UserDefaults
+        // saves challengename in userdefaul to use in maocontainer
         userDefaultsManager.saveChallengeName(challengeName)
 
-        // Guardar el estado actualizado del desafío en Firestore
+        
         return saveUserChallengeState(user: user)
             .handleEvents(receiveOutput: {
                 print("Challenge state saved in Firestore")

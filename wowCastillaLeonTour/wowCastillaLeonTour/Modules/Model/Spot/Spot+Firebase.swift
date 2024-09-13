@@ -20,11 +20,11 @@ extension Spot {
               let name = firestoreData["name"] as? String,
               let province = firestoreData["province"] as? String,
               let title = firestoreData["title"] as? String,
-              let challenge = firestoreData["challenge"] as? String else {  // Agregando la validación para challenge
+              let challenge = firestoreData["challenge"] as? String else {
             return nil
         }
 
-        self.id = firestoreData["id"] as? String ?? ""  // Asignamos el id si existe en Firestore, si no, vacío
+        self.id = firestoreData["id"] as? String ?? ""
         self.abstract = abstract
         self.activityID = activityID
         self.activityType = activityType
@@ -34,7 +34,7 @@ extension Spot {
         self.name = name
         self.province = province
         self.title = title
-        self.challenge = challenge  // Asignación del campo challenge
+        self.challenge = challenge
     }
     
     func toFirestoreData() -> [String: Any] {
@@ -51,7 +51,7 @@ extension Spot {
             "name": name,
             "province": province,
             "title": title,
-            "challenge": challenge  // Agregando el campo challenge en la serialización
+            "challenge": challenge  
         ]
     }
 }

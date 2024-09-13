@@ -33,14 +33,13 @@ class AppState: ObservableObject {
         case fillGap(id: String)
         case questionAnswer(id: String)
         case takePhoto(id: String)
-        //case specialPrize(id: String) 
         case onboardingOne
         case onboardingTwo   
         case forgotPassword
         case termsAndConditions
         case challengePresentation(challengeName: String)
         case settings
-        case challengeReward(challengeName: String)  // Añadir este caso para la vista de recompensa
+        case challengeReward(challengeName: String)  
 
     }
 }

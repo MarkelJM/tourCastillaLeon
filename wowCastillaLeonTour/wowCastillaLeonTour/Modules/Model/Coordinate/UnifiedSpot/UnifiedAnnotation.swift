@@ -18,10 +18,11 @@ class UnifiedAnnotation: NSObject, IdentifiableAnnotation {
     var activityID: String
     var activityType: String
     var image: String
-    var challenge: String  // Nuevo campo agregado
+    var challenge: String
     
     var spot: Spot?
     var reward: ChallengeReward?
+    var isUserLocation: Bool = false
 
     init(spot: Spot) {
         self.id = UUID()
@@ -31,7 +32,7 @@ class UnifiedAnnotation: NSObject, IdentifiableAnnotation {
         self.activityID = spot.activityID
         self.activityType = spot.activityType
         self.image = spot.image
-        self.challenge = spot.challenge  // Asignación del campo challenge
+        self.challenge = spot.challenge
         self.spot = spot
         self.reward = nil
     }
@@ -44,10 +45,25 @@ class UnifiedAnnotation: NSObject, IdentifiableAnnotation {
         self.activityID = reward.activityID
         self.activityType = reward.activityType
         self.image = reward.prizeImage
-        self.challenge = reward.challenge  // Asignación del campo challenge
+        self.challenge = reward.challenge  
         self.spot = nil
         self.reward = reward
     }
+    
+    init(userLocation: CLLocationCoordinate2D, avatarImage: String) {
+        self.id = UUID()
+        self.coordinate = userLocation
+        self.title = "Tu ubicación"
+        self.abstract = ""
+        self.activityID = ""
+        self.activityType = ""
+        self.image = avatarImage  
+        self.challenge = ""
+        self.isUserLocation = true
+        self.spot = nil
+        self.reward = nil
+    }
+
     
     
     

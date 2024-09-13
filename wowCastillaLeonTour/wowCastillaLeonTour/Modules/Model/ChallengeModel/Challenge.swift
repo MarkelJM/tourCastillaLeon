@@ -8,7 +8,7 @@
 import Foundation
 
 struct Challenge: Identifiable, Codable {
-    var id: String // Este campo puede ser el challengeID
+    var id: String 
     var challengeName: String
     var challengeTaskIDs: [String]
     var challengeTitle: String

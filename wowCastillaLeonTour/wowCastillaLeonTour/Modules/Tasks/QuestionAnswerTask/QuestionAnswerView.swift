@@ -14,7 +14,6 @@ struct QuestionAnswerView: View {
     var body: some View {
         ScrollView {
             ZStack {
-                // Fondo de pantalla
                 Image("fondoSolar")
                     .resizable()
                     .scaledToFill()
@@ -24,7 +23,7 @@ struct QuestionAnswerView: View {
                     
                         HStack {
                             Button(action: {
-                                appState.currentView = .map
+                                appState.currentView = .mapContainer
                             }) {
                                 Image(systemName: "chevron.left")
                                     .font(.headline)
@@ -79,12 +78,11 @@ struct QuestionAnswerView: View {
                         }
                     }
                     .padding()
-                    .background(Color.black.opacity(0.5))  // Fondo del VStack con transparencia
-                    .cornerRadius(20)
+                    .background(Color.black.opacity(0.5))
                     .padding()
                     .sheet(isPresented: $viewModel.showResultModal) {
                         ResultQuestionView(viewModel: viewModel)
-                            .environmentObject(appState)  // Pasar appState al resultado también
+                            .environmentObject(appState) 
                     }
                 
             }
@@ -100,12 +98,12 @@ struct QuestionAnswerView: View {
         .environmentObject(AppState())
 }
 
+
 struct ResultQuestionView: View {
     @ObservedObject var viewModel: QuestionAnswerViewModel
     @EnvironmentObject var appState: AppState
-
     let soundManager = SoundManager.shared
-    
+
     var body: some View {
         ZStack {
             Image("fondoSolar")
@@ -119,8 +117,24 @@ struct ResultQuestionView: View {
                     .foregroundColor(.mateGold)
                     .padding()
 
+                // ScrollView para manejar textos largos en informationDetail
+                ScrollView {
+                    VStack {
+                        if let informationDetail = viewModel.questionAnswer?.informationDetail {
+                            Text(informationDetail)
+                                .font(.body)
+                                .foregroundColor(.white)
+                                .multilineTextAlignment(.center)
+                                .padding()
+                        }
+                    }
+                }
+                .frame(maxHeight: 200)
+
                 Button(action: {
                     viewModel.showResultModal = false
+                    appState.currentView = .mapContainer
+
                 }) {
                     Text("Continuar")
                         .padding()
@@ -128,14 +142,15 @@ struct ResultQuestionView: View {
                         .foregroundColor(.mateWhite)
                         .cornerRadius(10)
                 }
+                .padding(.top, 20)
             }
             .padding()
-            .background(Color.black.opacity(0.5))  // Fondo del VStack con transparencia
+            .background(Color.black.opacity(0.5))
             .cornerRadius(20)
             .padding()
         }
         .onAppear {
-            soundManager.playWinnerSound() // Reproducir sonido cuando aparezca el resultado
+            soundManager.playWinnerSound()
         }
     }
 }

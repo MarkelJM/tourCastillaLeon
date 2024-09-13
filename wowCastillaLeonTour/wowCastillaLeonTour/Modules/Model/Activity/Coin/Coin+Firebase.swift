@@ -18,7 +18,7 @@ extension Coin {
               let incorrectAnswerMessage = firestoreData["incorrect_answer_message"] as? String,
               let prize = firestoreData["prize"] as? String,
               let isCapital = firestoreData["isCapital"] as? Bool,
-              let challenge = firestoreData["challenge"] as? String else {  // Nuevo campo
+              let challenge = firestoreData["challenge"] as? String else {
             return nil
         }
 
@@ -43,7 +43,7 @@ extension Coin {
             "incorrect_answer_message": incorrectAnswerMessage,
             "prize": prize,
             "isCapital": isCapital,
-            "challenge": challenge  // Nuevo campo
+            "challenge": challenge  
         ]
     }
 }

@@ -49,7 +49,7 @@ class MapFirestoreManager {
     
     func fetchChallengeReward(for challengeName: String) -> AnyPublisher<ChallengeReward, Error> {
         Future { promise in
-            self.db.collection("challengeAward")
+            self.db.collection("challengeReward")
                 .document(challengeName)
                 .getDocument { document, error in
                     if let document = document, document.exists {
@@ -67,24 +67,3 @@ class MapFirestoreManager {
     }
 }
 
-
-/*
-import FirebaseFirestore
-
-class MapFirestoreManager {
-    private var db = Firestore.firestore()
-    
-    func fetchPoints(completion: @escaping (Result<[Point], Error>) -> Void) {
-        db.collection("points").getDocuments { (querySnapshot, error) in
-            if let error = error {
-                completion(.failure(error))
-            } else {
-                let points = querySnapshot?.documents.compactMap { document in
-                    Point(from: document.data())
-                } ?? []
-                completion(.success(points))
-            }
-        }
-    }
-}
-*/

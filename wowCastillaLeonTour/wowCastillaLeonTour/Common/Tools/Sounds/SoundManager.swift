@@ -13,13 +13,10 @@ class SoundManager {
     static let shared = SoundManager()
     private var player: AVAudioPlayer?
 
-    // Método genérico para reproducir cualquier sonido
     func playSound(sound: String, type: String) {
         let userDefaultsManager = UserDefaultsManager()
         
-        // Comprobar si el sonido está activado
         if userDefaultsManager.isSoundEnabled() {
-            // Los sonidos están en Assets, cargarlos usando NSDataAsset
             if let soundAsset = NSDataAsset(name: sound) {
                 do {
                     player = try AVAudioPlayer(data: soundAsset.data, fileTypeHint: type)
@@ -33,7 +30,7 @@ class SoundManager {
         }
     }
 
-    // Métodos específicos para cada sonido
+    // Methods so play de sound and music
     func playInitialSound() {
         playSound(sound: "initial", type: "mp3")
     }
