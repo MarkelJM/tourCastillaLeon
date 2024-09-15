@@ -80,7 +80,7 @@ class FillGapViewModel: BaseViewModel {
                 }
             } receiveValue: { [weak self] _ in
                 print("User task updated in Firestore")
-                self?.appState?.currentView = .map  // Navegar al mapa después de actualizar
+                self?.appState?.currentView = .mapContainer  // Navegar al mapa después de actualizar
             }
             .store(in: &cancellables)
     }
