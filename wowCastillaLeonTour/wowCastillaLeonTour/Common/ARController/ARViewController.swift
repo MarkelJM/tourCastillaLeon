@@ -69,10 +69,12 @@ struct ARViewContainer<VM: BaseViewModel>: UIViewRepresentable {
 
                 if let modelEntity = try? ModelEntity.loadModel(contentsOf: usdzFileURL!) {
                     // Ajustar la escala inicial si el modelo está en metros o centímetros
-                    modelEntity.scale = [0.2, 0.2, 0.2] // Para que el modelo sea visible pero no demasiado pequeño
+                    modelEntity.scale = [0.035, 0.035, 0.035]
+                    //modelEntity.scale = [0.01, 0.01, 0.01]// Para que el modelo sea visible pero no demasiado pequeño
 
                     // Posicionar el ancla de manera que el modelo esté a una distancia razonable de la cámara
-                    let anchorEntity = AnchorEntity(world: [0, -1, -50]) // Ajustar la altura y distancia para mejorar visibilidad
+                    let anchorEntity = AnchorEntity(world: [0, -1, -4])
+                    //let anchorEntity = AnchorEntity(world: [0, -1, -3])// Ajustar la altura y distancia para mejorar visibilidad
 
                     // Añadir el modelo al ancla
                     anchorEntity.addChild(modelEntity)
@@ -156,7 +158,7 @@ struct ARViewContainer<VM: BaseViewModel>: UIViewRepresentable {
             print("Escala original antes de tocar: \(originalScale)")
 
             // Aumentar la escala una sola vez sin reducir luego
-            let scaledUp = Transform(scale: [originalScale.x * 30.0, originalScale.y * 30.0, originalScale.z * 30.0])
+            let scaledUp = Transform(scale: [originalScale.x * 50, originalScale.y * 50, originalScale.z * 50 ])
             print("Escala al hacer el primer toque (subiendo): \(scaledUp.scale)")
 
             // Animar hacia la nueva escala más grande sin reducir después
