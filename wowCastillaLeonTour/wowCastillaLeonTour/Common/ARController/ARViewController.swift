@@ -16,6 +16,178 @@ import ZIPFoundation
 struct ARViewContainer<VM: BaseViewModel>: UIViewRepresentable {
     var prizeImageName: String
     var viewModel: VM
+    @State private var tapCount: Int = 0
+    @State private var lastTapTime: Date?
+
+    func makeUIView(context: Context) -> ARView {
+        let arView = ARView(frame: .zero)
+
+        #if !targetEnvironment(simulator)
+        let configuration = ARWorldTrackingConfiguration()
+        configuration.planeDetection = [.horizontal]
+        configuration.environmentTexturing = .automatic
+        arView.session.run(configuration)
+
+        setupARScene(arView: arView, context: context)
+
+        // Gesto de toque
+        let tapGesture = UITapGestureRecognizer(target: context.coordinator, action: #selector(context.coordinator.handleTap(_:)))
+        arView.addGestureRecognizer(tapGesture)
+
+        // Rotación
+        let rotationGesture = UIRotationGestureRecognizer(target: context.coordinator, action: #selector(context.coordinator.handleRotation(_:)))
+        arView.addGestureRecognizer(rotationGesture)
+
+        // Mostrar mensaje inicial
+        context.coordinator.showInitialMessage()
+        #endif
+
+        return arView
+    }
+
+    func setupARScene(arView: ARView, context: Context) {
+        #if !targetEnvironment(simulator)
+        let storage = Storage.storage()
+        let storageRef = storage.reference(forURL: prizeImageName)
+
+        let tempDir = FileManager.default.temporaryDirectory
+        let tempZipURL = tempDir.appendingPathComponent(UUID().uuidString + ".zip")
+
+        storageRef.write(toFile: tempZipURL) { (url, error) in
+            if let error = error {
+                print("Error al descargar el archivo comprimido: \(error)")
+                return
+            }
+
+            do {
+                let destinationURL = tempDir.appendingPathComponent(UUID().uuidString)
+                try FileManager.default.createDirectory(at: destinationURL, withIntermediateDirectories: true, attributes: nil)
+                try FileManager.default.unzipItem(at: tempZipURL, to: destinationURL)
+
+                let usdzFileURL = try FileManager.default.contentsOfDirectory(at: destinationURL, includingPropertiesForKeys: nil)
+                    .first { $0.pathExtension == "usdz" }
+
+                if let modelEntity = try? ModelEntity.loadModel(contentsOf: usdzFileURL!) {
+                    // Ajustar la escala inicial si el modelo está en metros o centímetros
+                    modelEntity.scale = [0.2, 0.2, 0.2] // Para que el modelo sea visible pero no demasiado pequeño
+
+                    // Posicionar el ancla de manera que el modelo esté a una distancia razonable de la cámara
+                    let anchorEntity = AnchorEntity(world: [0, -1, -50]) // Ajustar la altura y distancia para mejorar visibilidad
+
+                    // Añadir el modelo al ancla
+                    anchorEntity.addChild(modelEntity)
+                    arView.scene.addAnchor(anchorEntity)
+
+                    context.coordinator.currentEntity = modelEntity
+                } else {
+                    print("Error: No se pudo cargar el archivo como ModelEntity")
+                }
+            } catch {
+                print("Error al descomprimir el archivo o cargar el modelo: \(error)")
+            }
+        }
+        #endif
+    }
+
+    func updateUIView(_ uiView: ARView, context: Context) {}
+
+    func makeCoordinator() -> Coordinator {
+        Coordinator(self, viewModel: viewModel, tapCount: $tapCount, lastTapTime: $lastTapTime)
+    }
+
+    class Coordinator: NSObject {
+        var parent: ARViewContainer
+        var currentEntity: ModelEntity?
+        var viewModel: VM
+        @Binding var tapCount: Int
+        @Binding var lastTapTime: Date?
+
+        init(_ parent: ARViewContainer, viewModel: VM, tapCount: Binding<Int>, lastTapTime: Binding<Date?>) {
+            self.parent = parent
+            self.viewModel = viewModel
+            self._tapCount = tapCount
+            self._lastTapTime = lastTapTime
+        }
+
+        @objc func handleTap(_ sender: UITapGestureRecognizer) {
+            let now = Date()
+            let interval = lastTapTime?.timeIntervalSince(now) ?? 0
+
+            if interval > 1.5 {
+                tapCount = 1 // Reset counter if taps are too far apart
+            } else {
+                tapCount += 1
+            }
+
+            lastTapTime = now
+
+            if let modelEntity = currentEntity {
+                if tapCount == 1 {
+                    animateModelOnTap(modelEntity) // Solo escalar en el primer toque
+                }
+            }
+
+            if tapCount == 2 {
+                triggerResultAction() // En el segundo toque, navega
+            }
+        }
+
+        func triggerResultAction() {
+            if let challengeRewardViewModel = viewModel as? ChallengeRewardViewModel {
+                challengeRewardViewModel.completeRewardTask()
+            } else if let coinViewModel = viewModel as? CoinViewModel {
+                if let coin = coinViewModel.coins.first {
+                    coinViewModel.completeTask(coin: coin)
+                }
+            }
+        }
+
+        @objc func handleRotation(_ sender: UIRotationGestureRecognizer) {
+            guard let currentEntity = currentEntity else { return }
+            if sender.state == .changed {
+                let rotation = simd_quatf(angle: Float(sender.rotation), axis: [0, 1, 0])
+                currentEntity.transform.rotation *= rotation
+                sender.rotation = 0
+            }
+        }
+
+        func animateModelOnTap(_ model: ModelEntity) {
+            let originalScale = model.transform.scale
+            print("Escala original antes de tocar: \(originalScale)")
+
+            // Aumentar la escala una sola vez sin reducir luego
+            let scaledUp = Transform(scale: [originalScale.x * 30.0, originalScale.y * 30.0, originalScale.z * 30.0])
+            print("Escala al hacer el primer toque (subiendo): \(scaledUp.scale)")
+
+            // Animar hacia la nueva escala más grande sin reducir después
+            model.move(to: scaledUp, relativeTo: model, duration: 0.5, timingFunction: .easeInOut)
+        }
+
+        func showInitialMessage() {
+            let alert = UIAlertController(title: "Busca el objeto", message: "Toca dos veces para interactuar", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+
+            if let window = UIApplication.shared.windows.first, let rootVC = window.rootViewController {
+                rootVC.present(alert, animated: true, completion: nil)
+            }
+        }
+    }
+}
+
+
+/*
+ ///MUESTRA IMAGE EN 3D!!!!!!!
+import UIKit
+import Foundation
+import ARKit
+import RealityKit
+import SwiftUI
+import FirebaseStorage
+import ZIPFoundation
+
+struct ARViewContainer<VM: BaseViewModel>: UIViewRepresentable {
+    var prizeImageName: String
+    var viewModel: VM
 
     func makeUIView(context: Context) -> ARView {
         let arView = ARView(frame: .zero)
@@ -122,6 +294,7 @@ struct ARViewContainer<VM: BaseViewModel>: UIViewRepresentable {
         }
     }
 }
+*/
 
 /*
 import Foundation
