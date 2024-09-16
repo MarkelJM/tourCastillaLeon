@@ -27,7 +27,7 @@ struct CalloutRewardView: View {
                 .foregroundColor(.black)
                 .multilineTextAlignment(.center)
                 .padding(.horizontal)
-            
+            /*
             AsyncImage(url: URL(string: reward.prizeImage)) { image in
                 image
                     .resizable()
@@ -40,7 +40,9 @@ struct CalloutRewardView: View {
                 ProgressView()
                     .frame(width: 100, height: 100)
             }
-
+             */
+            
+            Spacer()
             Button(action: {
                 appState.currentView = .challengeReward(challengeName: reward.challenge)  
                 soundManager.playButtonSound()
