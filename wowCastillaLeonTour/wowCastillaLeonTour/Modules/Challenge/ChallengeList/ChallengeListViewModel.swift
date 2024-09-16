@@ -43,7 +43,7 @@ class ChallengeListViewModel: BaseViewModel {
                     print("Finished fetching challenges.")
                 }
             } receiveValue: { challenges in
-                print("Challenges received: \(challenges)")
+                //print("Challenges received: \(challenges)")
                 self.challenges = challenges
             }
             .store(in: &self.cancellables)

@@ -40,8 +40,11 @@ class CoinViewModel: BaseViewModel {
                     break
                 }
             } receiveValue: { coin in
+                
+                
                 self.coins = [coin]
                 self.isLoading = false
+                 
             }
             .store(in: &cancellables)
     }
@@ -73,7 +76,7 @@ class CoinViewModel: BaseViewModel {
                 }
             } receiveValue: { [weak self] _ in
                 print("User task updated in Firestore")
-                self?.appState.currentView = .map
+                //self?.appState.currentView = .mapContainer
             }
             .store(in: &cancellables)
     }

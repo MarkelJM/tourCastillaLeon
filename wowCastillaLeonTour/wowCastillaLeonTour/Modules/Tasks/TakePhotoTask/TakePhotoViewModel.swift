@@ -84,7 +84,7 @@ class TakePhotoViewModel: BaseViewModel {
                 }
             } receiveValue: { [weak self] _ in
                 print("User task updated in Firestore")
-                self?.appState.currentView = .map
+                //self?.appState.currentView = .mapContainer
             }
             .store(in: &cancellables)
     }
