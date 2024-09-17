@@ -82,7 +82,7 @@ struct ResultChallengeRewardView: View {
 
                 Button("Continuar") {
                     viewModel.showResultModal = false
-                    appState.currentView = .map
+                    appState.currentView = .mapContainer
                 }
                 .padding()
                 .background(Color.mateRed)
