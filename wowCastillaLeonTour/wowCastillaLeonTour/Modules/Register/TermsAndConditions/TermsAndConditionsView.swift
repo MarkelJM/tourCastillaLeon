@@ -11,7 +11,7 @@ import Combine
 struct TermsAndConditionsView: View {
     @EnvironmentObject var appState: AppState
     @Binding var agreeToTerms: Bool
-    private let url = URL(string: "https://conquistacyl.wordpress.com")!
+    private let url = URL(string: "https://conquistacyl.wordpress.com/2024/09/04/terminos-y-condiciones/")!
     
     var body: some View {
         ZStack {
