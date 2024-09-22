@@ -75,6 +75,7 @@ struct ChallengeListView: View {
                     .listStyle(PlainListStyle())
                     .background(Color.black.opacity(0.2))
                     .cornerRadius(20)
+                    .padding(.bottom, 150)
                     
                     Spacer()//to push up last cell
                     Spacer()//to push up last cell
