@@ -141,6 +141,7 @@
 		D3E4B81D2C4E5111000BEE9F /* FillGapFirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B81C2C4E5111000BEE9F /* FillGapFirestoreManager.swift */; };
 		D3E4B81F2C4E512B000BEE9F /* QuestionAnswerFirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B81E2C4E512B000BEE9F /* QuestionAnswerFirestoreManager.swift */; };
 		D3E4B8212C4E514F000BEE9F /* TakePhotoFirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4B8202C4E514F000BEE9F /* TakePhotoFirestoreManager.swift */; };
+		D3EE0CCB2D4CF8AF000E2970 /* BaseMapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3EE0CCA2D4CF8AF000E2970 /* BaseMapViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -273,6 +274,7 @@
 		D3E4B81C2C4E5111000BEE9F /* FillGapFirestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FillGapFirestoreManager.swift; sourceTree = "<group>"; };
 		D3E4B81E2C4E512B000BEE9F /* QuestionAnswerFirestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionAnswerFirestoreManager.swift; sourceTree = "<group>"; };
 		D3E4B8202C4E514F000BEE9F /* TakePhotoFirestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakePhotoFirestoreManager.swift; sourceTree = "<group>"; };
+		D3EE0CCA2D4CF8AF000E2970 /* BaseMapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseMapViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -423,6 +425,7 @@
 			isa = PBXGroup;
 			children = (
 				D38F8F722C51032600315904 /* BaseViewModel.swift */,
+				D3EE0CCA2D4CF8AF000E2970 /* BaseMapViewModel.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -1201,6 +1204,7 @@
 				D3E4B8172C4E4FEF000BEE9F /* TakePhotoDataManager.swift in Sources */,
 				D3DDA8972C18709500C43CBA /* LoginViewModel.swift in Sources */,
 				D38F8F792C6FC26300315904 /* MainTabView.swift in Sources */,
+				D3EE0CCB2D4CF8AF000E2970 /* BaseMapViewModel.swift in Sources */,
 				D3E4B7D42C4682B2000BEE9F /* ColorButtonView.swift in Sources */,
 				D39648D52C7A59EB00EAAC19 /* ChallengeListView.swift in Sources */,
 				D3E4B8132C4E4FC2000BEE9F /* FillGapDataManager.swift in Sources */,
@@ -1462,7 +1466,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.4;
+				MARKETING_VERSION = 1.5;
 				PRODUCT_BUNDLE_IDENTIFIER = MarkelJM.wowCastillaLeonTour;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1508,7 +1512,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.4;
+				MARKETING_VERSION = 1.5;
 				PRODUCT_BUNDLE_IDENTIFIER = MarkelJM.wowCastillaLeonTour;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

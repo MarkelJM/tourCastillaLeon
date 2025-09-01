@@ -5,6 +5,7 @@
 //  Created by Markel Juaristi on 23/8/24.
 //
 
+
 import Foundation
 import Combine
 
@@ -32,4 +33,3 @@ class ForgotPasswordViewModel: ObservableObject {
             .store(in: &cancellables)
     }
 }
-

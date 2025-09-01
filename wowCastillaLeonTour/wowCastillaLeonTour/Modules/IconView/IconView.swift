@@ -57,6 +57,29 @@ struct IconView: View {
                     .progressViewStyle(LinearProgressViewStyle(tint: .mateGold))
                     .frame(width: 200)
                     .padding(.bottom, 40)
+
+                // Rectángulo blanco con logo y texto
+                VStack {
+                    Image("logoJuntaCyL")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 150, height: 80)
+
+                    Text("2. Premio: Datos Abiertos de la Comunidad de Castilla y León 2024")
+                        .font(.system(size: 20)) // Tamaño de fuente corregido
+                        .foregroundColor(.mateGold)
+                        .multilineTextAlignment(.center)
+                        .padding(.top, 5)
+                        .padding(.bottom, 20)
+
+                }
+                .padding()
+                .frame(maxWidth: .infinity)
+                .background(Color.white)
+                //.cornerRadius(10)
+                //.shadow(radius: 5)
+                //.padding(.horizontal, 20)
+                //.padding(.bottom, 20)
             }
         }
         .onAppear {
@@ -77,5 +100,12 @@ struct IconView: View {
                 appState.currentView = .login
             }
         }
+    }
+}
+
+struct IconView_Previews: PreviewProvider {
+    static var previews: some View {
+        IconView()
+            .environmentObject(AppState()) // Asegúrate de que AppState esté correctamente definido
     }
 }
