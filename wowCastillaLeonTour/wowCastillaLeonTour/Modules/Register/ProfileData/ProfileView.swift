@@ -96,6 +96,9 @@ struct ProfileView: View {
                         }
                     }
                     .padding(.bottom, 50)
+                    
+                    Spacer()
+                    Spacer()
 
                     if viewModel.showError {
                         Text(viewModel.errorMessage)

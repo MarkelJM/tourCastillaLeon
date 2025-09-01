@@ -134,6 +134,7 @@ struct SettingProfileView: View {
                     }
                     
                     Button(action: {
+                        showDeleteAccountAlert = true 
                         KeychainManager.shared.delete(key: "userUID")
                         appState.currentView = .login
                         viewModel.deleteAccount()
@@ -158,7 +159,7 @@ struct SettingProfileView: View {
                             title: Text("Confirmar eliminación"),
                             message: Text("¿Seguro que quieres eliminar tu cuenta de ConquistaCyL? Esta acción no se puede deshacer."),
                             primaryButton: .destructive(Text("Eliminar")) {
-                                viewModel.deleteAccount() //
+                                viewModel.deleteAccount()
                             },
                             secondaryButton: .cancel(Text("Cancelar"))
                         )

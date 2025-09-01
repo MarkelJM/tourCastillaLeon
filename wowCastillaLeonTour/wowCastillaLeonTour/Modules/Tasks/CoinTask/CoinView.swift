@@ -37,6 +37,7 @@ struct CoinView: View {
                 }
             }
             
+            
             VStack {
                 HStack {
                     Button(action: {
@@ -48,6 +49,7 @@ struct CoinView: View {
                             .background(Color.mateGold)
                             .foregroundColor(.black)
                             .cornerRadius(10)
+                            .padding(.top, 100)
                     }
                     Spacer()
                 }
